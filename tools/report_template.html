@@ -234,7 +234,7 @@ function page(ed){
     tt[0] && {p:"tiktok", t:tt[0].caption || "TikTok video", by:"@"+tt[0].creator, v:tt[0].views, url:tt[0].url},
     ig[0] && {p:"instagram", t:ig[0].caption || "Instagram reel", by:"@"+ig[0].creator, v:ig[0].views, url:ig[0].url},
     (x.top||[])[0] && {p:"x", t:x.top[0].summary, by:x.top[0].author, v:x.top[0].views, url:x.top[0].url},
-    ytM[0] && {p:"media", t:ytM[0].title, by:ytM[0].channel, v:ytM[0].views, url:ytM[0].url},
+    ed.twitch && {p:"twitch", t:`${fmt(ed.twitch.streamers)} streamers · peak ${short(ed.twitch.peak_viewers)} viewers`, by:"Endix category on Twitch", v:ed.twitch.hours_watched, unit:"hours watched", url:"https://www.twitch.tv/directory/category/endix"},
     bigPress && bigPress.uvm && {p:"press", t:bigPress.headline, by:bigPress.outlet + " · " + bigPress.country, v:bigPress.uvm, unit:"monthly readers", url:bigPress.url},
   ].filter(h => h && h.v > 0);
 

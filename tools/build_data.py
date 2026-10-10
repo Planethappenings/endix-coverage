@@ -235,10 +235,14 @@ for r in table('YT_Videos'):
                     'views': num(r['Views']), 'likes': num(r['Likes']), 'type': r.get('Type', ''), 'category': cat})
 
 # ---------------------------------------------------------------- TikTok / Instagram
+# "Endix" as its own word or as #endixexpo / #endixpartner / #endix2026 / @endix_expo, never inside appendix, bendix, endixg ...
+ENDIX_WORD = re.compile(r'(?<![a-z0-9])endix(?:expo|partner|showcase|_expo|20\d\d)?(?![a-z0-9])', re.I)
+
 def social(tab, platform):
     out = []
     for r in table(tab):
         if r.get('Status') in ('own', 'rejected', 'no keyword'): continue
+        if r.get('Status') == 'new' and not ENDIX_WORD.search(r.get('Caption') or ''): continue
         if (r.get('Creator') or '').lower() in CONFIG['social_block_handles']: continue
         out.append({'edition': r['Edition'], 'platform': platform, 'creator': r.get('Creator', ''), 'name': r.get('Creator name', ''),
                     'url': r['URL'], 'date': day(r['Published']), 'views': num(r['Views']), 'likes': num(r['Likes']),
