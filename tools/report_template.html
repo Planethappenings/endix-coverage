@@ -404,7 +404,8 @@ const initials = s => (String(s||"").replace(/[^\p{L}\p{N} ]/gu,"").trim().split
 function buzz(ed){
   const quotes = ed.quotes || [], comments = ed.comments || [];
   if (!quotes.length && !comments.length) return "";
-  const spot = quotes.length ? quotes.map(q => ({text:q.text, who:q.outlet, url:q.url, link:"Read the article ↗"}))
+  const punchy = quotes.filter(q => q.text.length <= 130);  // long quotes only scroll in the rows below
+  const spot = punchy.length ? punchy.map(q => ({text:q.text, who:q.outlet, url:q.url, link:"Read the article ↗"}))
                              : comments.map(c => ({text:c.text, who:`${c.name} · ${c.handle}`, url:c.url, link:"See the post on X ↗"}));
   const cards = [].concat(
     comments.map(c => `<a class="bc" href="${esc(c.url)}" target="_blank" rel="noopener"><p>${esc(c.text)}</p><span class="by"><span class="av" aria-hidden="true">${esc(initials(c.name))}</span><span class="nm"><b>${esc(c.name)}</b><br>${esc(c.handle)} · ${dfmt(c.date)}</span><span class="src x">on X</span></span></a>`),

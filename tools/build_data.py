@@ -265,10 +265,13 @@ tiktok = social('TikTok', 'tiktok')
 instagram = social('Instagram', 'instagram')
 
 # ---------------------------------------------------------------- X comments curated by Grok (Webb_Kommentarer, visa = TRUE)
-comments = []
+comments, press_quotes = [], []
 for r in table('Webb_Kommentarer_Publik'):
     date = day(r.get('date')); ed = edition_for(date)
     if not ed or not (r.get('text') or '').strip(): continue
+    if str(r.get('id', '')).startswith('press:'):  # Grok also adds verified press pull quotes here
+        press_quotes.append({'edition': ed, 'text': r['text'].strip(), 'outlet': r.get('author_name', ''), 'url': r.get('url', '')})
+        continue
     comments.append({'edition': ed, 'date': date, 'name': r.get('author_name', ''), 'handle': r.get('handle', ''),
                      'text': r['text'].strip(), 'url': r.get('url', ''), 'likes': num(r.get('likes'))})
 
@@ -301,7 +304,7 @@ for e in editions:
         'twitch': c.get('twitch'),
         'steam': c.get('steam'),
         'sponsor': c.get('sponsor'),
-        'quotes': c.get('quotes', []),
+        'quotes': (lambda base: base + [q for q in press_quotes if q['edition'] == e['slug'] and norm(q['text'])[:40] not in {norm(b['text'])[:40] for b in base}])(c.get('quotes', [])),
         'comments': [x for x in comments if x['edition'] == e['slug']],
         'youtube': sorted(yt, key=lambda v: -v['views']),
         'tiktok': sorted([v for v in tiktok if v['edition'] == e['slug']], key=lambda v: -v['views']),
