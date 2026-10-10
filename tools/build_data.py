@@ -27,10 +27,23 @@ CONFIG = {
             'steam': {'impressions': 6128795, 'reads': 71791, 'growth': [['Winter 2025 vs Spring 2025', '+100.8%'], ['Spring 2026 vs Winter 2025', '+30.2%']],
                       'note': 'Unique impressions and reads across all Endix Steam events to date.'},
             'sponsor': 'Alienware sponsored the Endix Climb Trial and Endix Maze mini-games.',
-            'quotes': [
-                {'text': 'One of the most ambitious and accessible virtual gaming showcases on the internet.', 'outlet': 'Indiecator'},
-                {'text': 'Endix is turning digital game showcases into a playable experience.', 'outlet': 'Insider Gaming'},
-                {'text': 'The future of gaming conventions is accessible.', 'outlet': 'Screen Hype'},
+            'quotes': [  # verbatim pull quotes, each linked to its article
+                {'text': 'Endix makes the demo experience feel like it should have always been this simple.', 'outlet': 'Yardbarker', 'url': 'https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324'},
+                {'text': 'The potential, with this level of execution, is insane.', 'outlet': 'Indie-cent Exposure', 'url': 'https://www.indie-exposure.com/top-picks-from-endix-2026/'},
+                {'text': 'Endix may offer one of the more unique experiences of the showcase season.', 'outlet': 'Insider Gaming', 'url': 'https://insider-gaming.com/endix-showcase-playable-virtual-gaming-event/'},
+                {'text': 'One of the most ambitious and accessible virtual gaming showcases on the internet.', 'outlet': 'Indiecator', 'url': 'https://indiecator.org/2026/05/18/endix-digital-expo-2026-returns-in-may/'},
+                {'text': 'It feels like someone mashed up a traditional expo with a multiplayer hub world, and the result is surprisingly immersive.', 'outlet': 'Yardbarker', 'url': 'https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324'},
+                {'text': 'More importantly, it shows what a gaming expo can be.', 'outlet': 'Indie-cent Exposure', 'url': 'https://www.indie-exposure.com/endix-first-impressions/'},
+                {'text': 'A virtual gaming expo with huge PlayStation Home energy.', 'outlet': 'GameSpew', 'url': 'https://www.gamespew.com/2026/05/endix-2026/'},
+                {'text': 'Each iteration of Endix feels bigger, more polished, and more confident.', 'outlet': 'Yardbarker', 'url': 'https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324'},
+                {'text': 'ENDIX is so good, and honestly, I want to see it grow and frankly, grow with it.', 'outlet': 'Indie-cent Exposure', 'url': 'https://www.indie-exposure.com/top-picks-from-endix-2026/'},
+                {'text': 'Endix Is Turning Digital Game Showcases Into a Playable Experience.', 'outlet': 'Insider Gaming', 'url': 'https://insider-gaming.com/endix-showcase-playable-virtual-gaming-event/'},
+                {'text': 'The strongest part of ENDIX is the event’s accessibility.', 'outlet': 'Screen Hype', 'url': 'https://www.screenhype.co.uk/endix-2026-the-future-of-gaming-conventions-is-accessible/'},
+                {'text': 'It is easy, fast, and surprisingly social.', 'outlet': 'Yardbarker', 'url': 'https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324'},
+                {'text': 'No expensive tickets. No travel. No hotel bookings.', 'outlet': 'Indie-cent Exposure', 'url': 'https://www.indie-exposure.com/endix-first-impressions/'},
+                {'text': 'ENDIX absolutely has its own charm.', 'outlet': 'GameSpew', 'url': 'https://www.gamespew.com/2026/05/endix-2026/'},
+                {'text': 'The event feels like it is growing in the right direction.', 'outlet': 'Screen Hype', 'url': 'https://www.screenhype.co.uk/endix-2026-the-future-of-gaming-conventions-is-accessible/'},
+                {'text': 'ENDIX presents an opportunity for developers and players to interact through digital worlds, and I’m here for it.', 'outlet': 'Indiecator', 'url': 'https://indiecator.org/2026/05/18/endix-digital-expo-2026-returns-in-may/'},
             ],
         },
         'winter2026': {'aftermovie': None, 'x_tab': 'Endix Fall 2026', 'downloads': None, 'twitch': None, 'steam': None, 'sponsor': None, 'quotes': []},
@@ -251,6 +264,14 @@ def social(tab, platform):
 tiktok = social('TikTok', 'tiktok')
 instagram = social('Instagram', 'instagram')
 
+# ---------------------------------------------------------------- X comments curated by Grok (Webb_Kommentarer, visa = TRUE)
+comments = []
+for r in table('Webb_Kommentarer_Publik'):
+    date = day(r.get('date')); ed = edition_for(date)
+    if not ed or not (r.get('text') or '').strip(): continue
+    comments.append({'edition': ed, 'date': date, 'name': r.get('author_name', ''), 'handle': r.get('handle', ''),
+                     'text': r['text'].strip(), 'url': r.get('url', ''), 'likes': num(r.get('likes'))})
+
 # ---------------------------------------------------------------- X (Grok tabs)
 def x_stats(tab):
     rows = S.get(tab, [])
@@ -281,6 +302,7 @@ for e in editions:
         'steam': c.get('steam'),
         'sponsor': c.get('sponsor'),
         'quotes': c.get('quotes', []),
+        'comments': [x for x in comments if x['edition'] == e['slug']],
         'youtube': sorted(yt, key=lambda v: -v['views']),
         'tiktok': sorted([v for v in tiktok if v['edition'] == e['slug']], key=lambda v: -v['views']),
         'facebook': [v for v in facebook if v['edition'] == e['slug']],

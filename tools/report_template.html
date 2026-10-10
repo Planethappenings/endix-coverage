@@ -135,6 +135,50 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .fill{height:100%;background:var(--violet);border-radius:999px}
 .bar-r:first-child .fill{background:var(--pink)}
 
+
+/* what people are saying: rotating spotlight + two counter-scrolling rows */
+.buzz{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:
+  radial-gradient(70% 120% at 0% 0%,#ff3fa422,transparent 60%),radial-gradient(60% 120% at 100% 100%,#9c7dff22,transparent 60%),var(--panel)}
+.spot{position:relative;padding:clamp(24px,4vw,44px) clamp(20px,4vw,48px) 22px;min-height:230px;display:grid;align-content:center}
+.spot .qm{position:absolute;top:-18px;left:clamp(10px,2.5vw,30px);font-family:var(--display);font-weight:900;font-size:150px;line-height:1;color:var(--pink);opacity:.9;
+  text-shadow:0 0 28px #ff3fa4aa,0 0 60px #ff3fa455;pointer-events:none;user-select:none}
+.spot-i{position:relative;margin:0;max-width:62rem}
+.spot-i blockquote{margin:0;font-family:var(--body);font-weight:700;font-size:clamp(24px,3.4vw,40px);line-height:1.18;text-wrap:balance}
+.spot-i blockquote.long{font-size:clamp(20px,2.4vw,28px);line-height:1.25}
+@media (max-width:560px){.spot{padding-top:64px}.spot .qm{font-size:110px;top:-12px}}
+.spot-i figcaption{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.spot-i .who{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.spot-i a.read{font-weight:700;font-size:16px;color:var(--pink);text-decoration:none}
+.spot-i a.read:hover{text-decoration:underline}
+.spot-i.in{animation:spotIn .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes spotIn{from{opacity:0;transform:translateY(14px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+.spot-nav{display:flex;align-items:center;gap:6px;margin-top:22px;flex-wrap:wrap}
+.spot-nav button{width:26px;height:26px;border:0;padding:0;background:none;cursor:pointer;display:grid;place-items:center}
+.spot-nav button::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
+.spot-nav button[aria-current="true"]::after{background:var(--pink);transform:scale(1.35);box-shadow:0 0 10px var(--pink)}
+.spot-bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,var(--pink),var(--violet));transform-origin:left;transform:scaleX(0)}
+.spot-bar.run{animation:spotBar var(--dur,6s) linear both}
+.buzz:hover .spot-bar.run,.buzz:focus-within .spot-bar.run{animation-play-state:paused}
+@keyframes spotBar{to{transform:scaleX(1)}}
+.rows{display:grid;gap:12px;padding:6px 0 22px;border-top:1px solid var(--line);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.row{overflow:hidden;padding-top:12px}
+.mq{display:flex;gap:12px;width:max-content;animation:slide var(--dur,60s) linear infinite}
+.row.rev .mq{animation-direction:reverse}
+.rows:hover .mq,.rows:focus-within .mq{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(calc(-50% - 6px))}}
+.bc{width:min(340px,78vw);flex:none;display:flex;flex-direction:column;gap:12px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--panel-2);text-decoration:none;color:var(--fg)}
+.bc:hover,.bc:focus-visible{border-color:var(--pink)}
+.bc p{margin:0;font-size:17px;line-height:1.35;font-weight:600;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.bc p::before{content:"\201C";color:var(--pink);font-family:var(--display);font-weight:900;margin-right:4px}
+.bc .by{margin-top:auto;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);min-width:0}
+.bc .av{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:11px;font-weight:800;border:1px solid var(--line);background:var(--panel);color:var(--fg)}
+.bc .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bc .nm b{color:var(--fg);font-weight:700}
+.bc .src{margin-left:auto;flex:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.bc .src.x{color:var(--fg)}.bc .src.pr{color:#ffd166}
+@media (prefers-reduced-motion:reduce){.mq{animation:none}.row{overflow-x:auto}.spot-i.in{animation:none}.spot-bar{display:none}}
+
 /* quotes */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.quotes{grid-template-columns:minmax(0,1fr)}}
@@ -211,6 +255,7 @@ function render(){
   document.title = `${ed.name} · Coverage Report`;
   document.getElementById("app").innerHTML = page(ed);
   wire(ed);
+  startSpot();
   if (HOSTED) {
     if (window.twttr && twttr.widgets) twttr.widgets.load();
     else if (!document.getElementById("tw-js")) { const sc = document.createElement("script"); sc.id = "tw-js"; sc.async = true; sc.src = "https://platform.twitter.com/widgets.js"; document.body.appendChild(sc); }
@@ -264,6 +309,8 @@ function page(ed){
       : `<div class="kpi"><div class="v num">${fmt(x.mentions)}</div><div class="l">Mentions on X</div><div class="s">Posts by other accounts</div></div>`}
   </div>
 
+  ${buzz(ed)}
+
   ${hl.length ? `<section><div class="sh"><div><h2>Top moments</h2><p class="sub">The biggest piece of coverage on each platform.</p></div></div>
   <div class="rail">${hl.map(h => `<a class="hl" href="${esc(h.url)}" target="_blank" rel="noopener"><div class="top">${pill(h.p)}<span class="v num">${short(h.v)}<small>${h.unit || "views"}</small></span></div><div class="t">${esc(h.t)}</div><div class="by">${esc(h.by)}</div></a>`).join("")}</div></section>` : ""}
 
@@ -287,8 +334,7 @@ function page(ed){
   ${HOSTED && (x.top||[]).length ? `<section><div class="sh"><div><h2>Top posts on X</h2><p class="sub">The most viewed posts about ${esc(ed.name)} from other accounts.</p></div></div>
   <div class="tweets">${x.top.slice(0,6).filter(t => tweetId(t.url)).map(t => `<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none"><p>${esc(t.summary)}</p>— ${esc(t.author)} <a href="https://twitter.com/i/status/${tweetId(t.url)}">${dfmt(t.date)}</a></blockquote>`).join("")}</div></section>` : ""}
 
-  ${ed.quotes.length ? `<section><div class="sh"><div><h2>What the press said</h2></div></div>
-  <div class="quotes">${ed.quotes.map(q => `<figure class="q"><blockquote>${esc(q.text)}</blockquote><cite>${esc(q.outlet)}</cite></figure>`).join("")}</div></section>` : ""}
+
 
   <div class="foot"><span>END<span style="color:var(--pink)">I</span>X · endix.live</span><span>Updated ${dfmt(DATA.generated)}. View counts are public figures at that date.</span></div>`;
 }
@@ -350,6 +396,61 @@ function steamCard(ed){
     <ul class="top3" style="padding-bottom:4px">${s.growth.map(g => `<li><a><span class="t">${esc(g[1])}</span><span class="b">${esc(g[0])}</span></a></li>`).join("")}</ul>
     <div class="cf"><span class="note">${esc(s.note)}${ed.sponsor ? " " + esc(ed.sponsor) : ""}</span></div>
   </div>`;
+}
+
+
+/* ---------- what people are saying ---------- */
+const initials = s => (String(s||"").replace(/[^\p{L}\p{N} ]/gu,"").trim().split(/\s+/).slice(0,2).map(w => w[0]).join("") || "?").toUpperCase();
+function buzz(ed){
+  const quotes = ed.quotes || [], comments = ed.comments || [];
+  if (!quotes.length && !comments.length) return "";
+  const spot = quotes.length ? quotes.map(q => ({text:q.text, who:q.outlet, url:q.url, link:"Read the article ↗"}))
+                             : comments.map(c => ({text:c.text, who:`${c.name} · ${c.handle}`, url:c.url, link:"See the post on X ↗"}));
+  const cards = [].concat(
+    comments.map(c => `<a class="bc" href="${esc(c.url)}" target="_blank" rel="noopener"><p>${esc(c.text)}</p><span class="by"><span class="av" aria-hidden="true">${esc(initials(c.name))}</span><span class="nm"><b>${esc(c.name)}</b><br>${esc(c.handle)} · ${dfmt(c.date)}</span><span class="src x">on X</span></span></a>`),
+    quotes.map(q => `<a class="bc" href="${esc(q.url)}" target="_blank" rel="noopener"><p>${esc(q.text)}</p><span class="by"><span class="nm"><b>${esc(q.outlet)}</b><br>Read the article ↗</span><span class="src pr">Press</span></span></a>`)
+  );
+  // interleave X and press, split over two rows, repeat short lists so each row fills the screen
+  const mixed = []; const xs = cards.slice(0, comments.length), ps = cards.slice(comments.length);
+  for (let i = 0; i < Math.max(xs.length, ps.length); i++) { if (xs[i]) mixed.push(xs[i]); if (ps[i]) mixed.push(ps[i]); }
+  const half = Math.ceil(mixed.length / 2);
+  let r1 = mixed.slice(0, half), r2 = mixed.slice(half);
+  if (!r2.length) r2 = r1.slice().reverse();
+  const fill = r => { let out = r.slice(); while (out.length < 6) out = out.concat(r); return out; };
+  r1 = fill(r1); r2 = fill(r2);
+  const row = (r, rev) => `<div class="row${rev?" rev":""}"><div class="mq" style="--dur:${r.length*7}s">${r.join("")}${r.join("").replace(/<a /g,'<a tabindex="-1" aria-hidden="true" ')}</div></div>`;
+  window.__spot = spot;
+  return `<section><div class="sh"><div><h2>What people are saying</h2><p class="sub">Straight from the press and from players on X. Every quote links to its source.</p></div></div>
+  <div class="buzz">
+    <div class="spot"><span class="qm" aria-hidden="true">“</span>
+      <figure class="spot-i" id="spot-i"></figure>
+      ${spot.length > 1 ? `<div class="spot-nav" role="group" aria-label="Choose quote">${spot.map((q,i) => `<button type="button" data-q="${i}" aria-label="Quote ${i+1}: ${esc(q.who)}"></button>`).join("")}</div>` : ""}
+      <span class="spot-bar" id="spot-bar"></span>
+    </div>
+    <div class="rows">${row(r1,false)}${row(r2,true)}</div>
+  </div></section>`;
+}
+let spotTimer = null, spotIdx = 0;
+function showSpot(i){
+  const spot = window.__spot || [], el = document.getElementById("spot-i");
+  if (!el || !spot.length) return;
+  spotIdx = (i + spot.length) % spot.length;
+  const q = spot[spotIdx];
+  el.classList.remove("in"); void el.offsetWidth;
+  el.innerHTML = `<blockquote${q.text.length > 140 ? ' class="long"' : ""}>${esc(q.text)}</blockquote><figcaption><span class="who">${esc(q.who)}</span>${q.url ? `<a class="read" href="${esc(q.url)}" target="_blank" rel="noopener">${q.link}</a>` : ""}</figcaption>`;
+  el.classList.add("in");
+  document.querySelectorAll(".spot-nav button").forEach(b => b.setAttribute("aria-current", String(+b.dataset.q === spotIdx)));
+  const bar = document.getElementById("spot-bar");
+  if (bar) { bar.classList.remove("run"); void bar.offsetWidth; if (spot.length > 1) bar.classList.add("run"); }
+}
+function startSpot(){
+  clearInterval(spotTimer); spotIdx = 0;
+  const box = document.querySelector(".buzz");
+  if (!box) return;
+  showSpot(0);
+  document.querySelectorAll(".spot-nav button").forEach(b => b.onclick = () => showSpot(+b.dataset.q));
+  const bar = document.getElementById("spot-bar");
+  if (bar) bar.addEventListener("animationend", () => showSpot(spotIdx + 1));
 }
 
 /* ---------- deep-dive panel ---------- */

@@ -70,18 +70,87 @@
    "sponsor": "Alienware sponsored the Endix Climb Trial and Endix Maze mini-games.",
    "quotes": [
     {
+     "text": "Endix makes the demo experience feel like it should have always been this simple.",
+     "outlet": "Yardbarker",
+     "url": "https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324"
+    },
+    {
+     "text": "The potential, with this level of execution, is insane.",
+     "outlet": "Indie-cent Exposure",
+     "url": "https://www.indie-exposure.com/top-picks-from-endix-2026/"
+    },
+    {
+     "text": "Endix may offer one of the more unique experiences of the showcase season.",
+     "outlet": "Insider Gaming",
+     "url": "https://insider-gaming.com/endix-showcase-playable-virtual-gaming-event/"
+    },
+    {
      "text": "One of the most ambitious and accessible virtual gaming showcases on the internet.",
-     "outlet": "Indiecator"
+     "outlet": "Indiecator",
+     "url": "https://indiecator.org/2026/05/18/endix-digital-expo-2026-returns-in-may/"
     },
     {
-     "text": "Endix is turning digital game showcases into a playable experience.",
-     "outlet": "Insider Gaming"
+     "text": "It feels like someone mashed up a traditional expo with a multiplayer hub world, and the result is surprisingly immersive.",
+     "outlet": "Yardbarker",
+     "url": "https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324"
     },
     {
-     "text": "The future of gaming conventions is accessible.",
-     "outlet": "Screen Hype"
+     "text": "More importantly, it shows what a gaming expo can be.",
+     "outlet": "Indie-cent Exposure",
+     "url": "https://www.indie-exposure.com/endix-first-impressions/"
+    },
+    {
+     "text": "A virtual gaming expo with huge PlayStation Home energy.",
+     "outlet": "GameSpew",
+     "url": "https://www.gamespew.com/2026/05/endix-2026/"
+    },
+    {
+     "text": "Each iteration of Endix feels bigger, more polished, and more confident.",
+     "outlet": "Yardbarker",
+     "url": "https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324"
+    },
+    {
+     "text": "ENDIX is so good, and honestly, I want to see it grow and frankly, grow with it.",
+     "outlet": "Indie-cent Exposure",
+     "url": "https://www.indie-exposure.com/top-picks-from-endix-2026/"
+    },
+    {
+     "text": "Endix Is Turning Digital Game Showcases Into a Playable Experience.",
+     "outlet": "Insider Gaming",
+     "url": "https://insider-gaming.com/endix-showcase-playable-virtual-gaming-event/"
+    },
+    {
+     "text": "The strongest part of ENDIX is the event’s accessibility.",
+     "outlet": "Screen Hype",
+     "url": "https://www.screenhype.co.uk/endix-2026-the-future-of-gaming-conventions-is-accessible/"
+    },
+    {
+     "text": "It is easy, fast, and surprisingly social.",
+     "outlet": "Yardbarker",
+     "url": "https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324"
+    },
+    {
+     "text": "No expensive tickets. No travel. No hotel bookings.",
+     "outlet": "Indie-cent Exposure",
+     "url": "https://www.indie-exposure.com/endix-first-impressions/"
+    },
+    {
+     "text": "ENDIX absolutely has its own charm.",
+     "outlet": "GameSpew",
+     "url": "https://www.gamespew.com/2026/05/endix-2026/"
+    },
+    {
+     "text": "The event feels like it is growing in the right direction.",
+     "outlet": "Screen Hype",
+     "url": "https://www.screenhype.co.uk/endix-2026-the-future-of-gaming-conventions-is-accessible/"
+    },
+    {
+     "text": "ENDIX presents an opportunity for developers and players to interact through digital worlds, and I’m here for it.",
+     "outlet": "Indiecator",
+     "url": "https://indiecator.org/2026/05/18/endix-digital-expo-2026-returns-in-may/"
     }
    ],
+   "comments": [],
    "youtube": [
     {
      "edition": "spring2026",
@@ -4965,6 +5034,20 @@
     },
     {
      "edition": "spring2026",
+     "date": "2026-05-23",
+     "outlet": "IGN Benelux",
+     "domain": "nl.ign.com",
+     "headline": "Slideshow: ENDIX 2026: The Virtual Event You Can Play",
+     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPTG9IU0kwQnJrSWo5emlST0VLMXpJb0xkaHVHWmdzMENZdEYtWmlObXhTSmJ2UWdtQ0Zka3liOUlGWVkxTWZQdlFmR3BQUXhjY2R0cXlTUEZnQTFSQ0FGeVZlbFZEWncwclVVNVppTjB3OU5Qd2swMTZGQ2J0U0tHa1hrZFFFQQ?oc=5",
+     "country": "Netherlands",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-NL",
+     "language": "Dutch",
+     "uvm": 638575.0
+    },
+    {
+     "edition": "spring2026",
      "date": "2026-05-22",
      "outlet": "IGN (NL)",
      "domain": "nl.ign.com",
@@ -6827,23 +6910,59 @@
     },
     {
      "edition": "spring2026",
-     "date": "",
-     "outlet": "IGN (US)",
+     "date": "2026-05-22",
+     "outlet": "IGN",
      "domain": "ign.com",
-     "headline": "Shelf Heroes Official Gameplay Trailer | Endix Showcase 2026",
-     "url": "https://www.ign.com/videos/shelf-heroes-official-gameplay-trailer-endix-showcase-2026",
+     "headline": "Never Be Alone - Official Release Date Announcement Trailer | Endix Showcase 2026",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNRHB5WFBwNFZLTW9TWHJBUlNqSlh2N0FsOXV4Z0dZODJOSThUU0RVUHVDLUFGMGUyWTF3SGZYNTMzMkk3dHYzREI0dnN0QUlDTW40U0NCakxDOHBBaDRsNDhSS0hYNlpQV1A2MGs4LVJOTDc1R1lIQXY1bWpLUlN0UHkyY3p5Y1RMZ1E3dEhuWURhOW1RN0VjTlFLRnZTelZIcVdIWXBHOA?oc=5",
      "country": "USA",
-     "kind": "trailer",
-     "x_views": 0.0,
-     "source": "manual"
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US"
+    },
+    {
+     "edition": "spring2026",
+     "date": "2026-05-22",
+     "outlet": "IGN",
+     "domain": "ign.com",
+     "headline": "Forgery Craft - Official Release Window Trailer | Endix Showcase 2026",
+     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQUFFncl9hU0FnNkRfWXZNV3RoeUIzcDRzV0NaTWExVTY3U0IxTl9aelhDaS0xeXBrV1JvR2hoNFlITHdtY3lLR0RZbHQycVI0a2tFUmdQaHJNWExLaEJfQnpKQmVxdUlmMmZGaXgtS1kyRl9ZNWRUM1U4Si1Fa1IzVjJaUkJ0MHlIbDkya0MwUS12TC1ZM0U4?oc=5",
+     "country": "USA",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US"
+    },
+    {
+     "edition": "spring2026",
+     "date": "2026-05-27",
+     "outlet": "IGN",
+     "domain": "ign.com",
+     "headline": "Stuffed - Official Crossplay Trailer | Endix Showcase 2026",
+     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOem5tdVhMX0hFTVpDaFRHblpkYXhYaW0zNXBIQVQwMkU3NTRLTU0tbmdXNUlSaWtVeks2RjdmXzd6VzRfaUdHd2ptT1M2UE4xTW50S3FlS1BnTkRsV25Bbkg3YWZoWHY1X0RpYXp6RXBYR0dRMWdJdnVHczRYOHdHVUgzSXBHVjFI?oc=5",
+     "country": "USA",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US"
+    },
+    {
+     "edition": "spring2026",
+     "date": "2026-05-27",
+     "outlet": "IGN",
+     "domain": "ign.com",
+     "headline": "Rabbit's Tale - Official Announcement Trailer | Endix Showcase 2026",
+     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQdEFmSU5lcDA0LVYwS0MxME14VVJEMnhkXzhGNFFkRmQ5dF8wd1lzV1BkdE9QazVUWnNDVndnU1RzWjEzMXlrMXRZMklDZ2ZqMWxaZEp3SGRmRWpfYWhya1JqMHBObVg0S2hjZUtHN0pzTkdyRFY0X2ltWG90NkxFR09tRzNpbjZlb1hROHNtZWpVMWM?oc=5",
+     "country": "USA",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-SG"
     },
     {
      "edition": "spring2026",
      "date": "",
      "outlet": "IGN (US)",
      "domain": "ign.com",
-     "headline": "Stuffed Official Crossplay Trailer | Endix Showcase 2026",
-     "url": "https://www.ign.com/videos/stuffed-official-crossplay-trailer-endix-showcase-2026",
+     "headline": "Shelf Heroes Official Gameplay Trailer | Endix Showcase 2026",
+     "url": "https://www.ign.com/videos/shelf-heroes-official-gameplay-trailer-endix-showcase-2026",
      "country": "USA",
      "kind": "trailer",
      "x_views": 0.0,
@@ -6892,18 +7011,6 @@
      "domain": "ign.com",
      "headline": "Dreampainters Official Reveal Teaser Trailer | Endix Showcase 2026",
      "url": "https://www.ign.com/videos/dreampainters-official-reveal-teaser-trailer-endix-showcase-2026",
-     "country": "USA",
-     "kind": "trailer",
-     "x_views": 0.0,
-     "source": "manual"
-    },
-    {
-     "edition": "spring2026",
-     "date": "",
-     "outlet": "IGN (US)",
-     "domain": "ign.com",
-     "headline": "Never Be Alone Official Release Date Announcement Trailer | Endix Showcase 2026",
-     "url": "https://www.ign.com/videos/never-be-alone-official-release-date-announcement-trailer-endix-showcase-2026",
      "country": "USA",
      "kind": "trailer",
      "x_views": 0.0,
@@ -7188,6 +7295,89 @@
    "steam": null,
    "sponsor": null,
    "quotes": [],
+   "comments": [
+    {
+     "edition": "winter2026",
+     "date": "2026-09-10",
+     "name": "David Jaffe",
+     "handle": "@davidscottjaffe",
+     "text": "I will be there! My first Endix was last spring and- while very nacent- it was very clear that virtual geek conventions are very much a big part of the future!\n\nCan't wait to dive back in, stream it, and perhaps even participate! Hmmm...maybe a virtual GABBIN & GAMES booth?:)",
+     "url": "https://x.com/davidscottjaffe/status/2098115981189304365",
+     "likes": 3.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-10-02",
+     "name": "David Jaffe",
+     "handle": "@davidscottjaffe",
+     "text": "Endix is basically a virtual E3 and they are JUST getting started. It's super cool and fun and THIS time I will be live streaming FROM the virtual show floor! Can't wait!",
+     "url": "https://x.com/davidscottjaffe/status/2106115692206645549",
+     "likes": 7.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-09-18",
+     "name": "Kira_Lovey",
+     "handle": "@kira_lovey",
+     "text": "If you haven’t participated in this yet, PLEASE make sure you check it out! (Especially if you like indie games and free demos 👀)",
+     "url": "https://x.com/kira_lovey/status/2101023284091306170",
+     "likes": 3.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-09-11",
+     "name": "VicariousNick",
+     "handle": "@VicariousNick",
+     "text": "Wait so this is like a virtual games expo we can experience from home?? That's so sick",
+     "url": "https://x.com/VicariousNick/status/2098316064408912015",
+     "likes": 1.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-09-10",
+     "name": "SillySandyAJ🌸🃏💜💚❤️",
+     "handle": "@SillySandyAJ",
+     "text": "Cant wait to take part in this for a 3rd time 💜",
+     "url": "https://x.com/SillySandyAJ/status/2098072170517729405",
+     "likes": 2.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-09-10",
+     "name": "Chris",
+     "handle": "@innoshades",
+     "text": "looking forward to another great showcase of games!🫡",
+     "url": "https://x.com/innoshades/status/2098064690694009043",
+     "likes": 1.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-09-03",
+     "name": "Christer Näslund",
+     "handle": "@WarGallion",
+     "text": "Looking forward to do the Expo a 2nd turn, last time was great!!!",
+     "url": "https://x.com/WarGallion/status/2095489550151795155",
+     "likes": 1.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-09-02",
+     "name": "Sasajou",
+     "handle": "@Sasajou_",
+     "text": "I’d love to do round two for this 😭🥹",
+     "url": "https://x.com/Sasajou_/status/2095137174714761563",
+     "likes": 1.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-09-02",
+     "name": "IchibanThug",
+     "handle": "@IchibanThug",
+     "text": "Threw my hat in the ring! Looks and sounds epic",
+     "url": "https://x.com/IchibanThug/status/2095162714599424228",
+     "likes": 1.0
+    }
+   ],
    "youtube": [
     {
      "edition": "winter2026",
