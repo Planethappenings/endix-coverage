@@ -320,10 +320,10 @@ function page(ed){
 
   ${buzz(ed)}
 
-  ${hl.length ? `<section><div class="sh"><div><h2>Top moments</h2><p class="sub">The biggest piece of coverage on each platform.</p></div></div>
+  ${hl.length ? `<section><div class="sh"><div><h2>Top moments</h2></div></div>
   <div class="rail">${hl.map(h => `<a class="hl b-${h.p}" href="${esc(h.url)}" target="_blank" rel="noopener"><div class="top">${pill(h.p)}<span class="v num">${short(h.v)}<small>${h.unit || "views"}</small></span></div><div class="t">${esc(h.t)}</div><div class="by">${esc(h.by)}</div></a>`).join("")}</div></section>` : ""}
 
-  <section><div class="sh"><div><h2>By channel</h2><p class="sub">A summary of each channel. Open any card for the full list.</p></div></div>
+  <section><div class="sh"><div><h2>By channel</h2></div></div>
   <div class="grid">
     ${card("youtube","YouTube creators", sum(ytC), "views", [[ytC.length,"videos"],[uniq(ytC,"channel"),"channels"],[ytC.filter(v=>v.type==="live").length,"livestreams"]],
         ytC.slice(0,3).map(v=>({t:v.title,b:v.channel,v:v.views,url:v.url})), ytC.length, "Collected daily from YouTube.", "youtube")}
@@ -340,7 +340,7 @@ function page(ed){
     ${steamCard(ed)}
   </div></section>
 
-  ${HOSTED && (x.top||[]).length ? `<section><div class="sh"><div><h2>Top posts on X</h2><p class="sub">The most viewed posts about ${esc(ed.name)} from other accounts.</p></div></div>
+  ${HOSTED && (x.top||[]).length ? `<section><div class="sh"><div><h2>Top posts on X</h2></div></div>
   <div class="tweets">${x.top.slice(0,6).filter(t => tweetId(t.url)).map(t => `<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none"><p>${esc(t.summary)}</p>— ${esc(t.author)} <a href="https://twitter.com/i/status/${tweetId(t.url)}">${dfmt(t.date)}</a></blockquote>`).join("")}</div></section>` : ""}
 
 
