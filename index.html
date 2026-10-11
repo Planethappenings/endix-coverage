@@ -188,6 +188,17 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .bc .src.x{color:var(--fg)}.bc .src.pr{color:#ffd166}
 @media (prefers-reduced-motion:reduce){.mq{animation:none}.row{overflow-x:auto}.spot-i.in{animation:none}.spot-bar{display:none}}
 
+
+/* exhibitors: two rows of Steam capsules, top row drifts left, bottom row drifts right */
+.exh{display:grid;gap:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.exh .row{padding:4px 0}
+.exh:hover .mq,.exh:focus-within .mq{animation-play-state:paused}
+.cap{flex:none;display:block;width:clamp(200px,22vw,276px);aspect-ratio:460/215;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--panel-2);position:relative;transition:transform .2s,border-color .2s,box-shadow .2s}
+.cap img{display:block;width:100%;height:100%;object-fit:cover}
+.cap:hover,.cap:focus-visible{transform:translateY(-3px) scale(1.03);border-color:var(--pink);box-shadow:0 10px 30px -10px #ff3fa488}
+.cap span{position:absolute;inset:auto 0 0 0;padding:18px 10px 8px;font-weight:700;font-size:14px;background:linear-gradient(transparent,#000c);opacity:0;transition:opacity .2s}
+.cap:hover span,.cap:focus-visible span{opacity:1}
+
 /* quotes */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.quotes{grid-template-columns:minmax(0,1fr)}}
@@ -647,6 +658,7 @@ td.r,th.r{text-align:right;white-space:nowrap}
      "likes": 0.0
     }
    ],
+   "exhibitors": [],
    "youtube": [
     {
      "edition": "spring2026",
@@ -7903,6 +7915,7 @@ td.r,th.r{text-align:right;white-space:nowrap}
      "likes": 1.0
     }
    ],
+   "exhibitors": [],
    "youtube": [
     {
      "edition": "winter2026",
@@ -8367,6 +8380,8 @@ function page(ed){
 
   ${buzz(ed)}
 
+  ${exhibitors(ed)}
+
   ${hl.length ? `<section><div class="sh"><div><h2>Top moments</h2></div></div>
   <div class="rail">${hl.map(h => `<a class="hl b-${h.p}" href="${esc(h.url)}" target="_blank" rel="noopener"><div class="top">${pill(h.p)}<span class="v num">${short(h.v)}<small>${h.unit || "views"}</small></span></div><div class="t">${esc(h.t)}</div><div class="by">${esc(h.by)}</div></a>`).join("")}</div></section>` : ""}
 
@@ -8508,6 +8523,20 @@ function startSpot(){
   document.querySelectorAll(".spot-nav button").forEach(b => b.onclick = () => showSpot(+b.dataset.q));
   const bar = document.getElementById("spot-bar");
   if (bar) bar.addEventListener("animationend", () => showSpot(spotIdx + 1));
+}
+
+
+/* ---------- exhibitors ---------- */
+function exhibitors(ed){
+  const list = ed.exhibitors || [];
+  if (!list.length) return "";
+  const capsule = (g, hidden) => `<a class="cap" href="${esc(g.url)}" target="_blank" rel="noopener"${hidden ? ' tabindex="-1" aria-hidden="true"' : ""}><img src="${esc(g.img)}" alt="${hidden ? "" : esc(g.name)}" loading="lazy" width="460" height="215"><span>${esc(g.name)}</span></a>`;
+  const half = Math.ceil(list.length / 2);
+  const rows = list.length > 6 ? [list.slice(0, half), list.slice(half)] : [list, list.slice().reverse()];
+  const row = (r, rev) => { let f = r.slice(); while (f.length < 8) f = f.concat(r);
+    return `<div class="row${rev ? " rev" : ""}"><div class="mq" style="--dur:${f.length * 4}s">${f.map(g => capsule(g)).join("")}${f.map(g => capsule(g, true)).join("")}</div></div>`; };
+  return `<section><div class="sh"><div><h2>Meet the exhibitors</h2></div></div>
+  <div class="exh">${row(rows[0], false)}${row(rows[1], true)}</div></section>`;
 }
 
 /* ---------- deep-dive panel ---------- */

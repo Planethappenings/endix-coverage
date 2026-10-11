@@ -5,7 +5,7 @@ Public coverage report for each Endix edition. Served by GitHub Pages from `inde
 ## Daily update
 1. Read the Google Sheet "Endix X-statistik (@Endix_Expo)" (`1Sk97t56KJcBACxyPRATpDeC4Qk1fzZZMfXH6dqjHFCg`) with
    spreadsheets.get, includeGridData=true, fields `sheets.properties.title,sheets.data.rowData.values.formattedValue`, ranges:
-   Press, Press_Feed, YT_Videos, TikTok, Instagram, Endix Spring 2026, Endix Fall 2026, Editions, Press_Manual, Links_Manual, Webb_Kommentarer_Publik
+   Press, Press_Feed, YT_Videos, TikTok, Instagram, Endix Spring 2026, Endix Fall 2026, Editions, Press_Manual, Links_Manual, Webb_Kommentarer_Publik, Exhibitors
    (plus the Grok tab of any new edition). Save the JSON as `data/sheet_dump.json` (not committed).
 2. `python3 tools/build_data.py` → `data/report_data.json`
 3. Review new items (noise, Endix's own accounts, trailer reuploads) and extend the CONFIG lists in `tools/build_data.py`.

@@ -275,6 +275,17 @@ for r in table('Webb_Kommentarer_Publik'):
     comments.append({'edition': ed, 'date': date, 'name': r.get('author_name', ''), 'handle': r.get('handle', ''),
                      'text': r['text'].strip(), 'url': r.get('url', ''), 'likes': num(r.get('likes'))})
 
+# ---------------------------------------------------------------- exhibitors (Exhibitors tab: edition + store link; name/image filled by the collector)
+exhibitors = []
+for r in table('Exhibitors'):
+    url = (r.get('Store URL (Steam or other)') or '').strip(); ed = (r.get('Edition') or '').strip()
+    if not url or not ed: continue
+    m = re.search(r'store\.steampowered\.com/app/(\d+)', url)
+    img = (r.get('Capsule image (filled automatically)') or '').strip() or (f'https://cdn.cloudflare.steamstatic.com/steam/apps/{m.group(1)}/header.jpg' if m else '')
+    if not img: continue
+    exhibitors.append({'edition': ed, 'name': (r.get('Game (filled automatically)') or '').strip() or 'Exhibitor', 'url': url, 'img': img,
+                       'dev': (r.get('Developer (filled automatically)') or '').strip()})
+
 # ---------------------------------------------------------------- X (Grok tabs)
 def x_stats(tab):
     rows = S.get(tab, [])
@@ -306,6 +317,7 @@ for e in editions:
         'sponsor': c.get('sponsor'),
         'quotes': (lambda base: base + [q for q in press_quotes if q['edition'] == e['slug'] and norm(q['text'])[:40] not in {norm(b['text'])[:40] for b in base}])(c.get('quotes', [])),
         'comments': [x for x in comments if x['edition'] == e['slug']],
+        'exhibitors': [x for x in exhibitors if x['edition'] == e['slug']],
         'youtube': sorted(yt, key=lambda v: -v['views']),
         'tiktok': sorted([v for v in tiktok if v['edition'] == e['slug']], key=lambda v: -v['views']),
         'facebook': [v for v in facebook if v['edition'] == e['slug']],
