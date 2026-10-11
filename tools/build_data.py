@@ -13,7 +13,7 @@ OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(ROOT, 'data', 'report_d
 
 CONFIG = {
     # YouTube channels / names that are not about the expo (people, music and channels that share the name)
-    'yt_block_channels': {'@endix tube', 'endika parimbawa', 'hilaldeep', 'endix', 'endix_playz', 'itzendix', 'crnovyy', '18 red boss', 'captain eggcellent', 'reaper gaming-தமிழ்'},
+    'yt_block_channels': {'@endix tube', 'endika parimbawa', 'hilaldeep', 'endix', 'endix_playz', 'itzendix', 'crnovyy', '18 red boss', 'reaper gaming-தமிழ்'},
     'press_channels': {'ign', 'gametrailers', 'insider gaming', 'indie-cent exposure', 'frikiup patch notes — noticias gamer', 'revista grind'},
     'press_block_domains': {'x.com', 'finance.yahoo.com', 'uk.finance.yahoo.com', 'hk.finance.yahoo.com', 'store.steampowered.com', 'youtu.be', 'youtube.com'},
     'social_block_handles': set(),
