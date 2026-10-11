@@ -244,14 +244,22 @@ for p in press.values():
     p['uvm'] = p.get('uvm') or uvm_by_domain.get(p['domain'], 0)
 
 # ---------------------------------------------------------------- YouTube
+# YT_Channels tab: Danne's choice in column H wins, then the suggestion in G, then the rules below
+yt_cat = {}
+for r in table('YT_Channels'):
+    ch = (r.get('Channel') or '').strip().lower()
+    c = (r.get('Category (creator / media / exclude)') or '').strip().lower() or (r.get('Suggested') or '').strip().lower()
+    if ch and c in ('creator', 'media', 'exclude'): yt_cat[ch] = c
+
 youtube = []
 for r in table('YT_Videos'):
     if r.get('Status') not in ('new', 'manual'): continue
     ch = (r.get('Channel') or '').strip()
-    if ch.lower() in CONFIG['yt_block_channels']: continue
+    override = yt_cat.get(ch.lower())
+    if override == 'exclude' or (not override and ch.lower() in CONFIG['yt_block_channels']): continue
     title = r.get('Title', '')
     official_trailer = bool(re.search(r'official|oficial|officiel', title, re.I) and re.search(r'trailer|tráiler', title, re.I) and 'showcase' in title.lower())
-    cat = 'media' if (ch.lower() in CONFIG['press_channels'] or official_trailer or re.search(r'trailer', ch, re.I)) else 'creator'
+    cat = override or ('media' if (ch.lower() in CONFIG['press_channels'] or official_trailer or re.search(r'trailer', ch, re.I)) else 'creator')
     youtube.append({'edition': r['Edition'], 'title': title, 'channel': ch, 'url': r['URL'], 'date': day(r['Published']),
                     'views': num(r['Views']), 'likes': num(r['Likes']), 'type': r.get('Type', ''), 'category': cat})
 
