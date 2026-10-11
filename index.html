@@ -8886,9 +8886,9 @@ function page(ed){
       : `<div class="kpi"><div class="v num">${fmt(x.mentions)}</div><div class="l">Mentions on X</div><div class="s">Posts by other accounts</div></div>`}
   </div>
 
-  ${buzz(ed)}
-
   ${exhibitors(ed)}
+
+  ${buzz(ed)}
 
   ${hl.length ? `<section><div class="sh"><div><h2>Top moments</h2></div></div>
   <div class="rail">${hl.map(h => `<a class="hl b-${h.p}" href="${esc(h.url)}" target="_blank" rel="noopener"><div class="top">${pill(h.p)}<span class="v num">${short(h.v)}<small>${h.unit || "views"}</small></span></div><div class="t">${esc(h.t)}</div><div class="by">${esc(h.by)}</div></a>`).join("")}</div></section>` : ""}
