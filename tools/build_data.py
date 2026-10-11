@@ -27,6 +27,14 @@ CONFIG = {
             'steam': {'impressions': 6128795, 'reads': 71791, 'growth': [['Winter 2025 vs Spring 2025', '+100.8%'], ['Spring 2026 vs Winter 2025', '+30.2%']],
                       'note': 'Unique impressions and reads across all Endix Steam events to date.'},
             'sponsor': 'Alienware sponsored the Endix Climb Trial and Endix Maze mini-games.',
+            'testimonials': [  # partner and exhibitor quotes, shown under Meet the exhibitors
+                {'text': 'I love conventions, but I do love my gamer cave even more. With Endix, I can have both combined! Genuinely such a unique, creative, and fun solution to the question of what the future of game showcases will look like.',
+                 'name': 'Golnaz Eftekhari', 'company': 'THQ Nordic', 'logo': 'assets/logo-thq-nordic.png'},
+                {'text': 'To be part of Endix was a great deal of fun, both to be at the booth to meet the fans & on the opening day meeting the press. The idea that you can run a booth at a convention from home is a real game changer, looking forward to seeing how Endix evolves!',
+                 'name': 'Christopher Lewis', 'company': 'Frozen District', 'logo': 'assets/logo-frozen-district.png'},
+                {'text': 'Endix Showcase was a genuinely fun and interactive experience. I explored it myself on day one and enjoyed how the challenges required real effort rather than simply guiding visitors from one stand to another. Combined with excellent Alienware visibility and flawless execution, Endix created an engaging environment that kept attendees actively involved throughout the event. Looking forward to seeing how the platform continues to evolve.',
+                 'name': 'Marek Gabonay', 'company': 'Alienware', 'logo': 'assets/logo-alienware.png'},
+            ],
             'quotes': [  # verbatim pull quotes, each linked to its article
                 {'text': 'Endix makes the demo experience feel like it should have always been this simple.', 'outlet': 'Yardbarker', 'url': 'https://www.yardbarker.com/entertainment/articles/join_me_at_endix_may_2026_the_free_digital_gaming_expo_changing_how_we_convention/s1_17456_43875324'},
                 {'text': 'The potential, with this level of execution, is insane.', 'outlet': 'Indie-cent Exposure', 'url': 'https://www.indie-exposure.com/top-picks-from-endix-2026/'},
@@ -318,6 +326,7 @@ for e in editions:
         'quotes': (lambda base: base + [q for q in press_quotes if q['edition'] == e['slug'] and norm(q['text'])[:40] not in {norm(b['text'])[:40] for b in base}])(c.get('quotes', [])),
         'comments': [x for x in comments if x['edition'] == e['slug']],
         'exhibitors': [x for x in exhibitors if x['edition'] == e['slug']],
+        'testimonials': c.get('testimonials', []),
         'youtube': sorted(yt, key=lambda v: -v['views']),
         'tiktok': sorted([v for v in tiktok if v['edition'] == e['slug']], key=lambda v: -v['views']),
         'facebook': [v for v in facebook if v['edition'] == e['slug']],

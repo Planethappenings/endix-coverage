@@ -224,6 +224,17 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .wall-pos{text-align:center;color:var(--faint);font-size:14px;font-weight:600;margin-top:10px}
 @media (hover:none){.wall-arrow{display:none}}
 
+
+/* partner testimonials under the exhibitors */
+.tst{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:36px}
+@media (max-width:900px){.tst{grid-template-columns:minmax(0,1fr)}}
+.tst figure{position:relative;margin:0;padding:6px 0 0 30px;display:flex;flex-direction:column;gap:18px}
+.tst figure::before{content:"\201C";position:absolute;left:-4px;top:-22px;font-family:var(--display);font-weight:900;font-size:72px;line-height:1;color:var(--faint);opacity:.6}
+.tst blockquote{margin:0;font-size:19px;line-height:1.45;font-weight:600;color:var(--fg)}
+.tst figcaption{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.tst figcaption img{display:block;height:auto;max-height:40px;width:auto}
+.tst figcaption span{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
 /* quotes */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.quotes{grid-template-columns:minmax(0,1fr)}}
@@ -544,7 +555,14 @@ function exhibitors(ed){
   const row = (r, rev) => { let f = r.slice(); while (f.length < 8) f = f.concat(r);
     return `<div class="row${rev ? " rev" : ""}"><div class="mq" style="--dur:${f.length * 4}s">${f.map(g => capsule(g)).join("")}${f.map(g => capsule(g, true)).join("")}</div></div>`; };
   return `<section><div class="sh"><div><h2>Meet the exhibitors</h2></div></div>
-  <div class="exh">${row(rows[0], false)}${row(rows[1], true)}</div></section>`;
+  <div class="exh">${row(rows[0], false)}${row(rows[1], true)}</div>${testimonials(ed)}</section>`;
+}
+
+
+function testimonials(ed){
+  const t = ed.testimonials || [];
+  if (!t.length) return "";
+  return `<div class="tst">${t.map(q => `<figure><blockquote>${esc(q.text)}</blockquote><figcaption>${q.logo ? `<img src="${esc(q.logo)}" alt="${esc(q.company)}">` : `<span>${esc(q.company)}</span>`}<span>– ${esc(q.name)}</span></figcaption></figure>`).join("")}</div>`;
 }
 
 /* ---------- deep-dive panel ---------- */
