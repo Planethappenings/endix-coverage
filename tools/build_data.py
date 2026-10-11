@@ -22,7 +22,7 @@ CONFIG = {
             'aftermovie': 'https://www.youtube.com/watch?v=DDZxxjYXfSg',
             'x_tab': 'Endix Spring 2026',
             'downloads': '11,000+',
-            'twitch': {'source': 'SullyGnome', 'hours_watched': 29200, 'hours_streamed': 623, 'streamers': 241, 'peak_viewers': 2900,
+            'twitch': {'source': 'SullyGnome', 'url': 'https://sullygnome.com/game/endix/2026may', 'hours_watched': 29200, 'hours_streamed': 623, 'streamers': 241, 'peak_viewers': 2900,
                        'avg_viewers': 40, 'languages': [['English', 135], ['Spanish', 37], ['Portuguese', 23], ['French', 13], ['Russian', 10], ['Polish', 6], ['German', 5], ['Italian', 4]]},
             'steam': {'impressions': 6128795, 'reads': 71791, 'growth': [['Winter 2025 vs Spring 2025', '+100.8%'], ['Spring 2026 vs Winter 2025', '+30.2%']],
                       'note': 'Unique impressions and reads across all Endix Steam events to date.'},

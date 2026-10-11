@@ -288,7 +288,7 @@ function page(ed){
     tt[0] && {p:"tiktok", t:tt[0].caption || "TikTok video", by:"@"+tt[0].creator, v:tt[0].views, url:tt[0].url},
     ig[0] && {p:"instagram", t:ig[0].caption || "Instagram reel", by:"@"+ig[0].creator, v:ig[0].views, url:ig[0].url},
     (x.top||[])[0] && {p:"x", t:x.top[0].summary, by:x.top[0].author, v:x.top[0].views, url:x.top[0].url},
-    ed.twitch && {p:"twitch", t:`${fmt(ed.twitch.streamers)} streamers · peak ${short(ed.twitch.peak_viewers)} viewers`, by:"Endix category on Twitch", v:ed.twitch.hours_watched, unit:"hours watched", url:"https://www.twitch.tv/directory/category/endix"},
+    ed.twitch && {p:"twitch", t:`${fmt(ed.twitch.streamers)} streamers · peak ${short(ed.twitch.peak_viewers)} viewers`, by:`Data from ${ed.twitch.source || "SullyGnome"} →`, v:ed.twitch.hours_watched, unit:"hours watched", url:ed.twitch.url || "https://www.twitch.tv/directory/category/endix"},
     bigPress && bigPress.uvm && {p:"press", t:bigPress.headline, by:bigPress.outlet + " · " + bigPress.country, v:bigPress.uvm, unit:"monthly readers", url:bigPress.url},
   ].filter(h => h && h.v > 0);
 
@@ -391,7 +391,7 @@ function twitchCard(ed){
     <div class="big num">${short(t.hours_watched)}<small>hours watched</small></div>
     <div class="minis"><div class="mini"><b class="num">${fmt(t.streamers)}</b><span>streamers</span></div><div class="mini"><b class="num">${short(t.peak_viewers)}</b><span>peak viewers</span></div><div class="mini"><b class="num">${fmt(t.hours_streamed)}</b><span>hours streamed</span></div></div>
     <div class="bars">${t.languages.slice(0,5).map(([l,n]) => `<div class="bar-r"><span>${esc(l)}</span><div class="track"><div class="fill" style="width:${(n/max*100).toFixed(0)}%"></div></div><span class="num">${n}</span></div>`).join("")}</div>
-    <div class="cf"><span class="note">Streams by language · source ${esc(t.source)}</span></div>
+    <div class="cf"><span class="note">Streams by language · ${t.url ? `<a href="${esc(t.url)}" target="_blank" rel="noopener" style="color:inherit">Data from ${esc(t.source)} →</a>` : `source ${esc(t.source)}`}</span></div>
   </div>`;
 }
 
