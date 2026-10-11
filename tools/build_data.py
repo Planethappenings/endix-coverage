@@ -32,7 +32,7 @@ CONFIG = {
                  'name': 'Golnaz Eftekhari', 'company': 'THQ Nordic', 'logo': 'assets/logo-thq-nordic.png'},
                 {'text': 'To be part of Endix was a great deal of fun, both to be at the booth to meet the fans & on the opening day meeting the press. The idea that you can run a booth at a convention from home is a real game changer, looking forward to seeing how Endix evolves!',
                  'name': 'Christopher Lewis', 'company': 'Frozen District', 'logo': 'assets/logo-frozen-district.png'},
-                {'text': 'Endix Showcase was a genuinely fun and interactive experience. I explored it myself on day one and enjoyed how the challenges required real effort rather than simply guiding visitors from one stand to another. Combined with excellent Alienware visibility and flawless execution, Endix created an engaging environment that kept attendees actively involved throughout the event. Looking forward to seeing how the platform continues to evolve.',
+                {'text': 'Endix Showcase was a genuinely fun and interactive experience. Combined with excellent Alienware visibility and flawless execution, Endix created an engaging environment that kept attendees actively involved throughout the event.',
                  'name': 'Marek Gabonay', 'company': 'Alienware', 'logo': 'assets/logo-alienware.png'},
             ],
             'quotes': [  # verbatim pull quotes, each linked to its article
