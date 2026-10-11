@@ -59,7 +59,15 @@ h1{font-family:var(--display);font-weight:900;font-size:clamp(30px,5vw,54px);lin
 .play::after{content:"";margin-left:6px;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent #18030e}
 .movie:hover .play{transform:scale(1.06)}
 .movie.embed{background:#000}.movie.embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.tweets{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:14px;align-items:start}.tweets .twitter-tweet{margin:0!important}
+.tweets{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:14px;align-items:start}
+/* every post gets the same frame; long ones fade out and link to X */
+.tw{position:relative;height:470px;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:var(--panel);color-scheme:light;isolation:isolate}
+.tw .twitter-tweet{margin:-1px!important}
+.tw iframe{border-radius:16px!important;color-scheme:light}
+.tw .more{position:absolute;left:0;right:0;bottom:0;z-index:2;display:none;padding:60px 16px 14px;text-align:center;text-decoration:none;font-weight:700;color:var(--fg);background:linear-gradient(transparent,var(--panel) 62%)}
+.tw .more span{display:inline-block;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2)}
+.tw .more:hover span{border-color:var(--pink)}
+.tw.long .more{display:block}
 @media (max-width:560px){.movie:not(.embed){aspect-ratio:auto;min-height:240px}.play{inset:22px 0 auto 0;width:64px;height:64px}}
 .movie.empty{display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:600;padding:20px}
 .movie.empty .play{position:static;margin:0 auto 12px;background:var(--panel-2);box-shadow:none}
@@ -5187,14 +5195,6 @@ td.r,th.r{text-align:right;white-space:nowrap}
       "summary": "Shared article: IGN – ENDIX, the Fully Free, Digital Gaming Expo, Is Now Live With Playable Demos, Panels, and Much More"
      },
      {
-      "date": "2026-05-23",
-      "author": "@IGN (IGN)",
-      "views": 31170.0,
-      "engagement": 97.0,
-      "url": "https://x.com/i/status/2058216440541348164",
-      "summary": "Post mentioning @Endix_Expo"
-     },
-     {
       "date": "2026-05-24",
       "author": "@EAA_tw (EAA!! FPS News)",
       "views": 24631.0,
@@ -5211,28 +5211,12 @@ td.r,th.r{text-align:right;white-space:nowrap}
       "summary": "“thrilled to be part of @Endix_Expo again”"
      },
      {
-      "date": "2026-05-13",
-      "author": "@OurSNet (Our Social Network)",
-      "views": 15138.0,
-      "engagement": 23.0,
-      "url": "https://x.com/i/status/2054470012102963235",
-      "summary": "Post mentioning @Endix_Expo"
-     },
-     {
       "date": "2026-05-24",
       "author": "@THQNordic (THQ Nordic)",
       "views": 11667.0,
       "engagement": 94.0,
       "url": "https://x.com/i/status/2058509056357109884",
       "summary": "Post mentioning @Endix_Expo"
-     },
-     {
-      "date": "2026-05-13",
-      "author": "@OurSNet (Our Social Network)",
-      "views": 10778.0,
-      "engagement": 9.0,
-      "url": "https://x.com/i/status/2054469707906818415",
-      "summary": "We’re excited to officially announce a media …"
      },
      {
       "date": "2026-06-08",
@@ -8791,7 +8775,9 @@ function render(){
   startSpot();
   if (HOSTED) {
     if (window.twttr && twttr.widgets) twttr.widgets.load();
-    else if (!document.getElementById("tw-js")) { const sc = document.createElement("script"); sc.id = "tw-js"; sc.async = true; sc.src = "https://platform.twitter.com/widgets.js"; document.body.appendChild(sc); }
+    else if (!document.getElementById("tw-js")) { const sc = document.createElement("script"); sc.id = "tw-js"; sc.async = true; sc.src = "https://platform.twitter.com/widgets.js";
+      sc.onload = () => window.twttr && twttr.ready(t => t.events.bind("rendered", e => { const box = e.target.closest(".tw"); if (box && e.target.offsetHeight > box.clientHeight - 4) box.classList.add("long"); }));
+      document.body.appendChild(sc); }
   }
 }
 
@@ -8867,7 +8853,7 @@ function page(ed){
   </div></section>
 
   ${HOSTED && (x.top||[]).length ? `<section><div class="sh"><div><h2>Top posts on X</h2></div></div>
-  <div class="tweets">${x.top.slice(0,6).filter(t => tweetId(t.url)).map(t => `<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none"><p>${esc(t.summary)}</p>— ${esc(t.author)} <a href="https://twitter.com/i/status/${tweetId(t.url)}">${dfmt(t.date)}</a></blockquote>`).join("")}</div></section>` : ""}
+  <div class="tweets">${x.top.slice(0,6).filter(t => tweetId(t.url)).map(t => `<div class="tw"><blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none" data-align="center"><p>${esc(t.summary)}</p>— ${esc(t.author)} <a href="https://twitter.com/i/status/${tweetId(t.url)}">${dfmt(t.date)}</a></blockquote><a class="more" href="https://x.com/i/status/${tweetId(t.url)}" target="_blank" rel="noopener"><span>Read the full post on X ↗</span></a></div>`).join("")}</div></section>` : ""}
 
 
 

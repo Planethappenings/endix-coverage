@@ -17,6 +17,9 @@ CONFIG = {
     'press_channels': {'ign', 'gametrailers', 'insider gaming', 'indie-cent exposure', 'frikiup patch notes — noticias gamer', 'revista grind'},
     'press_block_domains': {'x.com', 'finance.yahoo.com', 'uk.finance.yahoo.com', 'hk.finance.yahoo.com', 'store.steampowered.com', 'youtu.be', 'youtube.com'},
     'social_block_handles': set(),
+    # X posts hidden from the page: whole accounts (lower-case @handle) or single post IDs (duplicates)
+    'x_hide_authors': {'@oursnet'},
+    'x_hide_ids': {'2058216440541348164'},
     'editions': {
         'spring2026': {
             'aftermovie': 'https://www.youtube.com/watch?v=DDZxxjYXfSg',
@@ -314,6 +317,7 @@ def x_stats(tab):
         if r and r[0].startswith('Topp 10 omnämnanden'):
             for rr in rows[i + 2:i + 12]:
                 if len(rr) >= 7 and rr[0][:4].isdigit():
+                    if rr[1].split(' ')[0].lower() in CONFIG['x_hide_authors'] or rr[5].rstrip('/').rsplit('/', 1)[-1] in CONFIG['x_hide_ids']: continue
                     top.append({'date': rr[0][:10], 'author': rr[1], 'views': num(rr[2]), 'engagement': num(rr[3]), 'url': rr[5], 'summary': x_text(rr[6])})
             break
     return {'mentions': num(find('Omnämnanden')), 'accounts': num(find('Unika konton')), 'views': num(find('Visningar')),
