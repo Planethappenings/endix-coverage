@@ -205,14 +205,25 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .chip{font:inherit;font-weight:700;font-size:15px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2);color:var(--muted);cursor:pointer}
 .chip b{color:var(--fg);margin-left:4px}
 .chip[aria-pressed="true"]{border-color:var(--pink);color:var(--fg);background:var(--pink-soft)}
-.wall{columns:3 280px;column-gap:12px;padding:0 clamp(16px,3vw,24px) 8px}
-.wall .bc{width:auto;break-inside:avoid;margin:0 0 12px;transition:border-color .2s,box-shadow .2s}
-.wall .bc p{-webkit-line-clamp:9;overflow-wrap:anywhere}
+[hidden]{display:none!important}
+.wall-wrap{position:relative;padding-bottom:22px}
+.wall{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-auto-columns:calc((100% - 24px)/3);gap:12px;
+  overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;
+  margin:0 clamp(16px,3vw,24px);cursor:grab}
+.wall::-webkit-scrollbar{display:none}
+.wall.drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.wall .bc{width:auto;margin:0;scroll-snap-align:start;transition:border-color .2s,box-shadow .2s}
+.wall .bc p{-webkit-line-clamp:7;overflow-wrap:anywhere}
 .wall .bc.on{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink),0 0 24px -6px var(--pink)}
-.wall-wrap{position:relative}
-.wall-wrap.clip{max-height:560px;overflow:hidden}
-.wall-wrap.clip::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(transparent,var(--panel));pointer-events:none}
-.wall-more{display:flex;justify-content:center;padding:6px 0 22px}
+@media (max-width:900px){.wall{grid-auto-columns:calc((100% - 12px)/2)}}
+@media (max-width:560px){.wall{grid-auto-columns:88%}}
+.wall-arrow{position:absolute;top:calc(50% - 34px);z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+  background:var(--panel-2);color:var(--fg);font-size:22px;line-height:1;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 20px -6px #000a;transition:opacity .2s,border-color .2s}
+.wall-arrow:hover{border-color:var(--pink)}
+.wall-arrow.prev{left:4px}.wall-arrow.next{right:4px}
+.wall-arrow:disabled{opacity:0;pointer-events:none}
+.wall-pos{text-align:center;color:var(--faint);font-size:14px;font-weight:600;margin-top:10px}
+@media (hover:none){.wall-arrow{display:none}}
 
 /* quotes */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -8960,8 +8971,12 @@ function buzz(ed){
       <span class="spot-bar" id="spot-bar"></span>
     </div>
     ${chips.length > 2 ? `<div class="wall-bar" role="group" aria-label="Show">${chips.map((c,i) => `<button type="button" class="chip" data-f="${c[0]}" aria-pressed="${i===0}">${c[1]}<b>${c[2]}</b></button>`).join("")}</div>` : `<div class="wall-bar"></div>`}
-    <div class="wall-wrap${mixed.length > 9 ? " clip" : ""}" id="wall-wrap"><div class="wall" id="wall">${mixed.join("")}</div></div>
-    ${mixed.length > 9 ? `<div class="wall-more"><button type="button" class="btn" id="wall-more">Show all ${mixed.length}</button></div>` : ""}
+    <div class="wall-wrap" id="wall-wrap">
+      <button type="button" class="wall-arrow prev" id="wall-prev" aria-label="Previous quotes">‹</button>
+      <div class="wall" id="wall">${mixed.join("")}</div>
+      <button type="button" class="wall-arrow next" id="wall-next" aria-label="More quotes">›</button>
+      <div class="wall-pos" id="wall-pos" aria-live="polite"></div>
+    </div>
   </div></section>`;
 }
 let spotTimer = null, spotIdx = 0;
@@ -8985,12 +9000,34 @@ function startSpot(){
   if (!box) return;
   showSpot(0);
   document.querySelectorAll(".spot-nav button").forEach(b => b.onclick = () => showSpot(+b.dataset.q));
-  const wrap = document.getElementById("wall-wrap"), more = document.getElementById("wall-more");
-  if (more) more.onclick = () => { const open = wrap.classList.toggle("clip"); more.textContent = open ? `Show all ${document.querySelectorAll("#wall .bc").length}` : "Show less"; if (open) wrap.scrollIntoView({block:"nearest"}); };
-  document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
-    document.querySelectorAll(".chip").forEach(o => o.setAttribute("aria-pressed", String(o === c)));
-    document.querySelectorAll("#wall .bc").forEach(card => { card.hidden = c.dataset.f !== "all" && card.dataset.k !== c.dataset.f; });
-  });
+  const wall = document.getElementById("wall"), prev = document.getElementById("wall-prev"), next = document.getElementById("wall-next"), pos = document.getElementById("wall-pos");
+  if (wall) {
+    const sync = () => {
+      const max = wall.scrollWidth - wall.clientWidth;
+      prev.disabled = wall.scrollLeft <= 4; next.disabled = wall.scrollLeft >= max - 4;
+      const shown = [...wall.querySelectorAll(".bc:not([hidden])")];
+      const cols = Math.ceil(shown.length / 2), colW = wall.scrollWidth / Math.max(cols, 1);
+      const first = Math.round(wall.scrollLeft / colW) * 2 + 1, last = Math.min(shown.length, first - 1 + Math.round(wall.clientWidth / colW) * 2);
+      pos.textContent = shown.length ? `${first}–${last} of ${shown.length}` : "";
+    };
+    const page = dir => wall.scrollBy({left: dir * wall.clientWidth, behavior: "smooth"});
+    prev.onclick = () => page(-1); next.onclick = () => page(1);
+    wall.addEventListener("scroll", () => requestAnimationFrame(sync), {passive: true});
+    window.addEventListener("resize", sync);
+    // drag with the mouse, like swiping on a phone
+    let down = null, moved = false;
+    wall.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse") return; down = {x: e.clientX, left: wall.scrollLeft}; moved = false; });
+    window.addEventListener("pointermove", e => { if (!down) return; const dx = e.clientX - down.x; if (Math.abs(dx) > 5) { moved = true; wall.classList.add("drag"); wall.scrollLeft = down.left - dx; } });
+    window.addEventListener("pointerup", () => { if (!down) return; down = null; wall.classList.remove("drag"); });
+    wall.addEventListener("click", e => { if (moved) { e.preventDefault(); moved = false; } }, true);
+    wall.addEventListener("dragstart", e => e.preventDefault());
+    document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
+      document.querySelectorAll(".chip").forEach(o => o.setAttribute("aria-pressed", String(o === c)));
+      wall.querySelectorAll(".bc").forEach(card => { card.hidden = c.dataset.f !== "all" && card.dataset.k !== c.dataset.f; });
+      wall.scrollTo({left: 0, behavior: "auto"}); sync();
+    });
+    sync();
+  }
   const bar = document.getElementById("spot-bar");
   if (bar) bar.addEventListener("animationend", () => showSpot(spotIdx + 1));
 }
