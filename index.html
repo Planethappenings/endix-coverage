@@ -199,6 +199,21 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .cap span{position:absolute;inset:auto 0 0 0;padding:18px 10px 8px;font-weight:700;font-size:14px;background:linear-gradient(transparent,#000c);opacity:0;transition:opacity .2s}
 .cap:hover span,.cap:focus-visible span{opacity:1}
 
+
+/* quote wall: still masonry grid, filter chips, collapsed until "show all" */
+.wall-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:16px clamp(16px,3vw,24px);border-top:1px solid var(--line)}
+.chip{font:inherit;font-weight:700;font-size:15px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2);color:var(--muted);cursor:pointer}
+.chip b{color:var(--fg);margin-left:4px}
+.chip[aria-pressed="true"]{border-color:var(--pink);color:var(--fg);background:var(--pink-soft)}
+.wall{columns:3 280px;column-gap:12px;padding:0 clamp(16px,3vw,24px) 8px}
+.wall .bc{width:auto;break-inside:avoid;margin:0 0 12px;transition:border-color .2s,box-shadow .2s}
+.wall .bc p{-webkit-line-clamp:9;overflow-wrap:anywhere}
+.wall .bc.on{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink),0 0 24px -6px var(--pink)}
+.wall-wrap{position:relative}
+.wall-wrap.clip{max-height:560px;overflow:hidden}
+.wall-wrap.clip::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(transparent,var(--panel));pointer-events:none}
+.wall-more{display:flex;justify-content:center;padding:6px 0 22px}
+
 /* quotes */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.quotes{grid-template-columns:minmax(0,1fr)}}
@@ -8929,18 +8944,13 @@ function buzz(ed){
   const spot = punchy.length ? punchy.map(q => ({text:q.text, who:q.outlet, url:q.url, link:"Read the article ↗"}))
                              : comments.map(c => ({text:c.text, who:`${c.name} · ${c.handle}`, url:c.url, link:"See the post on X ↗"}));
   const cards = [].concat(
-    comments.map(c => `<a class="bc" href="${esc(c.url)}" target="_blank" rel="noopener"><p>${esc(c.text)}</p><span class="by"><span class="av" aria-hidden="true">${esc(initials(c.name))}</span><span class="nm"><b>${esc(c.name)}</b><br>${esc(c.handle)} · ${dfmt(c.date)}</span><span class="src x">on X</span></span></a>`),
-    quotes.map(q => `<a class="bc" href="${esc(q.url)}" target="_blank" rel="noopener"><p>${esc(q.text)}</p><span class="by"><span class="nm"><b>${esc(q.outlet)}</b><br>Read the article ↗</span><span class="src pr">Press</span></span></a>`)
+    comments.map(c => `<a class="bc" data-k="x" href="${esc(c.url)}" target="_blank" rel="noopener"><p>${esc(c.text)}</p><span class="by"><span class="av" aria-hidden="true">${esc(initials(c.name))}</span><span class="nm"><b>${esc(c.name)}</b><br>${esc(c.handle)} · ${dfmt(c.date)}</span><span class="src x">on X</span></span></a>`),
+    quotes.map(q => `<a class="bc" data-k="press" data-t="${esc(q.text.slice(0,60))}" href="${esc(q.url)}" target="_blank" rel="noopener"><p>${esc(q.text)}</p><span class="by"><span class="nm"><b>${esc(q.outlet)}</b><br>Read the article ↗</span><span class="src pr">Press</span></span></a>`)
   );
-  // interleave X and press, split over two rows, repeat short lists so each row fills the screen
+  // interleave X and press so both kinds show near the top
   const mixed = []; const xs = cards.slice(0, comments.length), ps = cards.slice(comments.length);
   for (let i = 0; i < Math.max(xs.length, ps.length); i++) { if (xs[i]) mixed.push(xs[i]); if (ps[i]) mixed.push(ps[i]); }
-  const half = Math.ceil(mixed.length / 2);
-  let r1 = mixed.slice(0, half), r2 = mixed.slice(half);
-  if (!r2.length) r2 = r1.slice().reverse();
-  const fill = r => { let out = r.slice(); while (out.length < 6) out = out.concat(r); return out; };
-  r1 = fill(r1); r2 = fill(r2);
-  const row = (r, rev) => `<div class="row${rev?" rev":""}"><div class="mq" style="--dur:${r.length*7}s">${r.join("")}${r.join("").replace(/<a /g,'<a tabindex="-1" aria-hidden="true" ')}</div></div>`;
+  const chips = [["all","All",mixed.length],["press","Press",quotes.length],["x","Players on X",comments.length]].filter(c => c[2] > 0);
   window.__spot = spot;
   return `<section><div class="sh"><div><h2>What people are saying</h2></div></div>
   <div class="buzz">
@@ -8949,7 +8959,9 @@ function buzz(ed){
       ${spot.length > 1 ? `<div class="spot-nav" role="group" aria-label="Choose quote">${spot.map((q,i) => `<button type="button" data-q="${i}" aria-label="Quote ${i+1}: ${esc(q.who)}"></button>`).join("")}</div>` : ""}
       <span class="spot-bar" id="spot-bar"></span>
     </div>
-    <div class="rows">${row(r1,false)}${row(r2,true)}</div>
+    ${chips.length > 2 ? `<div class="wall-bar" role="group" aria-label="Show">${chips.map((c,i) => `<button type="button" class="chip" data-f="${c[0]}" aria-pressed="${i===0}">${c[1]}<b>${c[2]}</b></button>`).join("")}</div>` : `<div class="wall-bar"></div>`}
+    <div class="wall-wrap${mixed.length > 9 ? " clip" : ""}" id="wall-wrap"><div class="wall" id="wall">${mixed.join("")}</div></div>
+    ${mixed.length > 9 ? `<div class="wall-more"><button type="button" class="btn" id="wall-more">Show all ${mixed.length}</button></div>` : ""}
   </div></section>`;
 }
 let spotTimer = null, spotIdx = 0;
@@ -8962,6 +8974,8 @@ function showSpot(i){
   el.innerHTML = `<blockquote${q.text.length > 140 ? ' class="long"' : ""}>${esc(q.text)}</blockquote><figcaption><span class="who">${esc(q.who)}</span>${q.url ? `<a class="read" href="${esc(q.url)}" target="_blank" rel="noopener">${q.link}</a>` : ""}</figcaption>`;
   el.classList.add("in");
   document.querySelectorAll(".spot-nav button").forEach(b => b.setAttribute("aria-current", String(+b.dataset.q === spotIdx)));
+  const key = q.text.slice(0,60);
+  document.querySelectorAll("#wall .bc").forEach(c => c.classList.toggle("on", c.dataset.t === key));
   const bar = document.getElementById("spot-bar");
   if (bar) { bar.classList.remove("run"); void bar.offsetWidth; if (spot.length > 1) bar.classList.add("run"); }
 }
@@ -8971,6 +8985,12 @@ function startSpot(){
   if (!box) return;
   showSpot(0);
   document.querySelectorAll(".spot-nav button").forEach(b => b.onclick = () => showSpot(+b.dataset.q));
+  const wrap = document.getElementById("wall-wrap"), more = document.getElementById("wall-more");
+  if (more) more.onclick = () => { const open = wrap.classList.toggle("clip"); more.textContent = open ? `Show all ${document.querySelectorAll("#wall .bc").length}` : "Show less"; if (open) wrap.scrollIntoView({block:"nearest"}); };
+  document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
+    document.querySelectorAll(".chip").forEach(o => o.setAttribute("aria-pressed", String(o === c)));
+    document.querySelectorAll("#wall .bc").forEach(card => { card.hidden = c.dataset.f !== "all" && card.dataset.k !== c.dataset.f; });
+  });
   const bar = document.getElementById("spot-bar");
   if (bar) bar.addEventListener("animationend", () => showSpot(spotIdx + 1));
 }
