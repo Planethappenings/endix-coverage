@@ -297,7 +297,7 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .ktiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
 @media (max-width:900px){.ktiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:520px){.ktiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.ktiles.k4{grid-template-columns:repeat(4,minmax(0,1fr))}@media (max-width:520px){.ktiles.k4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ktiles.k4{grid-template-columns:repeat(4,minmax(0,1fr))}.ktiles.k3{grid-template-columns:repeat(3,minmax(0,1fr))}@media (max-width:520px){.ktiles.k4{grid-template-columns:repeat(2,minmax(0,1fr))}.ktiles.k3{grid-template-columns:1fr}}
 .ktile{border:1px solid var(--line);border-radius:12px;background:var(--panel-2);padding:14px 12px;text-align:center}
 .ktile span{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .ktile b{display:block;margin-top:6px;font-family:var(--display);font-size:clamp(20px,2.4vw,28px)}
@@ -791,7 +791,7 @@ function decks(ed, ytC, ytM, tt, ig, x, countries){
     const cols = (key, color, label) => `<div class="sch"><h4>${label}</h4><div class="lc" data-lc='${esc(JSON.stringify({labels: evs.map(e => e.name.replace("Endix ", "")), vals: evs.map(e => e[key]), color, full: key === "reads"}))}'></div></div>`;
     const evCards = evs.map((e, i) => `<a class="sev" href="${esc(e.url)}" target="_blank" rel="noopener"><span class="nm">${esc(e.name)} →</span><span class="kv"><b class="num">${short(e.impressions)}</b> impressions</span><span class="kv"><b class="num">${fmt(e.reads)}</b> reads</span>${i ? `<span class="gr ${e.reads >= evs[i-1].reads ? "up" : "dn"}">Reads ${pct(evs[i-1].reads, e.reads)} vs ${esc(evs[i-1].name.replace("Endix ", ""))}</span>` : `<span class="gr">First Endix Steam event</span>`}</a>`).join("");
     out.push(deck("steam", "steam", "Steam", [
-      ["Overview", `<div class="ktiles k4">${[["Total unique impressions", fmt(st.impressions)],["Total unique reads", fmt(st.reads)],["Steam events", evs.length || null],["Downloads", ed.downloads || null]].filter(k => k[1]).map(k => `<div class="ktile"><span>${k[0]}</span><b class="num">${k[1]}</b></div>`).join("")}</div>
+      ["Overview", `<div class="ktiles k3">${[["Total unique impressions", fmt(st.impressions)],["Total unique reads", fmt(st.reads)],["Steam events", evs.length || null]].filter(k => k[1]).map(k => `<div class="ktile"><span>${k[0]}</span><b class="num">${k[1]}</b></div>`).join("")}</div>
         <div class="wvs"><h4>Growth in unique reads</h4>${st.growth.map(g => `<div class="row"><span>${esc(g[0])}</span><b class="num up">${esc(g[1])}</b></div>`).join("")}</div>
         <div class="sevs">${evCards}</div>
         <div class="cf"><span class="note">${esc(st.note)} Each card opens that event's Steam sale page with all the games.</span></div>`],
