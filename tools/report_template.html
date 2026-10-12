@@ -296,9 +296,29 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .ktiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
 @media (max-width:900px){.ktiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:520px){.ktiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ktiles.k4{grid-template-columns:repeat(4,minmax(0,1fr))}@media (max-width:520px){.ktiles.k4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .ktile{border:1px solid var(--line);border-radius:12px;background:var(--panel-2);padding:14px 12px;text-align:center}
 .ktile span{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .ktile b{display:block;margin-top:6px;font-family:var(--display);font-size:clamp(20px,2.4vw,28px)}
+.sevs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.sevs{grid-template-columns:1fr}}
+.sev{display:grid;gap:4px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2);padding:14px 16px;color:var(--fg);text-decoration:none;transition:border-color .2s}
+.sev:hover{border-color:#66c0f4}
+.sev .nm{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#9fd3ff}
+.sev .kv{color:var(--muted);font-size:14px}.sev .kv b{color:var(--fg)}
+.sev .gr{font-size:13px;font-weight:700;color:var(--faint)}
+.up{color:#3ccf91!important}.dn{color:#ff8a8a!important}
+.schs{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1}
+@media (max-width:760px){.schs{grid-template-columns:1fr}}
+.sch{border:1px solid var(--line);border-radius:14px;background:var(--panel-2);padding:16px 18px;display:flex;flex-direction:column}
+.scols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;min-height:200px}
+@media (max-width:760px){.scols{min-height:160px}}
+.scol{display:flex;flex-direction:column;align-items:center;text-align:center}
+.scol b{font-family:var(--display);font-size:clamp(15px,1.8vw,20px)}
+.scol em{font-style:normal;font-size:12px;font-weight:800;min-height:16px}
+.sbar{flex:1;width:min(64px,70%);display:flex;align-items:flex-end;margin:6px 0 8px;border-bottom:1px solid var(--line)}
+.sbar i{display:block;width:100%;border-radius:6px 6px 0 0;min-height:4px}
+.scol span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .wvs{border:1px solid var(--line);border-radius:14px;background:var(--panel-2);padding:18px 20px;display:grid;gap:12px}
 .wvs p{margin:0;color:var(--muted)}.wvs p b{color:var(--fg)}
 .wvs .row{display:flex;justify-content:space-between;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -695,10 +715,23 @@ function decks(ed, ytC, ytM, tt, ig, x, countries){
   } else out.push(deck("twitch", "twitch", "Twitch", [["Overview", `<div class="empty-c">Streams in the Endix category are measured every 15 minutes from the day before the event until two days after.</div>`]]));
   // Steam
   const st = ed.steam;
-  if (st) out.push(deck("steam", "steam", "Steam", [
-    ["Overview", ovSlide(st.impressions, "unique impressions", [[st.reads,"unique reads"],[ed.downloads || null,"downloads"]],
-      `<h4>Growth</h4>${topList(st.growth.map(g => ({t:g[1], b:g[0], v:0, url:"https://store.steampowered.com/app/4356840/Endix/"})), 4)}`, `<span class="note">${esc(st.note)}${ed.sponsor ? " " + esc(ed.sponsor) : ""}</span>`)],
-  ]));
+  if (st) {
+    const evs = st.events || [];
+    const pct = (a, b) => (b > a ? "+" : "") + ((b / a - 1) * 100).toFixed(1) + "%";
+    const cols = (key, color, label) => {
+      const max = Math.max(...evs.map(e => e[key]));
+      return `<div class="sch"><h4>${label}</h4><div class="scols">${evs.map((e, i) => `<div class="scol"><b class="num">${key === "reads" ? fmt(e[key]) : short(e[key])}</b>${i ? `<em class="${e[key] >= evs[i-1][key] ? "up" : "dn"}">${pct(evs[i-1][key], e[key])}</em>` : `<em>&nbsp;</em>`}<div class="sbar"><i style="height:${(e[key] / max * 100).toFixed(1)}%;background:${color}"></i></div><span>${esc(e.name.replace("Endix ", ""))}</span></div>`).join("")}</div></div>`;
+    };
+    const evCards = evs.map((e, i) => `<a class="sev" href="${esc(e.url)}" target="_blank" rel="noopener"><span class="nm">${esc(e.name)} →</span><span class="kv"><b class="num">${short(e.impressions)}</b> impressions</span><span class="kv"><b class="num">${fmt(e.reads)}</b> reads</span>${i ? `<span class="gr ${e.reads >= evs[i-1].reads ? "up" : "dn"}">Reads ${pct(evs[i-1].reads, e.reads)} vs ${esc(evs[i-1].name.replace("Endix ", ""))}</span>` : `<span class="gr">First Endix Steam event</span>`}</a>`).join("");
+    out.push(deck("steam", "steam", "Steam", [
+      ["Overview", `<div class="ktiles k4">${[["Total unique impressions", fmt(st.impressions)],["Total unique reads", fmt(st.reads)],["Steam events", evs.length || null],["Downloads", ed.downloads || null]].filter(k => k[1]).map(k => `<div class="ktile"><span>${k[0]}</span><b class="num">${k[1]}</b></div>`).join("")}</div>
+        <div class="wvs"><h4>Growth in unique reads</h4>${st.growth.map(g => `<div class="row"><span>${esc(g[0])}</span><b class="num up">${esc(g[1])}</b></div>`).join("")}</div>
+        <div class="sevs">${evCards}</div>
+        <div class="cf"><span class="note">${esc(st.note)} Each card opens that event's Steam sale page with all the games.</span></div>`],
+      evs.length ? ["Per event", `<div class="schs">${cols("impressions", "#3987e5", "Unique impressions per event")}${cols("reads", "#199e70", "Unique reads per event")}</div>
+        <div class="cf"><span class="note">Impressions and reads are shown on separate scales. Percentages compare with the previous event.</span></div>`] : null,
+    ]));
+  }
   return out.join("");
 }
 

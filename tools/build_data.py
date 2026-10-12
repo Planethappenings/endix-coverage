@@ -33,7 +33,13 @@ CONFIG = {
                                     'avg':  [15,120,400,1490,1000,650,1180,700,430,560,200,700,930,260,800,2100,200,20,0]},
                        'languages': [['English', 135], ['Spanish', 37], ['Portuguese', 23], ['French', 13], ['Russian', 10], ['Polish', 6], ['German', 5], ['Italian', 4]]},
             'steam': {'impressions': 6128795, 'reads': 71791, 'growth': [['Winter 2025 vs Spring 2025', '+100.8%'], ['Spring 2026 vs Winter 2025', '+30.2%']],
-                      'note': 'Unique impressions and reads across all Endix Steam events to date.'},
+                      'note': 'Unique impressions and reads across all Endix Steam events to date.',
+                      # Per-event values read off the old Lovable chart (reads derived from the total and the growth rates). Replace with exact Steamworks numbers when available.
+                      'events': [
+                          {'name': 'Endix Spring 2025', 'url': 'https://store.steampowered.com/curator/45584116/sale/EndixIndieShowcase', 'impressions': 1250000, 'reads': 12768},
+                          {'name': 'Endix Winter 2025', 'url': 'https://store.steampowered.com/curator/45584116/sale/EndixShowcase', 'impressions': 2790000, 'reads': 25639},
+                          {'name': 'Endix Spring 2026', 'url': 'https://store.steampowered.com/curator/45584116-Endix-Indie-Showcase/sale/endixmay2026', 'impressions': 2088795, 'reads': 33384},
+                      ]},
             'sponsor': 'Alienware sponsored the Endix Climb Trial and Endix Maze mini-games.',
             'testimonials': [  # partner and exhibitor quotes, shown under Meet the exhibitors
                 {'text': 'I love conventions, but I do love my gamer cave even more. With Endix, I can have both combined! Genuinely such a unique, creative, and fun solution to the question of what the future of game showcases will look like.',
