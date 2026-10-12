@@ -154,6 +154,46 @@
      }
     ]
    },
+   "partner": {
+    "name": "IGN",
+    "role": "Official streaming partner",
+    "url": "https://www.ign.com"
+   },
+   "featured": [
+    {
+     "id": "gOELy1UZLF8",
+     "label": "IGN exclusive trailer",
+     "note": "A trailer made exclusively for IGN, the official streaming partner of Endix Spring 2026."
+    },
+    {
+     "id": "VfefYFlIGXE",
+     "label": "Insider Gaming interview",
+     "note": "Developer spotlight interview and podcast with Insider Gaming."
+    }
+   ],
+   "spotlight": {
+    "id": "BaREDgq-9OY",
+    "name": "David Jaffe",
+    "role": "Creator of God of War and Twisted Metal",
+    "note": "David Jaffe went live on his channel to explore Endix."
+   },
+   "characters": [
+    {
+     "game": "Chimera CUSTOM XG",
+     "url": "https://store.steampowered.com/app/2229900/Chimera_CUSTOM_XG/",
+     "img": "assets/char-chimera.png"
+    },
+    {
+     "game": "Alpha Nomos",
+     "url": "https://store.steampowered.com/app/2529960/Alpha_Nomos/",
+     "img": "assets/char-alpha-nomos.png"
+    },
+    {
+     "game": "Dave the Diver",
+     "url": "https://store.steampowered.com/app/1868140/DAVE_THE_DIVER/",
+     "img": "assets/char-dave.png"
+    }
+   ],
    "sponsor": "Alienware sponsored the Endix Climb Trial and Endix Maze mini-games.",
    "quotes": [
     {
@@ -7968,6 +8008,21 @@
    "downloads": null,
    "twitch": null,
    "steam": null,
+   "partner": null,
+   "featured": [],
+   "spotlight": null,
+   "characters": [
+    {
+     "game": "Chimera CUSTOM XG",
+     "url": "https://store.steampowered.com/app/2229900/Chimera_CUSTOM_XG/",
+     "img": "assets/char-chimera.png"
+    },
+    {
+     "game": "Alpha Nomos",
+     "url": "https://store.steampowered.com/app/2529960/Alpha_Nomos/",
+     "img": "assets/char-alpha-nomos.png"
+    }
+   ],
    "sponsor": null,
    "quotes": [
     {

@@ -40,6 +40,13 @@ CONFIG = {
                           {'name': 'Endix Winter 2025', 'url': 'https://store.steampowered.com/curator/45584116/sale/EndixShowcase', 'impressions': 2790000, 'reads': 25639},
                           {'name': 'Endix Spring 2026', 'url': 'https://store.steampowered.com/curator/45584116-Endix-Indie-Showcase/sale/endixmay2026', 'impressions': 2088795, 'reads': 33384},
                       ]},
+            'partner': {'name': 'IGN', 'role': 'Official streaming partner', 'url': 'https://www.ign.com'},
+            # Featured videos (YouTube ids). Shown in the Press and YouTube decks.
+            'featured': [{'id': 'gOELy1UZLF8', 'label': 'IGN exclusive trailer', 'note': 'A trailer made exclusively for IGN, the official streaming partner of Endix Spring 2026.'},
+                         {'id': 'VfefYFlIGXE', 'label': 'Insider Gaming interview', 'note': 'Developer spotlight interview and podcast with Insider Gaming.'}],
+            'spotlight': {'id': 'BaREDgq-9OY', 'name': 'David Jaffe', 'role': 'Creator of God of War and Twisted Metal', 'note': 'David Jaffe went live on his channel to explore Endix.'},
+            # Playable characters: games that brought their characters into Endix for visitors to play as.
+            'characters': [{'game': 'Chimera CUSTOM XG', 'url': 'https://store.steampowered.com/app/2229900/Chimera_CUSTOM_XG/', 'img': 'assets/char-chimera.png'}, {'game': 'Alpha Nomos', 'url': 'https://store.steampowered.com/app/2529960/Alpha_Nomos/', 'img': 'assets/char-alpha-nomos.png'}, {'game': 'Dave the Diver', 'url': 'https://store.steampowered.com/app/1868140/DAVE_THE_DIVER/', 'img': 'assets/char-dave.png'}],
             'sponsor': 'Alienware sponsored the Endix Climb Trial and Endix Maze mini-games.',
             'testimonials': [  # partner and exhibitor quotes, shown under Meet the exhibitors
                 {'text': 'I love conventions, but I do love my gamer cave even more. With Endix, I can have both combined! Genuinely such a unique, creative, and fun solution to the question of what the future of game showcases will look like.',
@@ -68,7 +75,7 @@ CONFIG = {
                 {'text': 'ENDIX presents an opportunity for developers and players to interact through digital worlds, and I’m here for it.', 'outlet': 'Indiecator', 'url': 'https://indiecator.org/2026/05/18/endix-digital-expo-2026-returns-in-may/'},
             ],
         },
-        'winter2026': {'aftermovie': None, 'x_tab': 'Endix Fall 2026', 'downloads': None, 'twitch': None, 'steam': None, 'sponsor': None, 'quotes': []},
+        'winter2026': {'characters': [{'game': 'Chimera CUSTOM XG', 'url': 'https://store.steampowered.com/app/2229900/Chimera_CUSTOM_XG/', 'img': 'assets/char-chimera.png'}, {'game': 'Alpha Nomos', 'url': 'https://store.steampowered.com/app/2529960/Alpha_Nomos/', 'img': 'assets/char-alpha-nomos.png'}], 'aftermovie': None, 'x_tab': 'Endix Fall 2026', 'downloads': None, 'twitch': None, 'steam': None, 'sponsor': None, 'quotes': []},
     },
 }
 
@@ -345,6 +352,7 @@ for e in editions:
         'downloads': c.get('downloads'),
         'twitch': c.get('twitch'),
         'steam': c.get('steam'),
+        'partner': c.get('partner'), 'featured': c.get('featured') or [], 'spotlight': c.get('spotlight'), 'characters': c.get('characters') or [],
         'sponsor': c.get('sponsor'),
         'quotes': (lambda base: base + [q for q in press_quotes if q['edition'] == e['slug'] and norm(q['text'])[:40] not in {norm(b['text'])[:40] for b in base}])(c.get('quotes', [])),
         'comments': [x for x in comments if x['edition'] == e['slug']],
