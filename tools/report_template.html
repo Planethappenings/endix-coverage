@@ -445,8 +445,16 @@ function phase(ed){
   return "after";
 }
 
+// Clean URLs: /spring2026/ (old #spring2026 links still work and are rewritten)
+function currentSlug(){
+  const slugs = DATA.editions.map(e => e.slug);
+  const h = location.hash.slice(1);
+  if (slugs.includes(h)) { history.replaceState({}, "", document.baseURI.replace(/[?#].*$/, "") + h + "/"); return h; }
+  const seg = location.pathname.replace(/index\.html$/, "").split("/").filter(Boolean).pop();
+  return slugs.includes(seg) ? seg : "";
+}
 function render(){
-  const slug = location.hash.slice(1);
+  const slug = currentSlug();
   const eds = DATA.editions;
   // current event first: the next or ongoing edition, then the rest newest first
   const upcoming = eds.filter(e => phase(e) !== "after").sort((a,b) => a.start.localeCompare(b.start));
@@ -454,7 +462,7 @@ function render(){
   const ordered = upcoming.slice(0,1).concat(past, upcoming.slice(1));
   const ed = eds.find(e => e.slug === slug) || ordered[0];
   document.getElementById("tabs").innerHTML = ordered.map(e => `<button class="tab" role="tab" aria-selected="${e.slug===ed.slug}" data-s="${e.slug}">${esc(e.name.replace(/^Endix /,""))}</button>`).join("");
-  document.querySelectorAll(".tab").forEach(b => b.onclick = () => { location.hash = b.dataset.s; });
+  document.querySelectorAll(".tab").forEach(b => b.onclick = () => { history.pushState({}, "", document.baseURI.replace(/[?#].*$/, "") + b.dataset.s + "/"); render(); window.scrollTo({top:0}); });
   document.title = `${ed.name} · Coverage Report`;
   document.getElementById("app").innerHTML = page(ed);
   wire(ed);
@@ -934,5 +942,6 @@ function openPanel(kind){
 }
 
 window.addEventListener("hashchange", () => { render(); window.scrollTo({top:0}); });
+window.addEventListener("popstate", () => { render(); window.scrollTo({top:0}); });
 render();
 </script>
