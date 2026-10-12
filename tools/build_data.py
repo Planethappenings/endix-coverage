@@ -26,7 +26,12 @@ CONFIG = {
             'x_tab': 'Endix Spring 2026',
             'downloads': '11,000+',
             'twitch': {'source': 'SullyGnome', 'url': 'https://sullygnome.com/game/endix/2026may', 'hours_watched': 29200, 'hours_streamed': 623, 'streamers': 241, 'peak_viewers': 2900,
-                       'avg_viewers': 40, 'languages': [['English', 135], ['Spanish', 37], ['Portuguese', 23], ['French', 13], ['Russian', 10], ['Polish', 6], ['German', 5], ['Italian', 4]]},
+                       'avg_viewers': 40, 'viewer_ratio': 46.8,
+                       # concurrent viewers across all Endix streams, every 3 hours (read from SullyGnome's weekend graph)
+                       'timeline': {'labels': ['Sat 12AM','Sat 3AM','Sat 6AM','Sat 9AM','Sat 12PM','Sat 3PM','Sat 6PM','Sat 9PM','Sun 12AM','Sun 3AM','Sun 6AM','Sun 9AM','Sun 12PM','Sun 3PM','Sun 6PM','Sun 9PM','Mon 12AM','Mon 3AM','Mon 6AM'],
+                                    'peak': [20,150,520,2040,1170,790,1450,830,520,715,260,885,1150,320,1000,2630,260,30,0],
+                                    'avg':  [15,120,400,1490,1000,650,1180,700,430,560,200,700,930,260,800,2100,200,20,0]},
+                       'languages': [['English', 135], ['Spanish', 37], ['Portuguese', 23], ['French', 13], ['Russian', 10], ['Polish', 6], ['German', 5], ['Italian', 4]]},
             'steam': {'impressions': 6128795, 'reads': 71791, 'growth': [['Winter 2025 vs Spring 2025', '+100.8%'], ['Spring 2026 vs Winter 2025', '+30.2%']],
                       'note': 'Unique impressions and reads across all Endix Steam events to date.'},
             'sponsor': 'Alienware sponsored the Endix Climb Trial and Endix Maze mini-games.',

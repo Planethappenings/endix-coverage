@@ -291,6 +291,41 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .deck-arrow:disabled{opacity:0;pointer-events:none}
 @media (max-width:700px){.deck-arrow{display:none}.slide{padding:12px 16px 18px}.deck-h{padding:16px 16px 4px}}
 
+
+/* twitch deck */
+.ktiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.ktiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:520px){.ktiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ktile{border:1px solid var(--line);border-radius:12px;background:var(--panel-2);padding:14px 12px;text-align:center}
+.ktile span{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ktile b{display:block;margin-top:6px;font-family:var(--display);font-size:clamp(20px,2.4vw,28px)}
+.wvs{border:1px solid var(--line);border-radius:14px;background:var(--panel-2);padding:18px 20px;display:grid;gap:12px}
+.wvs p{margin:0;color:var(--muted)}.wvs p b{color:var(--fg)}
+.wvs .row{display:flex;justify-content:space-between;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.wvs .row b{color:var(--fg);letter-spacing:0}
+.wvs .bar{height:10px;border-radius:999px;background:var(--bg);overflow:hidden}.wvs .bar i{display:block;height:100%;border-radius:999px;background:#a970ff}
+.wvs .bar.g i{background:#199e70;min-width:10px}
+.tl{position:relative}
+.tl svg{display:block;width:100%;height:auto;overflow:visible}
+.tl .tip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px;white-space:nowrap;transform:translate(-50%,-110%);opacity:0;transition:opacity .1s}
+.tl .tip b{display:block;font-size:13px;color:var(--muted);margin-bottom:2px}
+.lg{display:flex;gap:18px;justify-content:center;font-size:14px;font-weight:600;color:var(--muted)}
+.lg i{display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.langs{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px;align-items:center}
+@media (max-width:860px){.langs{grid-template-columns:minmax(0,1fr)}}
+.langs svg{display:block;width:min(100%,300px);margin:0 auto}
+.lrow{display:flex;align-items:center;gap:12px;padding:7px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel-2);margin-bottom:6px}
+.lrow .code{flex:none;width:30px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff}
+.lrow .nm{font-weight:700}.lrow .n{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums;font-size:15px}
+/* press outlet logos */
+.outlets{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:900px){.outlets{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.outlet{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;text-decoration:none;padding:14px 10px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2);min-width:0}
+.outlet:hover{border-color:var(--pink)}
+.outlet img{width:36px;height:36px;border-radius:9px;background:#fff;padding:4px;object-fit:contain}
+.outlet .nm{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.outlet .n{color:var(--muted);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+
 /* quotes */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.quotes{grid-template-columns:minmax(0,1fr)}}
@@ -369,6 +404,7 @@ function render(){
   document.getElementById("app").innerHTML = page(ed);
   wire(ed);
   wireDecks();
+  drawTimelines();
   startSpot();
   if (HOSTED) {
     if (window.twttr && twttr.widgets) twttr.widgets.load();
@@ -559,7 +595,7 @@ const igCode = u => ((u||"").match(/instagram\.com\/(?:p|reel|reels|tv)\/([^/?#]
 const topList = (items, n = 5) => `<ul class="top3">${items.slice(0, n).map(t => `<li><a href="${esc(t.url)}" target="_blank" rel="noopener"><span class="t">${esc(t.t)}</span><span class="b">${esc(t.b)}</span><span class="v num">${t.v ? short(t.v) : ""}</span></a></li>`).join("")}</ul>`;
 const minis = arr => `<div class="minis">${arr.filter(m => m[0] !== undefined && m[0] !== null).map(m => `<div class="mini"><b class="num">${typeof m[0] === "number" ? short(m[0]) : esc(m[0])}</b><span>${m[1]}</span></div>`).join("")}</div>`;
 const bars = rows => { const max = rows.length ? rows[0][1] : 1; return `<div class="bars${rows.length > 8 ? " two" : ""}">${rows.map(([c,n]) => `<div class="bar-r"><span>${esc(c)}</span><div class="track"><div class="fill" style="width:${(n/max*100).toFixed(0)}%"></div></div><span class="num">${n}</span></div>`).join("")}</div>`; };
-const ovSlide = (big, bigLabel, mini, right, foot) => `<div class="dov"><div><div class="bignum num">${short(big)}<small>${bigLabel}</small></div>${minis(mini)}</div><div>${right}</div></div>${foot ? `<div class="cf">${foot}</div>` : ""}`;
+const ovSlide = (big, bigLabel, mini, right, foot, below) => `<div class="dov"><div><div class="bignum num">${short(big)}<small>${bigLabel}</small></div>${minis(mini)}</div><div>${right}</div></div>${below || ""}${foot ? `<div class="cf">${foot}</div>` : ""}`;
 const seeAll = (key, n, label) => n ? `<span class="note">${label || ""}</span><button class="btn" data-open="${key}">See all ${n}</button>` : "";
 function frame(kind, item){
   if (!HOSTED) return "";
@@ -597,7 +633,8 @@ function decks(ed, ytC, ytM, tt, ig, x, countries){
     out.push(deck("press", "press", "Press", [
       ["Overview", ovSlide(P.length, `articles in ${countries.size} countries and ${new Set(P.map(p => p.language)).size} languages`,
         [[uniq(P,"domain"),"outlets"],[countries.size,"countries"],[Object.values(uvm).filter(v => v >= 1e6).length,"tier 1 outlets"],[reach || null,"monthly readers"]],
-        `<h4>Articles by country</h4>${bars(rows.slice(0,8))}`, seeAll("press", P.length, "Tier 1 = over 1M visitors a month"))],
+        `<h4>Articles by country</h4>${bars(rows.slice(0,6))}`, seeAll("press", P.length, "Tier 1 = over 1M visitors a month"),
+        `<div><h4>Biggest outlets</h4><div class="outlets">${biggest.filter(p => p.uvm).slice(0,5).map(p => `<a class="outlet" href="${esc(p.url)}" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(p.domain)}&sz=64" alt="" loading="lazy" width="36" height="36"><span class="nm">${esc(p.outlet.replace(/\s*\(.*?\)\s*$/, "") || p.domain)}</span><span class="n">${short(p.uvm)} readers a month</span></a>`).join("")}</div></div>`)],
       ["Biggest outlets", `<h4>Biggest outlets by monthly visitors</h4>${topList(biggest.map(p => ({t:p.headline, b:`${p.outlet} · ${p.country}`, v:p.uvm, url:p.url})), 8)}`],
       quotes.length ? ["What they wrote", `<div class="qgrid">${quotes.slice(0,6).map(q => qcard(q.text, q.outlet, "Read the article ↗", q.url, "Press")).join("")}</div>`] : null,
       newest.length ? ["Latest", `<h4>Newest articles</h4>${topList(newest.map(p => ({t:p.headline, b:`${p.outlet} · ${dfmt(p.date)}`, v:0, url:p.url})), 8)}<div class="cf">${seeAll("press", P.length)}</div>`] : null,
@@ -642,11 +679,20 @@ function decks(ed, ytC, ytM, tt, ig, x, countries){
   ]));
   // Twitch
   const t = ed.twitch;
-  out.push(deck("twitch", "twitch", "Twitch", t ? [
-    ["Overview", ovSlide(t.hours_watched, "hours watched", [[t.streamers,"streamers"],[t.peak_viewers,"peak viewers"],[t.hours_streamed,"hours streamed"],[t.avg_viewers || null,"average viewers"]],
-      `<h4>Streams by language</h4>${bars(t.languages.slice(0,6))}`, t.url ? `<span class="note"><a href="${esc(t.url)}" target="_blank" rel="noopener" style="color:inherit">Data from ${esc(t.source)} →</a></span>` : "")],
-    t.languages.length > 6 ? ["All languages", `<h4>Streams by language</h4>${bars(t.languages)}`] : null,
-  ] : [["Overview", `<div class="empty-c">Streams in the Endix category are measured every 15 minutes from the day before the event until two days after.</div>`]]));
+  if (t) {
+    const LC = ["#3987e5","#d95926","#199e70","#c98500","#d55181","#008300","#9085e9","#e66767"];
+    const totalL = t.languages.reduce((a, l) => a + l[1], 0);
+    const codes = {English:"EN",Spanish:"ES",Portuguese:"PT",French:"FR",Russian:"RU",Polish:"PL",German:"DE",Italian:"IT",Japanese:"JA",Korean:"KO",Chinese:"ZH",Turkish:"TR"};
+    out.push(deck("twitch", "twitch", "Twitch", [
+      ["Overview", `<div class="ktiles">${[["Hours watched", short(t.hours_watched)],["Hours streamed", fmt(t.hours_streamed)],["Average viewers", fmt(t.avg_viewers)],["Viewer ratio", t.viewer_ratio || (t.hours_watched / t.hours_streamed).toFixed(1)],["Max viewers", short(t.peak_viewers)],["Streamers", fmt(t.streamers)]].map(k => `<div class="ktile"><span>${k[0]}</span><b class="num">${k[1]}</b></div>`).join("")}</div>
+        <div class="wvs"><h4>Watch vs stream</h4><p>For every hour streamed, viewers watched <b>~${Math.round(t.hours_watched / t.hours_streamed)} hours</b>.</p>
+          <div class="row"><span>Hours watched</span><b class="num">${fmt(t.hours_watched)}</b></div><div class="bar"><i style="width:100%"></i></div>
+          <div class="row"><span>Hours streamed</span><b class="num">${fmt(t.hours_streamed)}</b></div><div class="bar g"><i style="width:${(t.hours_streamed / t.hours_watched * 100).toFixed(1)}%"></i></div></div>
+        <div class="cf">${t.url ? `<span class="note"><a href="${esc(t.url)}" target="_blank" rel="noopener" style="color:inherit">Data from ${esc(t.source)} →</a></span>` : ""}</div>`],
+      t.timeline ? ["Viewers over the weekend", `<h4>Peak vs average concurrent viewers across all Endix streams</h4><div class="tl" data-tl='${esc(JSON.stringify(t.timeline))}'></div><div class="lg"><span><i style="background:#a970ff"></i>Peak viewers</span><span><i style="background:#199e70"></i>Average viewers</span></div>`] : null,
+      ["Languages", `<div class="langs"><div>${donut(t.languages, LC, totalL, codes)}</div><div>${t.languages.slice(0,8).map((l, i) => `<div class="lrow"><span class="code" style="background:${LC[i]}">${codes[l[0]] || l[0].slice(0,2).toUpperCase()}</span><span class="nm">${esc(l[0])}</span><span class="n">${l[1]} · ${(l[1] / totalL * 100).toFixed(1)}%</span></div>`).join("")}</div></div>`],
+    ]));
+  } else out.push(deck("twitch", "twitch", "Twitch", [["Overview", `<div class="empty-c">Streams in the Endix category are measured every 15 minutes from the day before the event until two days after.</div>`]]));
   // Steam
   const st = ed.steam;
   if (st) out.push(deck("steam", "steam", "Steam", [
@@ -675,6 +721,56 @@ function wireDecks(){
     if (prev) { prev.onclick = () => go(Math.max(0, cur - 1)); next.onclick = () => go(Math.min(slides.length - 1, cur + 1)); }
     track.addEventListener("scroll", () => requestAnimationFrame(() => activate(Math.round(track.scrollLeft / track.clientWidth))), {passive: true});
     activate(0);
+  });
+}
+
+
+function donut(langs, colors, total, codes){
+  const R = 100, r = 56, cx = 120, cy = 120; let a0 = -Math.PI / 2;
+  const segs = langs.slice(0, 8).map((l, i) => {
+    const a1 = a0 + l[1] / total * Math.PI * 2, gap = 0.012;
+    const s = a0 + gap, e = a1 - gap, large = e - s > Math.PI ? 1 : 0;
+    const p = (rad, ang) => [cx + rad * Math.cos(ang), cy + rad * Math.sin(ang)];
+    const [x1,y1] = p(R, s), [x2,y2] = p(R, e), [x3,y3] = p(r, e), [x4,y4] = p(r, s);
+    const mid = (a0 + a1) / 2, [lx, ly] = p((R + r) / 2, mid);
+    const lab = l[1] / total > 0.04 ? `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="11" font-weight="800" fill="#fff">${codes[l[0]] || ""}</text>` : "";
+    a0 = a1;
+    return `<path d="M${x1},${y1} A${R},${R} 0 ${large} 1 ${x2},${y2} L${x3},${y3} A${r},${r} 0 ${large} 0 ${x4},${y4} Z" fill="${colors[i]}"><title>${l[0]}: ${l[1]} streams</title></path>${lab}`;
+  }).join("");
+  return `<svg viewBox="0 0 240 240" role="img" aria-label="Streams by language">${segs}<text x="120" y="114" text-anchor="middle" font-family="Orbitron, sans-serif" font-weight="800" font-size="26" fill="var(--fg)">${total}</text><text x="120" y="138" text-anchor="middle" font-size="12" fill="var(--muted)">streams</text></svg>`;
+}
+function drawTimelines(){
+  document.querySelectorAll(".tl[data-tl]").forEach(box => {
+    if (box.dataset.done) return; box.dataset.done = 1;
+    const d = JSON.parse(box.dataset.tl), n = d.labels.length;
+    const W = Math.max(320, Math.round(box.clientWidth || 800)), H = W < 600 ? 240 : 300, L = 44, Rr = 12, T = 12, B = 34, max = Math.max(...d.peak) * 1.08, every = W < 600 ? 6 : 2;
+    const X = i => L + i * (W - L - Rr) / (n - 1), Y = v => T + (H - T - B) * (1 - v / max);
+    const smooth = arr => { let p = `M${X(0)},${Y(arr[0])}`; for (let i = 0; i < n - 1; i++) { const x0 = X(i), x1 = X(i + 1), y0 = Y(arr[i]), y1 = Y(arr[i + 1]), cx = (x1 - x0) / 2; p += ` C${x0 + cx},${y0} ${x1 - cx},${y1} ${x1},${y1}`; } return p; };
+    const area = arr => smooth(arr) + ` L${X(n - 1)},${Y(0)} L${X(0)},${Y(0)} Z`;
+    const step = max > 2000 ? 700 : 250, ticks = []; for (let v = 0; v <= max; v += step) ticks.push(v);
+    box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Concurrent viewers over the weekend">
+      <defs><linearGradient id="gp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a970ff" stop-opacity=".35"/><stop offset="1" stop-color="#a970ff" stop-opacity="0"/></linearGradient>
+      <linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#199e70" stop-opacity=".35"/><stop offset="1" stop-color="#199e70" stop-opacity="0"/></linearGradient></defs>
+      ${ticks.map(v => `<line x1="${L}" x2="${W - Rr}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-dasharray="${v ? "3 4" : ""}"/><text x="${L - 8}" y="${Y(v)}" text-anchor="end" dominant-baseline="central" font-size="12" fill="var(--faint)">${short(v)}</text>`).join("")}
+      ${d.labels.map((lab, i) => i % every === 0 ? `<text x="${X(i)}" y="${H - 10}" text-anchor="middle" font-size="12" fill="var(--faint)">${lab}</text>` : "").join("")}
+      <path d="${area(d.peak)}" fill="url(#gp)"/><path d="${smooth(d.peak)}" fill="none" stroke="#a970ff" stroke-width="2.5"/>
+      <path d="${area(d.avg)}" fill="url(#ga)"/><path d="${smooth(d.avg)}" fill="none" stroke="#199e70" stroke-width="2.5"/>
+      <line class="cx" y1="${T}" y2="${H - B}" stroke="var(--muted)" stroke-dasharray="3 3" opacity="0"/>
+      <circle class="dp" r="5" fill="#a970ff" stroke="var(--panel)" stroke-width="2" opacity="0"/><circle class="da" r="5" fill="#199e70" stroke="var(--panel)" stroke-width="2" opacity="0"/>
+      <rect x="${L}" y="${T}" width="${W - L - Rr}" height="${H - T - B}" fill="transparent" class="hit"/></svg><div class="tip"></div>`;
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tip"), cxl = svg.querySelector(".cx"), dp = svg.querySelector(".dp"), da = svg.querySelector(".da");
+    const show = e => {
+      const pt = svg.getBoundingClientRect(), sx = (e.clientX - pt.left) / pt.width * W;
+      const i = Math.max(0, Math.min(n - 1, Math.round((sx - L) / ((W - L - Rr) / (n - 1)))));
+      [cxl, dp, da].forEach(el => el.setAttribute("opacity", 1));
+      cxl.setAttribute("x1", X(i)); cxl.setAttribute("x2", X(i));
+      dp.setAttribute("cx", X(i)); dp.setAttribute("cy", Y(d.peak[i])); da.setAttribute("cx", X(i)); da.setAttribute("cy", Y(d.avg[i]));
+      tip.innerHTML = `<b>${d.labels[i]}</b>Peak <strong>${fmt(d.peak[i])}</strong> · Average <strong>${fmt(d.avg[i])}</strong>`;
+      tip.style.left = (X(i) / W * 100) + "%"; tip.style.top = (Y(d.peak[i]) / H * 100) + "%"; tip.style.opacity = 1;
+    };
+    const hide = () => { [cxl, dp, da].forEach(el => el.setAttribute("opacity", 0)); tip.style.opacity = 0; };
+    svg.querySelector(".hit").addEventListener("pointermove", show);
+    svg.querySelector(".hit").addEventListener("pointerleave", hide);
   });
 }
 
