@@ -42,7 +42,7 @@ CONFIG = {
                       ]},
             'partner': {'name': 'IGN', 'role': 'Official streaming partner', 'url': 'https://www.ign.com'},
             # Featured videos (YouTube ids). Shown in the Press and YouTube decks.
-            'featured': [{'id': 'gOELy1UZLF8', 'label': 'IGN exclusive trailer', 'note': 'A trailer made exclusively for IGN, the official streaming partner of Endix Spring 2026.'},
+            'featured': [{'id': 'gOELy1UZLF8', 'label': 'IGN exclusive trailer', 'note': 'A trailer made exclusively for IGN.'},
                          {'id': 'VfefYFlIGXE', 'label': 'Insider Gaming interview', 'note': 'Developer spotlight interview and podcast with Insider Gaming.'}],
             'spotlight': {'id': 'BaREDgq-9OY', 'name': 'David Jaffe', 'role': 'Creator of God of War and Twisted Metal', 'note': 'David Jaffe went live on his channel to explore Endix.'},
             # Playable characters: games that brought their characters into Endix for visitors to play as.
