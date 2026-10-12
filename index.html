@@ -244,6 +244,54 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .tst figcaption img{display:block;height:auto;max-height:40px;width:auto}
 .tst figcaption span{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 
+
+/* channel decks: one big card per channel, swipe sideways through overview and highlights */
+.deck{position:relative;border:1px solid var(--line);border-radius:18px;background:var(--panel);margin-bottom:16px;min-width:0;transition:border-color .2s,box-shadow .2s}
+.deck:hover{border-color:var(--brand,var(--line));box-shadow:0 0 0 1px var(--brand,transparent)}
+.deck.b-instagram:hover{border-color:transparent;box-shadow:none;background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5) border-box}
+.deck-h{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 22px 6px}
+.deck-h h3{margin:0;display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:clamp(17px,2vw,22px);letter-spacing:.04em;text-transform:uppercase}
+.deck-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.deck-tabs button{font:inherit;font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2);color:var(--muted);cursor:pointer}
+.deck-tabs button[aria-current="true"]{border-color:var(--pink);color:var(--fg);background:var(--pink-soft)}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;padding:14px 22px 22px;height:500px;overflow-y:auto;scrollbar-width:thin;display:flex;flex-direction:column;gap:16px}
+@media (max-width:860px){.slide{height:620px}}
+.bars.two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
+@media (max-width:700px){.bars.two{grid-template-columns:minmax(0,1fr)}}
+.slide h4{margin:0;font-family:var(--display);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.dov{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:start}
+@media (max-width:860px){.dov{grid-template-columns:minmax(0,1fr)}}
+.dov .bignum{font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,64px);line-height:1}
+.dov .bignum small{display:block;font-family:var(--body);font-size:17px;font-weight:600;color:var(--muted);margin-top:6px}
+.dov .minis{padding:18px 0 0;grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}
+.dov .top3{padding:0;margin:0}
+.dov .bars{padding:0}
+.slide .cf{padding:0;margin-top:auto}
+.embeds{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));align-items:start}
+.embeds.one{grid-template-columns:minmax(0,7fr) minmax(0,4fr)}
+@media (max-width:860px){.embeds.one{grid-template-columns:minmax(0,1fr)}}
+.emb{min-width:0}
+.emb .fr{position:relative;border-radius:12px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.emb .fr.wide{aspect-ratio:16/9}
+.emb .fr.tall{aspect-ratio:9/16;height:400px;margin:0 auto}
+.emb .fr.ig{height:400px}
+.emb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.emb .ecap{display:block;padding:8px 2px 0;text-decoration:none}
+.emb .ecap b{display:block;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.emb .ecap span{color:var(--faint);font-size:15px}
+.emb-info{display:flex;flex-direction:column;gap:10px}
+.emb-info .bignum{font-family:var(--display);font-weight:800;font-size:40px}
+.qgrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.qgrid .bc{width:auto}
+.deck .tw{height:410px}
+.deck-arrow{position:absolute;top:50%;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--panel-2);color:var(--fg);font-size:22px;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 20px -6px #000a}
+.deck-arrow:hover{border-color:var(--pink)}
+.deck-arrow.prev{left:-14px}.deck-arrow.next{right:-14px}
+.deck-arrow:disabled{opacity:0;pointer-events:none}
+@media (max-width:700px){.deck-arrow{display:none}.slide{padding:12px 16px 18px}.deck-h{padding:16px 16px 4px}}
+
 /* quotes */
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.quotes{grid-template-columns:minmax(0,1fr)}}
@@ -9017,6 +9065,7 @@ function render(){
   document.title = `${ed.name} · Coverage Report`;
   document.getElementById("app").innerHTML = page(ed);
   wire(ed);
+  wireDecks();
   startSpot();
   if (HOSTED) {
     if (window.twttr && twttr.widgets) twttr.widgets.load();
@@ -9081,88 +9130,15 @@ function page(ed){
   <div class="rail">${hl.map(h => `<a class="hl b-${h.p}" href="${esc(h.url)}" target="_blank" rel="noopener"><div class="top">${pill(h.p)}<span class="v num">${short(h.v)}<small>${h.unit || "views"}</small></span></div><div class="t">${esc(h.t)}</div><div class="by">${esc(h.by)}</div></a>`).join("")}</div></section>` : ""}
 
   <section><div class="sh"><div><h2>By channel</h2></div></div>
-  <div class="grid">
-    ${card("youtube","YouTube creators", sum(ytC), "views", [[ytC.length,"videos"],[uniq(ytC,"channel"),"channels"],[ytC.filter(v=>v.type==="live").length,"livestreams"]],
-        ytC.slice(0,3).map(v=>({t:v.title,b:v.channel,v:v.views,url:v.url})), ytC.length, "Collected daily from YouTube.", "youtube")}
-    ${card("tiktok","TikTok", sum(tt), "views", [[tt.length,"videos"],[uniq(tt,"creator"),"creators"],[sum(tt,"likes"),"likes"]],
-        tt.slice(0,3).map(v=>({t:v.caption||"TikTok video",b:"@"+v.creator,v:v.views,url:v.url})), tt.length, "Collected weekly, every two days around the event.")}
-    ${card("instagram","Instagram", sum(ig), "views", [[ig.length,"reels"],[uniq(ig,"creator"),"creators"],[sum(ig,"likes"),"likes"]],
-        ig.slice(0,3).map(v=>({t:v.caption||"Instagram reel",b:"@"+v.creator,v:v.views,url:v.url})), ig.length, "Collected weekly, every two days around the event.")}
-    ${card("x","X", x.views, "views on mentions", [[x.mentions,"mentions"],[x.accounts,"accounts"],[x.viral,"viral posts"]],
-        (x.top||[]).slice(0,3).map(v=>({t:v.summary,b:v.author,v:v.views,url:v.url})), (x.top||[]).length, "Posts by other accounts. Endix's own posts are not counted.")}
-    ${pressCard(ed, countries)}
-    ${card("media","Trailers & media", sum(ytM), "trailer views on YouTube", [[ytM.length,"YouTube uploads"],[ed.trailer_pages.length,"IGN trailer pages"],[uniq(ytM,"channel"),"channels"]],
-        ytM.slice(0,3).map(v=>({t:v.title,b:v.channel,v:v.views,url:v.url})), ytM.length + ed.trailer_pages.length, "Trailer premieres on IGN, GameTrailers and other media channels.", "youtube")}
-    ${twitchCard(ed)}
-    ${steamCard(ed)}
-  </div></section>
-
-  ${HOSTED && (x.top||[]).length ? `<section><div class="sh"><div><h2>Top posts on X</h2></div></div>
-  <div class="tweets">${x.top.slice(0,6).filter(t => tweetId(t.url)).map(t => `<div class="tw"><blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none" data-align="center"><p>${esc(t.summary)}</p>— ${esc(t.author)} <a href="https://twitter.com/i/status/${tweetId(t.url)}">${dfmt(t.date)}</a></blockquote><a class="more" href="https://x.com/i/status/${tweetId(t.url)}" target="_blank" rel="noopener"><span>Read the full post on X ↗</span></a></div>`).join("")}</div></section>` : ""}
-
-
+  ${decks(ed, ytC, ytM, tt, ig, x, countries)}
+  </section>
 
   <div class="foot"><span>END<span style="color:var(--pink)">I</span>X · endix.live</span><span>Updated ${dfmt(DATA.generated)}. View counts are public figures at that date.</span></div>`;
 }
 
-function card(key, name, big, bigLabel, minis, top, total, emptyNote, pk){
-  const has = total > 0;
-  return `<div class="card b-${pk || key}">
-    <div class="ch"><h3>${name}</h3>${pill(pk || key)}</div>
-    ${has ? `<div class="big num">${short(big)}<small>${bigLabel}</small></div>
-    <div class="minis">${minis.map(m => `<div class="mini"><b class="num">${short(m[0])}</b><span>${m[1]}</span></div>`).join("")}</div>
-    <ul class="top3">${top.map(t => `<li><a href="${esc(t.url)}" target="_blank" rel="noopener"><span class="t">${esc(t.t)}</span><span class="b">${esc(t.b)}</span><span class="v num">${short(t.v)}</span></a></li>`).join("")}</ul>`
-    : `<div class="empty-c">No ${name} coverage collected yet. ${emptyNote}</div>`}
-    <div class="cf"><span class="note">${has ? "Top 3 by views" : ""}</span>${has ? `<button class="btn" data-open="${key}">See all ${total}</button>` : ""}</div>
-  </div>`;
-}
 
-function pressCard(ed, countries){
-  const by = {}; ed.press.forEach(p => { const c = p.country || "International"; by[c] = (by[c]||0)+1; });
-  const rows = Object.entries(by).sort((a,b) => b[1]-a[1]).slice(0,6);
-  const max = rows.length ? rows[0][1] : 1;
-  const outlets = uniq(ed.press, "domain");
-  const langs = new Set(ed.press.map(p => p.language)).size;
-  const uvm = {}; ed.press.forEach(p => { if (p.uvm) uvm[p.domain] = Math.max(uvm[p.domain]||0, p.uvm); });
-  const tier1 = Object.values(uvm).filter(v => v >= 1e6).length;
-  const reach = Object.values(uvm).reduce((a,b) => a+b, 0);
-  const biggest = ed.press.slice().sort((a,b) => (b.uvm||0)-(a.uvm||0) || (b.date||"").localeCompare(a.date||"")).filter((p,i,a) => a.findIndex(q => q.domain===p.domain)===i).slice(0,4);
-  return `<div class="card wide b-press">
-    <div class="ch"><h3>Press</h3>${pill("press")}</div>
-    ${ed.press.length ? `<div class="big num">${ed.press.length}<small>articles in ${countries.size} countries and ${langs} languages</small></div>
-    <div class="minis" style="grid-template-columns:repeat(auto-fit,minmax(110px,1fr))"><div class="mini"><b class="num">${outlets}</b><span>outlets</span></div><div class="mini"><b class="num">${countries.size}</b><span>countries</span></div><div class="mini"><b class="num">${langs}</b><span>languages</span></div><div class="mini"><b class="num">${tier1}</b><span>tier 1 outlets</span></div>${reach ? `<div class="mini"><b class="num">${short(reach)}</b><span>monthly readers</span></div>` : ""}</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 10px">
-      <div class="bars">${rows.map(([c,n]) => `<div class="bar-r"><span>${esc(c)}</span><div class="track"><div class="fill" style="width:${(n/max*100).toFixed(0)}%"></div></div><span class="num">${n}</span></div>`).join("")}</div>
-      <ul class="top3">${biggest.map(p => `<li><a href="${esc(p.url)}" target="_blank" rel="noopener"><span class="t">${esc(p.headline)}</span><span class="b">${esc(p.outlet)} · ${esc(p.country)}</span><span class="v num">${p.uvm ? short(p.uvm) : ""}</span></a></li>`).join("")}</ul>
-    </div>` : `<div class="empty-c">No articles collected yet. Google News, GDELT and Bing are checked daily.</div>`}
-    <div class="cf"><span class="note">${ed.press.length ? `Biggest outlets by monthly visitors · tier 1 = over 1M a month` : ""}</span>${ed.press.length ? `<button class="btn" data-open="press">See all ${ed.press.length}</button>` : ""}</div>
-  </div>`;
-}
 
-function twitchCard(ed){
-  const t = ed.twitch;
-  if (!t) return `<div class="card b-twitch"><div class="ch"><h3>Twitch</h3>${pill("twitch")}</div><div class="empty-c">Streams in the Endix category are measured every 15 minutes from the day before the event until two days after.</div></div>`;
-  const max = t.languages[0][1];
-  return `<div class="card b-twitch">
-    <div class="ch"><h3>Twitch</h3>${pill("twitch")}</div>
-    <div class="big num">${short(t.hours_watched)}<small>hours watched</small></div>
-    <div class="minis"><div class="mini"><b class="num">${fmt(t.streamers)}</b><span>streamers</span></div><div class="mini"><b class="num">${short(t.peak_viewers)}</b><span>peak viewers</span></div><div class="mini"><b class="num">${fmt(t.hours_streamed)}</b><span>hours streamed</span></div></div>
-    <div class="bars">${t.languages.slice(0,5).map(([l,n]) => `<div class="bar-r"><span>${esc(l)}</span><div class="track"><div class="fill" style="width:${(n/max*100).toFixed(0)}%"></div></div><span class="num">${n}</span></div>`).join("")}</div>
-    <div class="cf"><span class="note">Streams by language · ${t.url ? `<a href="${esc(t.url)}" target="_blank" rel="noopener" style="color:inherit">Data from ${esc(t.source)} →</a>` : `source ${esc(t.source)}`}</span></div>
-  </div>`;
-}
 
-function steamCard(ed){
-  const s = ed.steam;
-  if (!s) return "";
-  return `<div class="card b-steam">
-    <div class="ch"><h3>Steam</h3>${pill("steam")}</div>
-    <div class="big num">${short(s.impressions)}<small>unique impressions</small></div>
-    <div class="minis" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="mini"><b class="num">${fmt(s.reads)}</b><span>unique reads</span></div>${ed.downloads ? `<div class="mini"><b class="num">${esc(ed.downloads)}</b><span>downloads</span></div>` : ""}</div>
-    <ul class="top3" style="padding-bottom:4px">${s.growth.map(g => `<li><a><span class="t">${esc(g[1])}</span><span class="b">${esc(g[0])}</span></a></li>`).join("")}</ul>
-    <div class="cf"><span class="note">${esc(s.note)}${ed.sponsor ? " " + esc(ed.sponsor) : ""}</span></div>
-  </div>`;
-}
 
 
 /* ---------- what people are saying ---------- */
@@ -9270,6 +9246,133 @@ function testimonials(ed){
   const t = ed.testimonials || [];
   if (!t.length) return "";
   return `<div class="tst">${t.map(q => `<figure><blockquote>${esc(q.text)}</blockquote><figcaption>${q.logo ? `<img src="${esc(q.logo)}" alt="${esc(q.company)}">` : `<span>${esc(q.company)}</span>`}<span>– ${esc(q.name)}</span></figcaption></figure>`).join("")}</div>`;
+}
+
+
+/* ---------- channel decks ---------- */
+const ytId2 = u => ytId(u);
+const ttId = u => ((u||"").match(/video\/(\d+)/)||[])[1];
+const igCode = u => ((u||"").match(/instagram\.com\/(?:p|reel|reels|tv)\/([^/?#]+)/)||[])[1];
+const topList = (items, n = 5) => `<ul class="top3">${items.slice(0, n).map(t => `<li><a href="${esc(t.url)}" target="_blank" rel="noopener"><span class="t">${esc(t.t)}</span><span class="b">${esc(t.b)}</span><span class="v num">${t.v ? short(t.v) : ""}</span></a></li>`).join("")}</ul>`;
+const minis = arr => `<div class="minis">${arr.filter(m => m[0] !== undefined && m[0] !== null).map(m => `<div class="mini"><b class="num">${typeof m[0] === "number" ? short(m[0]) : esc(m[0])}</b><span>${m[1]}</span></div>`).join("")}</div>`;
+const bars = rows => { const max = rows.length ? rows[0][1] : 1; return `<div class="bars${rows.length > 8 ? " two" : ""}">${rows.map(([c,n]) => `<div class="bar-r"><span>${esc(c)}</span><div class="track"><div class="fill" style="width:${(n/max*100).toFixed(0)}%"></div></div><span class="num">${n}</span></div>`).join("")}</div>`; };
+const ovSlide = (big, bigLabel, mini, right, foot) => `<div class="dov"><div><div class="bignum num">${short(big)}<small>${bigLabel}</small></div>${minis(mini)}</div><div>${right}</div></div>${foot ? `<div class="cf">${foot}</div>` : ""}`;
+const seeAll = (key, n, label) => n ? `<span class="note">${label || ""}</span><button class="btn" data-open="${key}">See all ${n}</button>` : "";
+function frame(kind, item){
+  if (!HOSTED) return "";
+  if (kind === "yt") { const id = ytId2(item.url); return id ? `<div class="fr wide"><iframe data-src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${esc(item.title)}" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>` : ""; }
+  if (kind === "tt") { const id = ttId(item.url); return id ? `<div class="fr tall"><iframe data-src="https://www.tiktok.com/player/v1/${id}?description=0&music_info=0&rel=0" title="TikTok by @${esc(item.creator)}" allow="encrypted-media; fullscreen" allowfullscreen loading="lazy"></iframe></div>` : ""; }
+  if (kind === "ig") { const c = igCode(item.url); return c ? `<div class="fr ig"><iframe data-src="https://www.instagram.com/p/${c}/embed/" title="Instagram reel by @${esc(item.creator)}" loading="lazy" scrolling="no"></iframe></div>` : ""; }
+  return "";
+}
+const emb = (kind, item, title, by, views) => `<div class="emb">${frame(kind, item)}<a class="ecap" href="${esc(item.url)}" target="_blank" rel="noopener"><b>${esc(title)}</b><span>${esc(by)}${views ? ` · ${short(views)} views` : ""}</span></a></div>`;
+const tweet = t => `<div class="tw"><blockquote class="tw-lazy" data-theme="dark" data-dnt="true" data-conversation="none" data-align="center"><p>${esc(t.summary)}</p>— ${esc(t.author)} <a href="https://twitter.com/i/status/${tweetId(t.url)}">${dfmt(t.date)}</a></blockquote><a class="more" href="https://x.com/i/status/${tweetId(t.url)}" target="_blank" rel="noopener"><span>Read the full post on X ↗</span></a></div>`;
+const qcard = (text, who, sub, url, src) => `<a class="bc" href="${esc(url)}" target="_blank" rel="noopener"><p>${esc(text)}</p><span class="by"><span class="nm"><b>${esc(who)}</b><br>${esc(sub)}</span><span class="src ${src === "X" ? "x" : "pr"}">${src}</span></span></a>`;
+
+function deck(key, pk, title, slides){
+  slides = slides.filter(Boolean);
+  if (!slides.length) return "";
+  return `<div class="deck b-${pk}" data-deck>
+    <div class="deck-h"><h3>${pill(pk)}${esc(title)}</h3>${slides.length > 1 ? `<div class="deck-tabs" role="tablist">${slides.map((sl, i) => `<button type="button" role="tab" data-i="${i}" aria-current="${i === 0}">${esc(sl[0])}</button>`).join("")}</div>` : ""}</div>
+    ${slides.length > 1 ? `<button type="button" class="deck-arrow prev" aria-label="Previous">‹</button><button type="button" class="deck-arrow next" aria-label="Next">›</button>` : ""}
+    <div class="slides">${slides.map(sl => `<div class="slide" role="tabpanel" aria-label="${esc(sl[0])}">${sl[1]}</div>`).join("")}</div>
+  </div>`;
+}
+
+function decks(ed, ytC, ytM, tt, ig, x, countries){
+  const out = [];
+  // Press
+  const P = ed.press;
+  if (P.length) {
+    const by = {}; P.forEach(p => { const c = p.country || "International"; by[c] = (by[c]||0)+1; });
+    const rows = Object.entries(by).sort((a,b) => b[1]-a[1]);
+    const uvm = {}; P.forEach(p => { if (p.uvm) uvm[p.domain] = Math.max(uvm[p.domain]||0, p.uvm); });
+    const reach = Object.values(uvm).reduce((a,b) => a+b, 0);
+    const biggest = P.slice().sort((a,b) => (b.uvm||0)-(a.uvm||0)).filter((p,i,a) => a.findIndex(q => q.domain===p.domain)===i);
+    const newest = P.filter(p => p.date).sort((a,b) => b.date.localeCompare(a.date));
+    const quotes = (ed.quotes || []).filter(q => q.text.length <= 170);
+    out.push(deck("press", "press", "Press", [
+      ["Overview", ovSlide(P.length, `articles in ${countries.size} countries and ${new Set(P.map(p => p.language)).size} languages`,
+        [[uniq(P,"domain"),"outlets"],[countries.size,"countries"],[Object.values(uvm).filter(v => v >= 1e6).length,"tier 1 outlets"],[reach || null,"monthly readers"]],
+        `<h4>Articles by country</h4>${bars(rows.slice(0,8))}`, seeAll("press", P.length, "Tier 1 = over 1M visitors a month"))],
+      ["Biggest outlets", `<h4>Biggest outlets by monthly visitors</h4>${topList(biggest.map(p => ({t:p.headline, b:`${p.outlet} · ${p.country}`, v:p.uvm, url:p.url})), 8)}`],
+      quotes.length ? ["What they wrote", `<div class="qgrid">${quotes.slice(0,6).map(q => qcard(q.text, q.outlet, "Read the article ↗", q.url, "Press")).join("")}</div>`] : null,
+      newest.length ? ["Latest", `<h4>Newest articles</h4>${topList(newest.map(p => ({t:p.headline, b:`${p.outlet} · ${dfmt(p.date)}`, v:0, url:p.url})), 8)}<div class="cf">${seeAll("press", P.length)}</div>`] : null,
+      rows.length > 8 ? ["All countries", `<h4>Articles by country</h4>${bars(rows)}`] : null,
+    ]));
+  }
+  // YouTube
+  if (ytC.length || ytM.length) {
+    const vids = ytC.filter(v => ytId(v.url));
+    out.push(deck("youtube", "youtube", "YouTube", [
+      ytC.length ? ["Overview", ovSlide(sum(ytC), "views on creator videos", [[ytC.length,"videos"],[uniq(ytC,"channel"),"channels"],[ytC.filter(v=>v.type==="live").length,"livestreams"],[ytC.filter(v=>v.type==="short").length,"shorts"]],
+        `<h4>Most watched</h4>${topList(ytC.map(v => ({t:v.title, b:v.channel, v:v.views, url:v.url})), 6)}`, seeAll("youtube", ytC.length))] : null,
+      HOSTED && vids[0] ? ["Most watched", `<div class="embeds one">${emb("yt", vids[0], vids[0].title, vids[0].channel, 0)}<div class="emb-info"><h4>Most watched creator video</h4><div class="bignum num">${short(vids[0].views)}<small style="display:block;font-family:var(--body);font-size:16px;color:var(--muted)">views</small></div><b>${esc(vids[0].title)}</b><span style="color:var(--muted)">${esc(vids[0].channel)} · ${dfmt(vids[0].date)}</span></div></div>`] : null,
+      HOSTED && vids.length > 1 ? ["Highlights", `<div class="embeds">${vids.slice(1,4).map(v => emb("yt", v, v.title, v.channel, v.views)).join("")}</div>`] : null,
+      ytM.length || ed.trailer_pages.length ? ["Trailers & media", ovSlide(sum(ytM), "trailer views on YouTube", [[ytM.length,"YouTube uploads"],[ed.trailer_pages.length,"IGN trailer pages"],[uniq(ytM,"channel"),"channels"]],
+        `<h4>Top trailers</h4>${topList(ytM.map(v => ({t:v.title, b:v.channel, v:v.views, url:v.url})), 6)}`, seeAll("media", ytM.length + ed.trailer_pages.length, "IGN, GameTrailers and the studios' own channels"))] : null,
+      HOSTED && ytM.filter(v => ytId(v.url)).length ? ["Top trailer", `<div class="embeds">${ytM.filter(v => ytId(v.url)).slice(0,2).map(v => emb("yt", v, v.title, v.channel, v.views)).join("")}</div>`] : null,
+    ]));
+  }
+  // X
+  const top = (x.top || []).filter(t => tweetId(t.url)), cm = ed.comments || [];
+  if (x.mentions || top.length) {
+    out.push(deck("x", "x", "X", [
+      ["Overview", ovSlide(x.views, "views on posts mentioning Endix", [[x.mentions,"mentions"],[x.accounts,"accounts"],[x.viral,"viral posts"],[x.engagement || null,"engagements"]],
+        `<h4>Most viewed posts</h4>${topList(top.map(t => ({t:t.summary, b:t.author, v:t.views, url:t.url})), 6)}`, `<span class="note">Posts by other accounts. Endix's own posts are not counted.</span>`)],
+      HOSTED && top.length ? ["Top posts", `<div class="embeds">${top.slice(0,3).map(tweet).join("")}</div>`] : null,
+      HOSTED && top.length > 3 ? ["More posts", `<div class="embeds">${top.slice(3,6).map(tweet).join("")}</div>`] : null,
+      cm.length ? ["What players said", `<div class="qgrid">${cm.slice(0,6).map(c => qcard(c.text, c.name, `${c.handle} · ${dfmt(c.date)}`, c.url, "X")).join("")}</div>`] : null,
+    ]));
+  }
+  // TikTok
+  if (tt.length) out.push(deck("tiktok", "tiktok", "TikTok", [
+    ["Overview", ovSlide(sum(tt), "views", [[tt.length,"videos"],[uniq(tt,"creator"),"creators"],[sum(tt,"likes"),"likes"]],
+      `<h4>Most viewed</h4>${topList(tt.map(v => ({t:v.caption || "TikTok video", b:"@"+v.creator, v:v.views, url:v.url})), 6)}`, seeAll("tiktok", tt.length))],
+    HOSTED ? ["Top videos", `<div class="embeds">${tt.filter(v => ttId(v.url)).slice(0,3).map(v => emb("tt", v, v.caption || "TikTok video", "@"+v.creator, v.views)).join("")}</div>`] : null,
+  ]));
+  // Instagram
+  if (ig.length) out.push(deck("instagram", "instagram", "Instagram", [
+    ["Overview", ovSlide(sum(ig), "views", [[ig.length,"reels"],[uniq(ig,"creator"),"creators"],[sum(ig,"likes"),"likes"]],
+      `<h4>Most viewed</h4>${topList(ig.map(v => ({t:v.caption || "Instagram reel", b:"@"+v.creator, v:v.views, url:v.url})), 6)}`, seeAll("instagram", ig.length))],
+    HOSTED ? ["Top reels", `<div class="embeds">${ig.filter(v => igCode(v.url)).slice(0,3).map(v => emb("ig", v, v.caption || "Instagram reel", "@"+v.creator, v.views)).join("")}</div>`] : null,
+  ]));
+  // Twitch
+  const t = ed.twitch;
+  out.push(deck("twitch", "twitch", "Twitch", t ? [
+    ["Overview", ovSlide(t.hours_watched, "hours watched", [[t.streamers,"streamers"],[t.peak_viewers,"peak viewers"],[t.hours_streamed,"hours streamed"],[t.avg_viewers || null,"average viewers"]],
+      `<h4>Streams by language</h4>${bars(t.languages.slice(0,6))}`, t.url ? `<span class="note"><a href="${esc(t.url)}" target="_blank" rel="noopener" style="color:inherit">Data from ${esc(t.source)} →</a></span>` : "")],
+    t.languages.length > 6 ? ["All languages", `<h4>Streams by language</h4>${bars(t.languages)}`] : null,
+  ] : [["Overview", `<div class="empty-c">Streams in the Endix category are measured every 15 minutes from the day before the event until two days after.</div>`]]));
+  // Steam
+  const st = ed.steam;
+  if (st) out.push(deck("steam", "steam", "Steam", [
+    ["Overview", ovSlide(st.impressions, "unique impressions", [[st.reads,"unique reads"],[ed.downloads || null,"downloads"]],
+      `<h4>Growth</h4>${topList(st.growth.map(g => ({t:g[1], b:g[0], v:0, url:"https://store.steampowered.com/app/4356840/Endix/"})), 4)}`, `<span class="note">${esc(st.note)}${ed.sponsor ? " " + esc(ed.sponsor) : ""}</span>`)],
+  ]));
+  return out.join("");
+}
+
+function wireDecks(){
+  document.querySelectorAll("[data-deck]").forEach(d => {
+    const track = d.querySelector(".slides"), slides = [...d.querySelectorAll(".slide")], tabs = [...d.querySelectorAll(".deck-tabs button")];
+    const prev = d.querySelector(".deck-arrow.prev"), next = d.querySelector(".deck-arrow.next");
+    let cur = -1;
+    const activate = i => {
+      if (i === cur) return; cur = i;
+      tabs.forEach((b, j) => b.setAttribute("aria-current", String(j === i)));
+      if (prev) { prev.disabled = i === 0; next.disabled = i === slides.length - 1; }
+      const sl = slides[i];
+      sl.querySelectorAll("iframe[data-src]").forEach(f => { f.src = f.dataset.src; f.removeAttribute("data-src"); });
+      const lazy = sl.querySelectorAll("blockquote.tw-lazy");
+      if (lazy.length) { lazy.forEach(q => q.className = "twitter-tweet"); if (window.twttr && twttr.widgets) twttr.widgets.load(sl); }
+    };
+    const go = i => track.scrollTo({left: i * track.clientWidth, behavior: "smooth"});
+    tabs.forEach((b, i) => b.onclick = () => go(i));
+    if (prev) { prev.onclick = () => go(Math.max(0, cur - 1)); next.onclick = () => go(Math.min(slides.length - 1, cur + 1)); }
+    track.addEventListener("scroll", () => requestAnimationFrame(() => activate(Math.round(track.scrollLeft / track.clientWidth))), {passive: true});
+    activate(0);
+  });
 }
 
 /* ---------- deep-dive panel ---------- */
