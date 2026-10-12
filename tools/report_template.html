@@ -85,7 +85,7 @@ h1{font-family:var(--display);font-weight:900;font-size:clamp(30px,5vw,54px);lin
 section{padding-block:52px 0}
 .sh{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;margin-bottom:18px}
 h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);margin:0;letter-spacing:.02em}
-.sub{color:var(--muted);margin:6px 0 0;max-width:64ch}
+.sub{color:var(--muted);margin:6px 0 0;max-width:64ch}.sub.one{max-width:none}
 
 /* highlight rail */
 .rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -249,6 +249,7 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .deck:hover{border-color:var(--brand,var(--line));box-shadow:0 0 0 1px var(--brand,transparent)}
 .deck.b-instagram:hover{border-color:transparent;box-shadow:none;background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5) border-box}
 .deck-h{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 22px 6px}
+.deck-h .pill{font-size:15px;padding:6px 14px;gap:8px}.deck-h .pill svg{width:16px;height:16px}
 .deck-h h3{margin:0;display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:clamp(17px,2vw,22px);letter-spacing:.04em;text-transform:uppercase}
 .deck-tabs{display:flex;gap:6px;flex-wrap:wrap}
 .deck-tabs button{font:inherit;font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel-2);color:var(--muted);cursor:pointer}
@@ -332,7 +333,7 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .gdate{font-size:13px;color:var(--faint)}
 .gbtns{display:flex;gap:8px;flex-wrap:wrap}
 .gbtn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:#1a9fff;color:#fff;font-weight:800;font-size:14px}
-.gbtn svg{width:18px;height:18px;fill:currentColor}.gbtn{text-decoration:none;transition:filter .2s}.gbtn:hover{filter:brightness(1.15)}.gimg{display:block}
+.gbtn svg{width:18px;height:18px;fill:currentColor}.gbtn img{width:auto;height:18px;display:block}.gbtn{white-space:nowrap}.gbtn{text-decoration:none;transition:filter .2s}.gbtn:hover{filter:brightness(1.15)}.gimg{display:block}
 .gbtn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg);cursor:pointer}
 @media (max-width:760px){.gcard{grid-template-columns:1fr}.gbody{padding:18px}}
 .badges{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px}.badges .status{margin-top:0;height:36px;box-sizing:border-box}
@@ -503,7 +504,7 @@ function page(ed){
       <h1>${esc(ed.name)}</h1>
       <div class="meta"><span><b>${range(ed.start, ed.end)}</b></span><span><a href="https://store.steampowered.com/app/4356840/Endix/" target="_blank" rel="noopener">Steam</a> · <a href="https://store.epicgames.com/p/endix-9f1da1?lang=en-US" target="_blank" rel="noopener">Epic</a> · Free to play</span></div>
       <div class="badges">${ed.partner ? `<a class="partner" href="${esc(ed.partner.url)}" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=ign.com&sz=64" alt="" width="22" height="22">${esc(ed.partner.role)}: <b>${esc(ed.partner.name)}</b></a>` : ""}
-      <div class="status">${statusTxt}</div></div>
+      ${ph !== "after" ? `<div class="status">${statusTxt}</div>` : ""}</div>
     </div>
     ${movie}
   </div>
@@ -520,21 +521,21 @@ function page(ed){
 
   ${buzz(ed)}
 
-  ${hl.length ? `<section><div class="sh"><div><h2>Top moments</h2></div></div>
+  ${hl.length ? `<section><div class="sh"><div><h2>View breakdown</h2></div></div>
   <div class="rail">${hl.map(h => `<a class="hl b-${h.p}" href="${esc(h.url)}" target="_blank" rel="noopener"><div class="top">${pill(h.p)}<span class="v num">${short(h.v)}<small>${h.unit || "views"}</small></span></div><div class="t">${esc(h.t)}</div><div class="by">${esc(h.by)}</div></a>`).join("")}</div></section>` : ""}
 
-  <section><div class="sh"><div><h2>By channel</h2></div></div>
+  <section><div class="sh"><div><h2>By platform</h2></div></div>
   ${decks(ed, ytC, ytM, tt, ig, x, countries)}
   </section>
 
   ${characters(ed)}
 
-  <section class="getgame"><div class="sh"><div><h2>Download Endix and enjoy!</h2></div></div>
+  <section class="getgame"><div class="sh"><div><h2>Download Endix for free and enjoy!</h2></div></div>
   <div class="gcard"><a class="gimg" href="https://store.steampowered.com/app/4356840/Endix/" target="_blank" rel="noopener" tabindex="-1"><img src="assets/endix-steam-capsule.jpg" alt="Endix on Steam" loading="lazy"></a>
     <div class="gbody"><h3>Endix</h3>
       <p>Explore unique &amp; immersive booths from your favorite games. Watch exclusive trailers, compete in mini-games, and connect with players, creators &amp; developers from around the world. All inside a living, free multiplayer experience.</p>
       <div class="gtags">${["Choose Your Own Adventure","Exploration","Immersive Sim","Hidden Object","Game Development"].map(t => `<span>${t}</span>`).join("")}</div>
-      <div class="gfoot"><span class="gdate">Released 21 May 2026 · Windows</span><span class="gbtns"><a class="gbtn" href="https://store.steampowered.com/app/4356840/Endix/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON.steam}"/></svg>Play free on Steam</a><a class="gbtn ghost" href="https://store.epicgames.com/p/endix-9f1da1?lang=en-US" target="_blank" rel="noopener">Epic Games Store</a></span></div>
+      <div class="gfoot"><span class="gdate">Released 21 May 2026 · Windows</span><span class="gbtns"><a class="gbtn" href="https://store.steampowered.com/app/4356840/Endix/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON.steam}"/></svg>Steam</a><a class="gbtn ghost" href="https://store.epicgames.com/p/endix-9f1da1?lang=en-US" target="_blank" rel="noopener"><img src="assets/epic-logo-white.png" alt="" width="16" height="18">Epic Store</a></span></div>
     </div></div></section>
 
   <div class="foot"><a class="flogo" href="https://endix.live" target="_blank" rel="noopener"><img src="${(document.querySelector(".logo img") || {}).src || ""}" alt="Endix" height="34"></a><span>Updated ${dfmt(DATA.generated)}. View counts are public figures at that date.</span></div>`;
@@ -649,7 +650,7 @@ function exhibitors(ed){
 function characters(ed){
   const c = ed.characters || [];
   if (!c.length) return "";
-  return `<section><div class="sh"><div><h2>Playable characters</h2><p class="sub">Studios can bring their own characters into Endix, and visitors get to play as them.</p></div></div>
+  return `<section><div class="sh"><div><h2>Playable Avatars</h2><p class="sub one">Studios can bring their own characters into Endix, and visitors get to play as them.</p></div></div>
   <div class="chars">${c.map(g => `<a class="char" href="${esc(g.url)}" target="_blank" rel="noopener"><div class="cimg"><img src="${esc(g.img)}" alt="Character from ${esc(g.game)}" loading="lazy"></div><span class="cg">${pill("steam")}${esc(g.game)}</span></a>`).join("")}</div></section>`;
 }
 function testimonials(ed){
@@ -683,7 +684,7 @@ function deck(key, pk, title, slides){
   slides = slides.filter(Boolean);
   if (!slides.length) return "";
   return `<div class="deck b-${pk}" data-deck>
-    <div class="deck-h"><h3>${pill(pk)}${esc(title)}</h3>${slides.length > 1 ? `<div class="deck-tabs" role="tablist">${slides.map((sl, i) => `<button type="button" role="tab" data-i="${i}" aria-current="${i === 0}">${esc(sl[0])}</button>`).join("")}</div>` : ""}</div>
+    <div class="deck-h"><h3 aria-label="${esc(title)}">${pill(pk)}</h3>${slides.length > 1 ? `<div class="deck-tabs" role="tablist">${slides.map((sl, i) => `<button type="button" role="tab" data-i="${i}" aria-current="${i === 0}">${esc(sl[0])}</button>`).join("")}</div>` : ""}</div>
     ${slides.length > 1 ? `<button type="button" class="deck-arrow prev" aria-label="Previous">‹</button><button type="button" class="deck-arrow next" aria-label="Next">›</button>` : ""}
     <div class="slides">${slides.map(sl => `<div class="slide" role="tabpanel" aria-label="${esc(sl[0])}">${sl[1]}</div>`).join("")}</div>
   </div>`;
