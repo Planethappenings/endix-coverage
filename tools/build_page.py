@@ -12,7 +12,7 @@ base_js = ('<script>(function(){var s=%s,p=location.pathname.replace(/index\\.ht
            'if(a.length>1&&a[a.length-1]==="")a.pop();if(s.indexOf(a[a.length-1])>-1)a.pop();'
            'var b=document.createElement("base");b.href=a.join("/")+"/";document.head.appendChild(b);})();</script>\n') % json.dumps(slugs)
 html = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'
-        + base_js + html.replace('</style>', '</style>\n</head><body>', 1) + '\n</body></html>')
+        + base_js + '<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">\n' + html.replace('</style>', '</style>\n</head><body>', 1) + '\n</body></html>')
 open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8').write(html)
 for slug in slugs:  # clean per-edition URLs, e.g. /spring2026/
     os.makedirs(os.path.join(ROOT, slug), exist_ok=True)
