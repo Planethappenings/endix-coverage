@@ -329,7 +329,7 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .gbody p{margin:0;color:var(--muted);line-height:1.5}
 .gtags{display:flex;flex-wrap:wrap;gap:6px}.gtags span{font-size:12px;padding:4px 9px;border-radius:6px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted)}
 .gfoot{margin-top:auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-.gwidget{margin-top:14px;display:flex;justify-content:center}.gwidget iframe{width:646px;max-width:100%;height:190px;border:0;border-radius:6px}
+.gwidget{margin:22px auto 0;width:fit-content;max-width:100%;padding:14px;border-radius:12px;background:#16151b;border:1px solid #55535f;box-shadow:0 0 0 4px #2a2930,0 0 28px rgba(255,255,255,.18)}.gwidget iframe{display:block;width:646px;max-width:100%;height:190px;border:0}
 .gdate{font-size:13px;color:var(--faint)}
 .gbtns{display:flex;gap:8px;flex-wrap:wrap}
 .gbtn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:#1a9fff;color:#fff;font-weight:800;font-size:14px}
@@ -516,7 +516,7 @@ function page(ed){
       <div class="gtags">${["Choose Your Own Adventure","Exploration","Immersive Sim","Hidden Object","Game Development"].map(t => `<span>${t}</span>`).join("")}</div>
       <div class="gfoot"><span class="gdate">Released 21 May 2026 · Windows</span><span class="gbtns"><a class="gbtn" href="https://store.steampowered.com/app/4356840/Endix/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON.steam}"/></svg>Play free on Steam</a><a class="gbtn ghost" href="https://store.epicgames.com/p/endix-9f1da1?lang=en-US" target="_blank" rel="noopener">Epic Games Store</a></span></div>
     </div></div>
-  ${HOSTED ? `<div class="gwidget"><iframe src="https://store.steampowered.com/widget/4356840/" title="Endix on Steam" loading="lazy" frameborder="0"></iframe></div>` : ""}</section>
+  ${HOSTED ? `<div class="gwidget"><iframe src="https://store.steampowered.com/widget/4356840/?utm_source=endixcoverage&utm_campaign=coverage_report" title="Endix on Steam" loading="lazy" frameborder="0"></iframe></div>` : ""}</section>
 
   <div class="foot"><span>END<span style="color:var(--pink)">I</span>X · endix.live</span><span>Updated ${dfmt(DATA.generated)}. View counts are public figures at that date.</span></div>`;
 }
