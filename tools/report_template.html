@@ -320,6 +320,20 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .sbar{flex:1;width:min(64px,70%);display:flex;align-items:flex-end;margin:6px 0 8px;border-bottom:1px solid var(--line)}
 .sbar i{display:block;width:100%;border-radius:6px 6px 0 0;min-height:4px}
 .scol span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.gcard{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(120deg,var(--panel) 0%,#3a2f4d 100%);color:var(--fg);transition:border-color .2s}
+.gcard:hover{border-color:#66c0f4}
+.gcard img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:460/215}
+.gbody{padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.gbody h3{margin:0;font-family:var(--display);font-size:24px}
+.gbody p{margin:0;color:var(--muted);line-height:1.5}
+.gtags{display:flex;flex-wrap:wrap;gap:6px}.gtags span{font-size:12px;padding:4px 9px;border-radius:6px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted)}
+.gfoot{margin-top:auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.gdate{font-size:13px;color:var(--faint)}
+.gbtns{display:flex;gap:8px;flex-wrap:wrap}
+.gbtn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:#1a9fff;color:#fff;font-weight:800;font-size:14px}
+.gbtn svg{width:18px;height:18px;fill:currentColor}.gbtn{text-decoration:none;transition:filter .2s}.gbtn:hover{filter:brightness(1.15)}.gimg{display:block}
+.gbtn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg);cursor:pointer}
+@media (max-width:760px){.gcard{grid-template-columns:1fr}.gbody{padding:18px}}
 .wvs{border:1px solid var(--line);border-radius:14px;background:var(--panel-2);padding:18px 20px;display:grid;gap:12px}
 .wvs p{margin:0;color:var(--muted)}.wvs p b{color:var(--fg)}
 .wvs .row{display:flex;justify-content:space-between;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -492,6 +506,14 @@ function page(ed){
   <section><div class="sh"><div><h2>By channel</h2></div></div>
   ${decks(ed, ytC, ytM, tt, ig, x, countries)}
   </section>
+
+  <section class="getgame"><div class="sh"><div><h2>Download Endix and enjoy!</h2></div></div>
+  <div class="gcard"><a class="gimg" href="https://store.steampowered.com/app/4356840/Endix/" target="_blank" rel="noopener" tabindex="-1"><img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/4356840/header.jpg" alt="Endix on Steam" loading="lazy" onerror="this.onerror=null;this.src='assets/endix-steam-capsule.jpg'"></a>
+    <div class="gbody"><h3>Endix</h3>
+      <p>Explore unique &amp; immersive booths from your favorite games. Watch exclusive trailers, compete in mini-games, and connect with players, creators &amp; developers from around the world. All inside a living, free multiplayer experience.</p>
+      <div class="gtags">${["Choose Your Own Adventure","Exploration","Immersive Sim","Hidden Object","Game Development"].map(t => `<span>${t}</span>`).join("")}</div>
+      <div class="gfoot"><span class="gdate">Released 21 May 2026 · Windows</span><span class="gbtns"><a class="gbtn" href="https://store.steampowered.com/app/4356840/Endix/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON.steam}"/></svg>Play free on Steam</a><a class="gbtn ghost" href="https://store.epicgames.com/p/endix-9f1da1?lang=en-US" target="_blank" rel="noopener">Epic Games Store</a></span></div>
+    </div></div></section>
 
   <div class="foot"><span>END<span style="color:var(--pink)">I</span>X · endix.live</span><span>Updated ${dfmt(DATA.generated)}. View counts are public figures at that date.</span></div>`;
 }
