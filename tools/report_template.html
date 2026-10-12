@@ -310,7 +310,8 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,28px);m
 .up{color:#3ccf91!important}.dn{color:#ff8a8a!important}
 .schs{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1}
 @media (max-width:760px){.schs{grid-template-columns:1fr}}
-.sch{border:1px solid var(--line);border-radius:14px;background:var(--panel-2);padding:16px 18px;display:flex;flex-direction:column}
+.sch{border:1px solid var(--line);border-radius:14px;background:var(--panel-2);padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.lc{width:100%;flex:1;min-height:0}.lc svg{display:block;width:100%;height:auto;overflow:visible}
 .scols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;min-height:200px}
 @media (max-width:760px){.scols{min-height:160px}}
 .scol{display:flex;flex-direction:column;align-items:center;text-align:center}
@@ -424,7 +425,7 @@ function render(){
   document.getElementById("app").innerHTML = page(ed);
   wire(ed);
   wireDecks();
-  drawTimelines();
+  drawTimelines(); drawLines();
   startSpot();
   if (HOSTED) {
     if (window.twttr && twttr.widgets) twttr.widgets.load();
@@ -718,10 +719,7 @@ function decks(ed, ytC, ytM, tt, ig, x, countries){
   if (st) {
     const evs = st.events || [];
     const pct = (a, b) => (b > a ? "+" : "") + ((b / a - 1) * 100).toFixed(1) + "%";
-    const cols = (key, color, label) => {
-      const max = Math.max(...evs.map(e => e[key]));
-      return `<div class="sch"><h4>${label}</h4><div class="scols">${evs.map((e, i) => `<div class="scol"><b class="num">${key === "reads" ? fmt(e[key]) : short(e[key])}</b>${i ? `<em class="${e[key] >= evs[i-1][key] ? "up" : "dn"}">${pct(evs[i-1][key], e[key])}</em>` : `<em>&nbsp;</em>`}<div class="sbar"><i style="height:${(e[key] / max * 100).toFixed(1)}%;background:${color}"></i></div><span>${esc(e.name.replace("Endix ", ""))}</span></div>`).join("")}</div></div>`;
-    };
+    const cols = (key, color, label) => `<div class="sch"><h4>${label}</h4><div class="lc" data-lc='${esc(JSON.stringify({labels: evs.map(e => e.name.replace("Endix ", "")), vals: evs.map(e => e[key]), color, full: key === "reads"}))}'></div></div>`;
     const evCards = evs.map((e, i) => `<a class="sev" href="${esc(e.url)}" target="_blank" rel="noopener"><span class="nm">${esc(e.name)} →</span><span class="kv"><b class="num">${short(e.impressions)}</b> impressions</span><span class="kv"><b class="num">${fmt(e.reads)}</b> reads</span>${i ? `<span class="gr ${e.reads >= evs[i-1].reads ? "up" : "dn"}">Reads ${pct(evs[i-1].reads, e.reads)} vs ${esc(evs[i-1].name.replace("Endix ", ""))}</span>` : `<span class="gr">First Endix Steam event</span>`}</a>`).join("");
     out.push(deck("steam", "steam", "Steam", [
       ["Overview", `<div class="ktiles k4">${[["Total unique impressions", fmt(st.impressions)],["Total unique reads", fmt(st.reads)],["Steam events", evs.length || null],["Downloads", ed.downloads || null]].filter(k => k[1]).map(k => `<div class="ktile"><span>${k[0]}</span><b class="num">${k[1]}</b></div>`).join("")}</div>
@@ -771,6 +769,28 @@ function donut(langs, colors, total, codes){
     return `<path d="M${x1},${y1} A${R},${R} 0 ${large} 1 ${x2},${y2} L${x3},${y3} A${r},${r} 0 ${large} 0 ${x4},${y4} Z" fill="${colors[i]}"><title>${l[0]}: ${l[1]} streams</title></path>${lab}`;
   }).join("");
   return `<svg viewBox="0 0 240 240" role="img" aria-label="Streams by language">${segs}<text x="120" y="114" text-anchor="middle" font-family="Orbitron, sans-serif" font-weight="800" font-size="26" fill="var(--fg)">${total}</text><text x="120" y="138" text-anchor="middle" font-size="12" fill="var(--muted)">streams</text></svg>`;
+}
+function drawLines(){
+  document.querySelectorAll(".lc[data-lc]").forEach(box => {
+    if (box.dataset.done) return; box.dataset.done = 1;
+    const d = JSON.parse(box.dataset.lc), n = d.vals.length, id = "g" + Math.random().toString(36).slice(2, 8);
+    const W = Math.max(280, Math.round(box.clientWidth || 480)), H = Math.max(W < 420 ? 230 : 260, Math.round(box.clientHeight || 0)), L = 44, R = 44, T = 58, B = 56, max = Math.max(...d.vals) * 1.05;
+    const X = i => L + i * (W - L - R) / (n - 1), Y = v => T + (H - T - B) * (1 - v / max);
+    let line = `M${X(0)},${Y(d.vals[0])}`;
+    for (let i = 0; i < n - 1; i++) { const x0 = X(i), x1 = X(i + 1), cx = (x1 - x0) / 2; line += ` C${x0 + cx},${Y(d.vals[i])} ${x1 - cx},${Y(d.vals[i + 1])} ${x1},${Y(d.vals[i + 1])}`; }
+    const area = line + ` L${X(n - 1)},${H - B} L${X(0)},${H - B} Z`;
+    const val = v => d.full ? fmt(v) : short(v);
+    box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${d.labels.map((l, i) => l + " " + val(d.vals[i])).join(", ")}">
+      <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${d.color}" stop-opacity=".4"/><stop offset="1" stop-color="${d.color}" stop-opacity="0"/></linearGradient></defs>
+      <line x1="${L}" x2="${W - R}" y1="${H - B}" y2="${H - B}" stroke="var(--line)"/>
+      <path d="${area}" fill="url(#${id})"/><path d="${line}" fill="none" stroke="${d.color}" stroke-width="3"/>
+      ${d.vals.map((v, i) => { const g = i ? (v / d.vals[i - 1] - 1) * 100 : null; return `<line x1="${X(i)}" x2="${X(i)}" y1="${Y(v)}" y2="${H - B}" stroke="${d.color}" stroke-opacity=".35" stroke-dasharray="3 4"/>
+        <circle cx="${X(i)}" cy="${Y(v)}" r="6" fill="${d.color}" stroke="var(--panel-2)" stroke-width="3"/>
+        <text x="${X(i)}" y="${Y(v) - (g === null ? 16 : 32)}" text-anchor="middle" font-family="Orbitron, sans-serif" font-weight="800" font-size="${W < 420 ? 13 : 16}" fill="var(--fg)">${val(v)}</text>
+        ${g === null ? "" : `<text x="${X(i)}" y="${Y(v) - 14}" text-anchor="middle" font-size="12" font-weight="800" fill="${g >= 0 ? "#3ccf91" : "#ff8a8a"}">${g >= 0 ? "+" : ""}${g.toFixed(1)}%</text>`}
+        <text x="${X(i)}" y="${H - B + 22}" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1.2" fill="var(--muted)">${d.labels[i].toUpperCase().split(" ").map((w, k) => `<tspan x="${X(i)}" dy="${k ? 15 : 0}">${w}</tspan>`).join("")}</text>`; }).join("")}
+    </svg>`;
+  });
 }
 function drawTimelines(){
   document.querySelectorAll(".tl[data-tl]").forEach(box => {
