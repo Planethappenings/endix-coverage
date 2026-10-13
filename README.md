@@ -2,6 +2,8 @@
 
 Public coverage report for each Endix edition. Served by GitHub Pages from `index.html`.
 
+**Full system handoff (architecture, collector, rules, lessons): [docs/HANDOFF.md](docs/HANDOFF.md).** The Apps Script collector source is in `collector/EndixCollector.gs`.
+
 ## Daily update
 1. Read the Google Sheet "Endix X-statistik (@Endix_Expo)" (`1Sk97t56KJcBACxyPRATpDeC4Qk1fzZZMfXH6dqjHFCg`) with
    spreadsheets.get, includeGridData=true, fields `sheets.properties.title,sheets.data.rowData.values.formattedValue`, ranges:
