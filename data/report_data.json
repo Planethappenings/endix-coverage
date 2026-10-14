@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13",
+ "generated": "2026-10-14",
  "editions": [
   {
    "slug": "spring2026",
@@ -5264,8 +5264,8 @@
    "x": {
     "mentions": 600.0,
     "accounts": 276.0,
-    "views": 311366.0,
-    "engagement": 4659.0,
+    "views": 311390.0,
+    "engagement": 4661.0,
     "viral": 7.0,
     "top": [
      {
@@ -5303,7 +5303,7 @@
      {
       "date": "2026-06-08",
       "author": "@TheGamerGuide_ (The Gamer Guide®)",
-      "views": 7355.0,
+      "views": 7358.0,
       "engagement": 28.0,
       "url": "https://x.com/i/status/2063999495239500194",
       "summary": "ISSUE #31 OUT NOW FT - Brands @CORSAIR x @elg…"
@@ -8110,7 +8110,7 @@
      "handle": "@davidscottjaffe",
      "text": "I will be there! My first Endix was last spring and- while very nacent- it was very clear that virtual geek conventions are very much a big part of the future!\n\nCan't wait to dive back in, stream it, and perhaps even participate! Hmmm...maybe a virtual GABBIN & GAMES booth?:)",
      "url": "https://x.com/davidscottjaffe/status/2098115981189304365",
-     "likes": 3.0
+     "likes": 4.0
     },
     {
      "edition": "winter2026",
@@ -8119,7 +8119,7 @@
      "handle": "@davidscottjaffe",
      "text": "Endix is basically a virtual E3 and they are JUST getting started. It's super cool and fun and THIS time I will be live streaming FROM the virtual show floor! Can't wait!",
      "url": "https://x.com/davidscottjaffe/status/2106115692206645549",
-     "likes": 7.0
+     "likes": 8.0
     },
     {
      "edition": "winter2026",
@@ -8137,7 +8137,7 @@
      "handle": "@VicariousNick",
      "text": "Wait so this is like a virtual games expo we can experience from home?? That's so sick",
      "url": "https://x.com/VicariousNick/status/2098316064408912015",
-     "likes": 1.0
+     "likes": 2.0
     },
     {
      "edition": "winter2026",
@@ -8559,43 +8559,51 @@
    "facebook": [],
    "instagram": [],
    "x": {
-    "mentions": 48.0,
-    "accounts": 43.0,
-    "views": 7898.0,
-    "engagement": 83.0,
+    "mentions": 64.0,
+    "accounts": 49.0,
+    "views": 8674.0,
+    "engagement": 132.0,
     "viral": 0.0,
     "top": [
      {
       "date": "2026-09-10",
       "author": "@davidscottjaffe (David Jaffe)",
-      "views": 2913.0,
-      "engagement": 4.0,
+      "views": 3008.0,
+      "engagement": 6.0,
       "url": "https://x.com/i/status/2098115981189304365",
       "summary": "“maybe a virtual GABBIN & GAMES booth?:)”"
      },
      {
       "date": "2026-10-02",
       "author": "@davidscottjaffe (David Jaffe)",
-      "views": 2727.0,
-      "engagement": 8.0,
+      "views": 2730.0,
+      "engagement": 9.0,
       "url": "https://x.com/i/status/2106115692206645549",
       "summary": "“Endix is basically a virtual E3 and they are JUST getting started”"
      },
      {
       "date": "2026-09-13",
       "author": "@TheGamingGround (The Gaming Ground…)",
-      "views": 309.0,
-      "engagement": 4.0,
+      "views": 418.0,
+      "engagement": 7.0,
       "url": "https://x.com/i/status/2099195276351115437",
       "summary": "“Endix returns this November, inviting players to experience the next level of expos”"
      },
      {
       "date": "2026-09-18",
       "author": "@kira_lovey (Kira_Lovey)",
-      "views": 248.0,
-      "engagement": 5.0,
+      "views": 249.0,
+      "engagement": 6.0,
       "url": "https://x.com/i/status/2101023284091306170",
       "summary": "“If you haven't participated in this yet, PLEASE make sure you check it out!”"
+     },
+     {
+      "date": "2026-10-13",
+      "author": "@oK1PP3R (GFUEL | NXT Kipper)",
+      "views": 233.0,
+      "engagement": 14.0,
+      "url": "https://x.com/i/status/2110016392343024033",
+      "summary": "I GOT ACCEPTED AS A CREATOR FOR THE ENDIX Exp…"
      },
      {
       "date": "2026-08-18",
@@ -8608,10 +8616,18 @@
      {
       "date": "2026-09-26",
       "author": "@IndieExposeUK (Indie-cent Exposu…)",
-      "views": 179.0,
+      "views": 181.0,
       "engagement": 16.0,
       "url": "https://x.com/i/status/2103919126146384045",
       "summary": "“caught our attention back at @Endix_Expo”"
+     },
+     {
+      "date": "2026-10-07",
+      "author": "@ShayTotalApex (Shay Hobbs)",
+      "views": 157.0,
+      "engagement": 4.0,
+      "url": "https://x.com/i/status/2107865428014121415",
+      "summary": "Post mentioning @Endix_Expo"
      },
      {
       "date": "2026-07-24",
@@ -8624,26 +8640,10 @@
      {
       "date": "2026-09-02",
       "author": "@Sasajou_ (Sasajou)",
-      "views": 104.0,
-      "engagement": 1.0,
+      "views": 107.0,
+      "engagement": 2.0,
       "url": "https://x.com/i/status/2095137174714761563",
       "summary": "“I'd love to do round two for this 😭🥹”"
-     },
-     {
-      "date": "2026-09-10",
-      "author": "@innoshades (Chris)",
-      "views": 84.0,
-      "engagement": 2.0,
-      "url": "https://x.com/i/status/2098064690694009043",
-      "summary": "“looking forward to another great showcase of games!”"
-     },
-     {
-      "date": "2026-09-17",
-      "author": "@ShayTotalApex (Shay Hobbs)",
-      "views": 70.0,
-      "engagement": 2.0,
-      "url": "https://x.com/i/status/2100538502332961196",
-      "summary": "Post mentioning @Endix_Expo"
      }
     ]
    },
@@ -8657,7 +8657,7 @@
      "url": "https://totalapexentertainment.com/endix-expo-interview-founder-nikos/",
      "country": "USA",
      "kind": "article",
-     "x_views": 34.0,
+     "x_views": 157.0,
      "source": "grok",
      "language": "English",
      "uvm": 27860.0
@@ -8685,7 +8685,7 @@
      "url": "https://www.indie-exposure.com/review-mexican-ninja/",
      "country": "UK",
      "kind": "article",
-     "x_views": 179.0,
+     "x_views": 181.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -8755,7 +8755,7 @@
      "url": "https://thegg.net/gaming-events/endix-returns-this-november-inviting-players-to-experience-the-next-level-of-expos/",
      "country": "Sweden",
      "kind": "article",
-     "x_views": 309.0,
+     "x_views": 418.0,
      "source": "grok",
      "language": "Swedish",
      "uvm": 0
