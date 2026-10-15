@@ -21,7 +21,7 @@ CONFIG = {
     'x_hide_authors': {'@oursnet'},
     'x_hide_ids': {'2058216440541348164'},
     # Steam reviews (Steam_Reviews tab): IDs to never show, and how many to show per edition
-    'steam_hide_ids': set(),
+    'steam_hide_ids': {'226593544', '226422187', '226382586', '226373482', '226353631', '226320113', '226254213', '226239198', '226207684', '226337904'},  # mixed or off-topic
     'steam_max_per_edition': 12,
     'editions': {
         'spring2026': {
