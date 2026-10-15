@@ -74,6 +74,7 @@ Live result:
 | **Instagram** | Apify `apify~instagram-hashtag-scraper` for discovery and `apify~instagram-scraper` (directUrls) to refresh stats | Apify credits | See throttling below |
 | **Twitch** | Helix API with client credentials. Polls `streams?game_id=<Endix category>` every 15 minutes, but **only** from 1 day before an event until 3 days after it. Saved to Twitch_Snapshots. Spring 2026 numbers came from SullyGnome and are hard-coded in CONFIG. | Free | 15 min around events |
 | **Steam** | Impressions and reads for each Steam event, from Steamworks/the old Lovable page. Hard-coded in CONFIG (`steam.events`). Exhibitor names and capsule images come from the public `store.steampowered.com/api/appdetails` (no key needed). | Free | Manual or daily |
+| **Steam reviews** | Public endpoint `store.steampowered.com/appreviews/4356840?json=1` (no key), 100 reviews per request, newest first. Saved to `Steam_Reviews`; edition by review date. Column K *Show* is Danne's choice (TRUE/FALSE); empty = auto-pick English, recommended, 40–400 characters, most helpful first (max 12 per edition). Shown under "What people are saying" with a *Steam reviews* filter. | Free | Daily |
 | **Facebook / other** | Manual only: Danne pastes the link and types the views into `Links_Manual`. | Free | Manual |
 | **Manual links** | Any TikTok, Instagram or YouTube link pasted into `Links_Manual` is tracked automatically, even if it doesn't mention "Endix". This is how old Spring posts were seeded, since TikTok search favours new videos. | – | – |
 

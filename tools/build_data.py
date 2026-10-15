@@ -20,6 +20,9 @@ CONFIG = {
     # X posts hidden from the page: whole accounts (lower-case @handle) or single post IDs (duplicates)
     'x_hide_authors': {'@oursnet'},
     'x_hide_ids': {'2058216440541348164'},
+    # Steam reviews (Steam_Reviews tab): IDs to never show, and how many to show per edition
+    'steam_hide_ids': set(),
+    'steam_max_per_edition': 12,
     'editions': {
         'spring2026': {
             'aftermovie': 'https://www.youtube.com/watch?v=DDZxxjYXfSg',
@@ -312,6 +315,26 @@ for r in table('Webb_Kommentarer_Publik'):
     comments.append({'edition': ed, 'date': date, 'name': r.get('author_name', ''), 'handle': r.get('handle', ''),
                      'text': r['text'].strip(), 'url': r.get('url', ''), 'likes': num(r.get('likes'))})
 
+# ---------------------------------------------------------------- Steam reviews of Endix (Steam_Reviews tab)
+# Column 'Show' is Danne's choice: TRUE = always shown, FALSE = never. Empty = picked automatically from
+# English reviews the collector marked 'great' (recommended, 40-400 characters), most helpful first.
+def clean_review(t):
+    t = re.sub(r'\[/?[a-z0-9*]+(=[^\]]*)?\]', '', t or '', flags=re.I)  # Steam BBCode like [b] [h1] [url=...]
+    return re.sub(r'\s+', ' ', t).strip()
+steam_reviews = []
+for r in table('Steam_Reviews'):
+    rid = str(r.get('Review ID') or '').strip(); ed = (r.get('Edition') or '').strip()
+    if not rid or not ed or rid in CONFIG['steam_hide_ids']: continue
+    show = str(r.get('Show (TRUE/FALSE, your choice)') or '').strip().upper()
+    if show in ('FALSE', 'NEJ', 'FALSKT'): continue
+    rec = str(r.get('Recommended') or '').strip().upper() in ('TRUE', 'SANT')
+    auto = (r.get('Suggested') or '').strip().lower() == 'great' and (r.get('Language') or '') == 'english' and rec
+    if show not in ('TRUE', 'SANT', 'JA') and not auto: continue
+    text = clean_review(r.get('Review'))
+    if not text: continue
+    steam_reviews.append({'edition': ed, 'text': text, 'date': day(r.get('Posted')), 'hours': num(r.get('Hours played')),
+                          'helpful': num(r.get('Helpful votes')), 'recommended': rec, 'url': r.get('Link', ''), 'pinned': show in ('TRUE', 'SANT', 'JA')})
+
 # ---------------------------------------------------------------- exhibitors (Exhibitors tab: edition + store link; name/image filled by the collector)
 exhibitors = []
 for r in table('Exhibitors'):
@@ -356,6 +379,7 @@ for e in editions:
         'sponsor': c.get('sponsor'),
         'quotes': (lambda base: base + [q for q in press_quotes if q['edition'] == e['slug'] and norm(q['text'])[:40] not in {norm(b['text'])[:40] for b in base}])(c.get('quotes', [])),
         'comments': [x for x in comments if x['edition'] == e['slug']],
+        'reviews': sorted([x for x in steam_reviews if x['edition'] == e['slug']], key=lambda v: (not v['pinned'], -v['helpful'], -v['hours']))[:CONFIG['steam_max_per_edition']],
         'exhibitors': [x for x in exhibitors if x['edition'] == e['slug']],
         'testimonials': c.get('testimonials', []),
         'youtube': sorted(yt, key=lambda v: -v['views']),
@@ -369,5 +393,5 @@ for e in editions:
 json.dump(out, open(OUT, 'w'), ensure_ascii=False, indent=1)
 for ed in out['editions']:
     print(ed['slug'], 'yt', len(ed['youtube']), int(sum(v['views'] for v in ed['youtube'])), 'tt', len(ed['tiktok']), 'ig', len(ed['instagram']),
-          'press', len(ed['press']), 'countries', len({p['country'] for p in ed['press']}), 'trailerpages', len(ed['trailer_pages']),
+          'press', len(ed['press']), 'countries', len({p['country'] for p in ed['press']}), 'trailerpages', len(ed['trailer_pages']), 'reviews', len(ed['reviews']),
           'x', ed['x'] and (ed['x']['mentions'], ed['x']['views'], len(ed['x']['top'])))

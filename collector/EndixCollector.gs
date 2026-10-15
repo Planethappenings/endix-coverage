@@ -1,9 +1,10 @@
 /**
- * Endix coverage collector v2.5 — Google Apps Script for the "Endix X-statistik" sheet.
+ * Endix coverage collector v2.6 — Google Apps Script for the "Endix X-statistik" sheet.
  * Adds its own tabs and never touches Grok's tabs.
  *
  * Sources: YouTube (YouTube API), press (Google News per edition + GDELT + Bing RSS), TikTok + Instagram (Apify),
- * Twitch (Twitch API, polled every 15 min during each event), manual links (any platform).
+ * Twitch (Twitch API, polled every 15 min during each event), manual links (any platform),
+ * Steam user reviews of Endix (public Steam store endpoint, no key needed).
  *
  * Keys live in Project settings → Script properties (never in this file):
  *   APIFY_TOKEN, TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET   (optional: TWITCH_GAME_NAME, default "Endix")
@@ -23,6 +24,7 @@ const TABS = {
   pressManual: 'Press_Manual',
   exhibitors: 'Exhibitors',
   twitch: 'Twitch_Snapshots',
+  reviews: 'Steam_Reviews',
   log: 'Collector_Log',
 };
 const SOCIAL_HEADERS = ['Post ID', 'Edition', 'URL', 'Creator', 'Creator name', 'Followers', 'Published', 'Views', 'Likes',
@@ -34,6 +36,8 @@ const ACTORS = {
   igHashtag: 'apify~instagram-hashtag-scraper',
   igPosts: 'apify~instagram-scraper',
 };
+const STEAM_APP_ID = '4356840';  // Endix on Steam
+const REVIEW_HEADERS = ['Review ID', 'Edition', 'Posted', 'Language', 'Recommended', 'Hours played', 'Helpful votes', 'Review', 'Link', 'Suggested', 'Show (TRUE/FALSE, your choice)', 'First seen'];
 const SOCIAL_SEARCH = { tiktokQueries: ['endix'], hashtags: ['endix', 'endixexpo'] };
 
 const EDITION_HEADERS = ['Edition', 'Slug', 'Event start', 'Event end', 'Window start', 'Window end', 'Keywords', 'Active'];
@@ -74,6 +78,7 @@ function onOpen() {
     .addItem('TikTok + Instagram: start', 'startSocial')
     .addItem('TikTok + Instagram: fetch finished results', 'finishApifyRuns')
     .addItem('Exhibitors: fetch names and images from Steam', 'fillExhibitors')
+    .addItem('Steam reviews only', 'collectSteamReviews')
     .addItem('Check API keys', 'testKeys')
     .addSeparator()
     .addItem('Set up tabs', 'setup')
@@ -105,6 +110,7 @@ function setup() {
   sheet_(TABS.pressManual, PRESS_MANUAL_HEADERS);
   sheet_(TABS.exhibitors, EXHIBITOR_HEADERS);
   sheet_(TABS.twitch, TWITCH_HEADERS);
+  sheet_(TABS.reviews, REVIEW_HEADERS);
   sheet_(TABS.log, ['Time', 'Collector', 'Message']);
   log_('setup', 'Tabs ready');
 }
@@ -124,6 +130,7 @@ function collectAll() {
   try { collectPress(); } catch (e) { log_('press', 'ERROR ' + e.message); }
   try { startSocial(); } catch (e) { log_('apify', 'ERROR ' + e.message); }
   try { fillExhibitors(); } catch (e) { log_('exhibitors', 'ERROR ' + e.message); }
+  try { collectSteamReviews(); } catch (e) { log_('steam reviews', 'ERROR ' + e.message); }
   const props = PropertiesService.getScriptProperties();
   weekly.forEach(e => props.setProperty('weekly_' + e.slug, String(Date.now())));
   if (weekly.length) log_('weekly', 'Weekly refresh done for ' + weekly.map(e => e.slug).join(', '));
@@ -569,6 +576,53 @@ function ownHandles_(platform) {
   if (sh.getLastRow() < 2) return [];
   return sh.getRange(2, 1, sh.getLastRow() - 1, 2).getValues()
     .filter(r => String(r[0]).toLowerCase() === platform).map(r => String(r[1]).replace(/^@/, '').toLowerCase());
+}
+
+/* ---------------- Steam reviews ----------------
+ * All user reviews of Endix, newest first. Each review goes to the edition whose window contains its date.
+ * Column K (Show) is your choice: TRUE = always on the report page, FALSE = never. Empty = the report picks
+ * from the Suggested ones (recommended, readable length). Votes are refreshed for reviews seen again. */
+function collectSteamReviews() {
+  const sh = sheet_(TABS.reviews, REVIEW_HEADERS);
+  const eds = editions_();
+  const data = sh.getLastRow() > 1 ? sh.getRange(2, 1, sh.getLastRow() - 1, REVIEW_HEADERS.length).getValues() : [];
+  const index = {};
+  data.forEach((r, i) => { index[String(r[0])] = i; });
+  const first = data.length === 0;
+  const now = new Date();
+  let cursor = '*', pages = 0, added = 0, updated = 0;
+  while (pages < (first ? 60 : 10)) {
+    const url = 'https://store.steampowered.com/appreviews/' + STEAM_APP_ID + '?json=1&filter=recent&language=all&purchase_type=all'
+      + '&num_per_page=100&cursor=' + encodeURIComponent(cursor);
+    const res = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+    pages++;
+    if (res.getResponseCode() !== 200) { log_('steam reviews', 'Steam answered ' + res.getResponseCode() + ', will try again next run'); break; }
+    const j = JSON.parse(res.getContentText() || '{}');
+    const list = j.reviews || [];
+    let seen = 0;
+    list.forEach(v => {
+      const id = String(v.recommendationid);
+      const helpful = Number(v.votes_up || 0);
+      if (id in index) { data[index[id]][6] = helpful; seen++; updated++; return; }
+      const posted = new Date(Number(v.timestamp_created) * 1000);
+      const text = String(v.review || '').trim();
+      const hours = Math.round(Number((v.author || {}).playtime_forever || 0) / 6) / 10;
+      const good = v.voted_up && text.length >= 40 && text.length <= 400;
+      data.push([id, editionFor_(eds, posted), posted, v.language || '', !!v.voted_up, hours, helpful, text.slice(0, 2000),
+        'https://steamcommunity.com/profiles/' + (v.author || {}).steamid + '/recommended/' + STEAM_APP_ID + '/', good ? 'great' : '', '', now]);
+      index[id] = data.length - 1;
+      added++;
+    });
+    // stop when Steam has no more pages, or once a whole page was already known (we are caught up)
+    if (!list.length || !j.cursor || j.cursor === cursor || (!first && seen === list.length)) break;
+    cursor = j.cursor;
+    Utilities.sleep(1000);
+  }
+  if (data.length) {
+    sh.getRange(2, 1, data.length, REVIEW_HEADERS.length).setValues(data);
+    sh.getRange(2, 3, data.length, 1).setNumberFormat('yyyy-mm-dd');
+  }
+  log_('steam reviews', `pages ${pages}, new reviews ${added}, refreshed ${updated}`);
 }
 
 /* ---------------- Twitch ---------------- */
