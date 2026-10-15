@@ -322,6 +322,13 @@ def clean_review(t):
     t = re.sub(r'\[/?[a-z0-9*]+(=[^\]]*)?\]', '', t or '', flags=re.I)  # Steam BBCode like [b] [h1] [url=...]
     return re.sub(r'\s+', ' ', t).strip()
 steam_reviews = []
+review_stats = {}  # per edition: all reviews in every language, and how many recommend Endix
+for r in table('Steam_Reviews'):
+    _ed = (r.get('Edition') or '').strip()
+    if _ed:
+        st_ = review_stats.setdefault(_ed, {'total': 0, 'positive': 0})
+        st_['total'] += 1
+        st_['positive'] += str(r.get('Recommended') or '').strip().upper() in ('TRUE', 'SANT')
 for r in table('Steam_Reviews'):
     rid = str(r.get('Review ID') or '').strip(); ed = (r.get('Edition') or '').strip()
     if not rid or not ed or rid in CONFIG['steam_hide_ids']: continue
@@ -379,6 +386,7 @@ for e in editions:
         'sponsor': c.get('sponsor'),
         'quotes': (lambda base: base + [q for q in press_quotes if q['edition'] == e['slug'] and norm(q['text'])[:40] not in {norm(b['text'])[:40] for b in base}])(c.get('quotes', [])),
         'comments': [x for x in comments if x['edition'] == e['slug']],
+        'review_stats': review_stats.get(e['slug']),
         'reviews': sorted([x for x in steam_reviews if x['edition'] == e['slug']], key=lambda v: (not v['pinned'], -v['helpful'], -v['hours']))[:CONFIG['steam_max_per_edition']],
         'exhibitors': [x for x in exhibitors if x['edition'] == e['slug']],
         'testimonials': c.get('testimonials', []),

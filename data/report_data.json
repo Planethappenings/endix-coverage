@@ -540,6 +540,10 @@
      "likes": 0.0
     }
    ],
+   "review_stats": {
+    "total": 132,
+    "positive": 96
+   },
    "reviews": [
     {
      "edition": "spring2026",
@@ -8307,6 +8311,10 @@
      "likes": 1.0
     }
    ],
+   "review_stats": {
+    "total": 4,
+    "positive": 1
+   },
    "reviews": [
     {
      "edition": "winter2026",

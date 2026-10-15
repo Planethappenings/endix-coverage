@@ -566,7 +566,7 @@ function buzz(ed){
                              : comments.map(c => ({text:c.text, who:`${c.name} · ${c.handle}`, url:c.url, link:"See the post on X ↗"}));
   const cards = [].concat(
     comments.map(c => `<a class="bc" data-k="x" href="${esc(c.url)}" target="_blank" rel="noopener"><p>${esc(c.text)}</p><span class="by"><span class="av" aria-hidden="true">${esc(initials(c.name))}</span><span class="nm"><b>${esc(c.name)}</b><br>${esc(c.handle)} · ${dfmt(c.date)}</span><span class="src x">on X</span></span></a>`),
-    reviews.map(r => `<a class="bc" data-k="steam" href="${esc(r.url)}" target="_blank" rel="noopener"><p>${esc(r.text)}</p><span class="by"><span class="av st" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="${ICON.steam}"/></svg></span><span class="nm"><b>${r.recommended ? "Recommended" : "Steam player"}</b><br>${r.hours ? `${r.hours >= 10 ? Math.round(r.hours) : r.hours} h played · ` : ""}${dfmt(r.date)}</span><span class="src st">Steam</span></span></a>`),
+    reviews.map(rcard),
     quotes.map(q => `<a class="bc" data-k="press" data-t="${esc(q.text.slice(0,60))}" href="${esc(q.url)}" target="_blank" rel="noopener"><p>${esc(q.text)}</p><span class="by"><span class="nm"><b>${esc(q.outlet)}</b><br>Read the article ↗</span><span class="src pr">Press</span></span></a>`)
   );
   // interleave X, Steam and press so every kind shows near the top
@@ -693,6 +693,7 @@ const emb = (kind, item, title, by, views) => `<div class="emb">${frame(kind, it
 const tweet = t => `<div class="tw"><blockquote class="tw-lazy" data-theme="dark" data-dnt="true" data-conversation="none" data-align="center"><p>${esc(t.summary)}</p>— ${esc(t.author)} <a href="https://twitter.com/i/status/${tweetId(t.url)}">${dfmt(t.date)}</a></blockquote><a class="more" href="https://x.com/i/status/${tweetId(t.url)}" target="_blank" rel="noopener"><span>Read the full post on X ↗</span></a></div>`;
 const qcard = (text, who, sub, url, src) => `<a class="bc" href="${esc(url)}" target="_blank" rel="noopener"><p>${esc(text)}</p><span class="by"><span class="nm"><b>${esc(who)}</b><br>${esc(sub)}</span><span class="src ${src === "X" ? "x" : "pr"}">${src}</span></span></a>`;
 
+const rcard = r => `<a class="bc" data-k="steam" href="${esc(r.url)}" target="_blank" rel="noopener"><p>${esc(r.text)}</p><span class="by"><span class="av st" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="${ICON.steam}"/></svg></span><span class="nm"><b>${r.recommended ? "Recommended" : "Steam player"}</b><br>${r.hours ? `${r.hours >= 10 ? Math.round(r.hours) : r.hours} h played · ` : ""}${dfmt(r.date)}</span><span class="src st">Steam</span></span></a>`;
 function deck(key, pk, title, slides){
   slides = slides.filter(Boolean);
   if (!slides.length) return "";
@@ -788,7 +789,11 @@ function decks(ed, ytC, ytM, tt, ig, x, countries){
     ]));
   } else out.push(deck("twitch", "twitch", "Twitch", [["Overview", `<div class="empty-c">Streams in the Endix category are measured every 15 minutes from the day before the event until two days after.</div>`]]));
   // Steam
-  const st = ed.steam;
+  const st = ed.steam, rv = ed.reviews || [], rs = ed.review_stats;
+  const reviewSlide = rv.length ? ["Player reviews", `${rs && rs.total >= 20 ? `<div class="ktiles k3">${[["Steam reviews", fmt(rs.total)],["Positive reviews", fmt(rs.positive)],["Recommend Endix", Math.round(rs.positive / rs.total * 100) + "%"]].map(k => `<div class="ktile"><span>${k[0]}</span><b class="num">${k[1]}</b></div>`).join("")}</div>` : ""}
+      <div class="qgrid">${rv.map(rcard).join("")}</div>
+      <div class="cf"><span class="note">Reviews from players on Steam during this edition, quoted as written.</span><span class="note"><a href="https://store.steampowered.com/app/4356840/Endix/#app_reviews_hash" target="_blank" rel="noopener" style="color:inherit">All reviews on Steam →</a></span></div>`] : null;
+  if (!st && reviewSlide) out.push(deck("steam", "steam", "Steam", [reviewSlide]));
   if (st) {
     const evs = st.events || [];
     const pct = (a, b) => (b > a ? "+" : "") + ((b / a - 1) * 100).toFixed(1) + "%";
@@ -801,6 +806,7 @@ function decks(ed, ytC, ytM, tt, ig, x, countries){
         <div class="cf"><span class="note">${esc(st.note)} Each card opens that event's Steam sale page with all the games.</span></div>`],
       evs.length ? ["Per event", `<div class="schs">${cols("impressions", "#3987e5", "Unique impressions per event")}${cols("reads", "#199e70", "Unique reads per event")}</div>
         <div class="cf"><span class="note">Impressions and reads are shown on separate scales. Percentages compare with the previous event.</span></div>`] : null,
+      reviewSlide,
     ]));
   }
   return out.join("");
