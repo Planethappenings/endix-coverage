@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17",
+ "generated": "2026-10-18",
  "editions": [
   {
    "slug": "spring2026",
@@ -5390,8 +5390,8 @@
    "x": {
     "mentions": 600.0,
     "accounts": 276.0,
-    "views": 311479.0,
-    "engagement": 4661.0,
+    "views": 311502.0,
+    "engagement": 4658.0,
     "viral": 7.0,
     "top": [
      {
@@ -5413,7 +5413,7 @@
      {
       "date": "2026-05-15",
       "author": "@THQNordic (THQ Nordic)",
-      "views": 19304.0,
+      "views": 19305.0,
       "engagement": 101.0,
       "url": "https://x.com/i/status/2055335537616035985",
       "summary": "“thrilled to be part of @Endix_Expo again”"
@@ -5421,7 +5421,7 @@
      {
       "date": "2026-05-24",
       "author": "@THQNordic (THQ Nordic)",
-      "views": 11669.0,
+      "views": 11670.0,
       "engagement": 94.0,
       "url": "https://x.com/i/status/2058509056357109884",
       "summary": "Post mentioning @Endix_Expo"
@@ -5429,7 +5429,7 @@
      {
       "date": "2026-06-08",
       "author": "@TheGamerGuide_ (The Gamer Guide®)",
-      "views": 7362.0,
+      "views": 7364.0,
       "engagement": 28.0,
       "url": "https://x.com/i/status/2063999495239500194",
       "summary": "ISSUE #31 OUT NOW FT - Brands @CORSAIR x @elg…"
@@ -5445,7 +5445,7 @@
      {
       "date": "2026-05-21",
       "author": "@denofwolvesgame (Den of Wolves)",
-      "views": 5548.0,
+      "views": 5549.0,
       "engagement": 37.0,
       "url": "https://x.com/i/status/2057388590976446855",
       "summary": "Be the first to hear a new track from @SimonV…"
@@ -8309,6 +8309,15 @@
      "text": "Threw my hat in the ring! Looks and sounds epic",
      "url": "https://x.com/IchibanThug/status/2095162714599424228",
      "likes": 1.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-10-17",
+     "name": "Indie-cent Exposure",
+     "handle": "@IndieExposeUK",
+     "text": "We can't wait to see what you have in store this time around ☺️ And we get to hang out online with some friends we made at the last event too.",
+     "url": "https://x.com/IndieExposeUK/status/2111517820966031606",
+     "likes": 1.0
     }
    ],
    "review_stats": {
@@ -8736,10 +8745,10 @@
    "facebook": [],
    "instagram": [],
    "x": {
-    "mentions": 76.0,
-    "accounts": 52.0,
-    "views": 9677.0,
-    "engagement": 161.0,
+    "mentions": 85.0,
+    "accounts": 55.0,
+    "views": 10120.0,
+    "engagement": 173.0,
     "viral": 0.0,
     "top": [
      {
@@ -8753,7 +8762,7 @@
      {
       "date": "2026-10-02",
       "author": "@davidscottjaffe (David Jaffe)",
-      "views": 2747.0,
+      "views": 2748.0,
       "engagement": 11.0,
       "url": "https://x.com/i/status/2106115692206645549",
       "summary": "“Endix is basically a virtual E3 and they are JUST getting started”"
@@ -8769,15 +8778,23 @@
      {
       "date": "2026-10-13",
       "author": "@oK1PP3R (GFUEL | NXT Kipper)",
-      "views": 425.0,
+      "views": 428.0,
       "engagement": 17.0,
       "url": "https://x.com/i/status/2110016392343024033",
       "summary": "I GOT ACCEPTED AS A CREATOR FOR THE ENDIX Exp…"
      },
      {
+      "date": "2026-10-16",
+      "author": "@IndieExposeUK (Indie-cent Exposu…)",
+      "views": 282.0,
+      "engagement": 7.0,
+      "url": "https://x.com/i/status/2111113208593608784",
+      "summary": "6–8 November @Endix_Expo returns with 50+ gam…"
+     },
+     {
       "date": "2026-10-15",
       "author": "@xboxdynasty (XboxDynasty)",
-      "views": 270.0,
+      "views": 273.0,
       "engagement": 2.0,
       "url": "https://x.com/i/status/2110708349725520094",
       "summary": "Showcase 2026: Kostenlose ENDIX Expo verspric…"
@@ -8809,22 +8826,56 @@
      {
       "date": "2026-10-07",
       "author": "@ShayTotalApex (Shay Hobbs)",
-      "views": 180.0,
+      "views": 181.0,
       "engagement": 4.0,
       "url": "https://x.com/i/status/2107865428014121415",
-      "summary": "Post mentioning @Endix_Expo"
-     },
-     {
-      "date": "2026-07-24",
-      "author": "@InfoRosebrock (Jennifer, English…)",
-      "views": 124.0,
-      "engagement": 1.0,
-      "url": "https://x.com/i/status/2080514180444991854",
       "summary": "Post mentioning @Endix_Expo"
      }
     ]
    },
    "press": [
+    {
+     "edition": "winter2026",
+     "date": "2026-10-17",
+     "outlet": "Happy Gamer",
+     "domain": "happygamer.com",
+     "headline": "ENDIX Expo Lineup Brings Titan Quest II and 50 More Games on November 6-8",
+     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA3TF9BajBrb1V3YXZYbUpJVkdUWFo0ZlU3TnhNdU9pc2R1enJVQzM5blZQOE1yY1pyajlHS3QtdU0tSVM3Q183RkRKUFhGeEZyLXJHbThjck9iUW5tZ3dPdmIwTDRpc1lBY2wxWTdrU0lienFxVXRDaTR3bWc?oc=5",
+     "country": "International",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US",
+     "language": "English",
+     "uvm": 302660.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-10-17",
+     "outlet": "Gamers & Games",
+     "domain": "gamersegames.com.br",
+     "headline": "ENDIX Expo 2026 revela lineup com THQ Nordic, Bohemia Interactive e mais de 50 jogos",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOTmNnR1l3WGVpYmcwNFJrVXBtS2ZucWh3VWFhQTRBOXhhbUtSRFU4OTB3TUxyYzdELXJrRDRJM19vTGFnMjRrcnZ0aktXMzUyZ0xjaUtnWjdpTUFGODl4SlBHekNlZmRZSWhhVXhnbVpyQVdUd3dSc2ZTZTQ3NWZybGpuV0pxZTJwYm1qUTQ5bkgyMDF3cVRWX3ROS2R2NkM1WVY3c1Z4T3VYNUQwUlFxOVh2NURjanJjUldGQ09fMEtXY2luN0HSAcsBQVVfeXFMTllBM2JLOFBXb0UzTUFCSFdVb3FTN0JpOXNxLVE1MzJvVGR0eFF2Vk1tcmZ0amRUQ3BjN0VxSGJwWlh2NlNwOWFjdHlPSmh6aDBZdldMeVdMM0RvVW1Ocmp6UkJQajYwQzdFZjhnQXk0V1hHaWcxR1B5SDM1VmN3R0ZJQ256WklBNmoydnplNkt2QjlMcUloMVFBZnlBcnEzWXhmc1prV24wZHJBdENmTXBiWVMtMkM2ZEZjcXlXaGFHZEMzNlgycWtZR1k?oc=5",
+     "country": "Brazil",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-BR",
+     "language": "Portuguese",
+     "uvm": 24048.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-10-17",
+     "outlet": "MeUGamer",
+     "domain": "meugamer.com",
+     "headline": "ENDIX retorna em novembro com mais de 50 jogos em feira digital",
+     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE43SUdiRUQ3am1pZHIybUoxQVNNS2ZXM3htVlN4NG5VWjZmSEJaaHJ5ZFJCRDIyM2RvRXN3RVBfZV96MVl4Zkk1NU5OVkhFRUVPakVxMVRlRXRoQlRHejlQalZuQU13WGt1NzRCMGx3?oc=5",
+     "country": "International",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-BR",
+     "language": "English",
+     "uvm": 0
+    },
     {
      "edition": "winter2026",
      "date": "2026-10-07",
@@ -8834,7 +8885,7 @@
      "url": "https://totalapexentertainment.com/endix-expo-interview-founder-nikos/",
      "country": "USA",
      "kind": "article",
-     "x_views": 180.0,
+     "x_views": 181.0,
      "source": "grok",
      "language": "English",
      "uvm": 27860.0
