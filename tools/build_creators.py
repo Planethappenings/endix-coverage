@@ -13,7 +13,7 @@ CLIPS = [
     ('clip-dans-dave', 'DansGaming', 'Meets Dave the Diver'),
     ('clip-jaffe-hire-me', 'David Jaffe', '“They should hire me”'),
     ('clip-cohh-avatar', 'CohhCarnage', 'Meets his Endix avatar'),
-    ('clip-dans-maze', 'DansGaming', 'Vs. the Alienware maze'),
+    ('clip-nyanners-booth', 'Nyanners', 'When an interactive booth attacks you'),
 ]
 # Giveaways: fill in when ready; empty values show a tidy "details coming soon" instead of blanks.
 GIVEAWAYS = {
