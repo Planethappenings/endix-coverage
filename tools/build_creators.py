@@ -62,7 +62,7 @@ vals['clips'] = ''.join(
 def entry(g, color):
     out = f'<span style="font-size: 16px; font-weight: 600; color: #a99dca">{html.escape(g["dates"]) if g["dates"] else ("Entries open now" if g["gleam"] else "Entry details coming soon")}</span>'
     if g['gleam']:
-        out += f'\n          <a class="btn" href="{html.escape(g["gleam"])}" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: auto; background: {color}; color: #fff">Enter on Gleam</a>'
+        out += f'\n          <a class="btn" href="{html.escape(g["gleam"])}" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: auto; background: {color}; color: #fff">Enter giveaway</a>'
     return out
 def image(g, label, color):
     if g['image']:
