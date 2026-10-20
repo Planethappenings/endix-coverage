@@ -18,7 +18,7 @@ CLIPS = [
 # Giveaways: fill in when ready; empty values show a tidy "details coming soon" instead of blanks.
 GIVEAWAYS = {
     'alienware': {'image': '', 'specs': '', 'dates': '', 'gleam': ''},   # image: file in assets/creators/
-    'elgato': {'prize': '', 'image': '', 'dates': '', 'gleam': ''},
+    'elgato': {'prize': '2× Elgato Stream Deck MK.2', 'image': 'elgato-giveaway.jpg', 'dates': '', 'gleam': 'https://gleam.io/jjlbM/endix-elgato-giveaway'},
 }
 CONTACT_EMAIL = ''  # e.g. creators@endix-expo.com; empty = no email shown
 
@@ -60,19 +60,19 @@ vals['clips'] = ''.join(
     for f, c, t in CLIPS) + '\n      '
 
 def entry(g, color):
-    out = f'<span style="font-size: 16px; font-weight: 600; color: #a99dca">{html.escape(g["dates"]) if g["dates"] else "Entry details coming soon"}</span>'
+    out = f'<span style="font-size: 16px; font-weight: 600; color: #a99dca">{html.escape(g["dates"]) if g["dates"] else ("Entries open now" if g["gleam"] else "Entry details coming soon")}</span>'
     if g['gleam']:
         out += f'\n          <a class="btn" href="{html.escape(g["gleam"])}" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: auto; background: {color}; color: #fff">Enter on Gleam</a>'
     return out
-def image(g, label):
+def image(g, label, color):
     if g['image']:
-        return f'<img src="../assets/creators/{html.escape(g["image"])}" alt="{label} prize" style="max-width: 100%; max-height: 300px; display: block">'
-    return label.upper()
+        return f'<img src="../assets/creators/{html.escape(g["image"])}" alt="{label} giveaway prize" style="width: 100%; height: 100%; object-fit: cover; display: block">'
+    return f'<span style="font-family: Orbitron, sans-serif; font-weight: 800; font-size: 15px; color: {color}; letter-spacing: .08em">{label.upper()}</span>'
 aw, el = GIVEAWAYS['alienware'], GIVEAWAYS['elgato']
 vals.update({
-    'aw_image': image(aw, 'Alienware'), 'aw_specs': html.escape(aw['specs']) or 'A brand-new Alienware gaming PC. Full specs announced soon.',
+    'aw_image': image(aw, 'Alienware', '#8fb6ff'), 'aw_specs': html.escape(aw['specs']) or 'A brand-new Alienware gaming PC. Full specs announced soon.',
     'aw_entry': entry(aw, '#3aa0ff'),
-    'el_image': image(el, 'Elgato'), 'el_title': 'Win ' + html.escape(el['prize']) if el['prize'] else 'Win Elgato gear',
+    'el_image': image(el, 'Elgato', '#c9b8ff'), 'el_title': 'Win ' + html.escape(el['prize']) if el['prize'] else 'Win Elgato gear',
     'el_entry': entry(el, '#9c7dff'),
     'contact': (f'Questions, early access or a partnership? Reach the creator team at <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>.'
                 if CONTACT_EMAIL else 'Grab the kit, pick your stream day and bring your community along.'),
