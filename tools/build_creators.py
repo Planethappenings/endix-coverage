@@ -18,8 +18,11 @@ CLIPS = [
 # Giveaways: fill in when ready; empty values show a tidy "details coming soon" instead of blanks.
 GIVEAWAYS = {
     # image: file in assets/creators/. embed=True shows Gleam's own entry widget inside the card instead of a button.
-    'alienware': {'image': '', 'specs': '', 'dates': '', 'gleam': 'https://gleam.io/ONi3k/endix-alienware-gaming-pc-giveaway',
-                  'embed': True, 'embed_title': 'Endix 🫰 Alienware GAMING PC 🎮🖥️ giveaway'},
+    'alienware': {'image': 'alienware-giveaway.jpg',
+                  'specs': 'Alienware Aurora ACT1250 with Intel Core Ultra 9 285 (24 cores, up to 5.6 GHz), NVIDIA GeForce RTX 5060 8 GB, 32 GB RAM and 1 TB storage.',
+                  'extras': 'Plus Alienware Pro keyboard, Pro headset, T-shirt, caps, sunglasses and magnets.',
+                  'dates': '', 'gleam': 'https://gleam.io/ONi3k/endix-alienware-gaming-pc-giveaway',
+                  'embed': False, 'embed_title': 'Endix 🫰 Alienware GAMING PC 🎮🖥️ giveaway'},  # embed=True shows Gleam's widget instead of a button
     'elgato': {'prize': '2× Elgato Stream Deck MK.2', 'image': 'elgato-giveaway.jpg', 'dates': '', 'gleam': 'https://gleam.io/jjlbM/endix-elgato-giveaway'},
 }
 CONTACT_EMAIL = ''  # e.g. creators@endix-expo.com; empty = no email shown
@@ -74,12 +77,15 @@ def image(g, label, color):
     return f'<span style="font-family: Orbitron, sans-serif; font-weight: 800; font-size: 15px; color: {color}; letter-spacing: .08em">{label.upper()}</span>'
 aw, el = GIVEAWAYS['alienware'], GIVEAWAYS['elgato']
 vals.update({
-    'aw_specs': html.escape(aw['specs']) or 'A brand-new Alienware gaming PC. Full specs announced soon.',
+    'aw_specs': (html.escape(aw['specs']) + (f'<br><span style="color: #a99dca; font-size: 16px">{html.escape(aw["extras"])}</span>' if aw.get('extras') else '')) or 'A brand-new Alienware gaming PC. Full specs announced soon.',
     'aw_entry': entry(aw, '#3aa0ff'),
-    'aw_flex': '1 1 100%' if aw.get('embed') and aw['gleam'] else '3 1 560px',
+    'aw_flex': '1 1 100%' if aw.get('embed') and aw['gleam'] else '1 1 400px',
     # Image panel: hidden when the widget is shown and there is no prize photo yet (avoids an empty placeholder column)
+    # Image panel: prize artwork full width on top of the card; hidden when the widget is shown and there is no photo
     'aw_media': '' if (aw.get('embed') and aw['gleam'] and not aw['image']) else
-        ('\n        <div style="flex: 1 1 280px; min-height: 320px; display: grid; place-items: center; background: repeating-linear-gradient(45deg, #182540 0 14px, #1b2a48 14px 28px); border-right: 1px solid #2c2347">\n          '
+        (f'\n        <div style="flex: none; aspect-ratio: 1080 / 567; overflow: hidden; border-bottom: 1px solid #2c2347"><img src="../assets/creators/{html.escape(aw["image"])}" alt="Alienware gaming PC giveaway prizes" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>'
+         if aw['image'] else
+         '\n        <div style="flex: 1 1 280px; min-height: 320px; display: grid; place-items: center; background: repeating-linear-gradient(45deg, #182540 0 14px, #1b2a48 14px 28px); border-right: 1px solid #2c2347">\n          '
          + image(aw, 'Alienware', '#8fb6ff') + '\n        </div>'),
     'aw_widget': (f'\n        <div style="flex: 1 1 420px; padding: 24px; background: rgba(8,6,16,.45); border-left: 1px solid #2c2347; display: flex; justify-content: center">'
                   f'<div style="width: 100%; max-width: 560px"><a class="e-widget no-button" href="{html.escape(aw["gleam"])}" rel="nofollow">{html.escape(aw.get("embed_title") or "Enter the Alienware giveaway")}</a>'
