@@ -18,3 +18,6 @@ for slug in slugs:  # clean per-edition URLs, e.g. /spring2026/
     os.makedirs(os.path.join(ROOT, slug), exist_ok=True)
     open(os.path.join(ROOT, slug, 'index.html'), 'w', encoding='utf-8').write(html)
 print('ok index.html', len(html))
+
+# The Creator Kit page (creators/index.html) uses the same data
+import runpy; runpy.run_path(os.path.join(ROOT, 'tools', 'build_creators.py'))

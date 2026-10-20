@@ -16,3 +16,6 @@ Public coverage report for each Endix edition. Served by GitHub Pages from `inde
 
 ## New edition
 Add a row to the sheet's Editions tab, then add the edition's static numbers (aftermovie, Grok X tab, Twitch, Steam) to CONFIG in `tools/build_data.py`.
+
+## Creator Kit page
+`creators/index.html` (live at /creators/) is built by `tools/build_creators.py` from `tools/creators_template.html` and `data/report_data.json`; `build_page.py` runs it automatically. The six clips, giveaway details (Gleam links, prize images, dates) and the contact email are set at the top of `tools/build_creators.py`; media files live in `assets/creators/`.
