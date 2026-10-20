@@ -46,9 +46,9 @@ html{scroll-behavior:smooth}
       <a href="#about" style="color: #cfc6e6; text-decoration: none">About</a>
       <a href="#content" style="color: #cfc6e6; text-decoration: none">Content ideas</a>
       <a href="#community" style="color: #cfc6e6; text-decoration: none">Community</a>
-      <a href="#numbers" style="color: #cfc6e6; text-decoration: none">Numbers</a>
-      <a href="#giveaways" style="color: #cfc6e6; text-decoration: none">Giveaways</a>
       <a href="#kit" style="color: #cfc6e6; text-decoration: none">Stream kit</a>
+      <a href="#giveaways" style="color: #cfc6e6; text-decoration: none">Giveaways</a>
+      <a href="#numbers" style="color: #cfc6e6; text-decoration: none">Numbers</a>
     </nav>
     <a class="btn" href="https://drive.google.com/drive/folders/1U17OXLKQ6JCdTZ2XAloo8ASq_CP0wRsm?usp=sharing" target="_blank" rel="noopener" style="background: #ff3fa4; color: #fff; min-height: 44px; font-size: 13px">Creator Kit</a>
   </header>
@@ -177,6 +177,65 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
+  <!-- stream kit -->
+  <section id="kit" style="max-width: 1240px; margin: 0 auto; padding: 48px 32px 32px; display: flex; flex-direction: column; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 12px"><span class="k">Stream kit</span><h2 class="h2">Everything you need to go live.</h2></div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px">
+      <div class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px">
+        <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 18px">Set up</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 18px; font-weight: 600; color: #d9d0ee">
+          <span>Twitch category: <b style="color: #fff">Endix</b></span>
+          <span>Tag: <b style="color: #fff">@Endix_Expo</b></span>
+          <span>Hashtags: <b style="color: #fff">#Endix #EndixExpo</b></span>
+          <span>Tip: add a <b style="color: #fff">!endix</b> command linking to Steam</span>
+        </div>
+      </div>
+      <div class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px">
+        <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 18px">Title ideas</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 18px; font-weight: 600; color: #d9d0ee">
+          <span>“Exploring a game expo I can actually play”</span>
+          <span>“Can chat get me out of the Endix maze?”</span>
+          <span>“Live at Endix: 50+ booths and a PC giveaway”</span>
+        </div>
+      </div>
+      <div class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px; background: linear-gradient(160deg, #3a0f2c, #151026 70%)">
+        <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 18px">Creator Kit</h3>
+        <p style="margin: 0; font-size: 18px; font-weight: 600; color: #e6ddf7">Logos, key art, screenshots, overlays and b-roll, ready for thumbnails and scenes.</p>
+        <a class="btn" href="https://drive.google.com/drive/folders/1U17OXLKQ6JCdTZ2XAloo8ASq_CP0wRsm?usp=sharing" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: auto; background: #ff3fa4; color: #fff">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download kit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- giveaways -->
+  <section id="giveaways" style="max-width: 1240px; margin: 0 auto; padding: 48px 32px; display: flex; flex-direction: column; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 12px"><span class="k">Giveaways</span><h2 class="h2">Two epic giveaways.</h2><p style="margin: 0; font-size: 20px; color: #d9d0ee; font-weight: 500">Share them with your community. Entries run on Gleam.</p></div>
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch">
+      <article class="card" style="flex: 3 1 560px; overflow: hidden; display: flex; flex-wrap: wrap; background: linear-gradient(135deg, #10203a, #151026 60%)">
+        <div style="flex: 1 1 280px; min-height: 320px; display: grid; place-items: center; background: repeating-linear-gradient(45deg, #182540 0 14px, #1b2a48 14px 28px); border-right: 1px solid #2c2347">
+          {{aw_image}}
+        </div>
+        <div style="flex: 1 1 280px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
+          <span class="k" style="color: #7fd4ff">Alienware giveaway</span>
+          <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 28px; line-height: 1.15">Win an Alienware gaming PC</h3>
+          <p style="margin: 0; font-size: 18px; color: #cfc6e6; font-weight: 500">{{aw_specs}}</p>
+          {{aw_entry}}
+        </div>
+      </article>
+      <article class="card" style="flex: 2 1 340px; overflow: hidden; display: flex; flex-direction: column">
+        <div style="min-height: 190px; display: grid; place-items: center; overflow: hidden; background: repeating-linear-gradient(45deg, #241a3d 0 14px, #281d44 14px 28px); border-bottom: 1px solid #2c2347">
+          {{el_image}}
+        </div>
+        <div style="padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1">
+          <span class="k" style="color: #c9b8ff">Elgato giveaway</span>
+          <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 24px; line-height: 1.15">{{el_title}}</h3>
+          {{el_entry}}
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- numbers -->
   <section id="numbers" style="max-width: 1240px; margin: 0 auto; padding: 48px 32px; display: flex; flex-direction: column; gap: 24px">
     <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px">
@@ -221,34 +280,6 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <!-- giveaways -->
-  <section id="giveaways" style="max-width: 1240px; margin: 0 auto; padding: 48px 32px; display: flex; flex-direction: column; gap: 24px">
-    <div style="display: flex; flex-direction: column; gap: 12px"><span class="k">Giveaways</span><h2 class="h2">Two epic giveaways.</h2><p style="margin: 0; font-size: 20px; color: #d9d0ee; font-weight: 500">Share them with your community. Entries run on Gleam.</p></div>
-    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: stretch">
-      <article class="card" style="flex: 3 1 560px; overflow: hidden; display: flex; flex-wrap: wrap; background: linear-gradient(135deg, #10203a, #151026 60%)">
-        <div style="flex: 1 1 280px; min-height: 320px; display: grid; place-items: center; background: repeating-linear-gradient(45deg, #182540 0 14px, #1b2a48 14px 28px); border-right: 1px solid #2c2347">
-          {{aw_image}}
-        </div>
-        <div style="flex: 1 1 280px; padding: 30px; display: flex; flex-direction: column; gap: 12px">
-          <span class="k" style="color: #7fd4ff">Alienware giveaway</span>
-          <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 28px; line-height: 1.15">Win an Alienware gaming PC</h3>
-          <p style="margin: 0; font-size: 18px; color: #cfc6e6; font-weight: 500">{{aw_specs}}</p>
-          {{aw_entry}}
-        </div>
-      </article>
-      <article class="card" style="flex: 2 1 340px; overflow: hidden; display: flex; flex-direction: column">
-        <div style="min-height: 190px; display: grid; place-items: center; overflow: hidden; background: repeating-linear-gradient(45deg, #241a3d 0 14px, #281d44 14px 28px); border-bottom: 1px solid #2c2347">
-          {{el_image}}
-        </div>
-        <div style="padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1">
-          <span class="k" style="color: #c9b8ff">Elgato giveaway</span>
-          <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 24px; line-height: 1.15">{{el_title}}</h3>
-          {{el_entry}}
-        </div>
-      </article>
-    </div>
-  </section>
-
   <!-- reviews -->
   <section style="max-width: 1240px; margin: 0 auto; padding: 48px 32px; display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch">
     <div class="card" style="flex: 1 1 300px; padding: 32px; display: flex; flex-direction: column; justify-content: center; gap: 10px; background: linear-gradient(160deg, #10304a, #151026 70%)">
@@ -257,37 +288,6 @@ html{scroll-behavior:smooth}
       <span style="font-size: 19px; font-weight: 600; color: #cfe6f6">of {{r_total}} reviews recommend Endix</span>
     </div>
     <div style="flex: 999 1 600px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">{{reviews}}</div>
-  </section>
-
-  <!-- stream kit -->
-  <section id="kit" style="max-width: 1240px; margin: 0 auto; padding: 48px 32px 32px; display: flex; flex-direction: column; gap: 24px">
-    <div style="display: flex; flex-direction: column; gap: 12px"><span class="k">Stream kit</span><h2 class="h2">Everything you need to go live.</h2></div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px">
-      <div class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px">
-        <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 18px">Set up</h3>
-        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 18px; font-weight: 600; color: #d9d0ee">
-          <span>Twitch category: <b style="color: #fff">Endix</b></span>
-          <span>Tag: <b style="color: #fff">@Endix_Expo</b></span>
-          <span>Hashtags: <b style="color: #fff">#Endix #EndixExpo</b></span>
-          <span>Tip: add a <b style="color: #fff">!endix</b> command linking to Steam</span>
-        </div>
-      </div>
-      <div class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px">
-        <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 18px">Title ideas</h3>
-        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 18px; font-weight: 600; color: #d9d0ee">
-          <span>“Exploring a game expo I can actually play”</span>
-          <span>“Can chat get me out of the Endix maze?”</span>
-          <span>“Live at Endix: 50+ booths and a PC giveaway”</span>
-        </div>
-      </div>
-      <div class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px; background: linear-gradient(160deg, #3a0f2c, #151026 70%)">
-        <h3 style="margin: 0; font-family: Orbitron, sans-serif; font-size: 18px">Creator Kit</h3>
-        <p style="margin: 0; font-size: 18px; font-weight: 600; color: #e6ddf7">Logos, key art, screenshots, overlays and b-roll, ready for thumbnails and scenes.</p>
-        <a class="btn" href="https://drive.google.com/drive/folders/1U17OXLKQ6JCdTZ2XAloo8ASq_CP0wRsm?usp=sharing" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: auto; background: #ff3fa4; color: #fff">
-          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-          Download kit</a>
-      </div>
-    </div>
   </section>
 
   <!-- final CTA -->
