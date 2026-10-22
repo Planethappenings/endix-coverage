@@ -1,5 +1,5 @@
 /**
- * Endix coverage collector v2.6 — Google Apps Script for the "Endix X-statistik" sheet.
+ * Endix coverage collector v2.7 — Google Apps Script for the "Endix X-statistik" sheet.
  * Adds its own tabs and never touches Grok's tabs.
  *
  * Sources: YouTube (YouTube API), press (Google News per edition + GDELT + Bing RSS), TikTok + Instagram (Apify),
@@ -38,7 +38,7 @@ const ACTORS = {
 };
 const STEAM_APP_ID = '4356840';  // Endix on Steam
 const REVIEW_HEADERS = ['Review ID', 'Edition', 'Posted', 'Language', 'Recommended', 'Hours played', 'Helpful votes', 'Review', 'Link', 'Suggested', 'Show (TRUE/FALSE, your choice)', 'First seen'];
-const SOCIAL_SEARCH = { tiktokQueries: ['endix'], hashtags: ['endix', 'endixexpo'] };
+const SOCIAL_SEARCH = { tiktokQueries: ['endix', 'endixexpo', 'endix expo'], hashtags: ['endix', 'endixexpo'] };
 
 const EDITION_HEADERS = ['Edition', 'Slug', 'Event start', 'Event end', 'Window start', 'Window end', 'Keywords', 'Active'];
 const OWN_HEADERS = ['Platform', 'Handle', 'Channel ID (filled automatically)'];
@@ -64,7 +64,7 @@ const REFRESH_DAYS_AFTER_WINDOW = 30;
 // Editions whose window ended more than REFRESH_DAYS_AFTER_WINDOW days ago are refreshed once a week
 // (YouTube views, press, TikTok/Instagram stats) instead of every day.
 const FINISHED_REFRESH_DAYS = 7;
-// "Hot" period for TikTok/Instagram: search + refresh every 2 days from this many days before an event
+// "Hot" period for TikTok/Instagram: search daily + refresh every 2 days from this many days before an event
 // until 7 days after it (weekly otherwise). 14 days covers the paid creator push before the event.
 const HOT_DAYS_BEFORE_EVENT = 14;
 
@@ -264,7 +264,7 @@ function collectYouTube() {
       const s = v.snippet, st = v.statistics || {};
       const published = new Date(s.publishedAt);
       const text = [s.title, s.description, (s.tags || []).join(' ')].join(' ');
-      const mentions = /\bendix\b/i.test(text);
+      const mentions = /(?<![a-z0-9])endix(?:expo|partner|showcase|_expo|20\d\d)?(?![a-z0-9])/i.test(text);  // also #endixexpo, #endix2026
       const dur = isoDur_(v.contentDetails && v.contentDetails.duration);
       const type = v.liveStreamingDetails ? 'live' : (dur > 0 && dur <= 180 ? 'short' : 'video');
       if (v.id in index) {
@@ -406,11 +406,11 @@ function startSocial() {
   const props = PropertiesService.getScriptProperties();
   const eds = editions_().filter(e => e.active);
   const now = Date.now();
-  // Search weekly, every 2 days in the hot period around an event (see HOT_DAYS_BEFORE_EVENT).
+  // Search weekly, daily in the hot period around an event (see HOT_DAYS_BEFORE_EVENT).
   const inWindow = eds.some(e => now >= e.from.getTime() && now <= e.to.getTime());
   const hot = eds.some(e => now >= e.eventStart.getTime() - HOT_DAYS_BEFORE_EVENT * 864e5 && now <= e.eventEnd.getTime() + 7 * 864e5);
   const lastSearch = Number(props.getProperty('social_search_last') || 0);
-  const doSearch = inWindow && now - lastSearch >= (hot ? 1.9 : 6.9) * 864e5;
+  const doSearch = inWindow && now - lastSearch >= (hot ? 0.9 : 6.9) * 864e5;
   const started = [];
 
   if (doSearch) {
