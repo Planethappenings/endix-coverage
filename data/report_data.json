@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21",
+ "generated": "2026-10-22",
  "editions": [
   {
    "slug": "spring2026",
@@ -8783,12 +8783,23 @@
    "youtube": [
     {
      "edition": "winter2026",
+     "title": "Gateworlds is at ENDIX 2026, try the playtest on steam!",
+     "channel": "Hydrarch",
+     "url": "https://www.youtube.com/watch?v=GL6Xs9wTcPU",
+     "date": "2026-10-21",
+     "views": 1053.0,
+     "likes": 15.0,
+     "type": "short",
+     "category": "creator"
+    },
+    {
+     "edition": "winter2026",
      "title": "Temtem Is Heading to ENDIX 2026 | Tame Monsters & Fight Beside Them!",
      "channel": "Berry Bandit",
      "url": "https://www.youtube.com/watch?v=AHDws3HEsPQ",
      "date": "2026-10-20",
-     "views": 63.0,
-     "likes": 8.0,
+     "views": 80.0,
+     "likes": 10.0,
      "type": "video",
      "category": "creator"
     },
@@ -9019,6 +9030,20 @@
      "source": "bing-de-DE",
      "language": "Japanese",
      "uvm": 2698203.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-10-18",
+     "outlet": "Infoseek",
+     "domain": "news.infoseek.co.jp",
+     "headline": "デジタルゲームエキスポ「ENDIX」11月6日～8日開催回のラインナップ発表！THQ Nordic、Bohemia Interactive、505 Games、Frozen Districtらが出展｜Infoseekニュース",
+     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1RQURjd2lRQXhrOFB0cXUtdHVqdWxKV1JHaVRRcnRlTHdZalNHY0RBemVLVTFoWUtRTUNvLXZkNmdERDdfRDVqSjR0cF9uejNaczNkOE9FV1FONzJ2dnVza2cyLVBjVmlUYktKeU83eFVmZw?oc=5",
+     "country": "Japan",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-JP",
+     "language": "Japanese",
+     "uvm": 6015028.0
     },
     {
      "edition": "winter2026",
@@ -9327,6 +9352,20 @@
      "source": "bing-en-GB",
      "language": "English",
      "uvm": 0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-09-10",
+     "outlet": "Pizza Fria",
+     "domain": "pizzafria.ig.com.br",
+     "headline": "ENDIX retorna de 6 a 8 de novembro",
+     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE12RUpNOWVmN3IteEhrOE5MbWVmZFNHZUVuZ1B5WDRJZ014VFBRRWl1clRKaXk3OUN4X3VZU1l4NzZSc21WZWQ0RWxkUGJhMVNzY3BFYkswX0V6WHFIdGtCalk4b0l3UVY2WVZTVE5n?oc=5",
+     "country": "Brazil",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-BR",
+     "language": "Portuguese",
+     "uvm": 61095.0
     }
    ],
    "trailer_pages": [
