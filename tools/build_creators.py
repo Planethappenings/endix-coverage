@@ -20,7 +20,7 @@ GIVEAWAYS = {
     # image: file in assets/creators/. embed=True shows Gleam's own entry widget inside the card instead of a button.
     'alienware': {'image': 'alienware-giveaway.jpg',
                   'specs': 'Alienware Aurora ACT1250 with Intel Core Ultra 9 285 (24 cores, up to 5.6 GHz), NVIDIA GeForce RTX 5060 8 GB, 32 GB RAM and 1 TB storage.',
-                  'extras': 'Plus Alienware Pro keyboard, Pro headset, T-shirt, caps, sunglasses and magnets.',
+                  'extras': 'You can also win more prizes inside Endix: Alienware Pro keyboard, Pro headset, T-shirts, caps, sunglasses and magnets.',
                   'dates': '', 'gleam': 'https://gleam.io/ONi3k/endix-alienware-gaming-pc-giveaway',
                   'embed': False, 'embed_title': 'Endix 🫰 Alienware GAMING PC 🎮🖥️ giveaway'},  # embed=True shows Gleam's widget instead of a button
     'elgato': {'prize': '2× Elgato Stream Deck MK.2', 'image': 'elgato-giveaway.jpg', 'dates': '', 'gleam': 'https://gleam.io/jjlbM/endix-elgato-giveaway'},
