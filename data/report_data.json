@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22",
+ "generated": "2026-10-23",
  "editions": [
   {
    "slug": "spring2026",
@@ -5390,8 +5390,8 @@
    "x": {
     "mentions": 600.0,
     "accounts": 276.0,
-    "views": 311584.0,
-    "engagement": 4655.0,
+    "views": 311611.0,
+    "engagement": 4653.0,
     "viral": 7.0,
     "top": [
      {
@@ -5429,7 +5429,7 @@
      {
       "date": "2026-06-08",
       "author": "@TheGamerGuide_ (The Gamer Guide®)",
-      "views": 7366.0,
+      "views": 7367.0,
       "engagement": 28.0,
       "url": "https://x.com/i/status/2063999495239500194",
       "summary": "ISSUE #31 OUT NOW FT - Brands @CORSAIR x @elg…"
@@ -5476,7 +5476,7 @@
      "url": "https://www.gamesmarket.global/endix-spring-2026-reaches-10-000-downloads/",
      "country": "Germany",
      "kind": "article",
-     "x_views": 69.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "German",
      "uvm": 90000.0
@@ -5490,7 +5490,7 @@
      "url": "https://frikiup.co/endix-primavera-de-2026-mas-de-10-000-descargas-y-el-plazo-de-presentacion-de-propuestas-para-el-otono-se-abre-la-semana-que-viene/",
      "country": "Colombia",
      "kind": "article",
-     "x_views": 9.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Spanish",
      "uvm": 0
@@ -5504,7 +5504,7 @@
      "url": "https://watermelo.com.br/blog/endix-spring-2026-surpasses-10000-downloads-and-expands-its-global-reach-with-an-interactive-experience",
      "country": "Brazil",
      "kind": "article",
-     "x_views": 9.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Portuguese",
      "uvm": 1000.0
@@ -5518,7 +5518,7 @@
      "url": "https://www.semperludo.com/veuillez-passer-au-petit-salon-endix-2026/",
      "country": "France",
      "kind": "article",
-     "x_views": 151.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "French",
      "uvm": 0
@@ -5546,7 +5546,7 @@
      "url": "https://www.gamersegames.com.br/2026/06/26/endix-spring-2026-reune-milhares-de-jogadores-em-evento-digital-gratuito-e-prepara-edicao-no-segundo-semestre/",
      "country": "Brazil",
      "kind": "article",
-     "x_views": 37.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Portuguese",
      "uvm": 24048.0
@@ -5560,7 +5560,7 @@
      "url": "https://www.indie-exposure.com/endix-to-return-autumn-2026/",
      "country": "UK",
      "kind": "article",
-     "x_views": 57.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -5574,7 +5574,7 @@
      "url": "https://247videogame.com/endix-2026-event-aftermovie/",
      "country": "USA",
      "kind": "article",
-     "x_views": 10.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 2000.0
@@ -5602,7 +5602,7 @@
      "url": "https://totalapexentertainment.com/endix-indie-expo/",
      "country": "USA",
      "kind": "article",
-     "x_views": 22.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 27860.0
@@ -5644,7 +5644,7 @@
      "url": "https://www.gamegrin.com/news/watch-inferius-endix-2026-trailer-and-play-the-demo/",
      "country": "UK",
      "kind": "article",
-     "x_views": 87.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 302660.0
@@ -5672,7 +5672,7 @@
      "url": "https://biznooz.com/no-ticket-required-virtual-gaming-convention-endix-launches-globally-on-steam-and-epic-games-store/",
      "country": "USA",
      "kind": "article",
-     "x_views": 28.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -5701,7 +5701,7 @@
      "country": "UK",
      "kind": "article",
      "uvm": 0,
-     "x_views": 62.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -5729,7 +5729,7 @@
      "country": "UK",
      "kind": "article",
      "uvm": 0,
-     "x_views": 46.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -5742,7 +5742,7 @@
      "url": "https://oursn.net/endix-2026-our-social-network-event-coverage-ar/",
      "country": "Middle East",
      "kind": "article",
-     "x_views": 162.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Arabic",
      "uvm": 20000.0
@@ -5771,7 +5771,7 @@
      "country": "USA",
      "kind": "article",
      "uvm": 111000000.0,
-     "x_views": 72864.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -5799,7 +5799,7 @@
      "country": "UK",
      "kind": "article",
      "uvm": 889254.0,
-     "x_views": 187.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -5813,7 +5813,7 @@
      "country": "UK",
      "kind": "article",
      "uvm": 219200.0,
-     "x_views": 78.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -5841,7 +5841,7 @@
      "country": "UK",
      "kind": "article",
      "uvm": 27860.0,
-     "x_views": 21.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -5855,7 +5855,7 @@
      "country": "UK",
      "kind": "article",
      "uvm": 0,
-     "x_views": 65.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -5869,7 +5869,7 @@
      "country": "Greece",
      "kind": "article",
      "uvm": 0,
-     "x_views": 25.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Greek"
     },
@@ -5882,7 +5882,7 @@
      "url": "https://nl.ign.com/dave-the-diver/164631/endix-de-volledig-gratis-digitale-gamebeurs-is-nu-live-met-speelbare-demos-panels-en-nog-veel-meer",
      "country": "Netherlands",
      "kind": "article",
-     "x_views": 401.0,
+     "x_views": 179.0,
      "source": "grok",
      "language": "Dutch",
      "uvm": 638575.0
@@ -5953,7 +5953,7 @@
      "country": "Spain",
      "kind": "article",
      "uvm": 0,
-     "x_views": 1352.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Spanish"
     },
@@ -5980,7 +5980,7 @@
      "url": "https://www.gamersegames.com.br/2026/05/22/endix-ja-esta-disponivel-gratuitamente-na-steam-e-epic-games-store/",
      "country": "Brazil",
      "kind": "article",
-     "x_views": 25.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Portuguese",
      "uvm": 24048.0
@@ -5994,7 +5994,7 @@
      "url": "https://blazetrends.com/endix-digital-gaming-expo-opens-early-how-to-play-the-free-alienware-backed-showcase-right-now/",
      "country": "USA",
      "kind": "article",
-     "x_views": 23.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -6008,7 +6008,7 @@
      "url": "https://247videogame.com/endix-may-2026-a-virtual-event-you-can-play-2/",
      "country": "USA",
      "kind": "article",
-     "x_views": 18.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 2000.0
@@ -6022,7 +6022,7 @@
      "url": "https://nordic.ign.com/ign-misc/107776/endix-may-2026-a-virtual-event-you-can-play",
      "country": "Nordics",
      "kind": "article",
-     "x_views": 173.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -6050,7 +6050,7 @@
      "url": "https://4-rg.com/en/gaming/endix-2026-the-digital-gaming-expo",
      "country": "Germany",
      "kind": "article",
-     "x_views": 128.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "German",
      "uvm": 0
@@ -6148,7 +6148,7 @@
      "url": "https://eu.alienwarearena.com/ucf/show/2174816/boards/gaming-news/News/were-coming-to-endix-and-were-bringing-prizes-3",
      "country": "USA",
      "kind": "sponsor",
-     "x_views": 16.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -6177,7 +6177,7 @@
      "country": "USA",
      "kind": "press release",
      "uvm": 302660.0,
-     "x_views": 46.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -6191,7 +6191,7 @@
      "country": "Brazil",
      "kind": "article",
      "uvm": 24048.0,
-     "x_views": 36.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Portuguese"
     },
@@ -6204,7 +6204,7 @@
      "url": "https://salaodejogos.net/endix-revela-os-planos-para-a-edicao-de-maio-de-2026/",
      "country": "Brazil",
      "kind": "article",
-     "x_views": 24.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Portuguese",
      "uvm": 0
@@ -6233,7 +6233,7 @@
      "country": "Canada",
      "kind": "article",
      "uvm": 90000.0,
-     "x_views": 145.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -6247,7 +6247,7 @@
      "country": "USA",
      "kind": "article",
      "uvm": 15000.0,
-     "x_views": 24.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -6526,7 +6526,7 @@
      "url": "https://www.gamegrin.com/news/endix-returns-this-weekend/",
      "country": "UK",
      "kind": "article",
-     "x_views": 32.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 302660.0
@@ -6540,7 +6540,7 @@
      "url": "https://biznooz.com/no-lines-no-flights-fully-digital-gaming-expo-endix-returns-may-23-24-with-alienware-partnership-massive-lineup/",
      "country": "USA",
      "kind": "article",
-     "x_views": 33.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -6681,7 +6681,7 @@
      "country": "UK",
      "kind": "article",
      "uvm": 2268000.0,
-     "x_views": 4973.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -6695,7 +6695,7 @@
      "country": "Brazil",
      "kind": "article",
      "uvm": 24048.0,
-     "x_views": 38.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Portuguese"
     },
@@ -6736,7 +6736,7 @@
      "url": "https://oursn.net/press-endix-partnership-2026-ar/",
      "country": "Middle East",
      "kind": "article",
-     "x_views": 16845.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Arabic",
      "uvm": 20000.0
@@ -6750,7 +6750,7 @@
      "url": "https://www.indie-exposure.com/endix-2026-returns/",
      "country": "UK",
      "kind": "article",
-     "x_views": 89.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -6779,7 +6779,7 @@
      "country": "Spain",
      "kind": "article",
      "uvm": 25000.0,
-     "x_views": 73.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Spanish"
     },
@@ -6792,7 +6792,7 @@
      "url": "https://lumirinav.se/endix-tillbaka-23-24-maj-gratis-expo-pa-steam-epic",
      "country": "Sweden",
      "kind": "article",
-     "x_views": 17.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Swedish",
      "uvm": 0
@@ -6807,7 +6807,7 @@
      "country": "Brazil",
      "kind": "article",
      "uvm": 24048.0,
-     "x_views": 31.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Portuguese"
     },
@@ -6821,7 +6821,7 @@
      "country": "France",
      "kind": "article",
      "uvm": 3752.0,
-     "x_views": 24.0,
+     "x_views": 0,
      "source": "manual",
      "language": "French"
     },
@@ -6835,7 +6835,7 @@
      "country": "Italy",
      "kind": "article",
      "uvm": 3000.0,
-     "x_views": 63.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Italian"
     },
@@ -6849,7 +6849,7 @@
      "country": "Brazil",
      "kind": "article",
      "uvm": 1000.0,
-     "x_views": 7.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Portuguese"
     },
@@ -6863,7 +6863,7 @@
      "country": "Brazil",
      "kind": "article",
      "uvm": 61095.0,
-     "x_views": 24.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Portuguese"
     },
@@ -6877,7 +6877,7 @@
      "country": "USA",
      "kind": "article",
      "uvm": 302660.0,
-     "x_views": 23.0,
+     "x_views": 0,
      "source": "manual",
      "language": "English"
     },
@@ -6891,7 +6891,7 @@
      "country": "Sweden",
      "kind": "article",
      "uvm": 12000.0,
-     "x_views": 13.0,
+     "x_views": 0,
      "source": "manual",
      "language": "Swedish"
     },
@@ -8380,7 +8380,25 @@
      "handle": "@TJForest_Dev",
      "text": "So excited to be joining Endix with Buried Whispers. Hope to see you there!",
      "url": "https://x.com/TJForest_Dev/status/2112548055467602050",
-     "likes": 0.0
+     "likes": 2.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-10-13",
+     "name": "Shay Hobbs",
+     "handle": "@ShayTotalApex",
+     "text": "It was, without a doubt, my pleasure. I can't wait to see what the Fall Endix Expo brings. Thank you for taking time out of your busy schedule!",
+     "url": "https://x.com/ShayTotalApex/status/2110112623165345821",
+     "likes": 1.0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-10-22",
+     "name": "David Jaffe",
+     "handle": "@davidscottjaffe",
+     "text": "No doubt, I really would love to work on the creative end of stuff like this. I adore what @Endix_Expo is doing and love watching it grow!",
+     "url": "https://x.com/davidscottjaffe/status/2113308438591853032",
+     "likes": 2.0
     }
    ],
    "review_stats": {
@@ -8787,7 +8805,7 @@
      "channel": "Hydrarch",
      "url": "https://www.youtube.com/watch?v=GL6Xs9wTcPU",
      "date": "2026-10-21",
-     "views": 1053.0,
+     "views": 1055.0,
      "likes": 15.0,
      "type": "short",
      "category": "creator"
@@ -8798,8 +8816,8 @@
      "channel": "Berry Bandit",
      "url": "https://www.youtube.com/watch?v=AHDws3HEsPQ",
      "date": "2026-10-20",
-     "views": 80.0,
-     "likes": 10.0,
+     "views": 104.0,
+     "likes": 11.0,
      "type": "video",
      "category": "creator"
     },
@@ -8830,17 +8848,17 @@
    "facebook": [],
    "instagram": [],
    "x": {
-    "mentions": 111.0,
-    "accounts": 73.0,
-    "views": 17299.0,
-    "engagement": 289.0,
+    "mentions": 122.0,
+    "accounts": 80.0,
+    "views": 19575.0,
+    "engagement": 324.0,
     "viral": 0.0,
     "top": [
      {
       "date": "2026-10-19",
       "author": "@PlayTemtem (Temtem 🏕️ Wishlis…)",
-      "views": 3686.0,
-      "engagement": 50.0,
+      "views": 3857.0,
+      "engagement": 53.0,
       "url": "https://x.com/i/status/2112170903584846033",
       "summary": "Temtem: Pioneers is coming to #ENDIXExpo 🎮 Ev…"
      },
@@ -8861,9 +8879,17 @@
       "summary": "“Endix is basically a virtual E3 and they are JUST getting started”"
      },
      {
+      "date": "2026-10-22",
+      "author": "@davidscottjaffe (David Jaffe)",
+      "views": 1503.0,
+      "engagement": 3.0,
+      "url": "https://x.com/i/status/2113308438591853032",
+      "summary": "No doubt, I really would love to work on the …"
+     },
+     {
       "date": "2026-10-19",
       "author": "@PRTIMES_VIDEO (PR TIMESビデオ)",
-      "views": 746.0,
+      "views": 812.0,
       "engagement": 4.0,
       "url": "https://x.com/i/status/2112025955686559930",
       "summary": "デジタルゲームエキスポ「ENDIX」11月6日〜8日開催回のラインナップ発表！THQ No…"
@@ -8871,7 +8897,7 @@
      {
       "date": "2026-10-19",
       "author": "@THQNordicJapan (THQ Nordic Japan)",
-      "views": 626.0,
+      "views": 697.0,
       "engagement": 7.0,
       "url": "https://x.com/i/status/2112182725645848752",
       "summary": "自宅のPCから、ゲームの世界へ！🎮 11月6日〜8日開催のデジタルゲームエキスポ「ENDI…"
@@ -8879,7 +8905,7 @@
      {
       "date": "2026-10-19",
       "author": "@PRTIMES_GAMES (PR TIMESゲーム)",
-      "views": 460.0,
+      "views": 464.0,
       "engagement": 2.0,
       "url": "https://x.com/i/status/2112010931509305629",
       "summary": "デジタルゲームエキスポ「ENDIX」11月6日〜8日開催回のラインナップ発表！THQ No…"
@@ -8903,22 +8929,28 @@
      {
       "date": "2026-10-16",
       "author": "@IndieExposeUK (Indie-cent Exposu…)",
-      "views": 373.0,
+      "views": 376.0,
       "engagement": 11.0,
       "url": "https://x.com/i/status/2111113208593608784",
       "summary": "6–8 November @Endix_Expo returns with 50+ gam…"
-     },
-     {
-      "date": "2026-10-15",
-      "author": "@xboxdynasty (XboxDynasty)",
-      "views": 280.0,
-      "engagement": 2.0,
-      "url": "https://x.com/i/status/2110708349725520094",
-      "summary": "Showcase 2026: Kostenlose ENDIX Expo verspric…"
      }
     ]
    },
    "press": [
+    {
+     "edition": "winter2026",
+     "date": "2026-10-22",
+     "outlet": "GameSpace.com",
+     "domain": "gamespace.com",
+     "headline": "ENDIX Expo Revealed the November Lineup - THQ Nordic, Bohemia Interactive, 505 Games & More!",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNQjdQOEFOSTdvNDFBS0xzcXp5YlVjTDV6WkcwWXdEQVJ4cUFqMy11LUU2WU9VTm51SVFMY0dxa0ZqTXVnQ3FaVkthOTdQZzhPR2gtS0IzMUNRNkJRS1QyNHl2UWlpVExpZmpUWlpubk54WFFkM2hLVXZyOHJPUXF5SXA0ZEZIS1E?oc=5",
+     "country": "International",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US",
+     "language": "English",
+     "uvm": 0
+    },
     {
      "edition": "winter2026",
      "date": "2026-10-19",
@@ -9096,7 +9128,7 @@
      "url": "https://totalapexentertainment.com/endix-expo-interview-founder-nikos/",
      "country": "USA",
      "kind": "article",
-     "x_views": 189.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 27860.0
@@ -9124,7 +9156,7 @@
      "url": "https://www.indie-exposure.com/review-mexican-ninja/",
      "country": "UK",
      "kind": "article",
-     "x_views": 184.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 0
@@ -9138,7 +9170,7 @@
      "url": "https://gamerheadlines.com/endix-returns-november-2026-virtual-expo/",
      "country": "USA",
      "kind": "article",
-     "x_views": 47.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 3390.0
@@ -9152,7 +9184,7 @@
      "url": "https://blansi.es/noticias/endix-celebrara-su-feria-virtual-videojuegos-6-8-noviembre-p978",
      "country": "Spain",
      "kind": "article",
-     "x_views": 19.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Spanish",
      "uvm": 0
@@ -9166,7 +9198,7 @@
      "url": "https://portalgeek.co/endix-2026/",
      "country": "Colombia",
      "kind": "article",
-     "x_views": 21.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Spanish",
      "uvm": 0
@@ -9180,7 +9212,7 @@
      "url": "https://frikiup.co/endix-regresa-este-noviembre-e-invita-a-los-jugadores-a-vivir-una-experiencia-de-exposiciones-de-otro-nivel/",
      "country": "Colombia",
      "kind": "article",
-     "x_views": 27.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Spanish",
      "uvm": 0
@@ -9194,7 +9226,7 @@
      "url": "https://thegg.net/gaming-events/endix-returns-this-november-inviting-players-to-experience-the-next-level-of-expos/",
      "country": "Sweden",
      "kind": "article",
-     "x_views": 447.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Swedish",
      "uvm": 0
@@ -9208,7 +9240,7 @@
      "url": "https://axyo.de/endix-ist-zurueck-die-gaming-expo-die-selbst-zum-spiel-wird/",
      "country": "Germany",
      "kind": "article",
-     "x_views": 60.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "German",
      "uvm": 0
@@ -9222,7 +9254,7 @@
      "url": "https://geek-o-polis.com/index.php/2026/09/11/endix-2026-le-salon-gaming-virtuel-ou-tu-es-le-veritable-joueur/",
      "country": "France",
      "kind": "article",
-     "x_views": 9.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "French",
      "uvm": 3752.0
@@ -9236,7 +9268,7 @@
      "url": "https://dropthespotlight.com/endix-returns-this-november-inviting-players-to-experience-the-next-level-of-expos/",
      "country": "USA",
      "kind": "article",
-     "x_views": 25.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "English",
      "uvm": 5639.0
@@ -9306,7 +9338,7 @@
      "url": "https://www.gamersegames.com.br/2026/09/10/endix-retorna-em-novembro-com-expo-digital-gratuita-e-novas-demonstracoes/",
      "country": "Brazil",
      "kind": "article",
-     "x_views": 21.0,
+     "x_views": 0.0,
      "source": "grok",
      "language": "Portuguese",
      "uvm": 24048.0
