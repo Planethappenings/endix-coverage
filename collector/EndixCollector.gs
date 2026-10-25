@@ -1,5 +1,5 @@
 /**
- * Endix coverage collector v2.8 — Google Apps Script for the "Endix X-statistik" sheet.
+ * Endix coverage collector v2.9 — Google Apps Script for the "Endix X-statistik" sheet.
  * Adds its own tabs and never touches Grok's tabs.
  *
  * Sources: YouTube (YouTube API), press (Google News per edition + GDELT + Bing RSS), TikTok + Instagram (Apify),
@@ -38,7 +38,7 @@ const ACTORS = {
 };
 const STEAM_APP_ID = '4356840';  // Endix on Steam
 const REVIEW_HEADERS = ['Review ID', 'Edition', 'Posted', 'Language', 'Recommended', 'Hours played', 'Helpful votes', 'Review', 'Link', 'Suggested', 'Show (TRUE/FALSE, your choice)', 'First seen'];
-const SOCIAL_SEARCH = { tiktokQueries: ['endix', 'endixexpo', 'endix expo'], hashtags: ['endix', 'endixexpo', 'endixpartner'] };
+const SOCIAL_SEARCH = { tiktokQueries: ['endix', 'endixexpo', 'endix expo'], hashtags: ['endix', 'endixexpo', 'endix_expo', 'endixpartner'], igProfile: 'endix_expo' };
 
 const EDITION_HEADERS = ['Edition', 'Slug', 'Event start', 'Event end', 'Window start', 'Window end', 'Keywords', 'Active'];
 const OWN_HEADERS = ['Platform', 'Handle', 'Channel ID (filled automatically)'];
@@ -400,6 +400,12 @@ function rss_(url) {
 
 /* ---------------- TikTok + Instagram via Apify ---------------- */
 // Runs are started here and collected later by finishApifyRuns() (hourly), so no run blocks the script.
+/** Run this by hand to search TikTok and Instagram right now (all posts, reels and tagged posts), ignoring the daily limit. */
+function searchSocialNow() {
+  PropertiesService.getScriptProperties().setProperty('social_search_force', '1');
+  startSocial();
+}
+
 function startSocial() {
   const token = PropertiesService.getScriptProperties().getProperty('APIFY_TOKEN');
   if (!token) { log_('apify', 'Skipped: APIFY_TOKEN not set in Script properties'); return; }
@@ -410,7 +416,9 @@ function startSocial() {
   const inWindow = eds.some(e => now >= e.from.getTime() && now <= e.to.getTime());
   const hot = eds.some(e => now >= e.eventStart.getTime() - HOT_DAYS_BEFORE_EVENT * 864e5 && now <= e.eventEnd.getTime() + 7 * 864e5);
   const lastSearch = Number(props.getProperty('social_search_last') || 0);
-  const doSearch = inWindow && now - lastSearch >= (hot ? 0.9 : 6.9) * 864e5;
+  const force = props.getProperty('social_search_force') === '1';
+  if (force) props.deleteProperty('social_search_force');
+  const doSearch = (inWindow || force) && (force || now - lastSearch >= (hot ? 0.9 : 6.9) * 864e5);
   const started = [];
 
   if (doSearch) {
@@ -419,8 +427,11 @@ function startSocial() {
       shouldDownloadVideos: false, shouldDownloadCovers: false, shouldDownloadSubtitles: false, shouldDownloadSlideshowImages: false,
     }, 'tiktok', 120));
     // the hashtag scraper returns ONE type per run (default 'posts'), so reels need their own run
-    started.push(startRun_(token, ACTORS.igHashtag, { hashtags: SOCIAL_SEARCH.hashtags, resultsType: 'posts', resultsLimit: 40 }, 'instagram', 120));
-    started.push(startRun_(token, ACTORS.igHashtag, { hashtags: SOCIAL_SEARCH.hashtags, resultsType: 'reels', resultsLimit: 40 }, 'instagram', 120));
+    started.push(startRun_(token, ACTORS.igHashtag, { hashtags: SOCIAL_SEARCH.hashtags, resultsType: 'posts', resultsLimit: 60 }, 'instagram', 250));
+    started.push(startRun_(token, ACTORS.igHashtag, { hashtags: SOCIAL_SEARCH.hashtags, resultsType: 'reels', resultsLimit: 100 }, 'instagram', 400));
+    // posts and reels where creators tag @endix_expo, even without a hashtag
+    started.push(startRun_(token, ACTORS.igPosts, { directUrls: ['https://www.instagram.com/' + SOCIAL_SEARCH.igProfile + '/'],
+      resultsType: 'mentions', resultsLimit: 100, addParentData: false }, 'instagram', 100));
     props.setProperty('social_search_last', String(now));
   }
 
@@ -594,18 +605,20 @@ function collectSteamReviews() {
   const now = new Date();
   let cursor = '*', pages = 0, added = 0, updated = 0;
   while (pages < (first ? 60 : 10)) {
-    const url = 'https://store.steampowered.com/appreviews/' + STEAM_APP_ID + '?json=1&filter=recent&language=all&purchase_type=all'
-      + '&num_per_page=100&cursor=' + encodeURIComponent(cursor);
-    let res = UrlFetchApp.fetch(url, { muteHttpExceptions: true, headers: { 'Accept': 'application/json', 'Accept-Language': 'en-US,en;q=0.8' } });
-    if (String(res.getContentText()).trim().charAt(0) === '<') { Utilities.sleep(3000); res = UrlFetchApp.fetch(url, { muteHttpExceptions: true, headers: { 'Accept': 'application/json' } }); }
+    // Steam's official reviews API (the old store.steampowered.com/appreviews was switched off 22 Oct 2026).
+    // No key needed. filter 1 = newest first, purchase_type 1 = all purchases (incl. keys), all languages.
+    const args = { appid: Number(STEAM_APP_ID), filter: 1, languages: ['all'], purchase_type: 1, review_type: 0,
+      filter_offtopic_activity: false, num_per_page: 100, cursor: cursor };
+    const url = 'https://api.steampowered.com/IUserReviewsService/GetAppReviews/v1/?input_json=' + encodeURIComponent(JSON.stringify(args));
+    let res = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+    if (res.getResponseCode() === 429 || res.getResponseCode() >= 500) { Utilities.sleep(5000); res = UrlFetchApp.fetch(url, { muteHttpExceptions: true }); }
     pages++;
     if (res.getResponseCode() !== 200) { log_('steam reviews', 'Steam answered ' + res.getResponseCode() + ', will try again next run'); break; }
     const body = String(res.getContentText() || '').trim();
-    if (body.charAt(0) === '<') {
-      const title = (body.match(/<title>([^<]*)<\/title>/i) || [])[1] || body.slice(0, 120);
-      log_('steam reviews', 'Steam sent a web page instead of data ("' + title.trim() + '"), will try again next run'); break;
-    }
-    const j = JSON.parse(body || '{}');
+    if (body.charAt(0) !== '{') { log_('steam reviews', 'Steam sent something that is not data: ' + body.slice(0, 120)); break; }
+    const j = JSON.parse(body).response || {};
+    if (pages === 1 && j.query_summary && j.query_summary.total_reviews !== undefined)
+      PropertiesService.getScriptProperties().setProperty('steam_review_summary', JSON.stringify(j.query_summary));
     const list = j.reviews || [];
     let seen = 0;
     list.forEach(v => {
