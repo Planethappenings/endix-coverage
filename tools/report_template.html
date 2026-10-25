@@ -768,8 +768,11 @@ function decks(ed, ytC, ytM, tt, ig, x, countries){
   ]));
   // Instagram
   if (ig.length) out.push(deck("instagram", "instagram", "Instagram", [
-    ["Overview", ovSlide(sum(ig), "views", [[ig.length,"reels"],[uniq(ig,"creator"),"creators"],[sum(ig,"likes"),"likes"]],
-      `<h4>Most viewed</h4>${topList(ig.map(v => ({t:v.caption || "Instagram reel", b:"@"+v.creator, v:v.views, url:v.url})), 6)}`, seeAll("instagram", ig.length))],
+    // photo/carousel posts have no view count, so fall back to likes until reels with views are in
+    ...(() => { const igv = sum(ig), allReels = ig.every(v => /\/reels?\//.test(v.url||"")), byViews = igv > 0;
+      return [["Overview", ovSlide(byViews ? igv : sum(ig,"likes"), byViews ? "views" : "likes",
+        [[ig.length, allReels ? "reels" : "posts & reels"],[uniq(ig,"creator"),"creators"], byViews ? [sum(ig,"likes"),"likes"] : [sum(ig,"comments"),"comments"]],
+        `<h4>${byViews ? "Most viewed" : "Most liked"}</h4>${topList(ig.map(v => ({t:v.caption || "Instagram post", b:"@"+v.creator, v: byViews ? v.views : v.likes, url:v.url})).sort((a,b)=>b.v-a.v), 6)}`, seeAll("instagram", ig.length))]]; })(),
     HOSTED ? ["Top reels", `<div class="embeds">${ig.filter(v => igCode(v.url)).slice(0,3).map(v => emb("ig", v, v.caption || "Instagram reel", "@"+v.creator, v.views)).join("")}</div>`] : null,
   ]));
   // Twitch
