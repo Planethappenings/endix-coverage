@@ -1,5 +1,5 @@
 /**
- * Endix coverage collector v2.7 — Google Apps Script for the "Endix X-statistik" sheet.
+ * Endix coverage collector v2.8 — Google Apps Script for the "Endix X-statistik" sheet.
  * Adds its own tabs and never touches Grok's tabs.
  *
  * Sources: YouTube (YouTube API), press (Google News per edition + GDELT + Bing RSS), TikTok + Instagram (Apify),
@@ -38,7 +38,7 @@ const ACTORS = {
 };
 const STEAM_APP_ID = '4356840';  // Endix on Steam
 const REVIEW_HEADERS = ['Review ID', 'Edition', 'Posted', 'Language', 'Recommended', 'Hours played', 'Helpful votes', 'Review', 'Link', 'Suggested', 'Show (TRUE/FALSE, your choice)', 'First seen'];
-const SOCIAL_SEARCH = { tiktokQueries: ['endix', 'endixexpo', 'endix expo'], hashtags: ['endix', 'endixexpo'] };
+const SOCIAL_SEARCH = { tiktokQueries: ['endix', 'endixexpo', 'endix expo'], hashtags: ['endix', 'endixexpo', 'endixpartner'] };
 
 const EDITION_HEADERS = ['Edition', 'Slug', 'Event start', 'Event end', 'Window start', 'Window end', 'Keywords', 'Active'];
 const OWN_HEADERS = ['Platform', 'Handle', 'Channel ID (filled automatically)'];
@@ -418,7 +418,9 @@ function startSocial() {
       searchQueries: SOCIAL_SEARCH.tiktokQueries, hashtags: SOCIAL_SEARCH.hashtags, resultsPerPage: 40,
       shouldDownloadVideos: false, shouldDownloadCovers: false, shouldDownloadSubtitles: false, shouldDownloadSlideshowImages: false,
     }, 'tiktok', 120));
-    started.push(startRun_(token, ACTORS.igHashtag, { hashtags: SOCIAL_SEARCH.hashtags, resultsLimit: 40 }, 'instagram', 80));
+    // the hashtag scraper returns ONE type per run (default 'posts'), so reels need their own run
+    started.push(startRun_(token, ACTORS.igHashtag, { hashtags: SOCIAL_SEARCH.hashtags, resultsType: 'posts', resultsLimit: 40 }, 'instagram', 120));
+    started.push(startRun_(token, ACTORS.igHashtag, { hashtags: SOCIAL_SEARCH.hashtags, resultsType: 'reels', resultsLimit: 40 }, 'instagram', 120));
     props.setProperty('social_search_last', String(now));
   }
 
@@ -594,10 +596,16 @@ function collectSteamReviews() {
   while (pages < (first ? 60 : 10)) {
     const url = 'https://store.steampowered.com/appreviews/' + STEAM_APP_ID + '?json=1&filter=recent&language=all&purchase_type=all'
       + '&num_per_page=100&cursor=' + encodeURIComponent(cursor);
-    const res = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+    let res = UrlFetchApp.fetch(url, { muteHttpExceptions: true, headers: { 'Accept': 'application/json', 'Accept-Language': 'en-US,en;q=0.8' } });
+    if (String(res.getContentText()).trim().charAt(0) === '<') { Utilities.sleep(3000); res = UrlFetchApp.fetch(url, { muteHttpExceptions: true, headers: { 'Accept': 'application/json' } }); }
     pages++;
     if (res.getResponseCode() !== 200) { log_('steam reviews', 'Steam answered ' + res.getResponseCode() + ', will try again next run'); break; }
-    const j = JSON.parse(res.getContentText() || '{}');
+    const body = String(res.getContentText() || '').trim();
+    if (body.charAt(0) === '<') {
+      const title = (body.match(/<title>([^<]*)<\/title>/i) || [])[1] || body.slice(0, 120);
+      log_('steam reviews', 'Steam sent a web page instead of data ("' + title.trim() + '"), will try again next run'); break;
+    }
+    const j = JSON.parse(body || '{}');
     const list = j.reviews || [];
     let seen = 0;
     list.forEach(v => {
