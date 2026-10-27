@@ -16,12 +16,12 @@ CONFIG = {
     'yt_block_channels': {'@endix tube', 'endika parimbawa', 'hilaldeep', 'endix', 'endix_playz', 'itzendix', 'crnovyy', '18 red boss', 'reaper gaming-தமிழ்'},
     'press_channels': {'ign', 'gametrailers', 'insider gaming', 'indie-cent exposure', 'frikiup patch notes — noticias gamer', 'revista grind'},
     'press_block_domains': {'x.com', 'finance.yahoo.com', 'uk.finance.yahoo.com', 'hk.finance.yahoo.com', 'store.steampowered.com', 'youtu.be', 'youtube.com'},
-    'social_block_handles': set(),
+    'social_block_handles': {'endix.wav'},  # unrelated music account
     # X posts hidden from the page: whole accounts (lower-case @handle) or single post IDs (duplicates)
     'x_hide_authors': {'@oursnet'},
     'x_hide_ids': {'2058216440541348164'},
     # Steam reviews (Steam_Reviews tab): IDs to never show, and how many to show per edition
-    'steam_hide_ids': {'226593544', '226422187', '226382586', '226373482', '226353631', '226320113', '226254213', '226239198', '226207684', '226337904', '238447392', '238584514'},  # mixed or off-topic
+    'steam_hide_ids': {'226593544', '226422187', '226382586', '226373482', '226353631', '226320113', '226254213', '226239198', '226207684', '226337904', '238447392', '238584514', '238624362'},  # mixed or off-topic
     'steam_max_per_edition': 12,
     'editions': {
         'spring2026': {
