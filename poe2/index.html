@@ -494,6 +494,14 @@ body::before {
 }
 .media-kit-btn:hover { background: var(--gold-dim); border-color: var(--gold); color: var(--gold-hi); }
 .metrics-pending { font-size: 11px; color: var(--text-3); font-style: italic; }
+.card-video { padding: 0 22px 16px; }
+.creator-video { width: 100%; display: block; border: 1px solid var(--gold-border); border-radius: 2px; background: #000; }
+.card-video-label {
+  display: flex; align-items: center; gap: 7px;
+  font-family: var(--font-d); font-size: 9.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+}
+.card-video-label svg { flex-shrink: 0; }
 
 /* ===== AUDIENCE NOTE ===== */
 .audience-note {
@@ -700,6 +708,7 @@ body::before {
 </footer>
 
 <script>
+var VIDEO_ETTNIX = 'img/ettnix-tqii.mp4';
 var IMG_HERO_BG = 'img/hero.jpg';
 var IMG_CHAR    = '';
 var IMG_LOGO    = 'img/logo.webp';
@@ -898,6 +907,7 @@ var CREATORS = [
       { val: '7.10%', key: 'Daily Chat ER' }
     ],
     deal: null,
+    video: VIDEO_ETTNIX,
     media_kit: 'https://july.bio/ettnix',
     channels: [
       { name: 'Twitch', url: 'https://www.twitch.tv/ettnix' },
@@ -983,6 +993,7 @@ function renderCountry(country) {
         '</div></div></div>' +
       '<div class="card-pitch">' + escapeHtml(c.pitch) + '</div>' +
       '<div class="card-metrics">' + metricsHtml + '</div>' +
+      (c.video ? '<div class="card-video"><div class="card-video-label"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="7" height="8" rx="1" stroke="#c8922a" stroke-width=".9"/><path d="M8 5l3-2v6l-3-2V5z" fill="#c8922a" fill-opacity=".7"/></svg>Featured on Titan Quest II Steam Page</div><video src="' + escapeHtml(c.video) + '" controls preload="metadata" playsinline class="creator-video"></video></div>' : '') +
       '<div class="card-body">' + dealHtml + '<p class="card-bio">' + escapeHtml(c.bio) + '</p></div>' +
       '<div class="card-footer"><div class="platform-pills">' + pillsHtml + '</div>' + kitHtml + '</div>' +
     '</article>';
