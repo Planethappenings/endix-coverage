@@ -1,0 +1,1011 @@
+<title>Hello Nord × Path of Exile 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+
+<style>
+:root {
+  --bg:          #050309;
+  --bg-card:     #0c0a12;
+  --bg-surface:  #13101c;
+  --bg-band:     #07060d;
+  --gold:        #c8922a;
+  --gold-hi:     #e8b84b;
+  --gold-dim:    rgba(200,146,42,.22);
+  --gold-glow:   rgba(200,146,42,.10);
+  --gold-border: rgba(200,146,42,.20);
+  --red:         #7a1414;
+  --red-hi:      #c0392b;
+  --red-bright:  #e84040;
+  --red-dim:     rgba(122,20,20,.25);
+  --red-border:  rgba(192,57,43,.30);
+  --red-glow:    rgba(122,20,20,.14);
+  --text:        #f0e8d8;
+  --text-2:      #b0a092;
+  --text-3:      #6a5e72;
+  --border:      rgba(200,146,42,.15);
+  --topbar-h:    54px;
+  --font-d:      'Cinzel','Palatino Linotype',serif;
+  --font-b:      'Inter',system-ui,sans-serif;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left:  max(16px, env(safe-area-inset-left,  0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: rgba(5,3,9,.97);
+  border-bottom: 1px solid rgba(192,57,43,.22);
+  backdrop-filter: blur(16px);
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 110;
+  background: rgba(5,3,9,.97);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 16px;
+  gap: 12px;
+}
+.topbar-brand {
+  font-family: var(--font-d);
+  font-size: 13px;
+  letter-spacing: .12em;
+  color: var(--text-2);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.topbar-brand strong { color: var(--gold); font-weight: 700; }
+.topbar-poe2 {
+  font-family: var(--font-d);
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: var(--text-3);
+  text-transform: uppercase;
+  text-align: right;
+  white-space: nowrap;
+}
+.topbar-launch {
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+  border: 1px solid var(--red-border);
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-family: var(--font-d);
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px var(--red-glow);
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0d0a18;
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(105deg, rgba(5,3,9,.96) 0%, rgba(5,3,9,.80) 38%, rgba(5,3,9,.25) 75%, rgba(5,3,9,.10) 100%),
+    linear-gradient(to top, rgba(5,3,9,1) 0%, rgba(5,3,9,.6) 18%, transparent 45%),
+    linear-gradient(to bottom, rgba(5,3,9,.55) 0%, transparent 22%);
+}
+.hero-char {
+  position: absolute;
+  right: -2%;
+  bottom: 0;
+  width: 58%;
+  max-width: 820px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-char-img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  display: block;
+  mix-blend-mode: multiply;
+  filter: brightness(1.05) contrast(1.05);
+}
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-block: 90px 110px;
+}
+.hero-logo-wrap {
+  margin-bottom: 36px;
+}
+.hero-logo {
+  height: 62px;
+  width: auto;
+  display: block;
+  mix-blend-mode: multiply;
+  filter: brightness(1.05);
+  opacity: .92;
+}
+.hero-logo[src=""] { display: none; }
+.hero-kicker {
+  font-family: var(--font-d);
+  font-size: 10.5px;
+  letter-spacing: .35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-kicker::after {
+  content: '';
+  display: block;
+  width: 52px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  flex-shrink: 0;
+}
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(38px, 7.5vw, 90px);
+  font-weight: 900;
+  line-height: .98;
+  color: var(--text);
+  margin-bottom: 22px;
+  max-width: 720px;
+  text-shadow: 0 4px 60px rgba(0,0,0,.9), 0 2px 12px rgba(0,0,0,.7);
+  letter-spacing: -.015em;
+}
+.hero-title em {
+  color: var(--gold-hi);
+  font-style: normal;
+  display: block;
+}
+.hero-subtitle {
+  font-family: var(--font-d);
+  font-size: clamp(12px, 1.6vw, 15px);
+  color: var(--text-2);
+  letter-spacing: .08em;
+  line-height: 1.6;
+  margin-bottom: 52px;
+  max-width: 480px;
+}
+.hero-rule {
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--red-hi), var(--gold) 50%, transparent);
+  margin-bottom: 48px;
+}
+.hero-stats {
+  display: flex;
+  gap: clamp(24px, 3.5vw, 52px);
+  flex-wrap: wrap;
+}
+.stat-block { text-align: left; }
+.stat-num {
+  font-family: var(--font-d);
+  font-size: clamp(24px, 4.5vw, 44px);
+  font-weight: 700;
+  color: var(--gold-hi);
+  line-height: 1;
+  margin-bottom: 7px;
+}
+.stat-label {
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ===== LAUNCH BAND ===== */
+.launch-band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--red) 0%, rgba(122,20,20,.85) 50%, var(--red) 100%);
+  border-top: 1px solid rgba(192,57,43,.45);
+  border-bottom: 1px solid rgba(192,57,43,.45);
+  padding-block: 13px;
+}
+.launch-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0, transparent 120px, rgba(200,146,42,.04) 120px, rgba(200,146,42,.04) 121px);
+}
+.launch-band-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.launch-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold-hi);
+  flex-shrink: 0;
+  box-shadow: 0 0 10px var(--gold);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,100% { box-shadow: 0 0 6px var(--gold); opacity: .8; }
+  50%      { box-shadow: 0 0 18px var(--gold-hi); opacity: 1; }
+}
+.launch-text {
+  font-family: var(--font-d);
+  font-size: 11.5px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(240,232,216,.88);
+}
+.launch-text strong { color: var(--gold-hi); font-weight: 700; }
+
+/* ===== COUNTRY NAV ===== */
+.country-nav {
+  border-bottom: 1px solid var(--border);
+  background: rgba(5,3,9,.98);
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + var(--topbar-h));
+  z-index: 90;
+  backdrop-filter: blur(16px);
+}
+.country-nav-inner {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.country-nav-inner::-webkit-scrollbar { display: none; }
+.country-tab {
+  flex: 0 0 auto;
+  padding: 16px 24px;
+  font-family: var(--font-d);
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--text-3);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s, background .2s;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.country-tab:hover { color: var(--text-2); background: rgba(200,146,42,.04); }
+.country-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.country-tab .flag { margin-right: 8px; font-style: normal; font-size: 14px; }
+
+/* ===== CREATORS SECTION ===== */
+.creators-section {
+  padding-block: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.country-flag-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .12;
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, black 0%, black 90%, transparent 100%);
+  user-select: none;
+  overflow: hidden;
+}
+.country-flag-bg svg { width: 100%; height: auto; display: block; }
+.creators-section .inner { position: relative; z-index: 1; }
+
+.country-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.country-flag { font-size: 44px; line-height: 1; flex-shrink: 0; }
+.country-name {
+  font-family: var(--font-d);
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  color: var(--text);
+}
+.country-count { font-size: 12px; color: var(--text-3); letter-spacing: .05em; margin-top: 3px; }
+.country-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--red-border), var(--gold-border) 40%, transparent);
+  margin-bottom: 36px;
+}
+
+.creators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* ===== CREATOR CARD ===== */
+.creator-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(200,146,42,.12);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.creator-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--red-hi), var(--gold) 50%, transparent);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.creator-card:hover {
+  border-color: rgba(200,146,42,.35);
+  box-shadow: 0 8px 48px rgba(0,0,0,.5), 0 0 24px rgba(200,146,42,.06);
+  transform: translateY(-2px);
+}
+.creator-card:hover::before { opacity: 1; }
+.creator-card.featured { border-color: rgba(200,146,42,.28); }
+.creator-card.featured::before { opacity: .6; }
+
+.card-top { padding: 22px 22px 0; }
+.card-header-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+.avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--gold-dim);
+}
+.avatar-fallback {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: 20px; font-weight: 700;
+  color: var(--gold);
+  background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-card) 100%);
+  letter-spacing: .04em;
+}
+.avatar-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card-header-info { min-width: 0; }
+.card-platform-tag {
+  font-family: var(--font-d); font-size: 10px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 4px;
+}
+.card-name {
+  font-family: var(--font-d);
+  font-size: clamp(15px, 2.2vw, 20px);
+  font-weight: 700; color: var(--text);
+  line-height: 1.2; margin-bottom: 4px; text-wrap: balance;
+}
+.card-location { font-size: 11.5px; color: var(--text-3); letter-spacing: .04em; }
+.card-pitch {
+  font-size: 13px; color: var(--text-2);
+  line-height: 1.55; font-style: italic;
+  padding: 11px 14px;
+  margin: 0 22px 18px;
+  border-left: 2px solid var(--red-border);
+  background: rgba(122,20,20,.06);
+  border-radius: 0 2px 2px 0;
+}
+.card-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(200,146,42,.10);
+  border-bottom: 1px solid rgba(200,146,42,.10);
+  background: rgba(0,0,0,.18);
+  flex-shrink: 0;
+}
+.metric { padding: 14px 10px; text-align: center; position: relative; }
+.metric + .metric::before {
+  content: '';
+  position: absolute; left: 0; top: 18%; bottom: 18%;
+  width: 1px; background: rgba(200,146,42,.10);
+}
+.metric-val {
+  font-family: var(--font-d);
+  font-size: clamp(13px, 2.2vw, 18px);
+  font-weight: 700; color: var(--gold-hi);
+  font-variant-numeric: tabular-nums;
+  line-height: 1; margin-bottom: 5px; white-space: nowrap;
+}
+.metric-key { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+.card-body { padding: 16px 22px 0; flex: 1; }
+.deal-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold-dim);
+  background: rgba(200,146,42,.06);
+  padding: 4px 11px; border-radius: 2px;
+  margin-bottom: 14px; font-family: var(--font-d);
+}
+.card-bio { font-size: 13px; color: var(--text-2); line-height: 1.62; margin-bottom: 16px; min-width: 0; }
+.card-footer {
+  padding: 14px 22px 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 10px; flex-wrap: wrap;
+}
+.platform-pills { display: flex; gap: 5px; flex-wrap: wrap; }
+.pill {
+  font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text-3); background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,.06);
+  padding: 3px 8px; border-radius: 2px;
+  text-decoration: none; transition: color .15s, border-color .15s;
+}
+.pill:hover { color: var(--text-2); border-color: rgba(255,255,255,.12); }
+.media-kit-btn {
+  font-family: var(--font-d); font-size: 10.5px;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  border: 1px solid var(--gold-dim);
+  padding: 7px 15px; border-radius: 2px;
+  transition: background .2s, border-color .2s, color .2s;
+  white-space: nowrap; flex-shrink: 0;
+}
+.media-kit-btn:hover { background: var(--gold-dim); border-color: var(--gold); color: var(--gold-hi); }
+.metrics-pending { font-size: 11px; color: var(--text-3); font-style: italic; }
+
+/* ===== AUDIENCE NOTE ===== */
+.audience-note {
+  margin-top: 48px;
+  padding: 22px 28px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: rgba(7,6,13,.7);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.audience-note-icon { font-size: 24px; flex-shrink: 0; }
+.audience-note-text { font-size: 13px; color: var(--text-2); line-height: 1.55; min-width: 0; }
+.audience-note-text strong { color: var(--text); }
+
+/* ===== DIVIDER SECTION ===== */
+.divider-section {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: #040210;
+}
+.divider-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+  filter: brightness(.28) saturate(.7);
+}
+.divider-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(5,3,9,1) 0%, rgba(5,3,9,.1) 30%, rgba(5,3,9,.1) 70%, rgba(5,3,9,1) 100%),
+    linear-gradient(to right, rgba(5,3,9,.7) 0%, transparent 60%);
+}
+.divider-content {
+  position: relative; z-index: 2;
+  height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-block: 48px;
+}
+.divider-label {
+  font-family: var(--font-d);
+  font-size: 10px; letter-spacing: .35em;
+  text-transform: uppercase; color: var(--red-bright);
+  margin-bottom: 18px;
+}
+.divider-quote {
+  font-family: var(--font-d);
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: 700; color: var(--text);
+  max-width: 680px; line-height: 1.18;
+  text-shadow: 0 2px 30px rgba(0,0,0,.8);
+  margin-bottom: 28px;
+}
+.divider-quote em { color: var(--gold-hi); font-style: normal; }
+.divider-sub {
+  font-size: 13px; color: var(--text-2);
+  max-width: 500px; line-height: 1.6;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  border-top: 1px solid rgba(200,146,42,.12);
+  padding-block: 52px;
+  text-align: center;
+  background: #030208;
+}
+.footer-ornament { display: block; margin: 0 auto 24px; }
+.footer-brand {
+  font-family: var(--font-d); font-size: 16px;
+  font-weight: 700; letter-spacing: .18em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 8px;
+}
+.footer-tagline { font-size: 11px; color: var(--text-3); letter-spacing: .08em; margin-bottom: 20px; }
+.footer-contact { font-family: var(--font-d); font-size: 11px; color: var(--text-2); letter-spacing: .14em; text-transform: uppercase; }
+.footer-url { font-size: 12px; color: var(--text-3); margin-top: 5px; }
+</style>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="inner topbar-inner">
+    <div class="topbar-brand"><strong>Hello Nord</strong> &times; Creator Partnerships</div>
+    <div class="topbar-launch">1.0 Launch &middot; Dec 11</div>
+    <div class="topbar-poe2">Path of Exile 2 &middot; World Tour</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-char"><img id="heroChar" class="hero-char-img" src="" alt="" aria-hidden="true"></div>
+  <div class="inner hero-content">
+    <div class="hero-logo-wrap">
+      <img id="heroLogo" class="hero-logo" src="" alt="Path of Exile 2">
+    </div>
+    <div class="hero-kicker">Hello Nord Creator Partnerships</div>
+    <h1 class="hero-title">Nine Voices.<br><em>One World Tour.</em></h1>
+    <p class="hero-subtitle">Gaming's most immersive launch deserves gaming's most authentic voices. Ready for December 11.</p>
+    <div class="hero-rule"></div>
+    <div class="hero-stats">
+      <div class="stat-block">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Creators</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Countries</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">4M+</div>
+        <div class="stat-label">Combined Audience</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">210M+</div>
+        <div class="stat-label">Avg Monthly Impressions</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- LAUNCH CALLOUT -->
+<div class="launch-band">
+  <div class="inner launch-band-inner">
+    <div class="launch-dot"></div>
+    <div class="launch-text">
+      <strong>Path of Exile 2 launches 1.0 on December 11.</strong>
+      Hello Nord's roster is ready to make it a moment across six markets.
+    </div>
+    <div class="launch-dot"></div>
+  </div>
+</div>
+
+<!-- COUNTRY NAV -->
+<nav class="country-nav" role="tablist" aria-label="Select country">
+  <div class="inner country-nav-inner">
+    <button class="country-tab active" data-country="uk" role="tab" aria-selected="true">
+      <span class="flag">&#127468;&#127463;</span>United Kingdom
+    </button>
+    <button class="country-tab" data-country="us" role="tab" aria-selected="false">
+      <span class="flag">&#127482;&#127480;</span>United States
+    </button>
+    <button class="country-tab" data-country="ca" role="tab" aria-selected="false">
+      <span class="flag">&#127464;&#127462;</span>Canada
+    </button>
+    <button class="country-tab" data-country="au" role="tab" aria-selected="false">
+      <span class="flag">&#127462;&#127482;</span>Australia
+    </button>
+    <button class="country-tab" data-country="de" role="tab" aria-selected="false">
+      <span class="flag">&#127465;&#127466;</span>Germany
+    </button>
+    <button class="country-tab" data-country="se" role="tab" aria-selected="false">
+      <span class="flag">&#127480;&#127466;</span>Sweden
+    </button>
+  </div>
+</nav>
+
+<!-- CREATORS -->
+<main>
+  <section class="creators-section">
+    <div id="flag-bg" class="country-flag-bg" aria-hidden="true"></div>
+    <div class="inner">
+      <div id="country-header"></div>
+      <div class="creators-grid" id="creators-grid"></div>
+      <div class="audience-note">
+        <div class="audience-note-icon">&#127760;</div>
+        <div class="audience-note-text">
+          <strong>Cross-market reach, every time.</strong>
+          All creators in this roster deliver an average of <strong>50% US reach</strong> regardless of their home country, followed by UK, Canada, and Western Europe. A world tour deal with Hello Nord is also a North American awareness play.
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ATMOSPHERIC DIVIDER -->
+<div class="divider-section">
+  <div class="divider-bg" id="dividerBg"></div>
+  <div class="divider-overlay"></div>
+  <div class="inner divider-content">
+    <div class="divider-label">The Opportunity</div>
+    <div class="divider-quote">A global ARPG launch.<br><em>Six markets. Nine voices.</em><br>One roster that spans them all.</div>
+    <p class="divider-sub">From the UK to Sweden, the US to Australia — Hello Nord's creators reach the exact audiences Path of Exile 2 is built for. Every creator in this roster already delivers 50% or more US viewership regardless of where they call home.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="inner">
+    <svg class="footer-ornament" width="140" height="18" viewBox="0 0 140 18" fill="none">
+      <line x1="0" y1="9" x2="54" y2="9" stroke="#c8922a" stroke-opacity=".28" stroke-width=".8"/>
+      <polygon points="60,2 68,9 60,16 52,9" fill="none" stroke="#7a1414" stroke-opacity=".7" stroke-width=".9"/>
+      <rect x="66" y="6" width="8" height="8" fill="#c8922a" fill-opacity=".75" transform="rotate(45 70 10)"/>
+      <polygon points="80,2 88,9 80,16 72,9" fill="none" stroke="#7a1414" stroke-opacity=".7" stroke-width=".9"/>
+      <line x1="86" y1="9" x2="140" y2="9" stroke="#c8922a" stroke-opacity=".28" stroke-width=".8"/>
+    </svg>
+    <div class="footer-brand">Hello Nord</div>
+    <div class="footer-tagline">Gaming Creator Agency &middot; hellonord.se</div>
+    <div class="footer-contact">daniel@hellonord.se</div>
+  </div>
+</footer>
+
+<script>
+var IMG_HERO_BG = 'img/hero.jpg';
+var IMG_CHAR    = '';
+var IMG_LOGO    = 'img/logo.webp';
+var IMG_BATTLE  = 'img/battle.webp';
+
+var CREATORS = [
+  {
+    country: 'uk',
+    name: 'Captain Eggcellent',
+    initials: 'CE',
+    avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lF06n7yXV4O7GDR0xRe2En7-n6X2Mio6ymHT1o8vVdZ-g=s176-c-k-c0x00ffffff-no-rj',
+    location: 'Ipswich, England',
+    platform_tag: 'YouTube · 982K Subscribers',
+    pitch: '"Did you know?" Every video starts with that question. He built 982K subscribers uncovering secrets others miss. Path of Exile 2 is full of them.',
+    bio: 'UK-based gaming creator and Easter egg specialist. His research-driven format reveals hidden mechanics, developer nods, and lore secrets across the biggest titles in gaming. For PoE2, that is a natural fit: the game rewards exploration, and his audience is already trained to care about what others overlook.',
+    metrics: [
+      { val: '1.55M', key: 'Total Audience' },
+      { val: '2.66%', key: 'Engagement Rate' },
+      { val: '93%', key: 'Male Audience' }
+    ],
+    deal: null,
+    media_kit: 'https://july.bio/CaptainEggcellent',
+    channels: [
+      { name: 'YouTube', url: 'https://www.youtube.com/@CaptainEggcellent' },
+      { name: 'Shorts', url: 'https://www.youtube.com/@captaineggcellentbutshorter' },
+      { name: 'TikTok', url: 'https://www.tiktok.com/@captaineggcellent' },
+      { name: 'Instagram', url: 'https://www.instagram.com/captaineggcellent/' }
+    ]
+  },
+  {
+    country: 'uk',
+    name: 'RageGamingVideos',
+    initials: 'RG',
+    avatar: 'https://yt3.googleusercontent.com/3TlufKydntExNT_c7TULN3BosQs2ClqYTDrLSl_xCF-jhriazbq8XzD9C377agd_PLSjqHdp=s176-c-k-c0x00ffffff-no-rj',
+    location: 'United Kingdom',
+    platform_tag: 'YouTube · 1.4M Subscribers',
+    pitch: 'Already generated millions of views on PoE2 content. The go-to channel for RPG onboarding. A multi-video deal means they own the getting-started journey.',
+    bio: 'Josh, Cotton, and Hollow built one of YouTube\'s leading RPG guide channels on to-the-point guides and entertaining play. They have already proven their PoE2 audience with millions of views. A multi-video deal puts them in front of every new player searching for best classes, build guides, and getting-started walkthroughs at launch.',
+    metrics: [
+      { val: '1.42M', key: 'Total Audience' },
+      { val: '1.91%', key: 'Engagement Rate' },
+      { val: '96%', key: 'Male Audience' }
+    ],
+    deal: 'Proposed: Multi-Video Deal · Playlist Ownership',
+    media_kit: 'https://july.bio/ragegamingvideos',
+    channels: [
+      { name: 'YouTube', url: 'https://www.youtube.com/@RageGamingVideos' }
+    ]
+  },
+  {
+    country: 'us',
+    name: 'David Jaffe',
+    initials: 'DJ',
+    avatar: 'https://yt3.googleusercontent.com/FpEKToeTl-YhbfTMINqhrOb1mJv9CFSX2-FMxEpj5jfYmImNbsPBgO4Fv_j-Iw-6hKhVXUN35A=s176-c-k-c0x00ffffff-no-rj',
+    location: 'San Diego, California',
+    platform_tag: 'YouTube · 63.4K Subscribers',
+    pitch: 'Creator of God of War. Co-creator of Twisted Metal. When he covers your game, it is a headline.',
+    bio: 'David Jaffe designed God of War (PS2) and co-created the Twisted Metal franchise. His 3.07% engagement rate is above average for his size, reflecting an audience that actually listens. His viewers are older, hardcore gamers (35 to 44, primary) who grew up with the titles that defined the genre. His endorsement carries weight.',
+    metrics: [
+      { val: '66.8K', key: 'Total Audience' },
+      { val: '3.07%', key: 'Engagement Rate' },
+      { val: '65.5%', key: 'US Audience' }
+    ],
+    deal: null,
+    media_kit: 'https://july.bio/davidjaffe',
+    channels: [
+      { name: 'YouTube', url: 'https://www.youtube.com/@DavidJaffeGames' },
+      { name: 'Twitch', url: 'https://www.twitch.tv/jaffegamesontwitch' },
+      { name: 'TikTok', url: 'https://www.tiktok.com/@gabbinandgames' },
+      { name: 'Instagram', url: 'https://www.instagram.com/davidscottjaffe/' }
+    ]
+  },
+  {
+    country: 'us',
+    name: 'Gem Gaming Network',
+    initials: 'GG',
+    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-maliva-avt-0068/384045547794200f01b960581ac8ab35~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=d1b338f3&x-expires=1793350800&x-signature=m7%2BT%2F4B6Nj3H0qyYfpQez6TrkNQ%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
+    location: 'Charlotte, North Carolina',
+    platform_tag: 'TikTok · 62.7K Followers',
+    pitch: 'Short-form hype machine. 7.09% TikTok engagement. Their audience shows up for every drop.',
+    bio: 'Charlotte-based creators specializing in high-impact short-form content built to drive game discovery, Wishlists, and sales. Their audience skews young (18 to 24, at 66.6%) and is majority US-based. Perfect for PoE2 launch content, new season drops, and build showcases that bring in first-time players.',
+    metrics: [
+      { val: '136K', key: 'Total Audience' },
+      { val: '7.09%', key: 'TikTok ER' },
+      { val: '60.2%', key: 'US Audience' }
+    ],
+    deal: null,
+    media_kit: 'https://july.bio/gemgamingnetwork',
+    channels: [
+      { name: 'TikTok', url: 'https://www.tiktok.com/@gemgamingnetwork' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@gemgamingnetwork' },
+      { name: 'Instagram', url: 'https://www.instagram.com/gemgamingnetwork' }
+    ]
+  },
+  {
+    country: 'us',
+    name: 'Cloudual',
+    initials: 'CL',
+    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-maliva-avt-0068/21d103d566caa9508b1e47c49545aeae~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=e93ce5e1&x-expires=1793350800&x-signature=nucU%2Ffw90AtgVD4jKz3FC3%2BcO58%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
+    location: 'North Carolina',
+    platform_tag: 'Instagram · 53.7K Followers',
+    pitch: 'Always on camera. High production. 12.82% Instagram engagement rate: one of the highest on this roster.',
+    bio: 'Face-forward gaming and tech content with professional production and a curious, genuine personality. Cloudual brings the kind of on-camera energy that builds real trust. Their 12.82% Instagram engagement rate is exceptional, and their audience (87% male, 25 to 34 primary) maps directly onto the PoE2 player base.',
+    metrics: [
+      { val: '105K', key: 'Total Audience' },
+      { val: '12.82%', key: 'Instagram ER' },
+      { val: '87%', key: 'Male Audience' }
+    ],
+    deal: null,
+    media_kit: 'https://july.bio/cloudual',
+    channels: [
+      { name: 'Instagram', url: 'https://www.instagram.com/cloudual' },
+      { name: 'TikTok', url: 'https://www.tiktok.com/@cloudual' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@Cloudual' }
+    ]
+  },
+  {
+    country: 'ca',
+    name: 'Retro For The First Time',
+    initials: 'RF',
+    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-alisg-avt-0068/a718d39ccc71d44354f4c62231cfe83a~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=98e627da&x-expires=1793350800&x-signature=fynZdGQ%2BW7GjsgAW%2F8OrRRDG9%2BM%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
+    location: 'Ontario, Canada',
+    platform_tag: 'TikTok · 160K Followers',
+    pitch: 'Canada\'s gaming voice. On-camera, high-energy, and primed to introduce new audiences to PoE2.',
+    bio: 'Gaming and tech news, fun facts, and game history presented face-forward with real energy. A former streamer and videographer with an 8.41% TikTok engagement rate. Their young audience (18 to 24, at 61.6%) spans Canada, the US, and the UK, and they are exactly the players who need a reason to try an ARPG for the first time.',
+    metrics: [
+      { val: '243K', key: 'Total Audience' },
+      { val: '8.41%', key: 'TikTok ER' },
+      { val: '57.3%', key: 'US Audience' }
+    ],
+    deal: null,
+    media_kit: 'https://july.bio/rftft',
+    channels: [
+      { name: 'TikTok', url: 'https://www.tiktok.com/@retroforthefirsttime' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@RetroForTheFirstTime' },
+      { name: 'Instagram', url: 'https://www.instagram.com/retroftft' }
+    ]
+  },
+  {
+    country: 'au',
+    name: 'Games Explorer',
+    initials: 'GE',
+    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-alisg-avt-0068/87df7f3ba5a24cb4ff9fbed18c80410d~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=37b2f2f3&x-expires=1793350800&x-signature=SzEviwiYsXov17Wxd9xcXGM%2FMu4%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
+    location: 'Australia',
+    platform_tag: 'TikTok · 103K Followers',
+    pitch: 'Averaging 208K TikTok views with 103K followers. Australia\'s top gaming discovery channel.',
+    bio: 'Australian creator built around connecting players to new games and developers to new players. Their average of 208K views per TikTok is exceptional relative to their follower count, reflecting strong algorithmic reach. A multi-platform presence covering AU, US, and UK audiences, with a format purpose-built for game discovery.',
+    metrics: [
+      { val: '192K', key: 'Total Audience' },
+      { val: '208K', key: 'Avg TikTok Views' },
+      { val: '46.8%', key: 'US Audience' }
+    ],
+    deal: null,
+    media_kit: 'https://july.bio/gamesexplorer',
+    channels: [
+      { name: 'TikTok', url: 'https://www.tiktok.com/@explorerdotgames' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@explorerdotgames' },
+      { name: 'Instagram', url: 'https://www.instagram.com/explorer.games' },
+      { name: 'Snapchat', url: 'https://www.snapchat.com/@explorer.games' }
+    ]
+  },
+  {
+    country: 'de',
+    name: '04AM',
+    initials: '04',
+    avatar: 'https://yt3.googleusercontent.com/5eHkPd7_VzE0zacuBxMlYAdoLn_aK3Uk6u2A9LskHzu5WUYW-bJl5uZgZTJO37IRJLAaOPc2=s176-c-k-c0x00ffffff-no-rj',
+    location: 'Germany',
+    platform_tag: 'YouTube · Germany',
+    pitch: 'Germany is PoE2\'s fourth-largest YouTube market at 4 to 5.7% across this roster. 04AM makes the same in-depth guides that perform for RageGamingVideos, in German.',
+    bio: 'German-market gaming creator producing in-depth game guides with the same format and tone that has driven millions of views for RageGamingVideos in English. Germany represents a significant underserved opportunity for PoE2. Full metrics available on request.',
+    metrics: [
+      { val: 'DE #1', key: 'Market Priority' },
+      { val: '4-6%', key: 'DE Share Across Roster' },
+      { val: 'TBD', key: 'Full Metrics' }
+    ],
+    deal: null,
+    media_kit: null,
+    channels: [
+      { name: 'YouTube', url: 'https://www.youtube.com/@04AMofficial/' },
+      { name: 'TikTok', url: 'https://www.tiktok.com/@04AMofficial' },
+      { name: 'Instagram', url: 'https://www.instagram.com/04amofficial' }
+    ]
+  },
+  {
+    country: 'se',
+    name: 'Ettnix',
+    initials: 'ET',
+    avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lsk32vQTIqc3TBV2QLv4zsAeZBhXAzrbxM_UOCLMGScFI=s176-c-k-c0x00ffffff-no-rj',
+    location: 'Sweden',
+    platform_tag: 'Twitch · 152K Followers',
+    pitch: 'Ranked #1 in Fortnite, TFT, Apex, and The Finals. World first achievements. 10,000 kills in Apex. When Ettnix plays, the competitive community watches.',
+    bio: 'Johan Ettnix is a veteran Swedish FPS and RPG creator with nearly 14 years of streaming, seven of them full-time. Former world-class esports competitor with world first achievements across multiple titles. 347K watch hours on Twitch. For PoE2\'s endgame builds, competitive mechanics, and hardcore content, he is the credibility signal.',
+    metrics: [
+      { val: '167K', key: 'Total Audience' },
+      { val: '347K', key: 'Twitch Watch Hours' },
+      { val: '7.10%', key: 'Daily Chat ER' }
+    ],
+    deal: null,
+    media_kit: 'https://july.bio/ettnix',
+    channels: [
+      { name: 'Twitch', url: 'https://www.twitch.tv/ettnix' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@Ettnix' },
+      { name: 'Instagram', url: 'https://www.instagram.com/ettnix' }
+    ]
+  }
+];
+
+var STAR_PTS = '0,-3.08 .69,-.95 2.93,-.95 1.12,.36 1.81,2.49 0,1.18 -1.81,2.49 -1.12,.36 -2.93,-.95 -.69,-.95';
+var US_STARS = '';
+for (var _r = 1; _r <= 9; _r++) { for (var _c = 1; _c <= 11; _c++) { if ((_r + _c) % 2 === 0) { US_STARS += "<polygon fill='#fff' points='" + STAR_PTS + "' transform='translate(" + (_c * 6.333).toFixed(2) + "," + (_r * 5.385).toFixed(2) + ")'/>";  } } }
+
+var COUNTRIES = {
+  uk: {
+    name: 'United Kingdom', html: '&#127468;&#127463;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' preserveAspectRatio='xMinYMin meet'><rect width='60' height='30' fill='#012169'/><path d='M0,0 L60,30 M60,0 L0,30' stroke='#fff' stroke-width='6'/><path d='M0,0 L27,12 M33,18 L60,30 M60,0 L33,12 M27,18 L0,30' stroke='#C8102E' stroke-width='4'/><rect x='24' width='12' height='30' fill='#fff'/><rect y='9' width='60' height='12' fill='#fff'/><rect x='26' width='8' height='30' fill='#C8102E'/><rect y='11' width='60' height='8' fill='#C8102E'/></svg>"
+  },
+  us: {
+    name: 'United States', html: '&#127482;&#127480;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 190 100' preserveAspectRatio='xMinYMin meet'><rect width='190' height='100' fill='#fff'/><rect y='0' width='190' height='7.7' fill='#B22234'/><rect y='15.4' width='190' height='7.7' fill='#B22234'/><rect y='30.8' width='190' height='7.7' fill='#B22234'/><rect y='46.2' width='190' height='7.7' fill='#B22234'/><rect y='61.5' width='190' height='7.7' fill='#B22234'/><rect y='76.9' width='190' height='7.7' fill='#B22234'/><rect y='92.3' width='190' height='7.7' fill='#B22234'/><rect width='76' height='53.8' fill='#3C3B6E'/>" + US_STARS + "</svg>"
+  },
+  ca: {
+    name: 'Canada', html: '&#127464;&#127462;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9600 4800' preserveAspectRatio='xMinYMin meet'><path fill='#d52b1e' d='m0 0h2400l99 99h4602l99-99h2400v4800h-2400l-99-99h-4602l-99 99H0z'/><path fill='#fff' d='m2400 0h4800v4800h-4800zm2490 4430-45-863a95 95 0 0 1 111-98l859 151-116-320a65 65 0 0 1 20-73l941-762-212-99a65 65 0 0 1-34-79l186-572-542 115a65 65 0 0 1-73-38l-105-247-423 454a65 65 0 0 1-111-57l204-1052-327 189a65 65 0 0 1-91-27l-332-652-332 652a65 65 0 0 1-91 27l-327-189 204 1052a65 65 0 0 1-111 57l-423-454-105 247a65 65 0 0 1-73 38l-542-115 186 572a65 65 0 0 1-34 79l-212 99 941 762a65 65 0 0 1 20 73l-116 320 859-151a95 95 0 0 1 111 98l-45 863z'/></svg>"
+  },
+  au: {
+    name: 'Australia', html: '&#127462;&#127482;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10080 5040' preserveAspectRatio='xMinYMin meet'><defs><clipPath id='auC1'><path d='M0,0H6V3H0z'/></clipPath><clipPath id='auC2'><path d='M0,0V1.5H6V3H6zM6,0H3V3H0V3z'/></clipPath><path id='auS7' d='M0,-360 69.421398,-144.155019 281.459334,-224.456329 155.988466,-35.603349 350.974048,80.107536 125.093037,99.758368 156.198146,324.348792 0,160 -156.198146,324.348792 -125.093037,99.758368 -350.974048,80.107536 -155.988466,-35.603349 -281.459334,-224.456329 -69.421398,-144.155019z'/><path id='auS5' d='M0,-210 54.859957,-75.508253 199.721868,-64.893569 88.765275,28.841586 123.434903,169.893569 0,93.333333 -123.434903,169.893569 -88.765275,28.841586 -199.721868,-64.893569 -54.859957,-75.508253z'/></defs><g transform='scale(840)'><rect width='12' height='6' fill='#00008b'/><path d='M0,0 6,3M6,0 0,3' stroke='#fff' stroke-width='0.6' clip-path='url(#auC1)'/><path d='M0,0 6,3M6,0 0,3' stroke='#f00' stroke-width='0.4' clip-path='url(#auC2)'/><path d='M3,0V3M0,1.5H6' stroke='#fff'/><path d='M3,0V3M0,1.5H6' stroke='#f00' stroke-width='0.6'/></g><g fill='#fff'><use href='#auS7' transform='translate(2520,3780) scale(2.1)'/><use href='#auS7' x='7560' y='4200'/><use href='#auS7' x='6300' y='2205'/><use href='#auS7' x='7560' y='840'/><use href='#auS7' x='8680' y='1869'/><use href='#auS5' x='8064' y='2730'/></g></svg>"
+  },
+  de: {
+    name: 'Germany', html: '&#127465;&#127466;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2' preserveAspectRatio='xMinYMin meet'><rect width='3' height='0.667' fill='#000'/><rect y='0.667' width='3' height='0.667' fill='#DD0000'/><rect y='1.333' width='3' height='0.667' fill='#FFCE00'/></svg>"
+  },
+  se: {
+    name: 'Sweden', html: '&#127480;&#127466;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10' preserveAspectRatio='xMinYMin meet'><rect width='16' height='10' fill='#006AA7'/><rect x='4' width='3' height='10' fill='#FECC02'/><rect y='3.5' width='16' height='3' fill='#FECC02'/></svg>"
+  }
+};
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderCountry(country) {
+  var creators = CREATORS.filter(function(c){ return c.country === country; });
+  var info = COUNTRIES[country];
+  document.getElementById('flag-bg').innerHTML = info.svgFlag;
+  var headerEl = document.getElementById('country-header');
+  headerEl.innerHTML =
+    '<div class="country-header">' +
+      '<div class="country-flag">' + info.html + '</div>' +
+      '<div>' +
+        '<div class="country-name">' + escapeHtml(info.name) + '</div>' +
+        '<div class="country-count">' + creators.length + ' creator' + (creators.length !== 1 ? 's' : '') + ' in this market</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="country-rule"></div>';
+  var grid = document.getElementById('creators-grid');
+  grid.innerHTML = creators.map(function(c) {
+    var avatarHtml =
+      '<div class="avatar">' +
+        '<div class="avatar-fallback">' + escapeHtml(c.initials) + '</div>' +
+        (c.avatar ? '<img class="avatar-img" src="' + escapeHtml(c.avatar) + '" alt="' + escapeHtml(c.name) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+      '</div>';
+    var dealHtml = c.deal ?
+      '<div class="deal-tag"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1l1.2 2.5 2.8.4-2 2 .5 2.8L5 7.3l-2.5 1.4.5-2.8-2-2 2.8-.4z" stroke="#c8922a" stroke-width=".8" fill="rgba(200,146,42,0.3)"/></svg>' + escapeHtml(c.deal) + '</div>' : '';
+    var metricsHtml = c.metrics.map(function(m) {
+      return '<div class="metric"><div class="metric-val">' + escapeHtml(m.val) + '</div><div class="metric-key">' + escapeHtml(m.key) + '</div></div>';
+    }).join('');
+    var pillsHtml = c.channels.map(function(ch) {
+      return '<a href="' + escapeHtml(ch.url) + '" target="_blank" rel="noopener" class="pill">' + escapeHtml(ch.name) + '</a>';
+    }).join('');
+    var kitHtml = c.media_kit ?
+      '<a href="' + escapeHtml(c.media_kit) + '" target="_blank" rel="noopener" class="media-kit-btn">Full Media Kit &#8594;</a>' :
+      '<span class="metrics-pending">Metrics on request</span>';
+    return '<article class="creator-card' + (c.deal ? ' featured' : '') + '">' +
+      '<div class="card-top"><div class="card-header-row">' + avatarHtml +
+        '<div class="card-header-info">' +
+          '<div class="card-platform-tag">' + escapeHtml(c.platform_tag) + '</div>' +
+          '<h2 class="card-name">' + escapeHtml(c.name) + '</h2>' +
+          '<div class="card-location">&#128205; ' + escapeHtml(c.location) + '</div>' +
+        '</div></div></div>' +
+      '<div class="card-pitch">' + escapeHtml(c.pitch) + '</div>' +
+      '<div class="card-metrics">' + metricsHtml + '</div>' +
+      '<div class="card-body">' + dealHtml + '<p class="card-bio">' + escapeHtml(c.bio) + '</p></div>' +
+      '<div class="card-footer"><div class="platform-pills">' + pillsHtml + '</div>' + kitHtml + '</div>' +
+    '</article>';
+  }).join('');
+}
+
+// Wire tabs
+var tabs = document.querySelectorAll('.country-tab');
+tabs.forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    renderCountry(tab.dataset.country);
+    document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Apply images
+if (IMG_HERO_BG) document.getElementById('heroBg').style.backgroundImage = 'url(' + IMG_HERO_BG + ')';
+if (IMG_CHAR)    { var ci = document.getElementById('heroChar'); ci.src = IMG_CHAR; ci.style.display = 'block'; }
+if (IMG_LOGO)    { var li = document.getElementById('heroLogo'); li.src = IMG_LOGO; li.style.display = 'block'; }
+if (IMG_BATTLE)  document.getElementById('dividerBg').style.backgroundImage = 'url(' + IMG_BATTLE + ')';
+
+renderCountry('uk');
+</script>
