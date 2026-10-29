@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28",
+ "generated": "2026-10-29",
  "editions": [
   {
    "slug": "spring2026",
@@ -9242,23 +9242,23 @@
    "youtube": [
     {
      "edition": "winter2026",
-     "title": "une convention entière dans un jeu 🎮",
-     "channel": "Leonardo Gaming",
-     "url": "https://www.youtube.com/watch?v=jJ-D_0hdgUo",
-     "date": "2026-10-24",
-     "views": 7071.0,
-     "likes": 290.0,
+     "title": "Gamescom cobra mucho, acá es gratis",
+     "channel": "Don Indie Secundario",
+     "url": "https://www.youtube.com/watch?v=JLbTO3PZrBI",
+     "date": "2026-10-26",
+     "views": 7805.0,
+     "likes": 1028.0,
      "type": "short",
      "category": "creator"
     },
     {
      "edition": "winter2026",
-     "title": "Gamescom cobra mucho, acá es gratis",
-     "channel": "Don Indie Secundario",
-     "url": "https://www.youtube.com/watch?v=JLbTO3PZrBI",
-     "date": "2026-10-26",
-     "views": 6037.0,
-     "likes": 816.0,
+     "title": "une convention entière dans un jeu 🎮",
+     "channel": "Leonardo Gaming",
+     "url": "https://www.youtube.com/watch?v=jJ-D_0hdgUo",
+     "date": "2026-10-24",
+     "views": 7178.0,
+     "likes": 292.0,
      "type": "short",
      "category": "creator"
     },
@@ -9268,8 +9268,8 @@
      "channel": "Gamer Lisa",
      "url": "https://www.youtube.com/watch?v=_IJAmiF5n2Y",
      "date": "2026-10-26",
-     "views": 5423.0,
-     "likes": 228.0,
+     "views": 7040.0,
+     "likes": 259.0,
      "type": "short",
      "category": "creator"
     },
@@ -9279,7 +9279,7 @@
      "channel": "Dunkz",
      "url": "https://www.youtube.com/watch?v=NzcbcwtqRcQ",
      "date": "2026-10-23",
-     "views": 3515.0,
+     "views": 3545.0,
      "likes": 80.0,
      "type": "short",
      "category": "creator"
@@ -9290,7 +9290,7 @@
      "channel": "8urn0ut",
      "url": "https://www.youtube.com/watch?v=U0bWzIvffm4",
      "date": "2026-10-26",
-     "views": 1909.0,
+     "views": 1944.0,
      "likes": 36.0,
      "type": "short",
      "category": "creator"
@@ -9301,7 +9301,7 @@
      "channel": "W4sTy Gaming",
      "url": "https://www.youtube.com/watch?v=VBCgTEbP-cA",
      "date": "2026-10-23",
-     "views": 1630.0,
+     "views": 1632.0,
      "likes": 35.0,
      "type": "short",
      "category": "creator"
@@ -9323,8 +9323,8 @@
      "channel": "DollyanGames",
      "url": "https://www.youtube.com/watch?v=OjFqQT0DSZI",
      "date": "2026-10-26",
-     "views": 1002.0,
-     "likes": 13.0,
+     "views": 1022.0,
+     "likes": 15.0,
      "type": "short",
      "category": "creator"
     },
@@ -9334,7 +9334,7 @@
      "channel": "Drowzyy",
      "url": "https://www.youtube.com/watch?v=oZKZqMOh8dY",
      "date": "2026-10-23",
-     "views": 983.0,
+     "views": 985.0,
      "likes": 9.0,
      "type": "short",
      "category": "creator"
@@ -9356,7 +9356,7 @@
      "channel": "NicoValmont",
      "url": "https://www.youtube.com/watch?v=Of5v0M75vGA",
      "date": "2026-10-26",
-     "views": 153.0,
+     "views": 156.0,
      "likes": 5.0,
      "type": "short",
      "category": "creator"
@@ -9870,6 +9870,20 @@
      "source": "google-news-JP",
      "language": "Japanese",
      "uvm": 0
+    },
+    {
+     "edition": "winter2026",
+     "date": "2026-10-19",
+     "outlet": "ライブドアニュース",
+     "domain": "news.livedoor.com",
+     "headline": "デジタルゲームエキスポ「ENDIX」11月6日〜8日開催回のラインナップ発表！THQ Nordic、Bohemia Interactive、505 Games、Frozen Districtらが出展 (2026年10月19日掲載)",
+     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5xbFNuOW9yWndlbS1wWFdWVjZLQ0tXUk45aW85M0RsRzJOZXl2Y282Mm1KYWxaVmN3dGNyR3c4QzBmMndYdGhjUnJBMVpRMDR1VzlpU0JfOFFERHJtSHZrQWd3?oc=5",
+     "country": "International",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-JP",
+     "language": "Japanese",
+     "uvm": 14239303.0
     },
     {
      "edition": "winter2026",
