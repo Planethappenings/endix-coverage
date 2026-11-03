@@ -8,7 +8,7 @@ This document explains everything built for the Endix coverage report, so that a
 
 ## 1. What it is
 
-Endix (endix.live / endix-expo.com) is a virtual gaming expo held twice a year, distributed on Steam and the Epic Games Store. It has a Spring edition in May and a Winter (also called "Fall") edition in November. Danne (CRO) wanted a **public coverage report** for each edition, showing every piece of coverage the event got:
+Endix (endix.live / endix-expo.com) is a virtual gaming expo held twice a year, distributed on Steam and the Epic Games Store. It has a Spring edition in May and a Fall edition in November (the November 2026 one was first called "Winter"). Danne (CRO) wanted a **public coverage report** for each edition, showing every piece of coverage the event got:
 
 - YouTube, TikTok, Instagram, X, Twitch, Facebook, press
 - Steam numbers, exhibitors, quotes and partners
@@ -16,12 +16,12 @@ Endix (endix.live / endix-expo.com) is a virtual gaming expo held twice a year, 
 Two rules apply to all of it:
 
 - **Content from Endix's own accounts never counts.** These are YouTube @endixexpo, TikTok @endix_expo, Instagram @endix_expo and X @Endix_Expo.
-- **Each edition is its own block**, defined by a date window. Spring data must never leak into Winter, and adding a new edition must be trivial.
+- **Each edition is its own block**, defined by a date window. Spring data must never leak into Fall, and adding a new edition must be trivial.
 
 Live result:
 
 - **Site:** https://planethappenings.github.io/endix-coverage/
-  - Clean edition URLs: `/spring2026/` and `/winter2026/`. Old `#spring2026` hash links redirect.
+  - Clean edition URLs: `/spring2026/` and `/fall2026/` (`/winter2026/` redirects to `/fall2026/`). Old `#spring2026` hash links redirect.
 - **Embed:** the site is embedded on endix-expo.com through Lovable. When it is framed, it hides its own header logo; the `embedded` class is set in the template.
 - **Possible future custom domain:** `coverage.endix-expo.com` would need a CNAME record pointing to `planethappenings.github.io`. Add a `CNAME` file to the repo only **after** that DNS record exists. This is not done yet.
 
@@ -92,7 +92,7 @@ Live result:
   - Rows with status `own` or `rejected` are never refreshed.
   - Editions whose window ended more than 30 days ago are refreshed **weekly** (`FINISHED_REFRESH_DAYS = 7`), on every platform.
 - **Runs are asynchronous:** `startSocial()` starts them and stores the run IDs in the `apify_runs` property. `finishApifyRuns()` (hourly) collects the results, so no run blocks the 6-minute Apps Script limit.
-- **Budget:** the Apify free plan gives $5/month. It was advised to move to the Starter plan with a monthly spend cap of about $25 before 23 Oct 2026, ahead of the Winter marketing push. Check the Apify billing page to see whether that happened.
+- **Budget:** the Apify free plan gives $5/month. It was advised to move to the Starter plan with a monthly spend cap of about $25 before 23 Oct 2026, ahead of the Fall marketing push. Check the Apify billing page to see whether that happened.
 
 ---
 
@@ -144,9 +144,9 @@ Current editions:
 | Edition | Slug | Event | Window |
 |---|---|---|---|
 | Endix Spring 2026 | spring2026 | 22–24 May 2026 | 1 Mar – 31 Aug 2026 |
-| Endix Winter 2026 | winter2026 | 6–8 Nov 2026 | 1 Sep – 31 Dec 2026 |
+| Endix Fall 2026 | winter2026 (internal; public URL and name: `fall2026`, "Fall 2026", set by `PUBLIC` in build_data.py) | 6–8 Nov 2026 | 1 Sep – 31 Dec 2026 |
 
-Grok's X tab for Winter is called **"Endix Fall 2026"**, not "Winter".
+Grok's X tab for this edition is **"Endix Fall 2026"**. Never show the word "Winter" for the 2026 edition; "Endix Winter 2025" is a real past edition and keeps its name.
 
 ---
 
@@ -170,7 +170,7 @@ Reads `data/sheet_dump.json` (gitignored) and writes `data/report_data.json`.
     - partner (IGN, official streaming partner)
     - `featured` videos (IGN exclusive trailer `gOELy1UZLF8`, Insider Gaming interview `VfefYFlIGXE`)
     - `spotlight` (David Jaffe stream `BaREDgq-9OY`)
-    - `characters` (Playable Avatars: Chimera CUSTOM XG, Alpha Nomos, Dave the Diver; Winter has the first two)
+    - `characters` (Playable Avatars: Chimera CUSTOM XG, Alpha Nomos, Dave the Diver; Fall 2026 has the first two)
     - sponsor (Alienware)
     - partner `testimonials` (THQ Nordic, Frozen District, Alienware)
     - press `quotes`
@@ -215,7 +215,7 @@ The scheduled task is **"Endix coverage report – daily update"**. It runs at 0
 2. Dumps the sheet via the Google Sheets connector (`get_spreadsheet`, includeGridData, the tab list in README).
 3. Appends new YouTube channels to `YT_Channels` with a suggested category. It never touches column H.
 4. Runs `build_data.py` and reviews new items, adding noise to the CONFIG block lists. It may add a **verbatim** pull quote under 25 words from a clearly positive English article. Quotes are never invented or paraphrased.
-5. Runs `build_page.py`, then commits only `tools/`, `data/report_data.json`, `index.html` and the slug pages. The message format is "Daily update YYYY-MM-DD: +N YouTube, +N press".
+5. Runs `build_page.py`, then commits only `tools/`, `data/report_data.json`, `index.html`, the slug pages (`spring2026/`, `fall2026/`) and the `winter2026/` redirect. The message format is "Daily update YYYY-MM-DD: +N YouTube, +N press".
 6. Ends with 2–3 lines in Swedish, including any `ERROR` lines from Collector_Log.
 
 ### New edition checklist
@@ -253,6 +253,7 @@ The scheduled task is **"Endix coverage report – daily update"**. It runs at 0
 - **URL dedupe must keep YouTube's `v=` parameter.** Otherwise every YouTube link collapses into one.
 - **Apps Script has a 6-minute limit per run.** Never wait for Apify runs; start them and collect the results later.
 - **The sheet dump is too large to read inline.** The connector saves it to a tool-results file, which gets copied to `data/sheet_dump.json`.
+- **Captions in the sheet are cut at 300 characters.** So a post can mention Endix after the cut. `social()` also trusts the collector's `Mentions Endix` column, which checked the full caption. Block noise accounts in `social_block_handles`.
 - **Grok writes title rows above its headers.** `table(..., header_hint=...)` finds the real header row.
 - **Grok's notes are in Swedish.** `x_text()` keeps quoted English text and drops Swedish notes.
 - **An "Endix" keyword match catches noise:** music artists, people named Endix, and words like appendix/bendix. Use whole-word regex plus block lists plus the YT_Channels categories.

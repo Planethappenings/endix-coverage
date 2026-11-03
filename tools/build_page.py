@@ -17,6 +17,15 @@ open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8').write(html)
 for slug in slugs:  # clean per-edition URLs, e.g. /spring2026/
     os.makedirs(os.path.join(ROOT, slug), exist_ok=True)
     open(os.path.join(ROOT, slug, 'index.html'), 'w', encoding='utf-8').write(html)
+# Old links keep working: /winter2026/ sends visitors to /fall2026/
+OLD_URLS = {'winter2026': 'fall2026'}
+for old, new in OLD_URLS.items():
+    if new in slugs:
+        os.makedirs(os.path.join(ROOT, old), exist_ok=True)
+        open(os.path.join(ROOT, old, 'index.html'), 'w', encoding='utf-8').write(
+            '<!doctype html><meta charset="utf-8"><title>Endix Fall 2026</title>'
+            '<meta http-equiv="refresh" content="0; url=../%s/"><link rel="canonical" href="../%s/">'
+            '<script>location.replace("../%s/"+location.hash)</script>' % (new, new, new))
 print('ok index.html', len(html))
 
 # The Creator Kit page (creators/index.html) uses the same data

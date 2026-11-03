@@ -16,7 +16,7 @@ CONFIG = {
     'yt_block_channels': {'@endix tube', 'endika parimbawa', 'hilaldeep', 'endix', 'endix_playz', 'itzendix', 'crnovyy', '18 red boss', 'reaper gaming-தமிழ்'},
     'press_channels': {'ign', 'gametrailers', 'insider gaming', 'indie-cent exposure', 'frikiup patch notes — noticias gamer', 'revista grind'},
     'press_block_domains': {'x.com', 'finance.yahoo.com', 'uk.finance.yahoo.com', 'hk.finance.yahoo.com', 'store.steampowered.com', 'youtu.be', 'youtube.com'},
-    'social_block_handles': {'endix.wav', 'thedeepsift'},  # unrelated accounts (music, French psychology)
+    'social_block_handles': {'endix.wav', 'telep4thetic', 'dennis_vom_bau', 'endixgmyanmar', 'bodysci'},  # unrelated accounts (music, fan art, construction, health)
     # X posts hidden from the page: whole accounts (lower-case @handle) or single post IDs (duplicates)
     'x_hide_authors': {'@oursnet'},
     'x_hide_ids': {'2058216440541348164'},
@@ -295,7 +295,8 @@ def social(tab, platform):
     out = []
     for r in table(tab):
         if r.get('Status') in ('own', 'rejected', 'no keyword'): continue
-        if r.get('Status') == 'new' and not ENDIX_WORD.search(r.get('Caption') or ''): continue
+        # Captions in the sheet are cut at 300 characters, so also trust the collector's own check of the full caption
+        if r.get('Status') == 'new' and not (ENDIX_WORD.search(r.get('Caption') or '') or str(r.get('Mentions Endix')).upper() == 'TRUE'): continue
         if (r.get('Creator') or '').lower() in CONFIG['social_block_handles']: continue
         out.append({'edition': r['Edition'], 'platform': platform, 'creator': r.get('Creator', ''), 'name': r.get('Creator name', ''),
                     'url': r['URL'], 'date': day(r['Published']), 'views': num(r['Views']), 'likes': num(r['Likes']),
@@ -398,6 +399,16 @@ for e in editions:
         'press': sorted([p for p in press.values() if p['edition'] == e['slug']], key=lambda p: p['date'], reverse=True),
         'trailer_pages': [t for t in trailer_pages if t['edition'] == e['slug']],
     })
+# Public name and URL per edition. The sheet keeps the internal slug "winter2026" (all collected rows use it),
+# but the November 2026 edition is called "Fall 2026" everywhere people can see it, at /fall2026/.
+PUBLIC = {'winter2026': ('fall2026', 'Endix Fall 2026')}
+for ed in out['editions']:
+    if ed['slug'] in PUBLIC:
+        ed['slug'], ed['name'] = PUBLIC[ed['slug']]
+        for k, v in ed.items():
+            if isinstance(v, list):
+                for it in v:
+                    if isinstance(it, dict) and it.get('edition') == 'winter2026': it['edition'] = 'fall2026'
 json.dump(out, open(OUT, 'w'), ensure_ascii=False, indent=1)
 for ed in out['editions']:
     print(ed['slug'], 'yt', len(ed['youtube']), int(sum(v['views'] for v in ed['youtube'])), 'tt', len(ed['tiktok']), 'ig', len(ed['instagram']),

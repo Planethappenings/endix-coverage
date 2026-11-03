@@ -92,7 +92,7 @@ function setup() {
   if (ed.getLastRow() < 2) {
     ed.getRange(2, 1, 2, EDITION_HEADERS.length).setValues([
       ['Endix Spring 2026', 'spring2026', d_('2026-05-22'), d_('2026-05-24'), d_('2026-03-01'), d_('2026-08-31'), 'Endix, Endix Expo, Endix Showcase', true],
-      ['Endix Winter 2026', 'winter2026', d_('2026-11-06'), d_('2026-11-08'), d_('2026-09-01'), d_('2026-12-31'), 'Endix, Endix Expo, Endix Showcase', true],
+      ['Endix Fall 2026', 'winter2026', d_('2026-11-06'), d_('2026-11-08'), d_('2026-09-01'), d_('2026-12-31'), 'Endix, Endix Expo, Endix Showcase', true],
     ]);
     ed.getRange('C:F').setNumberFormat('yyyy-mm-dd');
   }
