@@ -1,0 +1,966 @@
+﻿<title>Hello Nord × Monster Energy 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap">
+
+<style>
+:root {
+  --bg:          #040404;
+  --bg-card:     #0b0b0b;
+  --bg-surface:  #121212;
+  --bg-band:     #070707;
+  --green:       #7ac143;
+  --green-hi:    #9dde32;
+  --green-neon:  #c8ff00;
+  --green-dim:   rgba(122,193,67,.18);
+  --green-glow:  rgba(157,222,50,.10);
+  --green-border:rgba(122,193,67,.25);
+  --text:        #f2f2f2;
+  --text-2:      #9a9a9a;
+  --text-3:      #505050;
+  --border:      rgba(122,193,67,.14);
+  --topbar-h:    54px;
+  --font-d:      'Bebas Neue','Impact',sans-serif;
+  --font-b:      'Inter',system-ui,sans-serif;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left:  max(16px, env(safe-area-inset-left,  0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: rgba(4,4,4,.97);
+  border-bottom: 1px solid rgba(122,193,67,.18);
+  backdrop-filter: blur(16px);
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 110;
+  background: rgba(4,4,4,.97);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 16px;
+  gap: 12px;
+}
+.topbar-brand {
+  font-family: var(--font-d);
+  font-size: 17px;
+  letter-spacing: .08em;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.topbar-brand strong { color: var(--green-hi); }
+.topbar-year {
+  font-family: var(--font-d);
+  font-size: 13px;
+  letter-spacing: .18em;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.topbar-badge {
+  font-family: var(--font-d);
+  font-size: 13px;
+  letter-spacing: .14em;
+  color: var(--bg);
+  background: var(--green);
+  padding: 5px 14px;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 0 18px var(--green-glow);
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--bg);
+}
+.hero-bg-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(122,193,67,.025) 0, rgba(122,193,67,.025) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(0deg, rgba(122,193,67,.025) 0, rgba(122,193,67,.025) 1px, transparent 1px, transparent 80px);
+}
+.hero-claw {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: .04;
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  left: -200px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122,193,67,.12) 0%, transparent 70%);
+  z-index: 0;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-block: 100px 120px;
+}
+.hero-kicker {
+  font-family: var(--font-d);
+  font-size: 13px;
+  letter-spacing: .32em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-kicker::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--green);
+  flex-shrink: 0;
+}
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(52px, 10vw, 120px);
+  font-weight: 400;
+  line-height: .92;
+  color: var(--text);
+  margin-bottom: 24px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.hero-title .accent { color: var(--green-hi); display: block; }
+.hero-subtitle {
+  font-size: clamp(14px, 1.6vw, 16px);
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 56px;
+  max-width: 540px;
+}
+.hero-rule {
+  width: 180px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent);
+  margin-bottom: 48px;
+}
+.hero-stats {
+  display: flex;
+  gap: clamp(28px, 4vw, 56px);
+  flex-wrap: wrap;
+}
+.stat-block { text-align: left; }
+.stat-num {
+  font-family: var(--font-d);
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 400;
+  color: var(--green-hi);
+  line-height: 1;
+  margin-bottom: 7px;
+  letter-spacing: .02em;
+}
+.stat-label {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ===== PITCH BAND ===== */
+.pitch-band {
+  background: var(--bg-band);
+  border-top: 1px solid var(--green-border);
+  border-bottom: 1px solid var(--green-border);
+  padding-block: 56px;
+}
+.pitch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 36px 48px;
+}
+.pitch-item {}
+.pitch-num {
+  font-family: var(--font-d);
+  font-size: 44px;
+  color: var(--green);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: .02em;
+}
+.pitch-heading {
+  font-family: var(--font-d);
+  font-size: 18px;
+  letter-spacing: .06em;
+  color: var(--text);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.pitch-body {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+
+/* ===== CASE SECTION ===== */
+.case-section {
+  padding-block: 72px;
+  background: var(--bg);
+}
+.section-eyebrow {
+  font-family: var(--font-d);
+  font-size: 11px;
+  letter-spacing: .32em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--text);
+  margin-bottom: 20px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.section-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--green);
+  margin-bottom: 36px;
+}
+.case-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+@media (max-width: 680px) { .case-cols { grid-template-columns: 1fr; gap: 28px; } }
+.case-col-label {
+  font-family: var(--font-d);
+  font-size: 11px;
+  letter-spacing: .22em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--green-border);
+}
+.case-list { list-style: none; }
+.case-list li {
+  font-size: 13.5px;
+  color: var(--text-2);
+  line-height: 1.6;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.case-list li::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ===== COUNTRY NAV ===== */
+.country-nav {
+  border-bottom: 1px solid var(--border);
+  background: rgba(4,4,4,.98);
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + var(--topbar-h));
+  z-index: 90;
+  backdrop-filter: blur(16px);
+}
+.country-nav-inner {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.country-nav-inner::-webkit-scrollbar { display: none; }
+.country-tab {
+  flex: 0 0 auto;
+  padding: 16px 24px;
+  font-family: var(--font-d);
+  font-size: 13px;
+  letter-spacing: .12em;
+  color: var(--text-3);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s, background .2s;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.country-tab:hover { color: var(--text-2); background: rgba(122,193,67,.04); }
+.country-tab.active { color: var(--green-hi); border-bottom-color: var(--green); }
+.country-tab .flag { margin-right: 8px; font-style: normal; font-size: 14px; }
+
+/* ===== CREATORS SECTION ===== */
+.creators-section {
+  padding-block: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.country-flag-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .08;
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, black 0%, black 90%, transparent 100%);
+  user-select: none;
+  overflow: hidden;
+}
+.country-flag-bg svg { width: 100%; height: auto; display: block; }
+.creators-section .inner { position: relative; z-index: 1; }
+
+.country-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.country-flag { font-size: 44px; line-height: 1; flex-shrink: 0; }
+.country-name {
+  font-family: var(--font-d);
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: .06em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+.country-count { font-size: 12px; color: var(--text-3); letter-spacing: .05em; margin-top: 3px; }
+.country-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--green-border), transparent);
+  margin-bottom: 36px;
+}
+
+.creators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* ===== CREATOR CARD ===== */
+.creator-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.creator-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), var(--green-hi) 50%, transparent);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.creator-card:hover {
+  border-color: rgba(122,193,67,.30);
+  box-shadow: 0 8px 48px rgba(0,0,0,.6), 0 0 24px rgba(122,193,67,.06);
+  transform: translateY(-2px);
+}
+.creator-card:hover::before { opacity: 1; }
+
+.card-top { padding: 22px 22px 0; }
+.card-header-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+.avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(122,193,67,.25);
+}
+.avatar-fallback {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: 22px;
+  color: var(--green);
+  background: var(--bg-surface);
+  letter-spacing: .04em;
+}
+.avatar-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card-header-info { min-width: 0; }
+.card-platform-tag {
+  font-family: var(--font-d); font-size: 11px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 4px;
+}
+.card-name {
+  font-family: var(--font-d);
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: var(--text);
+  line-height: 1.1; margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.card-location { font-size: 11.5px; color: var(--text-3); letter-spacing: .04em; }
+.card-pitch {
+  font-size: 13px; color: var(--text-2);
+  line-height: 1.55; font-style: italic;
+  padding: 11px 14px;
+  margin: 0 22px 18px;
+  border-left: 2px solid var(--green-border);
+  background: rgba(122,193,67,.04);
+  border-radius: 0 2px 2px 0;
+}
+.card-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(0,0,0,.3);
+  flex-shrink: 0;
+}
+.metric { padding: 14px 10px; text-align: center; position: relative; }
+.metric + .metric::before {
+  content: '';
+  position: absolute; left: 0; top: 18%; bottom: 18%;
+  width: 1px; background: rgba(255,255,255,.06);
+}
+.metric-val {
+  font-family: var(--font-d);
+  font-size: clamp(14px, 2.2vw, 20px);
+  color: var(--green-hi);
+  font-variant-numeric: tabular-nums;
+  line-height: 1; margin-bottom: 5px; white-space: nowrap;
+  letter-spacing: .02em;
+}
+.metric-key { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+.card-body { padding: 16px 22px 0; flex: 1; }
+.card-bio { font-size: 13px; color: var(--text-2); line-height: 1.62; margin-bottom: 16px; }
+.card-footer {
+  padding: 14px 22px 20px;
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 10px;
+}
+.platform-pills { display: flex; gap: 5px; flex-wrap: wrap; }
+.pill {
+  font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text-3); background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,.07);
+  padding: 3px 8px; border-radius: 2px;
+  text-decoration: none; transition: color .15s, border-color .15s;
+}
+.pill:hover { color: var(--green); border-color: var(--green-border); }
+.media-kit-btn {
+  font-family: var(--font-d); font-size: 12px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--green); text-decoration: none;
+  border: 1px solid var(--green-border);
+  padding: 7px 15px; border-radius: 2px;
+  transition: background .2s, color .2s;
+  white-space: nowrap; flex-shrink: 0;
+}
+.media-kit-btn:hover { background: var(--green-dim); color: var(--green-hi); }
+.metrics-pending { font-size: 11px; color: var(--text-3); font-style: italic; }
+
+/* ===== AUDIENCE NOTE ===== */
+.audience-note {
+  margin-top: 48px;
+  padding: 22px 28px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: rgba(7,7,7,.8);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.audience-note-icon { font-size: 24px; flex-shrink: 0; }
+.audience-note-text { font-size: 13px; color: var(--text-2); line-height: 1.55; min-width: 0; }
+.audience-note-text strong { color: var(--text); }
+
+/* ===== FOOTER ===== */
+.site-footer {
+  border-top: 1px solid rgba(122,193,67,.12);
+  padding-block: 52px;
+  text-align: center;
+  background: #020202;
+}
+.footer-claw { display: block; margin: 0 auto 20px; }
+.footer-brand {
+  font-family: var(--font-d); font-size: 20px;
+  letter-spacing: .18em;
+  color: var(--green); text-transform: uppercase; margin-bottom: 8px;
+}
+.footer-tagline { font-size: 11px; color: var(--text-3); letter-spacing: .08em; margin-bottom: 20px; }
+.footer-contact { font-family: var(--font-d); font-size: 12px; color: var(--text-2); letter-spacing: .14em; }
+</style>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="inner topbar-inner">
+    <div class="topbar-brand"><strong>Hello Nord</strong> &times; Creator Partnerships</div>
+    <div class="topbar-badge">Ambassador Program 2027</div>
+    <div class="topbar-year">Monster Energy</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-claw" aria-hidden="true">
+    <svg width="520" height="680" viewBox="0 0 520 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 40 C55 120, 40 200, 70 320 C90 400, 100 460, 80 560 C70 610, 50 650, 30 680" stroke="#7ac143" stroke-width="28" stroke-linecap="round" fill="none"/>
+      <path d="M180 20 C175 110, 160 200, 190 330 C210 420, 220 480, 195 575 C182 625, 160 662, 138 688" stroke="#7ac143" stroke-width="28" stroke-linecap="round" fill="none"/>
+      <path d="M300 10 C295 105, 282 198, 310 335 C332 428, 342 490, 315 582 C301 632, 278 668, 255 692" stroke="#7ac143" stroke-width="28" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="inner hero-content">
+    <div class="hero-kicker">Hello Nord Ambassador Pitch</div>
+    <h1 class="hero-title">
+      Born In<br>
+      <span class="accent">The Session.</span>
+    </h1>
+    <p class="hero-subtitle">Monster Energy does not sponsor gaming content. Monster Energy is gaming content. Eight creators across five markets who live the product, not just post it.</p>
+    <div class="hero-rule"></div>
+    <div class="hero-stats">
+      <div class="stat-block">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Creators</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Markets</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">3.9M+</div>
+        <div class="stat-label">Combined Audience</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">18-34</div>
+        <div class="stat-label">Core Demo, All Creators</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PITCH PILLARS -->
+<section class="pitch-band">
+  <div class="inner">
+    <div class="pitch-grid">
+      <div class="pitch-item">
+        <div class="pitch-num">01</div>
+        <div class="pitch-heading">The Buyer Is Already There</div>
+        <p class="pitch-body">Gaming audiences are 18 to 34, male-skewing, high disposable income, long screen sessions. That is not a demographic adjacent to Monster's buyer. That is Monster's buyer. No audience translation required.</p>
+      </div>
+      <div class="pitch-item">
+        <div class="pitch-num">02</div>
+        <div class="pitch-heading">Authentic Occasion</div>
+        <p class="pitch-body">These creators stream for two to four hours at a time. The can is not a prop they hold for a photo. It is what they reach for at hour three. Audiences see that. They remember it differently than a standard post.</p>
+      </div>
+      <div class="pitch-item">
+        <div class="pitch-num">03</div>
+        <div class="pitch-heading">Every Format Covered</div>
+        <p class="pitch-body">Long-form YouTube reviews. Twitch marathon sessions. TikTok and Shorts punching product moments to algorithms that reward them. Five markets. One roster that covers them all end to end.</p>
+      </div>
+      <div class="pitch-item">
+        <div class="pitch-num">04</div>
+        <div class="pitch-heading">First-Mover in 2027</div>
+        <p class="pitch-body">Gaming sponsorship is consolidating. Brands that lock category-defining creators now are building equity. Brands that wait will pay significantly more for the same names or settle for the second tier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CASE -->
+<section class="case-section">
+  <div class="inner">
+    <div class="section-eyebrow">Why Gaming, Why Now</div>
+    <div class="section-title">The Match Is Exact</div>
+    <div class="section-rule"></div>
+    <div class="case-cols">
+      <div>
+        <div class="case-col-label">What Monster Energy Needs</div>
+        <ul class="case-list">
+          <li>18-34 male audience with proven purchase intent</li>
+          <li>Authentic product placement, not forced ad reads</li>
+          <li>Multi-platform reach across TikTok, YouTube and Twitch</li>
+          <li>Campaign coverage across UK, US, CA, AU and Sweden</li>
+          <li>Creators who build community, not just broadcast to it</li>
+          <li>Short-form content that performs on paid and organic</li>
+        </ul>
+      </div>
+      <div>
+        <div class="case-col-label">What This Roster Delivers</div>
+        <ul class="case-list">
+          <li>96% male audience on RageGamingVideos. 93% on Captain Eggcellent</li>
+          <li>Ettnix streams 4-hour competitive sessions where cans are routine</li>
+          <li>Gem Gaming at 7.09% TikTok ER. Cloudual at 12.82% Instagram ER</li>
+          <li>All five markets covered. Every creator delivers 50% or more US reach</li>
+          <li>Average engagement across the roster outperforms lifestyle influencers at same size</li>
+          <li>Three creators optimised for short-form discovery content</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRY NAV -->
+<nav class="country-nav" role="tablist" aria-label="Select country">
+  <div class="inner country-nav-inner">
+    <button class="country-tab active" data-country="uk" role="tab" aria-selected="true">
+      <span class="flag">&#127468;&#127463;</span>United Kingdom
+    </button>
+    <button class="country-tab" data-country="us" role="tab" aria-selected="false">
+      <span class="flag">&#127482;&#127480;</span>United States
+    </button>
+    <button class="country-tab" data-country="ca" role="tab" aria-selected="false">
+      <span class="flag">&#127464;&#127462;</span>Canada
+    </button>
+    <button class="country-tab" data-country="au" role="tab" aria-selected="false">
+      <span class="flag">&#127462;&#127482;</span>Australia
+    </button>
+    <button class="country-tab" data-country="se" role="tab" aria-selected="false">
+      <span class="flag">&#127480;&#127466;</span>Sweden
+    </button>
+  </div>
+</nav>
+
+<!-- CREATORS -->
+<main>
+  <section class="creators-section">
+    <div id="flag-bg" class="country-flag-bg" aria-hidden="true"></div>
+    <div class="inner">
+      <div id="country-header"></div>
+      <div class="creators-grid" id="creators-grid"></div>
+      <div class="audience-note">
+        <div class="audience-note-icon">&#127758;</div>
+        <div class="audience-note-text">
+          <strong>US reach is built in everywhere.</strong>
+          Every creator in this roster delivers a minimum of 50% US viewership regardless of home market. A multi-market Monster Energy partnership is simultaneously a North American awareness program.
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="inner">
+    <svg class="footer-claw" width="48" height="56" viewBox="0 0 48 56" fill="none">
+      <path d="M8 4 C7 14, 5 24, 9 38 C12 48, 13 54, 10 62" stroke="#7ac143" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
+      <path d="M24 2 C23 13, 21 23, 25 38 C28 49, 29 55, 26 63" stroke="#7ac143" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
+      <path d="M40 4 C39 14, 37 24, 41 38 C44 48, 45 54, 42 62" stroke="#7ac143" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
+    </svg>
+    <div class="footer-brand">Hello Nord</div>
+    <div class="footer-tagline">Gaming Creator Agency &middot; hellonord.se</div>
+    <div class="footer-contact">daniel@hellonord.se</div>
+  </div>
+</footer>
+
+<script>
+var CREATORS = [
+  {
+    country: 'uk',
+    name: 'Captain Eggcellent',
+    initials: 'CE',
+    avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lF06n7yXV4O7GDR0xRe2En7-n6X2Mio6ymHT1o8vVdZ-g=s176-c-k-c0x00ffffff-no-rj',
+    location: 'Ipswich, England',
+    platform_tag: 'YouTube / 982K Subscribers',
+    pitch: 'Research sessions that run for hours. His audience stays focused for 20-minute deep dives. That is exactly when the hand reaches for a can.',
+    bio: 'Easter egg and secrets specialist with 1.60M total audience across platforms. 93% male audience. His long-form research format is the natural home for a brand built around sustained energy and focus. Product placement here reads as lifestyle, not advertisement.',
+    metrics: [
+      { val: '1.60M', key: 'Total Audience' },
+      { val: '2.66%', key: 'Engagement Rate' },
+      { val: '93%', key: 'Male Audience' }
+    ],
+    media_kit: 'https://july.bio/CaptainEggcellent',
+    channels: [
+      { name: 'YouTube', url: 'https://www.youtube.com/@CaptainEggcellent' },
+      { name: 'Shorts', url: 'https://www.youtube.com/@captaineggcellentbutshorter' },
+      { name: 'TikTok', url: 'https://www.tiktok.com/@captaineggcellent' },
+      { name: 'Instagram', url: 'https://www.instagram.com/captaineggcellent/' }
+    ]
+  },
+  {
+    country: 'uk',
+    name: 'RageGamingVideos',
+    initials: 'RG',
+    avatar: 'https://yt3.googleusercontent.com/3TlufKydntExNT_c7TULN3BosQs2ClqYTDrLSl_xCF-jhriazbq8XzD9C377agd_PLSjqHdp=s176-c-k-c0x00ffffff-no-rj',
+    location: 'United Kingdom',
+    platform_tag: 'YouTube / 1.4M Subscribers',
+    pitch: '96% male audience. Guide-focused sessions that go long. The demographic and the occasion match Monster Energy perfectly.',
+    bio: 'Josh, Cotton and Hollow have built one of YouTube\'s leading gaming guide channels on precise, no-filler content. 96% male audience. Their viewers are improvement-focused players who grind for hours. The guide session at 1am with a can on the desk is not an aspiration here, it is their audience\'s actual Tuesday.',
+    metrics: [
+      { val: '1.42M', key: 'Total Audience' },
+      { val: '1.91%', key: 'Engagement Rate' },
+      { val: '96%', key: 'Male Audience' }
+    ],
+    media_kit: 'https://july.bio/ragegamingvideos',
+    channels: [
+      { name: 'YouTube', url: 'https://www.youtube.com/@RageGamingVideos' }
+    ]
+  },
+  {
+    country: 'us',
+    name: 'David Jaffe',
+    initials: 'DJ',
+    avatar: 'https://yt3.googleusercontent.com/FpEKToeTl-YhbfTMINqhrOb1mJv9CFSX2-FMxEpj5jfYmImNbsPBgO4Fv_j-Iw-6hKhVXUN35A=s176-c-k-c0x00ffffff-no-rj',
+    location: 'San Diego, California',
+    platform_tag: 'YouTube / 63.4K Subscribers',
+    pitch: 'Creator of God of War. When a legend like Jaffe has your can on stream, it is an endorsement. His audience of 35-44 hardcore gamers trusts his taste.',
+    bio: 'David Jaffe designed God of War and co-created Twisted Metal. His 3.07% engagement rate reflects an audience that listens. Primary demographic is 35 to 44 male — the generation that grew up gaming and kept going. Their brand loyalty is strong and their purchasing power is higher than the typical gaming audience.',
+    metrics: [
+      { val: '66.8K', key: 'Total Audience' },
+      { val: '3.07%', key: 'Engagement Rate' },
+      { val: '65.5%', key: 'US Audience' }
+    ],
+    media_kit: 'https://july.bio/davidjaffe',
+    channels: [
+      { name: 'YouTube', url: 'https://www.youtube.com/@DavidJaffeGames' },
+      { name: 'Twitch', url: 'https://www.twitch.tv/jaffegamesontwitch' },
+      { name: 'TikTok', url: 'https://www.tiktok.com/@gabbinandgames' },
+      { name: 'Instagram', url: 'https://www.instagram.com/davidscottjaffe/' }
+    ]
+  },
+  {
+    country: 'us',
+    name: 'Gem Gaming Network',
+    initials: 'GG',
+    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-maliva-avt-0068/384045547794200f01b960581ac8ab35~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=d1b338f3&x-expires=1793350800&x-signature=m7%2BT%2F4B6Nj3H0qyYfpQez6TrkNQ%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
+    location: 'Charlotte, North Carolina',
+    platform_tag: 'TikTok / 62.7K Followers',
+    pitch: '7.09% TikTok engagement rate. 66.6% aged 18-24. The short-form format that makes energy drink moments hit differently.',
+    bio: 'High-impact short-form gaming content built for discovery. 7.09% TikTok engagement. Their 18-24 audience (66.6%) is exactly the cohort forming brand habits now. A 15-second product moment from Gem Gaming performs on algorithmic reach and builds the kind of habitual association that scales over a 2027 campaign.',
+    metrics: [
+      { val: '136K', key: 'Total Audience' },
+      { val: '7.09%', key: 'TikTok ER' },
+      { val: '60.2%', key: 'US Audience' }
+    ],
+    media_kit: 'https://july.bio/gemgamingnetwork',
+    channels: [
+      { name: 'TikTok', url: 'https://www.tiktok.com/@gemgamingnetwork' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@gemgamingnetwork' },
+      { name: 'Instagram', url: 'https://www.instagram.com/gemgamingnetwork' }
+    ]
+  },
+  {
+    country: 'us',
+    name: 'Cloudual',
+    initials: 'CL',
+    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-maliva-avt-0068/21d103d566caa9508b1e47c49545aeae~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=e93ce5e1&x-expires=1793350800&x-signature=nucU%2Ffw90AtgVD4jKz3FC3%2BcO58%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
+    location: 'North Carolina',
+    platform_tag: 'Instagram / 53.7K Followers',
+    pitch: '12.82% Instagram engagement. Face-forward, always on camera. The kind of authentic on-screen energy that makes product integration work.',
+    bio: 'Face-forward gaming and tech content with professional production. 12.82% Instagram engagement rate is exceptional at any size. Their audience is 87% male, 25 to 34 primary — right in the core Monster Energy demographic. The on-camera presence means product is visible in context, not dropped in post.',
+    metrics: [
+      { val: '105K', key: 'Total Audience' },
+      { val: '12.82%', key: 'Instagram ER' },
+      { val: '87%', key: 'Male Audience' }
+    ],
+    media_kit: 'https://july.bio/cloudual',
+    channels: [
+      { name: 'Instagram', url: 'https://www.instagram.com/cloudual' },
+      { name: 'TikTok', url: 'https://www.tiktok.com/@cloudual' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@Cloudual' }
+    ]
+  },
+  {
+    country: 'ca',
+    name: 'Retro For The First Time',
+    initials: 'RF',
+    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-alisg-avt-0068/a718d39ccc71d44354f4c62231cfe83a~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=98e627da&x-expires=1793350800&x-signature=fynZdGQ%2BW7GjsgAW%2F8OrRRDG9%2BM%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
+    location: 'Ontario, Canada',
+    platform_tag: 'TikTok / 160K Followers',
+    pitch: '8.41% TikTok engagement. 61.6% aged 18-24. High-energy face-forward content. The format and audience are built for Monster.',
+    bio: 'High-energy gaming and tech content built on a former streamer background. 8.41% TikTok engagement rate. Their 18 to 24 audience (61.6%) spans Canada, the US and the UK. The on-camera delivery creates natural product placement moments that read as genuine, not inserted.',
+    metrics: [
+      { val: '243K', key: 'Total Audience' },
+      { val: '8.41%', key: 'TikTok ER' },
+      { val: '57.3%', key: 'US Audience' }
+    ],
+    media_kit: 'https://july.bio/rftft',
+    channels: [
+      { name: 'TikTok', url: 'https://www.tiktok.com/@retroforthefirsttime' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@RetroForTheFirstTime' },
+      { name: 'Instagram', url: 'https://www.instagram.com/retroftft' }
+    ]
+  },
+  {
+    country: 'au',
+    name: 'Games Explorer',
+    initials: 'GE',
+    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-alisg-avt-0068/87df7f3ba5a24cb4ff9fbed18c80410d~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=37b2f2f3&x-expires=1793350800&x-signature=SzEviwiYsXov17Wxd9xcXGM%2FMu4%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
+    location: 'Australia',
+    platform_tag: 'TikTok / 103K Followers',
+    pitch: 'Averaging 208K TikTok views per video at 103K followers. The algorithmic reach makes every product moment go further than the follower count suggests.',
+    bio: 'Game discovery content built for reach. 208K average TikTok views per video at 103K followers is an outlier ratio that reflects strong algorithmic amplification. Their audience covers AU, US and UK. For Monster, that means consistent product visibility in every market this roster targets.',
+    metrics: [
+      { val: '192K', key: 'Total Audience' },
+      { val: '208K', key: 'Avg TikTok Views' },
+      { val: '46.8%', key: 'US Audience' }
+    ],
+    media_kit: 'https://july.bio/gamesexplorer',
+    channels: [
+      { name: 'TikTok', url: 'https://www.tiktok.com/@explorerdotgames' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@explorerdotgames' },
+      { name: 'Instagram', url: 'https://www.instagram.com/explorer.games' },
+      { name: 'Snapchat', url: 'https://www.snapchat.com/@explorer.games' }
+    ]
+  },
+  {
+    country: 'se',
+    name: 'Ettnix',
+    initials: 'ET',
+    avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lsk32vQTIqc3TBV2QLv4zsAeZBhXAzrbxM_UOCLMGScFI=s176-c-k-c0x00ffffff-no-rj',
+    location: 'Sweden',
+    platform_tag: 'Twitch / 152K Followers',
+    pitch: 'Nearly 14 years streaming. Four-hour competitive sessions. World first achievements. The archetype Monster Energy is built around.',
+    bio: 'Johan Ettnix is a veteran Swedish competitive gaming creator with 347K Twitch watch hours and nearly 14 years in the space. Former world-class competitor. His long competitive sessions are the exact occasion Monster was designed for — sustained performance, late nights, the kind of focus that needs fuel. The brand fits without a word being said.',
+    metrics: [
+      { val: '167K', key: 'Total Audience' },
+      { val: '347K', key: 'Twitch Watch Hours' },
+      { val: '7.10%', key: 'Daily Chat ER' }
+    ],
+    media_kit: 'https://july.bio/ettnix',
+    channels: [
+      { name: 'Twitch', url: 'https://www.twitch.tv/ettnix' },
+      { name: 'YouTube', url: 'https://www.youtube.com/@Ettnix' },
+      { name: 'Instagram', url: 'https://www.instagram.com/ettnix' }
+    ]
+  }
+];
+
+var STAR_PTS = '0,-3.08 .69,-.95 2.93,-.95 1.12,.36 1.81,2.49 0,1.18 -1.81,2.49 -1.12,.36 -2.93,-.95 -.69,-.95';
+var US_STARS = '';
+for (var _r = 1; _r <= 9; _r++) { for (var _c = 1; _c <= 11; _c++) { if ((_r + _c) % 2 === 0) { US_STARS += "<polygon fill='#fff' points='" + STAR_PTS + "' transform='translate(" + (_c * 6.333).toFixed(2) + "," + (_r * 5.385).toFixed(2) + ")'/>";  } } }
+
+var COUNTRIES = {
+  uk: {
+    name: 'United Kingdom', html: '&#127468;&#127463;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' preserveAspectRatio='xMinYMin meet'><rect width='60' height='30' fill='#012169'/><path d='M0,0 L60,30 M60,0 L0,30' stroke='#fff' stroke-width='6'/><path d='M0,0 L27,12 M33,18 L60,30 M60,0 L33,12 M27,18 L0,30' stroke='#C8102E' stroke-width='4'/><rect x='24' width='12' height='30' fill='#fff'/><rect y='9' width='60' height='12' fill='#fff'/><rect x='26' width='8' height='30' fill='#C8102E'/><rect y='11' width='60' height='8' fill='#C8102E'/></svg>"
+  },
+  us: {
+    name: 'United States', html: '&#127482;&#127480;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 190 100' preserveAspectRatio='xMinYMin meet'><rect width='190' height='100' fill='#fff'/><rect y='0' width='190' height='7.7' fill='#B22234'/><rect y='15.4' width='190' height='7.7' fill='#B22234'/><rect y='30.8' width='190' height='7.7' fill='#B22234'/><rect y='46.2' width='190' height='7.7' fill='#B22234'/><rect y='61.5' width='190' height='7.7' fill='#B22234'/><rect y='76.9' width='190' height='7.7' fill='#B22234'/><rect y='92.3' width='190' height='7.7' fill='#B22234'/><rect width='76' height='53.8' fill='#3C3B6E'/>" + US_STARS + "</svg>"
+  },
+  ca: {
+    name: 'Canada', html: '&#127464;&#127462;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9600 4800' preserveAspectRatio='xMinYMin meet'><path fill='#d52b1e' d='m0 0h2400l99 99h4602l99-99h2400v4800h-2400l-99-99h-4602l-99 99H0z'/><path fill='#fff' d='m2400 0h4800v4800h-4800zm2490 4430-45-863a95 95 0 0 1 111-98l859 151-116-320a65 65 0 0 1 20-73l941-762-212-99a65 65 0 0 1-34-79l186-572-542 115a65 65 0 0 1-73-38l-105-247-423 454a65 65 0 0 1-111-57l204-1052-327 189a65 65 0 0 1-91-27l-332-652-332 652a65 65 0 0 1-91 27l-327-189 204 1052a65 65 0 0 1-111 57l-423-454-105 247a65 65 0 0 1-73 38l-542-115 186 572a65 65 0 0 1-34 79l-212 99 941 762a65 65 0 0 1 20 73l-116 320 859-151a95 95 0 0 1 111 98l-45 863z'/></svg>"
+  },
+  au: {
+    name: 'Australia', html: '&#127462;&#127482;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10080 5040' preserveAspectRatio='xMinYMin meet'><defs><clipPath id='auC1'><path d='M0,0H6V3H0z'/></clipPath><clipPath id='auC2'><path d='M0,0V1.5H6V3H6zM6,0H3V3H0V3z'/></clipPath><path id='auS7' d='M0,-360 69.421398,-144.155019 281.459334,-224.456329 155.988466,-35.603349 350.974048,80.107536 125.093037,99.758368 156.198146,324.348792 0,160 -156.198146,324.348792 -125.093037,99.758368 -350.974048,80.107536 -155.988466,-35.603349 -281.459334,-224.456329 -69.421398,-144.155019z'/><path id='auS5' d='M0,-210 54.859957,-75.508253 199.721868,-64.893569 88.765275,28.841586 123.434903,169.893569 0,93.333333 -123.434903,169.893569 -88.765275,28.841586 -199.721868,-64.893569 -54.859957,-75.508253z'/></defs><g transform='scale(840)'><rect width='12' height='6' fill='#00008b'/><path d='M0,0 6,3M6,0 0,3' stroke='#fff' stroke-width='0.6' clip-path='url(#auC1)'/><path d='M0,0 6,3M6,0 0,3' stroke='#f00' stroke-width='0.4' clip-path='url(#auC2)'/><path d='M3,0V3M0,1.5H6' stroke='#fff'/><path d='M3,0V3M0,1.5H6' stroke='#f00' stroke-width='0.6'/></g><g fill='#fff'><use href='#auS7' transform='translate(2520,3780) scale(2.1)'/><use href='#auS7' x='7560' y='4200'/><use href='#auS7' x='6300' y='2205'/><use href='#auS7' x='7560' y='840'/><use href='#auS7' x='8680' y='1869'/><use href='#auS5' x='8064' y='2730'/></g></svg>"
+  },
+  se: {
+    name: 'Sweden', html: '&#127480;&#127466;',
+    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10' preserveAspectRatio='xMinYMin meet'><rect width='16' height='10' fill='#006AA7'/><rect x='4' width='3' height='10' fill='#FECC02'/><rect y='3.5' width='16' height='3' fill='#FECC02'/></svg>"
+  }
+};
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderCountry(country) {
+  var creators = CREATORS.filter(function(c){ return c.country === country; });
+  var info = COUNTRIES[country];
+  document.getElementById('flag-bg').innerHTML = info.svgFlag;
+  var headerEl = document.getElementById('country-header');
+  headerEl.innerHTML =
+    '<div class="country-header">' +
+      '<div class="country-flag">' + info.html + '</div>' +
+      '<div>' +
+        '<div class="country-name">' + escapeHtml(info.name) + '</div>' +
+        '<div class="country-count">' + creators.length + ' creator' + (creators.length !== 1 ? 's' : '') + ' in this market</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="country-rule"></div>';
+  var grid = document.getElementById('creators-grid');
+  grid.innerHTML = creators.map(function(c) {
+    var avatarHtml =
+      '<div class="avatar">' +
+        '<div class="avatar-fallback">' + escapeHtml(c.initials) + '</div>' +
+        (c.avatar ? '<img class="avatar-img" src="' + escapeHtml(c.avatar) + '" alt="' + escapeHtml(c.name) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+      '</div>';
+    var metricsHtml = c.metrics.map(function(m) {
+      return '<div class="metric"><div class="metric-val">' + escapeHtml(m.val) + '</div><div class="metric-key">' + escapeHtml(m.key) + '</div></div>';
+    }).join('');
+    var pillsHtml = c.channels.map(function(ch) {
+      return '<a href="' + escapeHtml(ch.url) + '" target="_blank" rel="noopener" class="pill">' + escapeHtml(ch.name) + '</a>';
+    }).join('');
+    var kitHtml = c.media_kit ?
+      '<a href="' + escapeHtml(c.media_kit) + '" target="_blank" rel="noopener" class="media-kit-btn">Full Media Kit &#8594;</a>' :
+      '<span class="metrics-pending">Metrics on request</span>';
+    return '<article class="creator-card">' +
+      '<div class="card-top"><div class="card-header-row">' + avatarHtml +
+        '<div class="card-header-info">' +
+          '<div class="card-platform-tag">' + escapeHtml(c.platform_tag) + '</div>' +
+          '<h2 class="card-name">' + escapeHtml(c.name) + '</h2>' +
+          '<div class="card-location">&#128205; ' + escapeHtml(c.location) + '</div>' +
+        '</div></div></div>' +
+      '<div class="card-pitch">' + escapeHtml(c.pitch) + '</div>' +
+      '<div class="card-metrics">' + metricsHtml + '</div>' +
+      '<div class="card-body"><p class="card-bio">' + escapeHtml(c.bio) + '</p></div>' +
+      '<div class="card-footer"><div class="platform-pills">' + pillsHtml + '</div>' + kitHtml + '</div>' +
+    '</article>';
+  }).join('');
+}
+
+var tabs = document.querySelectorAll('.country-tab');
+tabs.forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    renderCountry(tab.dataset.country);
+    document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+renderCountry('uk');
+</script>
