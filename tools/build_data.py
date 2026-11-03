@@ -16,7 +16,7 @@ CONFIG = {
     'yt_block_channels': {'@endix tube', 'endika parimbawa', 'hilaldeep', 'endix', 'endix_playz', 'itzendix', 'crnovyy', '18 red boss', 'reaper gaming-தமிழ்'},
     'press_channels': {'ign', 'gametrailers', 'insider gaming', 'indie-cent exposure', 'frikiup patch notes — noticias gamer', 'revista grind'},
     'press_block_domains': {'x.com', 'finance.yahoo.com', 'uk.finance.yahoo.com', 'hk.finance.yahoo.com', 'store.steampowered.com', 'youtu.be', 'youtube.com'},
-    'social_block_handles': {'endix.wav'},  # unrelated music account
+    'social_block_handles': {'endix.wav', 'thedeepsift'},  # unrelated accounts (music, French psychology)
     # X posts hidden from the page: whole accounts (lower-case @handle) or single post IDs (duplicates)
     'x_hide_authors': {'@oursnet'},
     'x_hide_ids': {'2058216440541348164'},
