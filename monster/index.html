@@ -1,794 +1,401 @@
-﻿<title>Hello Nord × Monster Energy 2027</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hello Nord × Monster Energy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root {
-  --bg:          #040404;
-  --bg-card:     #0b0b0b;
-  --bg-surface:  #121212;
-  --bg-band:     #070707;
-  --green:       #7ac143;
-  --green-hi:    #9dde32;
-  --green-neon:  #c8ff00;
-  --green-dim:   rgba(122,193,67,.18);
-  --green-glow:  rgba(157,222,50,.10);
-  --green-border:rgba(122,193,67,.25);
-  --text:        #f2f2f2;
-  --text-2:      #9a9a9a;
-  --text-3:      #505050;
-  --border:      rgba(122,193,67,.14);
-  --topbar-h:    54px;
-  --font-d:      'Bebas Neue','Impact',sans-serif;
-  --font-b:      'Inter',system-ui,sans-serif;
+  --bg: #050505;
+  --bg-card: #0d0d0d;
+  --bg-surface: #151515;
+  --green: #7ac143;
+  --green-hi: #a6e22e;
+  --green-dim: rgba(122,193,67,.14);
+  --green-border: rgba(122,193,67,.28);
+  --text: #f4f4f4;
+  --text-2: #a3a3a3;
+  --text-3: #5f5f5f;
+  --line: rgba(255,255,255,.07);
+  --topbar-h: 56px;
+  --font-d: 'Bebas Neue', Impact, sans-serif;
+  --font-b: 'Inter', system-ui, sans-serif;
   color-scheme: dark;
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-b);
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
+a { color: inherit; }
+.inner { max-width: 1160px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.icon { width: 1em; height: 1em; display: inline-block; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-.inner {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding-left:  max(16px, env(safe-area-inset-left,  0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-
-/* ===== TOP BAR ===== */
+/* TOPBAR */
 .topbar {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 100;
-  background: rgba(4,4,4,.97);
-  border-bottom: 1px solid rgba(122,193,67,.18);
-  backdrop-filter: blur(16px);
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(5,5,5,.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
 }
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0 0 auto;
-  height: env(safe-area-inset-top, 0px);
-  z-index: 110;
-  background: rgba(4,4,4,.97);
+.topbar-inner { height: var(--topbar-h); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.topbar-brand { font-family: var(--font-d); font-size: 19px; letter-spacing: .08em; color: var(--text-2); white-space: nowrap; }
+.topbar-brand b { color: var(--text); font-weight: 400; }
+.topbar-brand .x { color: var(--green); margin: 0 6px; }
+.topbar-cta {
+  font-family: var(--font-d); font-size: 15px; letter-spacing: .12em;
+  color: #050505; background: var(--green); text-decoration: none;
+  padding: 7px 16px; border-radius: 2px; white-space: nowrap;
+  transition: background .2s;
 }
-.topbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 16px;
-  gap: 12px;
-}
-.topbar-brand {
-  font-family: var(--font-d);
-  font-size: 17px;
-  letter-spacing: .08em;
-  color: var(--text-2);
-  white-space: nowrap;
-}
-.topbar-brand strong { color: var(--green-hi); }
-.topbar-year {
-  font-family: var(--font-d);
-  font-size: 13px;
-  letter-spacing: .18em;
-  color: var(--text-3);
-  white-space: nowrap;
-}
-.topbar-badge {
-  font-family: var(--font-d);
-  font-size: 13px;
-  letter-spacing: .14em;
-  color: var(--bg);
-  background: var(--green);
-  padding: 5px 14px;
-  border-radius: 2px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  box-shadow: 0 0 18px var(--green-glow);
-}
+.topbar-cta:hover { background: var(--green-hi); }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  min-height: 88vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: var(--bg);
+/* HERO */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero-art {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 64%;
+  background: url('img/cod.webp') center 30% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 30%, #000 70%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 30%, #000 70%);
 }
-.hero-bg-lines {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    repeating-linear-gradient(90deg, rgba(122,193,67,.025) 0, rgba(122,193,67,.025) 1px, transparent 1px, transparent 80px),
-    repeating-linear-gradient(0deg, rgba(122,193,67,.025) 0, rgba(122,193,67,.025) 1px, transparent 1px, transparent 80px);
-}
-.hero-claw {
-  position: absolute;
-  right: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-  opacity: .04;
-  pointer-events: none;
-}
-.hero-glow {
-  position: absolute;
-  left: -200px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(122,193,67,.12) 0%, transparent 70%);
-  z-index: 0;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding-block: 100px 120px;
-}
+.hero-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 0%, transparent 35%); }
+.hero-content { position: relative; z-index: 2; padding-block: 72px 64px; }
+.hero-logo { width: min(340px, 72vw); height: auto; display: block; margin-bottom: 36px; }
 .hero-kicker {
-  font-family: var(--font-d);
-  font-size: 13px;
-  letter-spacing: .32em;
-  color: var(--green);
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.hero-kicker::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 2px;
-  background: var(--green);
-  flex-shrink: 0;
-}
-.hero-title {
-  font-family: var(--font-d);
-  font-size: clamp(52px, 10vw, 120px);
-  font-weight: 400;
-  line-height: .92;
-  color: var(--text);
-  margin-bottom: 24px;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-}
-.hero-title .accent { color: var(--green-hi); display: block; }
-.hero-subtitle {
-  font-size: clamp(14px, 1.6vw, 16px);
-  color: var(--text-2);
-  line-height: 1.65;
-  margin-bottom: 56px;
-  max-width: 540px;
-}
-.hero-rule {
-  width: 180px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--green), transparent);
-  margin-bottom: 48px;
-}
-.hero-stats {
-  display: flex;
-  gap: clamp(28px, 4vw, 56px);
-  flex-wrap: wrap;
-}
-.stat-block { text-align: left; }
-.stat-num {
-  font-family: var(--font-d);
-  font-size: clamp(28px, 5vw, 52px);
-  font-weight: 400;
-  color: var(--green-hi);
-  line-height: 1;
-  margin-bottom: 7px;
-  letter-spacing: .02em;
-}
-.stat-label {
-  font-size: 10px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-
-/* ===== PITCH BAND ===== */
-.pitch-band {
-  background: var(--bg-band);
-  border-top: 1px solid var(--green-border);
-  border-bottom: 1px solid var(--green-border);
-  padding-block: 56px;
-}
-.pitch-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 36px 48px;
-}
-.pitch-item {}
-.pitch-num {
-  font-family: var(--font-d);
-  font-size: 44px;
-  color: var(--green);
-  line-height: 1;
-  margin-bottom: 10px;
-  letter-spacing: .02em;
-}
-.pitch-heading {
-  font-family: var(--font-d);
-  font-size: 18px;
-  letter-spacing: .06em;
-  color: var(--text);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-.pitch-body {
-  font-size: 13px;
-  color: var(--text-2);
-  line-height: 1.65;
-}
-
-/* ===== CASE SECTION ===== */
-.case-section {
-  padding-block: 72px;
-  background: var(--bg);
-}
-.section-eyebrow {
-  font-family: var(--font-d);
-  font-size: 11px;
-  letter-spacing: .32em;
-  color: var(--green);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.section-title {
-  font-family: var(--font-d);
-  font-size: clamp(28px, 4vw, 42px);
-  color: var(--text);
-  margin-bottom: 20px;
-  letter-spacing: .03em;
-  text-transform: uppercase;
-  line-height: 1.1;
-}
-.section-rule {
-  width: 60px;
-  height: 2px;
-  background: var(--green);
-  margin-bottom: 36px;
-}
-.case-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-@media (max-width: 680px) { .case-cols { grid-template-columns: 1fr; gap: 28px; } }
-.case-col-label {
-  font-family: var(--font-d);
-  font-size: 11px;
-  letter-spacing: .22em;
-  color: var(--green);
-  text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-d); font-size: 15px; letter-spacing: .28em; color: var(--green);
   margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--green-border);
 }
-.case-list { list-style: none; }
-.case-list li {
-  font-size: 13.5px;
-  color: var(--text-2);
-  line-height: 1.6;
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(255,255,255,.05);
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
+.hero-kicker::before { content: ''; width: 28px; height: 2px; background: var(--green); }
+.hero h1 {
+  font-family: var(--font-d); font-weight: 400;
+  font-size: clamp(56px, 9vw, 112px); line-height: .9; letter-spacing: .01em;
+  margin-bottom: 20px;
 }
-.case-list li::before {
-  content: '';
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  flex-shrink: 0;
-  margin-top: 7px;
+.hero h1 span { color: var(--green-hi); }
+.hero-sub { font-size: clamp(15px, 1.6vw, 17px); color: var(--text-2); max-width: 470px; margin-bottom: 44px; }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 14px; }
+.stat {
+  min-width: 132px; padding: 14px 18px;
+  background: rgba(13,13,13,.78); border: 1px solid var(--line); border-left: 2px solid var(--green);
+  backdrop-filter: blur(6px);
 }
+.stat-num { font-family: var(--font-d); font-size: 38px; line-height: 1; color: var(--text); }
+.stat-label { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); margin-top: 6px; }
 
-/* ===== COUNTRY NAV ===== */
+/* SECTIONS */
+section { padding-block: 72px; }
+.eyebrow { font-family: var(--font-d); font-size: 14px; letter-spacing: .3em; color: var(--green); margin-bottom: 10px; }
+.section-title { font-family: var(--font-d); font-weight: 400; font-size: clamp(34px, 5vw, 54px); line-height: 1; margin-bottom: 40px; }
+
+/* WHY */
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.why-card {
+  background: var(--bg-card); border: 1px solid var(--line); padding: 26px 22px 24px;
+  transition: border-color .25s, transform .25s;
+}
+.why-card:hover { border-color: var(--green-border); transform: translateY(-2px); }
+.why-icon {
+  width: 46px; height: 46px; display: grid; place-items: center;
+  background: var(--green-dim); color: var(--green-hi); font-size: 24px;
+  margin-bottom: 20px;
+}
+.why-big { font-family: var(--font-d); font-size: 40px; line-height: 1; color: var(--green-hi); margin-bottom: 6px; }
+.why-head { font-family: var(--font-d); font-size: 22px; letter-spacing: .03em; margin-bottom: 8px; }
+.why-text { font-size: 13.5px; color: var(--text-2); }
+
+/* PROOF STRIP */
+.proof { background: var(--bg-surface); border-block: 1px solid var(--line); }
+.proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.proof-item { background: var(--bg-card); padding: 22px 20px; display: flex; flex-direction: column; gap: 10px; }
+.proof-game {
+  align-self: flex-start;
+  font-family: var(--font-d); font-size: 13px; letter-spacing: .14em;
+  color: #050505; background: var(--green); padding: 3px 9px;
+}
+.proof-name { font-family: var(--font-d); font-size: 24px; line-height: 1; }
+.proof-text { font-size: 13.5px; color: var(--text-2); flex: 1; }
+.proof-link {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600;
+  color: var(--green); text-decoration: none; letter-spacing: .02em;
+}
+.proof-link:hover { color: var(--green-hi); }
+
+/* COUNTRY NAV */
 .country-nav {
-  border-bottom: 1px solid var(--border);
-  background: rgba(4,4,4,.98);
-  position: sticky;
-  top: calc(env(safe-area-inset-top, 0px) + var(--topbar-h));
-  z-index: 90;
-  backdrop-filter: blur(16px);
+  position: sticky; top: var(--topbar-h); z-index: 90;
+  background: rgba(5,5,5,.96); backdrop-filter: blur(14px);
+  border-block: 1px solid var(--line);
 }
-.country-nav-inner {
-  display: flex;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
+.country-nav-inner { display: flex; overflow-x: auto; scrollbar-width: none; }
 .country-nav-inner::-webkit-scrollbar { display: none; }
 .country-tab {
-  flex: 0 0 auto;
-  padding: 16px 24px;
-  font-family: var(--font-d);
-  font-size: 13px;
-  letter-spacing: .12em;
-  color: var(--text-3);
-  cursor: pointer;
-  border: none;
-  background: none;
-  border-bottom: 2px solid transparent;
-  transition: color .2s, border-color .2s, background .2s;
-  white-space: nowrap;
-  text-transform: uppercase;
+  flex: 0 0 auto; display: flex; align-items: center; gap: 10px;
+  padding: 16px 22px; background: none; border: none; border-bottom: 2px solid transparent;
+  font-family: var(--font-d); font-size: 16px; letter-spacing: .1em; color: var(--text-3);
+  cursor: pointer; transition: color .2s, border-color .2s;
 }
-.country-tab:hover { color: var(--text-2); background: rgba(122,193,67,.04); }
-.country-tab.active { color: var(--green-hi); border-bottom-color: var(--green); }
-.country-tab .flag { margin-right: 8px; font-style: normal; font-size: 14px; }
+.country-tab:hover { color: var(--text-2); }
+.country-tab.active { color: var(--text); border-bottom-color: var(--green); }
+.mini-flag { width: 22px; height: 15px; display: block; overflow: hidden; border-radius: 1px; opacity: .55; transition: opacity .2s; }
+.country-tab.active .mini-flag { opacity: 1; }
+.mini-flag svg { width: 100%; height: 100%; display: block; }
 
-/* ===== CREATORS SECTION ===== */
-.creators-section {
-  padding-block: 60px;
-  position: relative;
-  overflow: hidden;
+/* CREATORS */
+.creators { position: relative; overflow: hidden; padding-top: 52px; padding-bottom: 72px; }
+.flag-bg {
+  position: absolute; top: 0; left: 0; right: 0; opacity: .06; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
 }
-.country-flag-bg {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: .08;
-  -webkit-mask-image: linear-gradient(to right, black 0%, black 90%, transparent 100%);
-  mask-image: linear-gradient(to right, black 0%, black 90%, transparent 100%);
-  user-select: none;
-  overflow: hidden;
-}
-.country-flag-bg svg { width: 100%; height: auto; display: block; }
-.creators-section .inner { position: relative; z-index: 1; }
+.flag-bg svg { width: 100%; height: auto; display: block; }
+.creators .inner { position: relative; z-index: 1; }
+.country-head { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+.country-head .mini-flag { width: 48px; height: 32px; opacity: 1; }
+.country-name { font-family: var(--font-d); font-size: 34px; line-height: 1; }
+.country-count { font-size: 12px; color: var(--text-3); letter-spacing: .06em; text-transform: uppercase; margin-top: 4px; }
 
-.country-header {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 28px;
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 20px; }
+.grid:has(> .card:only-child) { max-width: 580px; }
+.card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  display: flex; flex-direction: column; overflow: hidden;
+  transition: border-color .25s;
 }
-.country-flag { font-size: 44px; line-height: 1; flex-shrink: 0; }
-.country-name {
-  font-family: var(--font-d);
-  font-size: clamp(22px, 3vw, 30px);
-  letter-spacing: .06em;
-  color: var(--text);
-  text-transform: uppercase;
-}
-.country-count { font-size: 12px; color: var(--text-3); letter-spacing: .05em; margin-top: 3px; }
-.country-rule {
-  height: 1px;
-  background: linear-gradient(90deg, var(--green-border), transparent);
-  margin-bottom: 36px;
-}
+.card:hover { border-color: var(--green-border); }
+.card-head { display: flex; align-items: center; gap: 14px; padding: 20px 20px 16px; }
+.avatar { width: 58px; height: 58px; border-radius: 50%; position: relative; overflow: hidden; flex-shrink: 0; border: 2px solid var(--green); background: var(--bg-surface); }
+.avatar-fb { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-d); font-size: 20px; color: var(--green); }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card-name { font-family: var(--font-d); font-weight: 400; font-size: 26px; line-height: 1; margin-bottom: 4px; }
+.card-meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-3); }
+.card-meta .icon { font-size: 13px; color: var(--green); }
+.card-hook { padding: 0 20px 16px; font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.45; }
 
-.creators-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+.video { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.video-btn { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; cursor: pointer; background: #000; display: block; overflow: hidden; }
+.video-btn img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .82; transition: opacity .25s, transform .4s; }
+.video-btn:hover img { opacity: 1; transform: scale(1.03); }
+.video-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 50%); }
+.play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2;
+  width: 58px; height: 58px; border-radius: 50%; background: var(--green);
+  display: grid; place-items: center; color: #050505;
+  box-shadow: 0 0 0 8px rgba(122,193,67,.18); transition: transform .2s, background .2s;
 }
+.video-btn:hover .play { transform: translate(-50%,-50%) scale(1.08); background: var(--green-hi); }
+.play svg { width: 22px; height: 22px; fill: currentColor; stroke: none; margin-left: 3px; }
+.video-info { position: absolute; left: 14px; right: 14px; bottom: 11px; z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; text-align: left; }
+.video-title { font-size: 12px; font-weight: 600; color: #fff; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.video-views {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-d); font-size: 15px; letter-spacing: .06em; color: #050505;
+  background: var(--green); padding: 2px 8px;
+}
+.video-views .icon { font-size: 13px; stroke-width: 2.2; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-/* ===== CREATOR CARD ===== */
-.creator-card {
-  background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  transition: border-color .25s, box-shadow .25s, transform .25s;
-}
-.creator-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--green), var(--green-hi) 50%, transparent);
-  opacity: 0;
-  transition: opacity .25s;
-}
-.creator-card:hover {
-  border-color: rgba(122,193,67,.30);
-  box-shadow: 0 8px 48px rgba(0,0,0,.6), 0 0 24px rgba(122,193,67,.06);
-  transform: translateY(-2px);
-}
-.creator-card:hover::before { opacity: 1; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+.metric { padding: 14px 8px; text-align: center; }
+.metric + .metric { border-left: 1px solid var(--line); }
+.metric-val { font-family: var(--font-d); font-size: 26px; line-height: 1; color: var(--green-hi); }
+.metric-key { font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-top: 5px; }
 
-.card-top { padding: 22px 22px 0; }
-.card-header-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
-.avatar {
-  width: 72px; height: 72px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid rgba(122,193,67,.25);
-}
-.avatar-fallback {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-d); font-size: 22px;
-  color: var(--green);
-  background: var(--bg-surface);
-  letter-spacing: .04em;
-}
-.avatar-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.card-header-info { min-width: 0; }
-.card-platform-tag {
-  font-family: var(--font-d); font-size: 11px;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: var(--green); margin-bottom: 4px;
-}
-.card-name {
-  font-family: var(--font-d);
-  font-size: clamp(18px, 2.5vw, 24px);
-  color: var(--text);
-  line-height: 1.1; margin-bottom: 4px;
-  text-transform: uppercase; letter-spacing: .04em;
-}
-.card-location { font-size: 11.5px; color: var(--text-3); letter-spacing: .04em; }
-.card-pitch {
-  font-size: 13px; color: var(--text-2);
-  line-height: 1.55; font-style: italic;
-  padding: 11px 14px;
-  margin: 0 22px 18px;
-  border-left: 2px solid var(--green-border);
-  background: rgba(122,193,67,.04);
-  border-radius: 0 2px 2px 0;
-}
-.card-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  background: rgba(0,0,0,.3);
-  flex-shrink: 0;
-}
-.metric { padding: 14px 10px; text-align: center; position: relative; }
-.metric + .metric::before {
-  content: '';
-  position: absolute; left: 0; top: 18%; bottom: 18%;
-  width: 1px; background: rgba(255,255,255,.06);
-}
-.metric-val {
-  font-family: var(--font-d);
-  font-size: clamp(14px, 2.2vw, 20px);
-  color: var(--green-hi);
-  font-variant-numeric: tabular-nums;
-  line-height: 1; margin-bottom: 5px; white-space: nowrap;
-  letter-spacing: .02em;
-}
-.metric-key { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
-.card-body { padding: 16px 22px 0; flex: 1; }
-.card-bio { font-size: 13px; color: var(--text-2); line-height: 1.62; margin-bottom: 16px; }
-.card-footer {
-  padding: 14px 22px 20px;
-  display: flex; flex-direction: column; align-items: flex-start;
-  gap: 10px;
-}
-.platform-pills { display: flex; gap: 5px; flex-wrap: wrap; }
+.card-foot { margin-top: auto; padding: 14px 20px 18px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.pills { display: flex; flex-wrap: wrap; gap: 5px; }
 .pill {
-  font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--text-3); background: var(--bg-surface);
-  border: 1px solid rgba(255,255,255,.07);
-  padding: 3px 8px; border-radius: 2px;
-  text-decoration: none; transition: color .15s, border-color .15s;
+  font-size: 10px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+  color: var(--text-2); border: 1px solid var(--line); padding: 4px 8px; transition: color .15s, border-color .15s;
 }
 .pill:hover { color: var(--green); border-color: var(--green-border); }
-.media-kit-btn {
-  font-family: var(--font-d); font-size: 12px;
-  letter-spacing: .12em; text-transform: uppercase;
-  color: var(--green); text-decoration: none;
-  border: 1px solid var(--green-border);
-  padding: 7px 15px; border-radius: 2px;
-  transition: background .2s, color .2s;
-  white-space: nowrap; flex-shrink: 0;
+.kit {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-d); font-size: 15px; letter-spacing: .1em; text-decoration: none;
+  color: var(--green); border: 1px solid var(--green-border); padding: 6px 12px; transition: background .2s, color .2s;
 }
-.media-kit-btn:hover { background: var(--green-dim); color: var(--green-hi); }
-.metrics-pending { font-size: 11px; color: var(--text-3); font-style: italic; }
+.kit:hover { background: var(--green-dim); color: var(--green-hi); }
 
-/* ===== AUDIENCE NOTE ===== */
-.audience-note {
-  margin-top: 48px;
-  padding: 22px 28px;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  background: rgba(7,7,7,.8);
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
+/* CTA */
+.cta { text-align: center; border-top: 1px solid var(--line); background: radial-gradient(ellipse at 50% 0%, rgba(122,193,67,.12), transparent 65%); }
+.cta h2 { font-family: var(--font-d); font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: .95; margin-bottom: 14px; }
+.cta h2 span { color: var(--green-hi); }
+.cta p { color: var(--text-2); margin-bottom: 30px; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-d); font-size: 20px; letter-spacing: .1em; text-decoration: none;
+  color: #050505; background: var(--green); padding: 14px 28px; transition: background .2s;
 }
-.audience-note-icon { font-size: 24px; flex-shrink: 0; }
-.audience-note-text { font-size: 13px; color: var(--text-2); line-height: 1.55; min-width: 0; }
-.audience-note-text strong { color: var(--text); }
+.cta-btn:hover { background: var(--green-hi); }
+footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe-area-inset-bottom, 0px)); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); }
+.footer-inner b { font-family: var(--font-d); font-weight: 400; font-size: 17px; letter-spacing: .14em; color: var(--text-2); }
 
-/* ===== HERO LOGO ===== */
-.hero-logo-wrap { margin-bottom: 32px; }
-.hero-logo { height: 56px; width: auto; display: block; filter: brightness(0) invert(1); }
-
-/* ===== COD SECTION ===== */
-.cod-section {
-  background: var(--bg-surface);
-  border-top: 1px solid var(--green-border);
-  border-bottom: 1px solid var(--green-border);
-  padding-block: 56px;
+@media (max-width: 980px) {
+  .why-grid, .proof-grid { grid-template-columns: repeat(2, 1fr); }
 }
-.cod-inner { max-width: 820px; }
-.cod-badge {
-  display: inline-block;
-  font-family: var(--font-d);
-  font-size: 10px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--bg);
-  background: var(--green);
-  padding: 4px 12px;
-  border-radius: 2px;
-  margin-bottom: 20px;
+@media (max-width: 720px) {
+  .hero-art { width: 100%; opacity: .45; -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 90%); mask-image: linear-gradient(to bottom, #000 0%, transparent 90%); }
+  .hero-content { padding-block: 48px 44px; }
+  .stat { min-width: calc(50% - 7px); flex: 1 1 calc(50% - 7px); }
+  section { padding-block: 56px; }
+  .why-grid, .proof-grid { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
+  .topbar-brand .full, .topbar-brand .x { display: none; }
 }
-.cod-headline {
-  font-family: var(--font-d);
-  font-size: clamp(28px, 4vw, 48px);
-  color: var(--text);
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  line-height: 1.05;
-  margin-bottom: 20px;
-}
-.cod-headline span { color: var(--green-hi); }
-.cod-body {
-  font-size: 14px;
-  color: var(--text-2);
-  line-height: 1.7;
-  margin-bottom: 32px;
-  max-width: 700px;
-}
-.cod-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-.cod-tag {
-  font-size: 12px;
-  color: var(--green);
-  background: rgba(122,193,67,.08);
-  border: 1px solid var(--green-border);
-  padding: 6px 14px;
-  border-radius: 2px;
-  letter-spacing: .03em;
-}
-.cod-tag strong { color: var(--green-hi); }
-
-/* ===== FOOTER ===== */
-.site-footer {
-  border-top: 1px solid rgba(122,193,67,.12);
-  padding-block: 52px;
-  text-align: center;
-  background: #020202;
-}
-.footer-claw { display: block; margin: 0 auto 20px; }
-.footer-brand {
-  font-family: var(--font-d); font-size: 20px;
-  letter-spacing: .18em;
-  color: var(--green); text-transform: uppercase; margin-bottom: 8px;
-}
-.footer-tagline { font-size: 11px; color: var(--text-3); letter-spacing: .08em; margin-bottom: 20px; }
-.footer-contact { font-family: var(--font-d); font-size: 12px; color: var(--text-2); letter-spacing: .14em; }
 </style>
+</head>
+<body>
 
-<!-- TOP BAR -->
-<div class="topbar">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol>
+  <symbol id="i-cross" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></symbol>
+  <symbol id="i-formats" viewBox="0 0 24 24"><rect x="2.5" y="5" width="13" height="14" rx="1.5"/><path d="M8 9.5l4 2.5-4 2.5z"/><rect x="18" y="7" width="3.5" height="10" rx="1"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+</svg>
+
+<header class="topbar">
   <div class="inner topbar-inner">
-    <div class="topbar-brand"><strong>Hello Nord</strong> &times; Creator Partnerships</div>
-    <div class="topbar-badge">Ambassador Program 2027</div>
-    <div class="topbar-year">Monster Energy</div>
-  </div>
-</div>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-bg-lines"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-claw" aria-hidden="true">
-    <svg width="520" height="680" viewBox="0 0 520 680" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M60 40 C55 120, 40 200, 70 320 C90 400, 100 460, 80 560 C70 610, 50 650, 30 680" stroke="#7ac143" stroke-width="28" stroke-linecap="round" fill="none"/>
-      <path d="M180 20 C175 110, 160 200, 190 330 C210 420, 220 480, 195 575 C182 625, 160 662, 138 688" stroke="#7ac143" stroke-width="28" stroke-linecap="round" fill="none"/>
-      <path d="M300 10 C295 105, 282 198, 310 335 C332 428, 342 490, 315 582 C301 632, 278 668, 255 692" stroke="#7ac143" stroke-width="28" stroke-linecap="round" fill="none"/>
-    </svg>
-  </div>
-  <div class="inner hero-content">
-    <div class="hero-logo-wrap"><img id="monsterLogo" class="hero-logo" alt="Monster Energy" style="display:none"></div>
-    <div class="hero-kicker">Hello Nord Ambassador Pitch</div>
-    <h1 class="hero-title">
-      Born In<br>
-      <span class="accent">The Session.</span>
-    </h1>
-    <p class="hero-subtitle">Monster Energy x Call of Duty is already in market. These eight creators covered it without being asked. Now bring them in as the official faces of Monster in gaming for 2027.</p>
-    <div class="hero-rule"></div>
-    <div class="hero-stats">
-      <div class="stat-block">
-        <div class="stat-num">8</div>
-        <div class="stat-label">Creators</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Markets</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">3.9M+</div>
-        <div class="stat-label">Combined Audience</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">18-34</div>
-        <div class="stat-label">Core Demo, All Creators</div>
-      </div>
-    </div>
+    <div class="topbar-brand"><b>Hello Nord</b><span class="x">&times;</span><span class="full">Monster Energy 2027</span></div>
+    <a class="topbar-cta" href="mailto:daniel@hellonord.se?subject=Monster%20Energy%202027">Get In Touch</a>
   </div>
 </header>
 
-<!-- PITCH PILLARS -->
-<section class="pitch-band">
+<div class="hero">
+  <div class="hero-art" aria-hidden="true"></div>
+  <div class="inner hero-content">
+    <img class="hero-logo" src="img/logo.webp" alt="Monster Energy">
+    <div class="hero-kicker">2027 Ambassador Program</div>
+    <h1>Fuel<br><span>The Game.</span></h1>
+    <p class="hero-sub">Eight creators already living in Call of Duty, Arc Raiders and Battlefield. Ready to carry the claw.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">3.9M+</div><div class="stat-label">Combined Audience</div></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Creators</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Markets</div></div>
+      <div class="stat"><div class="stat-num">Up to 96%</div><div class="stat-label">Male Audience</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="why">
   <div class="inner">
-    <div class="pitch-grid">
-      <div class="pitch-item">
-        <div class="pitch-num">01</div>
-        <div class="pitch-heading">The Buyer Is Already There</div>
-        <p class="pitch-body">Gaming audiences are 18 to 34, male-skewing, high disposable income, long screen sessions. That is not a demographic adjacent to Monster's buyer. That is Monster's buyer. No audience translation required.</p>
+    <div class="eyebrow">The Short Answer</div>
+    <h2 class="section-title">Why Monster Should Work With Our Roster</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg class="icon"><use href="#i-target"/></svg></div>
+        <div class="why-big">18-34</div>
+        <div class="why-head">Your Exact Buyer</div>
+        <p class="why-text">Young, male, gaming for hours. No audience translation needed.</p>
       </div>
-      <div class="pitch-item">
-        <div class="pitch-num">02</div>
-        <div class="pitch-heading">Already In The Game</div>
-        <p class="pitch-body">Monster Energy x Call of Duty is active. Captain Eggcellent covered it in multiple Shorts without a brief. David Jaffe plays Modern Warfare on stream. Ettnix hit a world first in Arc Raiders and was covered by Japanese FPS press. The fit exists before the pitch starts.</p>
+      <div class="why-card">
+        <div class="why-icon"><svg class="icon"><use href="#i-cross"/></svg></div>
+        <div class="why-big">MW4</div>
+        <div class="why-head">Shooters Are Home Turf</div>
+        <p class="why-text">Call of Duty, Arc Raiders and Battlefield already run on these channels.</p>
       </div>
-      <div class="pitch-item">
-        <div class="pitch-num">03</div>
-        <div class="pitch-heading">Every Format Covered</div>
-        <p class="pitch-body">Long-form YouTube reviews. Twitch marathon sessions. TikTok and Shorts punching product moments to algorithms that reward them. Five markets. One roster that covers them all end to end.</p>
+      <div class="why-card">
+        <div class="why-icon"><svg class="icon"><use href="#i-formats"/></svg></div>
+        <div class="why-big">474K</div>
+        <div class="why-head">Every Format</div>
+        <p class="why-text">Long guides, live streams and Shorts. Top videos pull hundreds of thousands of views.</p>
       </div>
-      <div class="pitch-item">
-        <div class="pitch-num">04</div>
-        <div class="pitch-heading">First-Mover in 2027</div>
-        <p class="pitch-body">Gaming sponsorship is consolidating. Brands that lock category-defining creators now are building equity. Brands that wait will pay significantly more for the same names or settle for the second tier.</p>
+      <div class="why-card">
+        <div class="why-icon"><svg class="icon"><use href="#i-globe"/></svg></div>
+        <div class="why-big">5</div>
+        <div class="why-head">Markets, One Deal</div>
+        <p class="why-text">UK, US, Canada, Australia and Sweden through a single agency.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COD x MONSTER -->
-<section class="cod-section">
-  <div class="inner cod-inner">
-    <div class="cod-badge">Already In Market</div>
-    <div class="cod-headline">Monster Energy <span>&times;</span> Call of Duty</div>
-    <p class="cod-body">The Monster Energy x Call of Duty Modern Warfare collaboration is already active. The creators in this roster covered it on their own, before any formal partnership. Captain Eggcellent posted multiple Shorts on the collaboration. David Jaffe plays Modern Warfare actively on his channel. RageGamingVideos covers competitive FPS titles including Wardogs, Arc Raiders and Deadlock. Ettnix became the first player globally to reach 10,000 kills in Arc Raiders and was featured by Japanese FPS outlet fpsjp.net. This is not a cold pitch asking gaming creators to adopt an energy drink brand. The connection is already there. An ambassador program for 2027 makes it official.</p>
-    <div class="cod-tags">
-      <div class="cod-tag"><strong>Captain Eggcellent</strong> covered Monster x CoD MW in multiple YouTube Shorts</div>
-      <div class="cod-tag"><strong>David Jaffe</strong> actively plays Modern Warfare on stream</div>
-      <div class="cod-tag"><strong>RageGamingVideos</strong> covers Wardogs, Arc Raiders, Deadlock and competitive FPS</div>
-      <div class="cod-tag"><strong>Ettnix</strong> world first 10,000 kills in Arc Raiders &middot; Featured by fpsjp.net</div>
-    </div>
-  </div>
-</section>
-
-<!-- THE CASE -->
-<section class="case-section">
+<section class="proof">
   <div class="inner">
-    <div class="section-eyebrow">Why Gaming, Why Now</div>
-    <div class="section-title">The Match Is Exact</div>
-    <div class="section-rule"></div>
-    <div class="case-cols">
-      <div>
-        <div class="case-col-label">What Monster Energy Needs</div>
-        <ul class="case-list">
-          <li>18-34 male audience with proven purchase intent</li>
-          <li>Authentic product placement, not forced ad reads</li>
-          <li>Multi-platform reach across TikTok, YouTube and Twitch</li>
-          <li>Campaign coverage across UK, US, CA, AU and Sweden</li>
-          <li>Creators who build community, not just broadcast to it</li>
-          <li>Short-form content that performs on paid and organic</li>
-        </ul>
+    <div class="eyebrow">Monster &times; Call of Duty</div>
+    <h2 class="section-title">Already In The Fight</h2>
+    <div class="proof-grid">
+      <div class="proof-item">
+        <span class="proof-game">Modern Warfare 4</span>
+        <div class="proof-name">Captain Eggcellent</div>
+        <p class="proof-text">MW4 secrets Shorts reaching 100K+ views each.</p>
+        <a class="proof-link" href="https://www.youtube.com/shorts/LbLdzGIx-XI" target="_blank" rel="noopener">Watch <svg class="icon"><use href="#i-ext"/></svg></a>
       </div>
-      <div>
-        <div class="case-col-label">What This Roster Delivers</div>
-        <ul class="case-list">
-          <li>Captain Eggcellent covered Monster x CoD MW organically before any brief</li>
-          <li>Ettnix: world first 10,000 kills in Arc Raiders, featured by fpsjp.net</li>
-          <li>RageGamingVideos covers Wardogs, Arc Raiders, Deadlock and competitive FPS</li>
-          <li>David Jaffe actively plays Modern Warfare on his channel</li>
-          <li>Gem Gaming at 7.09% TikTok ER. Cloudual at 12.82% Instagram ER</li>
-          <li>All five markets covered. Every creator delivers 50% or more US reach</li>
-        </ul>
+      <div class="proof-item">
+        <span class="proof-game">Modern Warfare 4</span>
+        <div class="proof-name">David Jaffe</div>
+        <p class="proof-text">The God of War creator streams MW4 live.</p>
+        <a class="proof-link" href="https://www.youtube.com/watch?v=YlqlYJtQs90" target="_blank" rel="noopener">Watch <svg class="icon"><use href="#i-ext"/></svg></a>
+      </div>
+      <div class="proof-item">
+        <span class="proof-game">Arc Raiders</span>
+        <div class="proof-name">Ettnix</div>
+        <p class="proof-text">World first to 10,000 kills. Covered by Japanese press.</p>
+        <a class="proof-link" href="https://fpsjp.net/archives/541587" target="_blank" rel="noopener">Read on fpsjp.net <svg class="icon"><use href="#i-ext"/></svg></a>
+      </div>
+      <div class="proof-item">
+        <span class="proof-game">Black Ops 7</span>
+        <div class="proof-name">Retro For The First Time</div>
+        <p class="proof-text">CoD and Battlefield news Shorts hitting 250K+ views.</p>
+        <a class="proof-link" href="https://www.youtube.com/shorts/zPikIEELrpY" target="_blank" rel="noopener">Watch <svg class="icon"><use href="#i-ext"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COUNTRY NAV -->
-<nav class="country-nav" role="tablist" aria-label="Select country">
-  <div class="inner country-nav-inner">
-    <button class="country-tab active" data-country="uk" role="tab" aria-selected="true">
-      <span class="flag">&#127468;&#127463;</span>United Kingdom
-    </button>
-    <button class="country-tab" data-country="us" role="tab" aria-selected="false">
-      <span class="flag">&#127482;&#127480;</span>United States
-    </button>
-    <button class="country-tab" data-country="ca" role="tab" aria-selected="false">
-      <span class="flag">&#127464;&#127462;</span>Canada
-    </button>
-    <button class="country-tab" data-country="au" role="tab" aria-selected="false">
-      <span class="flag">&#127462;&#127482;</span>Australia
-    </button>
-    <button class="country-tab" data-country="se" role="tab" aria-selected="false">
-      <span class="flag">&#127480;&#127466;</span>Sweden
-    </button>
+<nav class="country-nav" aria-label="Select market">
+  <div class="inner country-nav-inner" role="tablist">
+    <button class="country-tab active" data-country="uk" role="tab" aria-selected="true"><span class="mini-flag" data-flag="uk"></span>United Kingdom</button>
+    <button class="country-tab" data-country="us" role="tab" aria-selected="false"><span class="mini-flag" data-flag="us"></span>United States</button>
+    <button class="country-tab" data-country="ca" role="tab" aria-selected="false"><span class="mini-flag" data-flag="ca"></span>Canada</button>
+    <button class="country-tab" data-country="au" role="tab" aria-selected="false"><span class="mini-flag" data-flag="au"></span>Australia</button>
+    <button class="country-tab" data-country="se" role="tab" aria-selected="false"><span class="mini-flag" data-flag="se"></span>Sweden</button>
   </div>
 </nav>
 
-<!-- CREATORS -->
-<main>
-  <section class="creators-section">
-    <div id="flag-bg" class="country-flag-bg" aria-hidden="true"></div>
-    <div class="inner">
-      <div id="country-header"></div>
-      <div class="creators-grid" id="creators-grid"></div>
-      <div class="audience-note">
-        <div class="audience-note-icon">&#127758;</div>
-        <div class="audience-note-text">
-          <strong>US reach is built in everywhere.</strong>
-          Every creator in this roster delivers a minimum of 50% US viewership regardless of home market. A multi-market Monster Energy partnership is simultaneously a North American awareness program.
-        </div>
-      </div>
-    </div>
-  </section>
+<main class="creators" id="roster">
+  <div class="flag-bg" id="flag-bg" aria-hidden="true"></div>
+  <div class="inner">
+    <div id="country-head"></div>
+    <div class="grid" id="grid"></div>
+  </div>
 </main>
 
-<!-- FOOTER -->
-<footer class="site-footer">
+<section class="cta">
   <div class="inner">
-    <svg class="footer-claw" width="48" height="56" viewBox="0 0 48 56" fill="none">
-      <path d="M8 4 C7 14, 5 24, 9 38 C12 48, 13 54, 10 62" stroke="#7ac143" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
-      <path d="M24 2 C23 13, 21 23, 25 38 C28 49, 29 55, 26 63" stroke="#7ac143" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
-      <path d="M40 4 C39 14, 37 24, 41 38 C44 48, 45 54, 42 62" stroke="#7ac143" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
-    </svg>
-    <div class="footer-brand">Hello Nord</div>
-    <div class="footer-tagline">Gaming Creator Agency &middot; hellonord.se</div>
-    <div class="footer-contact">daniel@hellonord.se</div>
+    <h2>Put The Claw<br><span>On The Roster.</span></h2>
+    <p>Eight creators. Five markets. One conversation.</p>
+    <a class="cta-btn" href="mailto:daniel@hellonord.se?subject=Monster%20Energy%202027">daniel@hellonord.se <svg class="icon"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <div class="inner footer-inner">
+    <b>Hello Nord</b>
+    <span>Gaming Creator Agency / hellonord.se</span>
   </div>
 </footer>
 
 <script>
-var IMG_MONSTER_LOGO = '';
-
 var CREATORS = [
   {
-    country: 'uk',
-    name: 'Captain Eggcellent',
-    initials: 'CE',
+    country: 'uk', name: 'Captain Eggcellent', initials: 'CE', location: 'Ipswich, England',
     avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lF06n7yXV4O7GDR0xRe2En7-n6X2Mio6ymHT1o8vVdZ-g=s176-c-k-c0x00ffffff-no-rj',
-    location: 'Ipswich, England',
-    platform_tag: 'YouTube / 982K Subscribers',
-    pitch: 'Already covered the Monster Energy x Call of Duty Modern Warfare collaboration across multiple Shorts. FPS and competitive gaming is core territory. That Monster can on stream was not placed there.',
-    bio: 'Easter egg and secrets specialist with 1.60M total audience. His CoD Modern Warfare Shorts covering the Monster Energy collaboration show the natural fit before a brief was ever written. 93% male audience, long research sessions, and deep competitive FPS coverage. When a creator covers your brand collaboration organically, the authenticity question is answered.',
-    metrics: [
-      { val: '1.60M', key: 'Total Audience' },
-      { val: '2.66%', key: 'Engagement Rate' },
-      { val: '93%', key: 'Male Audience' }
-    ],
+    hook: 'Call of Duty secrets that pull 100K+ views a Short.',
+    video: { id: 'LbLdzGIx-XI', title: 'This Modern Warfare 4 SECRET Could Save Your Life!', views: '112K' },
+    metrics: [ { val: '1.60M', key: 'Audience' }, { val: '93%', key: 'Male' }, { val: '2.66%', key: 'Engagement' } ],
     media_kit: 'https://july.bio/CaptainEggcellent',
     channels: [
       { name: 'YouTube', url: 'https://www.youtube.com/@CaptainEggcellent' },
@@ -798,38 +405,20 @@ var CREATORS = [
     ]
   },
   {
-    country: 'uk',
-    name: 'RageGamingVideos',
-    initials: 'RG',
+    country: 'uk', name: 'RageGamingVideos', initials: 'RG', location: 'United Kingdom',
     avatar: 'https://yt3.googleusercontent.com/3TlufKydntExNT_c7TULN3BosQs2ClqYTDrLSl_xCF-jhriazbq8XzD9C377agd_PLSjqHdp=s176-c-k-c0x00ffffff-no-rj',
-    location: 'United Kingdom',
-    platform_tag: 'YouTube / 1.4M Subscribers',
-    pitch: 'FPS and competitive gaming specialists. Wardogs, Arc Raiders, Deadlock, CoD. The 96% male audience that watches them is the one Monster Energy needs in front of.',
-    bio: 'Josh, Cotton and Hollow cover competitive FPS titles including Wardogs: Arc Raiders, Deadlock and Call of Duty alongside their deep RPG and game guides. 96% male audience. Their improvement-focused viewers grind competitive titles for hours. The energy drink at the desk is not a prop in that context. It is what gets them through ranked.',
-    metrics: [
-      { val: '1.42M', key: 'Total Audience' },
-      { val: '1.91%', key: 'Engagement Rate' },
-      { val: '96%', key: 'Male Audience' }
-    ],
+    hook: 'The go-to guide channel for Arc Raiders, Wardogs and Deadlock.',
+    video: { id: '1BI7dKuewSU', title: 'Arc Raiders: 35 Powerful Tips to Survive Every Raid', views: '474K' },
+    metrics: [ { val: '1.42M', key: 'Audience' }, { val: '96%', key: 'Male' }, { val: '1.91%', key: 'Engagement' } ],
     media_kit: 'https://july.bio/ragegamingvideos',
-    channels: [
-      { name: 'YouTube', url: 'https://www.youtube.com/@RageGamingVideos' }
-    ]
+    channels: [ { name: 'YouTube', url: 'https://www.youtube.com/@RageGamingVideos' } ]
   },
   {
-    country: 'us',
-    name: 'David Jaffe',
-    initials: 'DJ',
+    country: 'us', name: 'David Jaffe', initials: 'DJ', location: 'San Diego, California',
     avatar: 'https://yt3.googleusercontent.com/FpEKToeTl-YhbfTMINqhrOb1mJv9CFSX2-FMxEpj5jfYmImNbsPBgO4Fv_j-Iw-6hKhVXUN35A=s176-c-k-c0x00ffffff-no-rj',
-    location: 'San Diego, California',
-    platform_tag: 'YouTube / 63.4K Subscribers',
-    pitch: 'God of War creator who actively plays Modern Warfare and loves FPS. His audience of 35-44 hardcore gamers trusts what he reaches for on stream.',
-    bio: 'David Jaffe designed God of War, co-created Twisted Metal, and plays Call of Duty Modern Warfare actively on his channel. That FPS credibility with an audience of 35 to 44 hardcore gamers is rare. His 3.07% engagement rate reflects people who listen when he talks. When someone who built God of War reaches for a Monster on stream, it reads differently than a standard placement.',
-    metrics: [
-      { val: '66.8K', key: 'Total Audience' },
-      { val: '3.07%', key: 'Engagement Rate' },
-      { val: '65.5%', key: 'US Audience' }
-    ],
+    hook: 'God of War creator. Streams Modern Warfare 4 live.',
+    video: { id: 'YlqlYJtQs90', title: 'Gaming Live: COD MW4', views: 'Live' },
+    metrics: [ { val: '66.8K', key: 'Audience' }, { val: '65.5%', key: 'US' }, { val: '3.07%', key: 'Engagement' } ],
     media_kit: 'https://july.bio/davidjaffe',
     channels: [
       { name: 'YouTube', url: 'https://www.youtube.com/@DavidJaffeGames' },
@@ -839,19 +428,11 @@ var CREATORS = [
     ]
   },
   {
-    country: 'us',
-    name: 'Gem Gaming Network',
-    initials: 'GG',
-    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-maliva-avt-0068/384045547794200f01b960581ac8ab35~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=d1b338f3&x-expires=1793350800&x-signature=m7%2BT%2F4B6Nj3H0qyYfpQez6TrkNQ%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
-    location: 'Charlotte, North Carolina',
-    platform_tag: 'TikTok / 62.7K Followers',
-    pitch: '7.09% TikTok engagement rate. 66.6% aged 18-24. The short-form format that makes energy drink moments hit differently.',
-    bio: 'High-impact short-form gaming content built for discovery. 7.09% TikTok engagement. Their 18-24 audience (66.6%) is exactly the cohort forming brand habits now. A 15-second product moment from Gem Gaming performs on algorithmic reach and builds the kind of habitual association that scales over a 2027 campaign.',
-    metrics: [
-      { val: '136K', key: 'Total Audience' },
-      { val: '7.09%', key: 'TikTok ER' },
-      { val: '60.2%', key: 'US Audience' }
-    ],
+    country: 'us', name: 'Gem Gaming Network', initials: 'GG', location: 'Charlotte, North Carolina',
+    avatar: 'https://yt3.ggpht.com/t0wekIlzDy2LWG2LLtDUiDa84Te7KyLygjmtO3aXytR23UKD-ofXwtHdxm1wj-pZknyj7mtzyw=s176-c-k-c0x00ffffff-no-rj',
+    hook: 'Extraction and shooter Shorts for an audience that is 66% aged 18-24.',
+    video: { id: 'EkWFp4JwVmo', title: 'New free extraction horror game (Rules of Engagement)', views: '131K' },
+    metrics: [ { val: '136K', key: 'Audience' }, { val: '7.09%', key: 'TikTok ER' }, { val: '60.2%', key: 'US' } ],
     media_kit: 'https://july.bio/gemgamingnetwork',
     channels: [
       { name: 'TikTok', url: 'https://www.tiktok.com/@gemgamingnetwork' },
@@ -860,19 +441,11 @@ var CREATORS = [
     ]
   },
   {
-    country: 'us',
-    name: 'Cloudual',
-    initials: 'CL',
-    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-maliva-avt-0068/21d103d566caa9508b1e47c49545aeae~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=e93ce5e1&x-expires=1793350800&x-signature=nucU%2Ffw90AtgVD4jKz3FC3%2BcO58%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
-    location: 'North Carolina',
-    platform_tag: 'Instagram / 53.7K Followers',
-    pitch: '12.82% Instagram engagement. Face-forward, always on camera. The kind of authentic on-screen energy that makes product integration work.',
-    bio: 'Face-forward gaming and tech content with professional production. 12.82% Instagram engagement rate is exceptional at any size. Their audience is 87% male, 25 to 34 primary — right in the core Monster Energy demographic. The on-camera presence means product is visible in context, not dropped in post.',
-    metrics: [
-      { val: '105K', key: 'Total Audience' },
-      { val: '12.82%', key: 'Instagram ER' },
-      { val: '87%', key: 'Male Audience' }
-    ],
+    country: 'us', name: 'Cloudual', initials: 'CL', location: 'North Carolina',
+    avatar: 'https://yt3.ggpht.com/FuMmLDSa4Ooa9DtVScFPp1pK4P18kjR9nY5vQ38CBvCoC8st0HLJucAlXH909jUucjvOngVhyyo=s176-c-k-c0x00ffffff-no-rj',
+    hook: 'Face-on-camera FPS and co-op picks with standout engagement.',
+    video: { id: 'abZilGeZYpg', title: 'Steam’s New Co-op FPS Has 250K Wishlists', views: '171K' },
+    metrics: [ { val: '105K', key: 'Audience' }, { val: '12.8%', key: 'Insta ER' }, { val: '87%', key: 'Male' } ],
     media_kit: 'https://july.bio/cloudual',
     channels: [
       { name: 'Instagram', url: 'https://www.instagram.com/cloudual' },
@@ -881,19 +454,11 @@ var CREATORS = [
     ]
   },
   {
-    country: 'ca',
-    name: 'Retro For The First Time',
-    initials: 'RF',
-    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-alisg-avt-0068/a718d39ccc71d44354f4c62231cfe83a~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=98e627da&x-expires=1793350800&x-signature=fynZdGQ%2BW7GjsgAW%2F8OrRRDG9%2BM%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
-    location: 'Ontario, Canada',
-    platform_tag: 'TikTok / 160K Followers',
-    pitch: '8.41% TikTok engagement. 61.6% aged 18-24. High-energy face-forward content. The format and audience are built for Monster.',
-    bio: 'High-energy gaming and tech content built on a former streamer background. 8.41% TikTok engagement rate. Their 18 to 24 audience (61.6%) spans Canada, the US and the UK. The on-camera delivery creates natural product placement moments that read as genuine, not inserted.',
-    metrics: [
-      { val: '243K', key: 'Total Audience' },
-      { val: '8.41%', key: 'TikTok ER' },
-      { val: '57.3%', key: 'US Audience' }
-    ],
+    country: 'ca', name: 'Retro For The First Time', initials: 'RF', location: 'Ontario, Canada',
+    avatar: 'https://yt3.ggpht.com/90Sj2UwaIwuNJ79aKOt7JkGMTRKgGinA1NcstCU3GwPCwuPeqSArw2B6z1E754Sy2q6GP2ib=s176-c-k-c0x00ffffff-no-rj',
+    hook: 'Call of Duty and Battlefield news, fast and on camera.',
+    video: { id: 'zPikIEELrpY', title: 'Black Ops 7 Called Out by US Government', views: '258K' },
+    metrics: [ { val: '243K', key: 'Audience' }, { val: '8.41%', key: 'TikTok ER' }, { val: '57.3%', key: 'US' } ],
     media_kit: 'https://july.bio/rftft',
     channels: [
       { name: 'TikTok', url: 'https://www.tiktok.com/@retroforthefirsttime' },
@@ -902,19 +467,11 @@ var CREATORS = [
     ]
   },
   {
-    country: 'au',
-    name: 'Games Explorer',
-    initials: 'GE',
-    avatar: 'https://p16-common-sign.tiktokcdn-eu.com/tos-alisg-avt-0068/87df7f3ba5a24cb4ff9fbed18c80410d~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=10399&refresh_token=37b2f2f3&x-expires=1793350800&x-signature=SzEviwiYsXov17Wxd9xcXGM%2FMu4%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a',
-    location: 'Australia',
-    platform_tag: 'TikTok / 103K Followers',
-    pitch: 'Averaging 208K TikTok views per video at 103K followers. The algorithmic reach makes every product moment go further than the follower count suggests.',
-    bio: 'Game discovery content built for reach. 208K average TikTok views per video at 103K followers is an outlier ratio that reflects strong algorithmic amplification. Their audience covers AU, US and UK. For Monster, that means consistent product visibility in every market this roster targets.',
-    metrics: [
-      { val: '192K', key: 'Total Audience' },
-      { val: '208K', key: 'Avg TikTok Views' },
-      { val: '46.8%', key: 'US Audience' }
-    ],
+    country: 'au', name: 'Games Explorer', initials: 'GE', location: 'Australia',
+    avatar: 'https://yt3.ggpht.com/uSjYOAMNcoJrQOJEJFXLOupitglGU_cBSaDFn96MCjMksM0c2hoAdptilUrpZ9uTdglRcKGi=s176-c-k-c0x00ffffff-no-rj',
+    hook: 'Shooter discovery Shorts that reach twice the follower count.',
+    video: { id: 'sBadvXucHXs', title: 'A Hardcore Survival FPS Made By A Real Lieutenant', views: '186K' },
+    metrics: [ { val: '192K', key: 'Audience' }, { val: '208K', key: 'Avg Views' }, { val: '46.8%', key: 'US' } ],
     media_kit: 'https://july.bio/gamesexplorer',
     channels: [
       { name: 'TikTok', url: 'https://www.tiktok.com/@explorerdotgames' },
@@ -924,120 +481,103 @@ var CREATORS = [
     ]
   },
   {
-    country: 'se',
-    name: 'Ettnix',
-    initials: 'ET',
+    country: 'se', name: 'Ettnix', initials: 'ET', location: 'Sweden',
     avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lsk32vQTIqc3TBV2QLv4zsAeZBhXAzrbxM_UOCLMGScFI=s176-c-k-c0x00ffffff-no-rj',
-    location: 'Sweden',
-    platform_tag: 'Twitch / 152K Followers',
-    pitch: 'World first to reach 10,000 kills in Arc Raiders. Featured by Japanese FPS outlet fpsjp.net. The competitive archetype Monster Energy was designed for.',
-    bio: 'Johan Ettnix is a veteran Swedish competitive creator with nearly 14 years in gaming. First player globally to reach 10,000 kills in Arc Raiders, covered by fpsjp.net. PVP, extraction shooters, MMO and competitive FPS are his core territory. His four-hour competitive sessions are the exact occasion for Monster: late nights, ranked queues, the kind of sustained focus that needs fuel. The brand fits before a word of script is written.',
-    metrics: [
-      { val: '167K', key: 'Total Audience' },
-      { val: '347K', key: 'Twitch Watch Hours' },
-      { val: '7.10%', key: 'Daily Chat ER' }
-    ],
+    hook: 'World first to 10,000 kills in Arc Raiders. Lives for PvP.',
+    video: { id: 'dMmvegeVPu4', title: 'Best Arc Raiders Farm For Scrappy', views: '59K' },
+    metrics: [ { val: '167K', key: 'Audience' }, { val: '347K', key: 'Watch Hours' }, { val: '7.10%', key: 'Chat ER' } ],
     media_kit: 'https://july.bio/ettnix',
     channels: [
       { name: 'Twitch', url: 'https://www.twitch.tv/ettnix' },
       { name: 'YouTube', url: 'https://www.youtube.com/@Ettnix' },
-      { name: 'Instagram', url: 'https://www.instagram.com/ettnix' }
+      { name: 'Instagram', url: 'https://www.instagram.com/ettnix' },
+      { name: 'fpsjp.net', url: 'https://fpsjp.net/archives/541587' }
     ]
   }
 ];
 
-var STAR_PTS = '0,-3.08 .69,-.95 2.93,-.95 1.12,.36 1.81,2.49 0,1.18 -1.81,2.49 -1.12,.36 -2.93,-.95 -.69,-.95';
+var STAR = '0,-3.08 .69,-.95 2.93,-.95 1.12,.36 1.81,2.49 0,1.18 -1.81,2.49 -1.12,.36 -2.93,-.95 -.69,-.95';
 var US_STARS = '';
-for (var _r = 1; _r <= 9; _r++) { for (var _c = 1; _c <= 11; _c++) { if ((_r + _c) % 2 === 0) { US_STARS += "<polygon fill='#fff' points='" + STAR_PTS + "' transform='translate(" + (_c * 6.333).toFixed(2) + "," + (_r * 5.385).toFixed(2) + ")'/>";  } } }
+for (var r = 1; r <= 9; r++) for (var c = 1; c <= 11; c++) if ((r + c) % 2 === 0) US_STARS += "<polygon fill='#fff' points='" + STAR + "' transform='translate(" + (c * 6.333).toFixed(2) + "," + (r * 5.385).toFixed(2) + ")'/>";
 
 var COUNTRIES = {
-  uk: {
-    name: 'United Kingdom', html: '&#127468;&#127463;',
-    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' preserveAspectRatio='xMinYMin meet'><rect width='60' height='30' fill='#012169'/><path d='M0,0 L60,30 M60,0 L0,30' stroke='#fff' stroke-width='6'/><path d='M0,0 L27,12 M33,18 L60,30 M60,0 L33,12 M27,18 L0,30' stroke='#C8102E' stroke-width='4'/><rect x='24' width='12' height='30' fill='#fff'/><rect y='9' width='60' height='12' fill='#fff'/><rect x='26' width='8' height='30' fill='#C8102E'/><rect y='11' width='60' height='8' fill='#C8102E'/></svg>"
-  },
-  us: {
-    name: 'United States', html: '&#127482;&#127480;',
-    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 190 100' preserveAspectRatio='xMinYMin meet'><rect width='190' height='100' fill='#fff'/><rect y='0' width='190' height='7.7' fill='#B22234'/><rect y='15.4' width='190' height='7.7' fill='#B22234'/><rect y='30.8' width='190' height='7.7' fill='#B22234'/><rect y='46.2' width='190' height='7.7' fill='#B22234'/><rect y='61.5' width='190' height='7.7' fill='#B22234'/><rect y='76.9' width='190' height='7.7' fill='#B22234'/><rect y='92.3' width='190' height='7.7' fill='#B22234'/><rect width='76' height='53.8' fill='#3C3B6E'/>" + US_STARS + "</svg>"
-  },
-  ca: {
-    name: 'Canada', html: '&#127464;&#127462;',
-    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9600 4800' preserveAspectRatio='xMinYMin meet'><path fill='#d52b1e' d='m0 0h2400l99 99h4602l99-99h2400v4800h-2400l-99-99h-4602l-99 99H0z'/><path fill='#fff' d='m2400 0h4800v4800h-4800zm2490 4430-45-863a95 95 0 0 1 111-98l859 151-116-320a65 65 0 0 1 20-73l941-762-212-99a65 65 0 0 1-34-79l186-572-542 115a65 65 0 0 1-73-38l-105-247-423 454a65 65 0 0 1-111-57l204-1052-327 189a65 65 0 0 1-91-27l-332-652-332 652a65 65 0 0 1-91 27l-327-189 204 1052a65 65 0 0 1-111 57l-423-454-105 247a65 65 0 0 1-73 38l-542-115 186 572a65 65 0 0 1-34 79l-212 99 941 762a65 65 0 0 1 20 73l-116 320 859-151a95 95 0 0 1 111 98l-45 863z'/></svg>"
-  },
-  au: {
-    name: 'Australia', html: '&#127462;&#127482;',
-    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10080 5040' preserveAspectRatio='xMinYMin meet'><defs><clipPath id='auC1'><path d='M0,0H6V3H0z'/></clipPath><clipPath id='auC2'><path d='M0,0V1.5H6V3H6zM6,0H3V3H0V3z'/></clipPath><path id='auS7' d='M0,-360 69.421398,-144.155019 281.459334,-224.456329 155.988466,-35.603349 350.974048,80.107536 125.093037,99.758368 156.198146,324.348792 0,160 -156.198146,324.348792 -125.093037,99.758368 -350.974048,80.107536 -155.988466,-35.603349 -281.459334,-224.456329 -69.421398,-144.155019z'/><path id='auS5' d='M0,-210 54.859957,-75.508253 199.721868,-64.893569 88.765275,28.841586 123.434903,169.893569 0,93.333333 -123.434903,169.893569 -88.765275,28.841586 -199.721868,-64.893569 -54.859957,-75.508253z'/></defs><g transform='scale(840)'><rect width='12' height='6' fill='#00008b'/><path d='M0,0 6,3M6,0 0,3' stroke='#fff' stroke-width='0.6' clip-path='url(#auC1)'/><path d='M0,0 6,3M6,0 0,3' stroke='#f00' stroke-width='0.4' clip-path='url(#auC2)'/><path d='M3,0V3M0,1.5H6' stroke='#fff'/><path d='M3,0V3M0,1.5H6' stroke='#f00' stroke-width='0.6'/></g><g fill='#fff'><use href='#auS7' transform='translate(2520,3780) scale(2.1)'/><use href='#auS7' x='7560' y='4200'/><use href='#auS7' x='6300' y='2205'/><use href='#auS7' x='7560' y='840'/><use href='#auS7' x='8680' y='1869'/><use href='#auS5' x='8064' y='2730'/></g></svg>"
-  },
-  se: {
-    name: 'Sweden', html: '&#127480;&#127466;',
-    svgFlag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10' preserveAspectRatio='xMinYMin meet'><rect width='16' height='10' fill='#006AA7'/><rect x='4' width='3' height='10' fill='#FECC02'/><rect y='3.5' width='16' height='3' fill='#FECC02'/></svg>"
-  }
+  uk: { name: 'United Kingdom', flag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' preserveAspectRatio='xMidYMid slice'><rect width='60' height='30' fill='#012169'/><path d='M0,0 L60,30 M60,0 L0,30' stroke='#fff' stroke-width='6'/><path d='M0,0 L27,12 M33,18 L60,30 M60,0 L33,12 M27,18 L0,30' stroke='#C8102E' stroke-width='4'/><rect x='24' width='12' height='30' fill='#fff'/><rect y='9' width='60' height='12' fill='#fff'/><rect x='26' width='8' height='30' fill='#C8102E'/><rect y='11' width='60' height='8' fill='#C8102E'/></svg>" },
+  us: { name: 'United States', flag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 190 100' preserveAspectRatio='xMidYMid slice'><rect width='190' height='100' fill='#fff'/><rect y='0' width='190' height='7.7' fill='#B22234'/><rect y='15.4' width='190' height='7.7' fill='#B22234'/><rect y='30.8' width='190' height='7.7' fill='#B22234'/><rect y='46.2' width='190' height='7.7' fill='#B22234'/><rect y='61.5' width='190' height='7.7' fill='#B22234'/><rect y='76.9' width='190' height='7.7' fill='#B22234'/><rect y='92.3' width='190' height='7.7' fill='#B22234'/><rect width='76' height='53.8' fill='#3C3B6E'/>" + US_STARS + "</svg>" },
+  ca: { name: 'Canada', flag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9600 4800' preserveAspectRatio='xMidYMid slice'><path fill='#d52b1e' d='m0 0h2400l99 99h4602l99-99h2400v4800h-2400l-99-99h-4602l-99 99H0z'/><path fill='#fff' d='m2400 0h4800v4800h-4800zm2490 4430-45-863a95 95 0 0 1 111-98l859 151-116-320a65 65 0 0 1 20-73l941-762-212-99a65 65 0 0 1-34-79l186-572-542 115a65 65 0 0 1-73-38l-105-247-423 454a65 65 0 0 1-111-57l204-1052-327 189a65 65 0 0 1-91-27l-332-652-332 652a65 65 0 0 1-91 27l-327-189 204 1052a65 65 0 0 1-111 57l-423-454-105 247a65 65 0 0 1-73 38l-542-115 186 572a65 65 0 0 1-34 79l-212 99 941 762a65 65 0 0 1 20 73l-116 320 859-151a95 95 0 0 1 111 98l-45 863z'/></svg>" },
+  au: { name: 'Australia', flag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10080 5040' preserveAspectRatio='xMidYMid slice'><defs><clipPath id='auC1'><path d='M0,0H6V3H0z'/></clipPath><clipPath id='auC2'><path d='M0,0V1.5H6V3H6zM6,0H3V3H0V3z'/></clipPath><path id='auS7' d='M0,-360 69.421398,-144.155019 281.459334,-224.456329 155.988466,-35.603349 350.974048,80.107536 125.093037,99.758368 156.198146,324.348792 0,160 -156.198146,324.348792 -125.093037,99.758368 -350.974048,80.107536 -155.988466,-35.603349 -281.459334,-224.456329 -69.421398,-144.155019z'/><path id='auS5' d='M0,-210 54.859957,-75.508253 199.721868,-64.893569 88.765275,28.841586 123.434903,169.893569 0,93.333333 -123.434903,169.893569 -88.765275,28.841586 -199.721868,-64.893569 -54.859957,-75.508253z'/></defs><g transform='scale(840)'><rect width='12' height='6' fill='#00008b'/><path d='M0,0 6,3M6,0 0,3' stroke='#fff' stroke-width='0.6' clip-path='url(#auC1)'/><path d='M0,0 6,3M6,0 0,3' stroke='#f00' stroke-width='0.4' clip-path='url(#auC2)'/><path d='M3,0V3M0,1.5H6' stroke='#fff'/><path d='M3,0V3M0,1.5H6' stroke='#f00' stroke-width='0.6'/></g><g fill='#fff'><use href='#auS7' transform='translate(2520,3780) scale(2.1)'/><use href='#auS7' x='7560' y='4200'/><use href='#auS7' x='6300' y='2205'/><use href='#auS7' x='7560' y='840'/><use href='#auS7' x='8680' y='1869'/><use href='#auS5' x='8064' y='2730'/></g></svg>" },
+  se: { name: 'Sweden', flag: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10' preserveAspectRatio='xMidYMid slice'><rect width='16' height='10' fill='#006AA7'/><rect x='5' width='2' height='10' fill='#FECC02'/><rect y='4' width='16' height='2' fill='#FECC02'/></svg>" }
 };
 
-function escapeHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function icon(id) { return '<svg class="icon"><use href="#i-' + id + '"/></svg>'; }
+
+document.querySelectorAll('.mini-flag[data-flag]').forEach(function (el) { el.innerHTML = COUNTRIES[el.dataset.flag].flag; });
+
+function cardHtml(c) {
+  var v = c.video;
+  return '<article class="card">' +
+    '<div class="card-head">' +
+      '<div class="avatar"><div class="avatar-fb">' + esc(c.initials) + '</div>' +
+        '<img src="' + esc(c.avatar) + '" alt="" loading="lazy" onerror="this.remove()"></div>' +
+      '<div><h3 class="card-name">' + esc(c.name) + '</h3>' +
+        '<div class="card-meta">' + icon('pin') + esc(c.location) + '</div></div>' +
+    '</div>' +
+    '<p class="card-hook">' + esc(c.hook) + '</p>' +
+    '<div class="video">' +
+      '<button class="video-btn" type="button" data-vid="' + esc(v.id) + '" aria-label="Play: ' + esc(v.title) + '">' +
+        '<img src="https://i.ytimg.com/vi/' + esc(v.id) + '/hqdefault.jpg" alt="" loading="lazy">' +
+        '<span class="play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>' +
+        '<span class="video-info"><span class="video-title">' + esc(v.title) + '</span>' +
+          '<span class="video-views">' + (v.views === 'Live' ? '' : icon('eye')) + esc(v.views) + '</span></span>' +
+      '</button>' +
+    '</div>' +
+    '<div class="metrics">' + c.metrics.map(function (m) {
+      return '<div class="metric"><div class="metric-val">' + esc(m.val) + '</div><div class="metric-key">' + esc(m.key) + '</div></div>';
+    }).join('') + '</div>' +
+    '<div class="card-foot">' +
+      '<div class="pills">' + c.channels.map(function (ch) {
+        return '<a class="pill" href="' + esc(ch.url) + '" target="_blank" rel="noopener">' + esc(ch.name) + '</a>';
+      }).join('') + '</div>' +
+      '<a class="kit" href="' + esc(c.media_kit) + '" target="_blank" rel="noopener">Media Kit ' + icon('arrow') + '</a>' +
+    '</div>' +
+  '</article>';
 }
 
-function renderCountry(country) {
-  var creators = CREATORS.filter(function(c){ return c.country === country; });
+function render(country) {
+  var list = CREATORS.filter(function (c) { return c.country === country; });
   var info = COUNTRIES[country];
-  document.getElementById('flag-bg').innerHTML = info.svgFlag;
-  var headerEl = document.getElementById('country-header');
-  headerEl.innerHTML =
-    '<div class="country-header">' +
-      '<div class="country-flag">' + info.html + '</div>' +
-      '<div>' +
-        '<div class="country-name">' + escapeHtml(info.name) + '</div>' +
-        '<div class="country-count">' + creators.length + ' creator' + (creators.length !== 1 ? 's' : '') + ' in this market</div>' +
-      '</div>' +
-    '</div>' +
-    '<div class="country-rule"></div>';
-  var grid = document.getElementById('creators-grid');
-  grid.innerHTML = creators.map(function(c) {
-    var avatarHtml =
-      '<div class="avatar">' +
-        '<div class="avatar-fallback">' + escapeHtml(c.initials) + '</div>' +
-        (c.avatar ? '<img class="avatar-img" src="' + escapeHtml(c.avatar) + '" alt="' + escapeHtml(c.name) + '" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
-      '</div>';
-    var metricsHtml = c.metrics.map(function(m) {
-      return '<div class="metric"><div class="metric-val">' + escapeHtml(m.val) + '</div><div class="metric-key">' + escapeHtml(m.key) + '</div></div>';
-    }).join('');
-    var pillsHtml = c.channels.map(function(ch) {
-      return '<a href="' + escapeHtml(ch.url) + '" target="_blank" rel="noopener" class="pill">' + escapeHtml(ch.name) + '</a>';
-    }).join('');
-    var kitHtml = c.media_kit ?
-      '<a href="' + escapeHtml(c.media_kit) + '" target="_blank" rel="noopener" class="media-kit-btn">Full Media Kit &#8594;</a>' :
-      '<span class="metrics-pending">Metrics on request</span>';
-    return '<article class="creator-card">' +
-      '<div class="card-top"><div class="card-header-row">' + avatarHtml +
-        '<div class="card-header-info">' +
-          '<div class="card-platform-tag">' + escapeHtml(c.platform_tag) + '</div>' +
-          '<h2 class="card-name">' + escapeHtml(c.name) + '</h2>' +
-          '<div class="card-location">&#128205; ' + escapeHtml(c.location) + '</div>' +
-        '</div></div></div>' +
-      '<div class="card-pitch">' + escapeHtml(c.pitch) + '</div>' +
-      '<div class="card-metrics">' + metricsHtml + '</div>' +
-      '<div class="card-body"><p class="card-bio">' + escapeHtml(c.bio) + '</p></div>' +
-      '<div class="card-footer"><div class="platform-pills">' + pillsHtml + '</div>' + kitHtml + '</div>' +
-    '</article>';
-  }).join('');
+  document.getElementById('flag-bg').innerHTML = info.flag;
+  document.getElementById('country-head').innerHTML =
+    '<div class="country-head"><span class="mini-flag">' + info.flag + '</span><div>' +
+    '<div class="country-name">' + esc(info.name) + '</div>' +
+    '<div class="country-count">' + list.length + (list.length === 1 ? ' creator' : ' creators') + '</div></div></div>';
+  document.getElementById('grid').innerHTML = list.map(cardHtml).join('');
 }
+
+document.getElementById('grid').addEventListener('click', function (e) {
+  var btn = e.target.closest('.video-btn');
+  if (!btn) return;
+  var f = document.createElement('iframe');
+  f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(btn.dataset.vid) + '?autoplay=1&rel=0&modestbranding=1';
+  f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+  f.allowFullscreen = true;
+  f.title = btn.getAttribute('aria-label');
+  btn.replaceWith(f);
+});
 
 var tabs = document.querySelectorAll('.country-tab');
-tabs.forEach(function(tab) {
-  tab.addEventListener('click', function() {
-    tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+tabs.forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
     tab.classList.add('active');
-    tab.setAttribute('aria-selected','true');
-    renderCountry(tab.dataset.country);
-    document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    tab.setAttribute('aria-selected', 'true');
+    render(tab.dataset.country);
+    if (document.querySelector('.country-nav').getBoundingClientRect().top > 60) return;
+    window.scrollTo({ top: document.getElementById('roster').offsetTop - 120, behavior: 'smooth' });
   });
 });
 
-renderCountry('uk');
-
-if (IMG_MONSTER_LOGO) {
-  var logoEl = document.getElementById('monsterLogo');
-  logoEl.src = IMG_MONSTER_LOGO;
-  logoEl.style.display = '';
-}
+render('uk');
 </script>
+</body>
+</html>
