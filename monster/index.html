@@ -481,7 +481,10 @@ var CREATORS = [
     avatar: 'https://yt3.googleusercontent.com/FpEKToeTl-YhbfTMINqhrOb1mJv9CFSX2-FMxEpj5jfYmImNbsPBgO4Fv_j-Iw-6hKhVXUN35A=s176-c-k-c0x00ffffff-no-rj',
     badge: { icon: 'star', text: 'Industry Legend' },
     hook: 'The man behind God of War and Twisted Metal. A true gaming legend, and a die-hard FPS fan streaming Modern Warfare 4 live.',
-    video: { id: 'YlqlYJtQs90', title: 'Gaming Live: COD MW4', views: 'Live' },
+    videos: [
+      { id: 'YlqlYJtQs90', title: 'Gaming Live: COD MW4', views: 'Live', label: 'MW4 Live' },
+      { id: 'Tr5mVO_sJEU', title: 'COD MW4 Multiplayer Live: God I Love This Game!', views: 'Live', label: 'MW4 Multiplayer' }
+    ],
     metrics: [ { val: '66.8K', key: 'Audience' }, { val: '65.5%', key: 'US' }, { val: '30+', key: 'Years In Games' } ],
     media_kit: 'https://july.bio/davidjaffe',
     channels: [
@@ -495,7 +498,10 @@ var CREATORS = [
     country: 'us', name: 'Gem Gaming Network', initials: 'GG', location: 'Charlotte, North Carolina',
     avatar: 'https://yt3.ggpht.com/t0wekIlzDy2LWG2LLtDUiDa84Te7KyLygjmtO3aXytR23UKD-ofXwtHdxm1wj-pZknyj7mtzyw=s176-c-k-c0x00ffffff-no-rj',
     hook: 'Extraction and shooter Shorts built for discovery, reaching the youngest buyers on the roster.',
-    video: { id: 'EkWFp4JwVmo', title: 'New free extraction horror game (Rules of Engagement)', views: '131K' },
+    videos: [
+      { id: 'EkWFp4JwVmo', title: 'New free extraction horror game (Rules of Engagement)', views: '131K', label: 'Extraction Short' },
+      { id: '4ZPCw6TEeVQ', title: 'Play as Hunters with your Idiotic Friend (Way of the Hunter 2)', views: '39K', label: 'THQ Nordic Collab' }
+    ],
     metrics: [ { val: '136K', key: 'Audience' }, { val: '66.6%', key: 'Aged 18-24' }, { val: '60.2%', key: 'US' } ],
     media_kit: 'https://july.bio/gemgamingnetwork',
     channels: [
@@ -509,7 +515,10 @@ var CREATORS = [
     avatar: 'https://yt3.ggpht.com/FuMmLDSa4Ooa9DtVScFPp1pK4P18kjR9nY5vQ38CBvCoC8st0HLJucAlXH909jUucjvOngVhyyo=s176-c-k-c0x00ffffff-no-rj',
     badge: { icon: 'cam', text: 'Always On Camera' },
     hook: 'On camera in every video, so the brand is in frame, not added in post. 12.8% Instagram engagement.',
-    video: { id: 'abZilGeZYpg', title: 'Steam’s New Co-op FPS Has 250K Wishlists', views: '171K' },
+    videos: [
+      { id: 'abZilGeZYpg', title: 'Steam’s New Co-op FPS Has 250K Wishlists', views: '171K', label: 'Co-op FPS' },
+      { id: '3f4ibVYFIZM', title: 'System Shock 2 is now Co-op and Free for the Next 72 Hours', views: '', label: 'System Shock 2' }
+    ],
     metrics: [ { val: '105K', key: 'Audience' }, { val: '12.8%', key: 'Insta ER' }, { val: '87%', key: 'Male' } ],
     media_kit: 'https://july.bio/cloudual',
     channels: [
@@ -634,7 +643,9 @@ document.getElementById('grid').addEventListener('click', function (e) {
   if (tab) {
     var card = tab.closest('.card');
     card.querySelectorAll('.vtab').forEach(function (t) { t.classList.toggle('active', t === tab); });
-    card.querySelector('.video').innerHTML = videoBtn(CREATORS[+tab.dataset.c].videos[+tab.dataset.i]);
+    var player = card.querySelector('.video-btn, .video iframe');
+    player.insertAdjacentHTML('beforebegin', videoBtn(CREATORS[+tab.dataset.c].videos[+tab.dataset.i]));
+    player.remove();
     return;
   }
   var btn = e.target.closest('.video-btn');
