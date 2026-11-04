@@ -181,6 +181,15 @@ section { padding-block: 72px; }
 .card-name { font-family: var(--font-d); font-weight: 400; font-size: 26px; line-height: 1; margin-bottom: 4px; }
 .card-meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-3); }
 .card-meta .icon { font-size: 13px; color: var(--green); }
+.video:has(iframe) .oncam { display: none; }
+.oncam {
+  position: absolute; top: 12px; left: 12px; z-index: 3; pointer-events: none;
+  display: inline-flex; align-items: center; gap: 6px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.5);
+  font-family: var(--font-d); font-size: 13px; letter-spacing: .12em; line-height: 1;
+  color: #050505; background: var(--green); padding: 4px 8px 3px;
+}
+.oncam .icon { font-size: 14px; stroke-width: 2.2; margin-top: -1px; }
 .card-hook { padding: 0 20px 16px; font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.45; }
 
 .video { position: relative; aspect-ratio: 16 / 9; background: #000; }
@@ -274,6 +283,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   <symbol id="i-formats" viewBox="0 0 24 24"><rect x="2.5" y="5" width="13" height="14" rx="1.5"/><path d="M8 9.5l4 2.5-4 2.5z"/><rect x="18" y="7" width="3.5" height="10" rx="1"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5z"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
 </svg>
@@ -459,7 +469,8 @@ var CREATORS = [
   {
     country: 'us', name: 'Cloudual', initials: 'CL', location: 'North Carolina',
     avatar: 'https://yt3.ggpht.com/FuMmLDSa4Ooa9DtVScFPp1pK4P18kjR9nY5vQ38CBvCoC8st0HLJucAlXH909jUucjvOngVhyyo=s176-c-k-c0x00ffffff-no-rj',
-    hook: 'Face-on-camera FPS and co-op picks with standout engagement.',
+    oncam: true,
+    hook: 'On camera in every video, so the brand is in frame, not added in post. 12.8% Instagram engagement.',
     video: { id: 'abZilGeZYpg', title: 'Steam’s New Co-op FPS Has 250K Wishlists', views: '171K' },
     metrics: [ { val: '105K', key: 'Audience' }, { val: '12.8%', key: 'Insta ER' }, { val: '87%', key: 'Male' } ],
     media_kit: 'https://july.bio/cloudual',
@@ -472,8 +483,9 @@ var CREATORS = [
   {
     country: 'ca', name: 'Retro For The First Time', initials: 'RF', location: 'Ontario, Canada',
     avatar: 'https://yt3.ggpht.com/90Sj2UwaIwuNJ79aKOt7JkGMTRKgGinA1NcstCU3GwPCwuPeqSArw2B6z1E754Sy2q6GP2ib=s176-c-k-c0x00ffffff-no-rj',
-    hook: 'Call of Duty and Battlefield news, fast and on camera.',
-    video: { id: 'zPikIEELrpY', title: 'Black Ops 7 Called Out by US Government', views: '258K' },
+    oncam: true,
+    hook: 'On camera in every Call of Duty and Battlefield news Short. A can on the desk stays in frame the whole video.',
+    video: { id: '3F5AuZa6ifA', title: 'Activision Sends Lawyers to Cheaters House', views: '29K' },
     metrics: [ { val: '243K', key: 'Audience' }, { val: '8.41%', key: 'TikTok ER' }, { val: '57.3%', key: 'US' } ],
     media_kit: 'https://july.bio/rftft',
     channels: [
@@ -551,7 +563,8 @@ function cardHtml(c, ci) {
         '<div class="card-meta">' + icon('pin') + esc(c.location) + '</div></div>' +
     '</div>' +
     '<p class="card-hook">' + esc(c.hook) + '</p>' +
-    '<div class="video">' + videoBtn(vids[0]) + '</div>' + tabs +
+    '<div class="video">' + videoBtn(vids[0]) +
+      (c.oncam ? '<span class="oncam">' + icon('cam') + 'Always On Camera</span>' : '') + '</div>' + tabs +
     '<div class="metrics">' + c.metrics.map(function (m) {
       return '<div class="metric"><div class="metric-val">' + esc(m.val) + '</div><div class="metric-key">' + esc(m.key) + '</div></div>';
     }).join('') + '</div>' +
