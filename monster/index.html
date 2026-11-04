@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hello Nord × Monster Energy</title>
+<link rel="icon" type="image/png" href="img/hn-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap">
@@ -48,9 +49,9 @@ a { color: inherit; }
   border-bottom: 1px solid var(--line);
 }
 .topbar-inner { height: var(--topbar-h); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.topbar-brand { font-family: var(--font-d); font-size: 19px; letter-spacing: .08em; color: var(--text-2); white-space: nowrap; }
-.topbar-brand b { color: var(--text); font-weight: 400; }
-.topbar-brand .x { color: var(--green); margin: 0 6px; }
+.topbar-brand { display: flex; align-items: center; font-family: var(--font-d); font-size: 19px; letter-spacing: .08em; color: var(--text-2); white-space: nowrap; }
+.hn-mark { height: 20px; width: auto; display: block; }
+.topbar-brand .x { color: var(--green); margin: 0 12px; }
 .topbar-cta {
   font-family: var(--font-d); font-size: 15px; letter-spacing: .12em;
   color: #050505; background: var(--green); text-decoration: none;
@@ -62,12 +63,13 @@ a { color: inherit; }
 /* HERO */
 .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
 .hero-art {
-  position: absolute; top: 0; right: 0; bottom: 0; width: 64%;
-  background: url('img/cod.webp') center 30% / cover no-repeat;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 30%, #000 70%);
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.55) 30%, #000 70%);
+  position: absolute; top: 0; right: 0; bottom: 0; width: 62%;
+  background: url('img/mw4.webp') right center / contain no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 18%), linear-gradient(to bottom, transparent 18%, #000 30%, #000 72%, transparent 84%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 18%), linear-gradient(to bottom, transparent 18%, #000 30%, #000 72%, transparent 84%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
-.hero-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 0%, transparent 35%); }
 .hero-content { position: relative; z-index: 2; padding-block: 72px 64px; }
 .hero-logo { width: min(340px, 72vw); height: auto; display: block; margin-bottom: 36px; }
 .hero-kicker {
@@ -203,6 +205,15 @@ section { padding-block: 72px; }
 }
 .video-views .icon { font-size: 13px; stroke-width: 2.2; }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vtabs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border-bottom: 1px solid var(--line); }
+.vtab {
+  background: none; border: 0; border-top: 2px solid transparent; padding: 9px 8px; cursor: pointer;
+  font-family: var(--font-d); font-size: 14px; letter-spacing: .12em; color: var(--text-3);
+  transition: color .2s, border-color .2s, background .2s;
+}
+.vtab + .vtab { border-left: 1px solid var(--line); }
+.vtab:hover { color: var(--text-2); }
+.vtab.active { color: var(--green-hi); border-top-color: var(--green); background: var(--green-dim); }
 
 .metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
 .metric { padding: 14px 8px; text-align: center; }
@@ -237,14 +248,15 @@ section { padding-block: 72px; }
 .cta-btn:hover { background: var(--green-hi); }
 footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe-area-inset-bottom, 0px)); }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); }
-.footer-inner b { font-family: var(--font-d); font-weight: 400; font-size: 17px; letter-spacing: .14em; color: var(--text-2); }
+.footer-inner .hn-mark { height: 18px; opacity: .8; }
+.cta-icon { display: block; width: 44px; height: auto; margin: 0 auto 28px; }
 
 @media (max-width: 980px) {
   .why-grid, .proof-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 720px) {
-  .hero-art { width: 100%; opacity: .45; -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 90%); mask-image: linear-gradient(to bottom, #000 0%, transparent 90%); }
-  .hero-content { padding-block: 48px 44px; }
+  .hero-art { position: relative; width: 100%; aspect-ratio: 1540 / 866; background-size: cover; -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 25%); mask-image: linear-gradient(to top, transparent 0%, #000 25%); }
+  .hero-content { padding-block: 8px 44px; }
   .stat { min-width: calc(50% - 7px); flex: 1 1 calc(50% - 7px); }
   section { padding-block: 56px; }
   .why-grid, .proof-grid { grid-template-columns: 1fr; }
@@ -268,7 +280,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 <header class="topbar">
   <div class="inner topbar-inner">
-    <div class="topbar-brand"><b>Hello Nord</b><span class="x">&times;</span><span class="full">Monster Energy 2027</span></div>
+    <div class="topbar-brand"><img class="hn-mark" src="img/hn-wordmark.png" alt="Hello Nord"><span class="x">&times;</span><span class="full">Monster Energy 2027</span></div>
     <a class="topbar-cta" href="mailto:daniel@hellonord.se?subject=Monster%20Energy%202027">Get In Touch</a>
   </div>
 </header>
@@ -279,7 +291,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
     <img class="hero-logo" src="img/logo.webp" alt="Monster Energy">
     <div class="hero-kicker">2027 Ambassador Program</div>
     <h1>Fuel<br><span>The Game.</span></h1>
-    <p class="hero-sub">Eight creators already living in Call of Duty, Arc Raiders and Battlefield. Ready to carry the claw.</p>
+    <p class="hero-sub">Eight creators already covering games such as Call of Duty, Arc Raiders, Battlefield and other competitive games.</p>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">3.9M+</div><div class="stat-label">Combined Audience</div></div>
       <div class="stat"><div class="stat-num">8</div><div class="stat-label">Creators</div></div>
@@ -330,8 +342,8 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
       <div class="proof-item">
         <span class="proof-game">Modern Warfare 4</span>
         <div class="proof-name">Captain Eggcellent</div>
-        <p class="proof-text">MW4 secrets Shorts reaching 100K+ views each.</p>
-        <a class="proof-link" href="https://www.youtube.com/shorts/LbLdzGIx-XI" target="_blank" rel="noopener">Watch <svg class="icon"><use href="#i-ext"/></svg></a>
+        <p class="proof-text">MW4 Easter eggs video hit 142K views in two days.</p>
+        <a class="proof-link" href="https://www.youtube.com/watch?v=ZOxTN7cmPzg" target="_blank" rel="noopener">Watch <svg class="icon"><use href="#i-ext"/></svg></a>
       </div>
       <div class="proof-item">
         <span class="proof-game">Modern Warfare 4</span>
@@ -375,6 +387,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 <section class="cta">
   <div class="inner">
+    <img class="cta-icon" src="img/hn-icon.png" alt="" aria-hidden="true">
     <h2>Put The Claw<br><span>On The Roster.</span></h2>
     <p>Eight creators. Five markets. One conversation.</p>
     <a class="cta-btn" href="mailto:daniel@hellonord.se?subject=Monster%20Energy%202027">daniel@hellonord.se <svg class="icon"><use href="#i-arrow"/></svg></a>
@@ -383,7 +396,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 <footer>
   <div class="inner footer-inner">
-    <b>Hello Nord</b>
+    <img class="hn-mark" src="img/hn-wordmark.png" alt="Hello Nord">
     <span>Gaming Creator Agency / hellonord.se</span>
   </div>
 </footer>
@@ -393,8 +406,11 @@ var CREATORS = [
   {
     country: 'uk', name: 'Captain Eggcellent', initials: 'CE', location: 'Ipswich, England',
     avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lF06n7yXV4O7GDR0xRe2En7-n6X2Mio6ymHT1o8vVdZ-g=s176-c-k-c0x00ffffff-no-rj',
-    hook: 'Call of Duty secrets that pull 100K+ views a Short.',
-    video: { id: 'LbLdzGIx-XI', title: 'This Modern Warfare 4 SECRET Could Save Your Life!', views: '112K' },
+    hook: 'Modern Warfare 4 secrets in long-form and Shorts, 100K+ views each.',
+    videos: [
+      { id: 'ZOxTN7cmPzg', title: 'Modern Warfare 4: 25 Easter Eggs & Hidden Details You Missed!', views: '142K', label: 'MW4 Video' },
+      { id: 'LbLdzGIx-XI', title: 'This Modern Warfare 4 SECRET Could Save Your Life!', views: '112K', label: 'MW4 Short' }
+    ],
     metrics: [ { val: '1.60M', key: 'Audience' }, { val: '93%', key: 'Male' }, { val: '2.66%', key: 'Engagement' } ],
     media_kit: 'https://july.bio/CaptainEggcellent',
     channels: [
@@ -513,8 +529,20 @@ function icon(id) { return '<svg class="icon"><use href="#i-' + id + '"/></svg>'
 
 document.querySelectorAll('.mini-flag[data-flag]').forEach(function (el) { el.innerHTML = COUNTRIES[el.dataset.flag].flag; });
 
-function cardHtml(c) {
-  var v = c.video;
+function videoBtn(v) {
+  return '<button class="video-btn" type="button" data-vid="' + esc(v.id) + '" aria-label="Play: ' + esc(v.title) + '">' +
+    '<img src="https://i.ytimg.com/vi/' + esc(v.id) + '/hqdefault.jpg" alt="" loading="lazy">' +
+    '<span class="play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>' +
+    '<span class="video-info"><span class="video-title">' + esc(v.title) + '</span>' +
+      '<span class="video-views">' + (v.views === 'Live' ? '' : icon('eye')) + esc(v.views) + '</span></span>' +
+  '</button>';
+}
+
+function cardHtml(c, ci) {
+  var vids = c.videos || [c.video];
+  var tabs = vids.length < 2 ? '' : '<div class="vtabs">' + vids.map(function (v, i) {
+    return '<button class="vtab' + (i === 0 ? ' active' : '') + '" type="button" data-c="' + ci + '" data-i="' + i + '">' + esc(v.label) + '</button>';
+  }).join('') + '</div>';
   return '<article class="card">' +
     '<div class="card-head">' +
       '<div class="avatar"><div class="avatar-fb">' + esc(c.initials) + '</div>' +
@@ -523,14 +551,7 @@ function cardHtml(c) {
         '<div class="card-meta">' + icon('pin') + esc(c.location) + '</div></div>' +
     '</div>' +
     '<p class="card-hook">' + esc(c.hook) + '</p>' +
-    '<div class="video">' +
-      '<button class="video-btn" type="button" data-vid="' + esc(v.id) + '" aria-label="Play: ' + esc(v.title) + '">' +
-        '<img src="https://i.ytimg.com/vi/' + esc(v.id) + '/hqdefault.jpg" alt="" loading="lazy">' +
-        '<span class="play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>' +
-        '<span class="video-info"><span class="video-title">' + esc(v.title) + '</span>' +
-          '<span class="video-views">' + (v.views === 'Live' ? '' : icon('eye')) + esc(v.views) + '</span></span>' +
-      '</button>' +
-    '</div>' +
+    '<div class="video">' + videoBtn(vids[0]) + '</div>' + tabs +
     '<div class="metrics">' + c.metrics.map(function (m) {
       return '<div class="metric"><div class="metric-val">' + esc(m.val) + '</div><div class="metric-key">' + esc(m.key) + '</div></div>';
     }).join('') + '</div>' +
@@ -551,10 +572,17 @@ function render(country) {
     '<div class="country-head"><span class="mini-flag">' + info.flag + '</span><div>' +
     '<div class="country-name">' + esc(info.name) + '</div>' +
     '<div class="country-count">' + list.length + (list.length === 1 ? ' creator' : ' creators') + '</div></div></div>';
-  document.getElementById('grid').innerHTML = list.map(cardHtml).join('');
+  document.getElementById('grid').innerHTML = list.map(function (c) { return cardHtml(c, CREATORS.indexOf(c)); }).join('');
 }
 
 document.getElementById('grid').addEventListener('click', function (e) {
+  var tab = e.target.closest('.vtab');
+  if (tab) {
+    var card = tab.closest('.card');
+    card.querySelectorAll('.vtab').forEach(function (t) { t.classList.toggle('active', t === tab); });
+    card.querySelector('.video').innerHTML = videoBtn(CREATORS[+tab.dataset.c].videos[+tab.dataset.i]);
+    return;
+  }
   var btn = e.target.closest('.video-btn');
   if (!btn) return;
   var f = document.createElement('iframe');
