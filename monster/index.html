@@ -202,6 +202,7 @@ section { padding-block: 72px; }
   color: #050505; background: var(--green); padding: 4px 8px 3px;
 }
 .oncam .icon { font-size: 14px; stroke-width: 2.2; margin-top: -1px; }
+.tagline { display: block; font-family: var(--font-d); font-size: 21px; letter-spacing: .04em; line-height: 1.05; color: var(--green-hi); margin-bottom: 6px; }
 .idea {
   display: block; margin-top: 12px; padding: 10px 12px;
   border-left: 2px solid var(--green); background: var(--green-dim);
@@ -385,7 +386,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
       <div class="proof-item">
         <span class="proof-game">Arc Raiders</span>
         <div class="proof-name">Ettnix</div>
-        <p class="proof-text">Former esports pro. World first to 10,000 kills, covered by Japanese press.</p>
+        <p class="proof-text">Former esports pro. World first to get 10,000 kills, covered by Japanese press.</p>
         <a class="proof-link" href="https://fpsjp.net/archives/541587" target="_blank" rel="noopener">Read on fpsjp.net <svg class="icon"><use href="#i-ext"/></svg></a>
       </div>
       <div class="proof-item">
@@ -457,6 +458,7 @@ var CREATORS = [
   {
     country: 'uk', name: 'Captain Eggcellent', initials: 'CE', location: 'Ipswich, England',
     avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lF06n7yXV4O7GDR0xRe2En7-n6X2Mio6ymHT1o8vVdZ-g=s176-c-k-c0x00ffffff-no-rj',
+    tagline: 'Mr Did You Know - The Easter Egg King',
     hook: 'Modern Warfare 4 secrets in long-form and Shorts, 100K+ views each.',
     videos: [
       { id: 'ZOxTN7cmPzg', title: 'Modern Warfare 4: 25 Easter Eggs & Hidden Details You Missed!', views: '142K', label: 'MW4 Video' },
@@ -573,7 +575,7 @@ var CREATORS = [
     country: 'se', name: 'Ettnix', initials: 'ET', location: 'Sweden',
     avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lsk32vQTIqc3TBV2QLv4zsAeZBhXAzrbxM_UOCLMGScFI=s176-c-k-c0x00ffffff-no-rj',
     badge: { icon: 'trophy', text: 'Former Esports Pro' },
-    hook: 'Veteran Swedish FPS creator and former world-class esports competitor. Nearly 14 years streaming, 7 full-time. World first to 10,000 kills in Arc Raiders.',
+    hook: 'Veteran Swedish FPS creator and former world-class esports competitor. Nearly 14 years streaming, 7 full-time. World first to get 10,000 kills in Arc Raiders.',
     videos: [
       { id: 'GmfFz--4c0g', title: 'Arc Raiders World First 3000 Kills! Best PvP Game.', views: '', label: 'PvP Highlights' },
       { id: 'Cc9ZsfGMw-M', title: 'Best MP7 Class: 60 Bomb! (XDefiant)', views: '', label: 'XDefiant 60 Bomb' }
@@ -627,7 +629,7 @@ function cardHtml(c, ci) {
       '<div><h3 class="card-name">' + esc(c.name) + '</h3>' +
         '<div class="card-meta">' + icon('pin') + esc(c.location) + '</div></div>' +
     '</div>' +
-    '<p class="card-hook">' + esc(c.hook) +
+    '<p class="card-hook">' + (c.tagline ? '<span class="tagline">' + esc(c.tagline) + '</span>' : '') + esc(c.hook) +
       (c.idea ? '<span class="idea"><span class="idea-label">Activation Idea</span>' + esc(c.idea) + '</span>' : '') + '</p>' +
     '<div class="video">' + videoBtn(vids[0]) +
       (c.badge ? '<span class="oncam">' + icon(c.badge.icon) + esc(c.badge.text) + '</span>' : '') + '</div>' + tabs +
