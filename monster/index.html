@@ -284,6 +284,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
   <symbol id="i-cam" viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
 </svg>
@@ -358,7 +359,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
       <div class="proof-item">
         <span class="proof-game">Modern Warfare 4</span>
         <div class="proof-name">David Jaffe</div>
-        <p class="proof-text">The God of War creator streams MW4 live.</p>
+        <p class="proof-text">The legend behind God of War and Twisted Metal streams MW4 live.</p>
         <a class="proof-link" href="https://www.youtube.com/watch?v=YlqlYJtQs90" target="_blank" rel="noopener">Watch <svg class="icon"><use href="#i-ext"/></svg></a>
       </div>
       <div class="proof-item">
@@ -442,7 +443,8 @@ var CREATORS = [
   {
     country: 'us', name: 'David Jaffe', initials: 'DJ', location: 'San Diego, California',
     avatar: 'https://yt3.googleusercontent.com/FpEKToeTl-YhbfTMINqhrOb1mJv9CFSX2-FMxEpj5jfYmImNbsPBgO4Fv_j-Iw-6hKhVXUN35A=s176-c-k-c0x00ffffff-no-rj',
-    hook: 'God of War creator. Streams Modern Warfare 4 live.',
+    badge: { icon: 'star', text: 'Industry Legend' },
+    hook: 'The man behind God of War and Twisted Metal. A true gaming legend, and a die-hard FPS fan streaming Modern Warfare 4 live.',
     video: { id: 'YlqlYJtQs90', title: 'Gaming Live: COD MW4', views: 'Live' },
     metrics: [ { val: '66.8K', key: 'Audience' }, { val: '65.5%', key: 'US' }, { val: '3.07%', key: 'Engagement' } ],
     media_kit: 'https://july.bio/davidjaffe',
@@ -469,7 +471,7 @@ var CREATORS = [
   {
     country: 'us', name: 'Cloudual', initials: 'CL', location: 'North Carolina',
     avatar: 'https://yt3.ggpht.com/FuMmLDSa4Ooa9DtVScFPp1pK4P18kjR9nY5vQ38CBvCoC8st0HLJucAlXH909jUucjvOngVhyyo=s176-c-k-c0x00ffffff-no-rj',
-    oncam: true,
+    badge: { icon: 'cam', text: 'Always On Camera' },
     hook: 'On camera in every video, so the brand is in frame, not added in post. 12.8% Instagram engagement.',
     video: { id: 'abZilGeZYpg', title: 'Steam’s New Co-op FPS Has 250K Wishlists', views: '171K' },
     metrics: [ { val: '105K', key: 'Audience' }, { val: '12.8%', key: 'Insta ER' }, { val: '87%', key: 'Male' } ],
@@ -483,8 +485,8 @@ var CREATORS = [
   {
     country: 'ca', name: 'Retro For The First Time', initials: 'RF', location: 'Ontario, Canada',
     avatar: 'https://yt3.ggpht.com/90Sj2UwaIwuNJ79aKOt7JkGMTRKgGinA1NcstCU3GwPCwuPeqSArw2B6z1E754Sy2q6GP2ib=s176-c-k-c0x00ffffff-no-rj',
-    oncam: true,
-    hook: 'On camera in every Call of Duty and Battlefield news Short. A can on the desk stays in frame the whole video.',
+    badge: { icon: 'cam', text: 'Always On Camera' },
+    hook: 'Your gaming news channel. Always on camera with the latest headlines from Call of Duty, Battlefield and beyond. Built for brand placement.',
     video: { id: '3F5AuZa6ifA', title: 'Activision Sends Lawyers to Cheaters House', views: '29K' },
     metrics: [ { val: '243K', key: 'Audience' }, { val: '8.41%', key: 'TikTok ER' }, { val: '57.3%', key: 'US' } ],
     media_kit: 'https://july.bio/rftft',
@@ -511,8 +513,11 @@ var CREATORS = [
   {
     country: 'se', name: 'Ettnix', initials: 'ET', location: 'Sweden',
     avatar: 'https://yt3.googleusercontent.com/ytc/AIdro_lsk32vQTIqc3TBV2QLv4zsAeZBhXAzrbxM_UOCLMGScFI=s176-c-k-c0x00ffffff-no-rj',
-    hook: 'World first to 10,000 kills in Arc Raiders. Lives for PvP.',
-    video: { id: 'dMmvegeVPu4', title: 'Best Arc Raiders Farm For Scrappy', views: '59K' },
+    hook: 'World first to 10,000 kills in Arc Raiders. Lives for PvP, and the streams are as entertaining as the stats.',
+    videos: [
+      { id: 'GmfFz--4c0g', title: 'Arc Raiders World First 3000 Kills! Best PvP Game.', views: '', label: 'PvP Highlights' },
+      { id: 'dMmvegeVPu4', title: 'Best Arc Raiders Farm For Scrappy', views: '59K', label: 'Arc Raiders Short' }
+    ],
     metrics: [ { val: '167K', key: 'Audience' }, { val: '347K', key: 'Watch Hours' }, { val: '7.10%', key: 'Chat ER' } ],
     media_kit: 'https://july.bio/ettnix',
     channels: [
@@ -546,7 +551,7 @@ function videoBtn(v) {
     '<img src="https://i.ytimg.com/vi/' + esc(v.id) + '/hqdefault.jpg" alt="" loading="lazy">' +
     '<span class="play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>' +
     '<span class="video-info"><span class="video-title">' + esc(v.title) + '</span>' +
-      '<span class="video-views">' + (v.views === 'Live' ? '' : icon('eye')) + esc(v.views) + '</span></span>' +
+      (v.views ? '<span class="video-views">' + (v.views === 'Live' ? '' : icon('eye')) + esc(v.views) + '</span>' : '') + '</span>' +
   '</button>';
 }
 
@@ -564,7 +569,7 @@ function cardHtml(c, ci) {
     '</div>' +
     '<p class="card-hook">' + esc(c.hook) + '</p>' +
     '<div class="video">' + videoBtn(vids[0]) +
-      (c.oncam ? '<span class="oncam">' + icon('cam') + 'Always On Camera</span>' : '') + '</div>' + tabs +
+      (c.badge ? '<span class="oncam">' + icon(c.badge.icon) + esc(c.badge.text) + '</span>' : '') + '</div>' + tabs +
     '<div class="metrics">' + c.metrics.map(function (m) {
       return '<div class="metric"><div class="metric-val">' + esc(m.val) + '</div><div class="metric-key">' + esc(m.key) + '</div></div>';
     }).join('') + '</div>' +
