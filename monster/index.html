@@ -132,6 +132,18 @@ section { padding-block: 72px; }
 }
 .proof-link:hover { color: var(--green-hi); }
 
+/* REACH */
+.reach { padding-block: 64px; }
+.reach-inner { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 56px; align-items: center; }
+.reach-stat { position: relative; padding: 30px 28px; border: 1px solid var(--green-border); background: radial-gradient(circle at 30% 20%, rgba(122,193,67,.16), transparent 70%), var(--bg-card); }
+.reach-num { font-family: var(--font-d); font-size: clamp(84px, 11vw, 132px); line-height: .85; color: var(--green-hi); }
+.reach-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); margin-top: 14px; }
+.reach .section-title { margin-bottom: 14px; }
+.reach-text { color: var(--text-2); max-width: 560px; margin-bottom: 24px; }
+.reach-markets { display: flex; flex-wrap: wrap; gap: 8px; }
+.reach-markets span { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-d); font-size: 17px; letter-spacing: .08em; border: 1px solid var(--line); background: var(--bg-card); padding: 8px 14px; }
+.reach-markets b { font-weight: 400; color: var(--green); }
+
 /* COUNTRY NAV */
 .country-nav {
   position: sticky; top: var(--topbar-h); z-index: 90;
@@ -170,8 +182,8 @@ section { padding-block: 72px; }
 .grid:has(> .card:only-child) { max-width: 580px; }
 .card {
   background: var(--bg-card); border: 1px solid var(--line);
-  display: flex; flex-direction: column; overflow: hidden;
-  transition: border-color .25s;
+  display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 0;
+  overflow: hidden; transition: border-color .25s;
 }
 .card:hover { border-color: var(--green-border); }
 .card-head { display: flex; align-items: center; gap: 14px; padding: 20px 20px 16px; }
@@ -269,6 +281,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   .stat { min-width: calc(50% - 7px); flex: 1 1 calc(50% - 7px); }
   section { padding-block: 56px; }
   .why-grid, .proof-grid { grid-template-columns: 1fr; }
+  .reach-inner { grid-template-columns: 1fr; gap: 28px; }
   .grid { grid-template-columns: 1fr; }
   .topbar-brand .full, .topbar-brand .x { display: none; }
 }
@@ -327,13 +340,13 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
         <div class="why-icon"><svg class="icon"><use href="#i-cross"/></svg></div>
         <div class="why-big">MW4</div>
         <div class="why-head">Shooters Are Home Turf</div>
-        <p class="why-text">Call of Duty, Arc Raiders and Battlefield already run on these channels.</p>
+        <p class="why-text">Call of Duty, Arc Raiders and Battlefield are some of the games running on these channels.</p>
       </div>
       <div class="why-card">
         <div class="why-icon"><svg class="icon"><use href="#i-formats"/></svg></div>
-        <div class="why-big">474K</div>
-        <div class="why-head">Every Format</div>
-        <p class="why-text">Long guides, live streams and Shorts. Top videos pull hundreds of thousands of views.</p>
+        <div class="why-big">3 Formats</div>
+        <div class="why-head">One Roster</div>
+        <p class="why-text">Long-form guides, live streams and Shorts, with top videos pulling hundreds of thousands of views.</p>
       </div>
       <div class="why-card">
         <div class="why-icon"><svg class="icon"><use href="#i-globe"/></svg></div>
@@ -373,6 +386,26 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
         <div class="proof-name">Retro For The First Time</div>
         <p class="proof-text">CoD and Battlefield news Shorts hitting 250K+ views.</p>
         <a class="proof-link" href="https://www.youtube.com/shorts/zPikIEELrpY" target="_blank" rel="noopener">Watch <svg class="icon"><use href="#i-ext"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reach">
+  <div class="inner reach-inner">
+    <div class="reach-stat">
+      <div class="reach-num">50%</div>
+      <div class="reach-label">Average US reach, whatever the home country</div>
+    </div>
+    <div>
+      <div class="eyebrow">Cross-Market Reach</div>
+      <h2 class="section-title">Every Time.</h2>
+      <p class="reach-text">All creators in this roster deliver an average of 50% US reach regardless of their home country, followed by the UK, Canada and Western Europe.</p>
+      <div class="reach-markets">
+        <span><b>01</b>United States</span>
+        <span><b>02</b>United Kingdom</span>
+        <span><b>03</b>Canada</span>
+        <span><b>04</b>Western Europe</span>
       </div>
     </div>
   </div>
@@ -422,7 +455,7 @@ var CREATORS = [
       { id: 'ZOxTN7cmPzg', title: 'Modern Warfare 4: 25 Easter Eggs & Hidden Details You Missed!', views: '142K', label: 'MW4 Video' },
       { id: 'LbLdzGIx-XI', title: 'This Modern Warfare 4 SECRET Could Save Your Life!', views: '112K', label: 'MW4 Short' }
     ],
-    metrics: [ { val: '1.60M', key: 'Audience' }, { val: '93%', key: 'Male' }, { val: '2.66%', key: 'Engagement' } ],
+    metrics: [ { val: '1.60M', key: 'Audience' }, { val: '93%', key: 'Male' }, { val: '982K', key: 'Subscribers' } ],
     media_kit: 'https://july.bio/CaptainEggcellent',
     channels: [
       { name: 'YouTube', url: 'https://www.youtube.com/@CaptainEggcellent' },
@@ -435,8 +468,11 @@ var CREATORS = [
     country: 'uk', name: 'RageGamingVideos', initials: 'RG', location: 'United Kingdom',
     avatar: 'https://yt3.googleusercontent.com/3TlufKydntExNT_c7TULN3BosQs2ClqYTDrLSl_xCF-jhriazbq8XzD9C377agd_PLSjqHdp=s176-c-k-c0x00ffffff-no-rj',
     hook: 'The go-to guide channel for Arc Raiders, Wardogs and Deadlock.',
-    video: { id: '1BI7dKuewSU', title: 'Arc Raiders: 35 Powerful Tips to Survive Every Raid', views: '474K' },
-    metrics: [ { val: '1.42M', key: 'Audience' }, { val: '96%', key: 'Male' }, { val: '1.91%', key: 'Engagement' } ],
+    videos: [
+      { id: '1BI7dKuewSU', title: 'Arc Raiders: 35 Powerful Tips to Survive Every Raid', views: '474K', label: 'Arc Raiders' },
+      { id: 'NN-aksZAjT4', title: 'Wardogs: Easy Fast XP Levels On All Classes', views: '146K', label: 'Wardogs' }
+    ],
+    metrics: [ { val: '1.42M', key: 'Audience' }, { val: '96%', key: 'Male' }, { val: '474K', key: 'Top Video Views' } ],
     media_kit: 'https://july.bio/ragegamingvideos',
     channels: [ { name: 'YouTube', url: 'https://www.youtube.com/@RageGamingVideos' } ]
   },
@@ -446,7 +482,7 @@ var CREATORS = [
     badge: { icon: 'star', text: 'Industry Legend' },
     hook: 'The man behind God of War and Twisted Metal. A true gaming legend, and a die-hard FPS fan streaming Modern Warfare 4 live.',
     video: { id: 'YlqlYJtQs90', title: 'Gaming Live: COD MW4', views: 'Live' },
-    metrics: [ { val: '66.8K', key: 'Audience' }, { val: '65.5%', key: 'US' }, { val: '3.07%', key: 'Engagement' } ],
+    metrics: [ { val: '66.8K', key: 'Audience' }, { val: '65.5%', key: 'US' }, { val: '30+', key: 'Years In Games' } ],
     media_kit: 'https://july.bio/davidjaffe',
     channels: [
       { name: 'YouTube', url: 'https://www.youtube.com/@DavidJaffeGames' },
@@ -458,9 +494,9 @@ var CREATORS = [
   {
     country: 'us', name: 'Gem Gaming Network', initials: 'GG', location: 'Charlotte, North Carolina',
     avatar: 'https://yt3.ggpht.com/t0wekIlzDy2LWG2LLtDUiDa84Te7KyLygjmtO3aXytR23UKD-ofXwtHdxm1wj-pZknyj7mtzyw=s176-c-k-c0x00ffffff-no-rj',
-    hook: 'Extraction and shooter Shorts for an audience that is 66% aged 18-24.',
+    hook: 'Extraction and shooter Shorts built for discovery, reaching the youngest buyers on the roster.',
     video: { id: 'EkWFp4JwVmo', title: 'New free extraction horror game (Rules of Engagement)', views: '131K' },
-    metrics: [ { val: '136K', key: 'Audience' }, { val: '7.09%', key: 'TikTok ER' }, { val: '60.2%', key: 'US' } ],
+    metrics: [ { val: '136K', key: 'Audience' }, { val: '66.6%', key: 'Aged 18-24' }, { val: '60.2%', key: 'US' } ],
     media_kit: 'https://july.bio/gemgamingnetwork',
     channels: [
       { name: 'TikTok', url: 'https://www.tiktok.com/@gemgamingnetwork' },
@@ -488,7 +524,7 @@ var CREATORS = [
     badge: { icon: 'cam', text: 'Always On Camera' },
     hook: 'Your gaming news channel. Always on camera with the latest headlines from Call of Duty, Battlefield and beyond. Built for brand placement.',
     video: { id: '3F5AuZa6ifA', title: 'Activision Sends Lawyers to Cheaters House', views: '29K' },
-    metrics: [ { val: '243K', key: 'Audience' }, { val: '8.41%', key: 'TikTok ER' }, { val: '57.3%', key: 'US' } ],
+    metrics: [ { val: '243K', key: 'Audience' }, { val: '61.6%', key: 'Aged 18-24' }, { val: '57.3%', key: 'US' } ],
     media_kit: 'https://july.bio/rftft',
     channels: [
       { name: 'TikTok', url: 'https://www.tiktok.com/@retroforthefirsttime' },
@@ -518,7 +554,7 @@ var CREATORS = [
       { id: 'GmfFz--4c0g', title: 'Arc Raiders World First 3000 Kills! Best PvP Game.', views: '', label: 'PvP Highlights' },
       { id: 'dMmvegeVPu4', title: 'Best Arc Raiders Farm For Scrappy', views: '59K', label: 'Arc Raiders Short' }
     ],
-    metrics: [ { val: '167K', key: 'Audience' }, { val: '347K', key: 'Watch Hours' }, { val: '7.10%', key: 'Chat ER' } ],
+    metrics: [ { val: '167K', key: 'Audience' }, { val: '152K', key: 'Twitch Followers' }, { val: '347K', key: 'Watch Hours' } ],
     media_kit: 'https://july.bio/ettnix',
     channels: [
       { name: 'Twitch', url: 'https://www.twitch.tv/ettnix' },
@@ -557,7 +593,7 @@ function videoBtn(v) {
 
 function cardHtml(c, ci) {
   var vids = c.videos || [c.video];
-  var tabs = vids.length < 2 ? '' : '<div class="vtabs">' + vids.map(function (v, i) {
+  var tabs = vids.length < 2 ? '<div></div>' : '<div class="vtabs">' + vids.map(function (v, i) {
     return '<button class="vtab' + (i === 0 ? ' active' : '') + '" type="button" data-c="' + ci + '" data-i="' + i + '">' + esc(v.label) + '</button>';
   }).join('') + '</div>';
   return '<article class="card">' +
