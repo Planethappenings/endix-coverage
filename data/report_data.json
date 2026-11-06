@@ -8818,34 +8818,37 @@
     "source": "Twitch, measured every 15 min",
     "url": "https://www.twitch.tv/directory/category/endix",
     "live": true,
-    "hours_watched": 376,
-    "hours_streamed": 15.2,
-    "streamers": 7,
+    "hours_watched": 419,
+    "hours_streamed": 16.8,
+    "streamers": 8,
     "peak_viewers": 96,
-    "avg_viewers": 50,
-    "viewer_ratio": 24.7,
-    "updated": "Fri 06 Nov 07:30",
+    "avg_viewers": 47,
+    "viewer_ratio": 24.9,
+    "updated": "Fri 06 Nov 09:00",
     "timeline": {
      "labels": [
       "Fri 12AM",
       "Fri 3AM",
-      "Fri 6AM"
+      "Fri 6AM",
+      "Fri 9AM"
      ],
      "peak": [
       47,
       57,
-      96
+      96,
+      4
      ],
      "avg": [
       34,
       51,
-      75
+      58,
+      4
      ]
     },
     "languages": [
      [
       "English",
-      4
+      5
      ],
      [
       "Portuguese",
@@ -8866,8 +8869,8 @@
      {
       "name": "Fitzboyee",
       "url": "https://www.twitch.tv/fitzboyee",
-      "peak": 36,
-      "hours": 0.8
+      "peak": 58,
+      "hours": 1.5
      },
      {
       "name": "FredKrugger",
@@ -8892,6 +8895,12 @@
       "url": "https://www.twitch.tv/rahne",
       "peak": 6,
       "hours": 0.2
+     },
+     {
+      "name": "AmashitaKou",
+      "url": "https://www.twitch.tv/amashitakou",
+      "peak": 5,
+      "hours": 0.8
      },
      {
       "name": "Kira_Lovey",
@@ -11145,6 +11154,34 @@
     ]
    },
    "press": [
+    {
+     "edition": "fall2026",
+     "date": "2026-11-06",
+     "outlet": "4-RG Gaming-Magazin",
+     "domain": "4-rg.com",
+     "headline": "ENDIX 2026: The Gaming Expo Continues",
+     "url": "https://4-rg.com/en/gaming/endix-2026-the-gaming-expo-continues",
+     "country": "Germany",
+     "kind": "article",
+     "uvm": 0,
+     "x_views": 0,
+     "source": "manual",
+     "language": "German"
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-05",
+     "outlet": "NewsRadio Philippines",
+     "domain": "newsradioph.substack.com",
+     "headline": "Endix Expo 2026: What do you Expect this year?",
+     "url": "https://newsradioph.substack.com/p/endix-expo-2026-what-do-you-expect",
+     "country": "Philippines",
+     "kind": "article",
+     "uvm": 0,
+     "x_views": 0,
+     "source": "manual",
+     "language": "English"
+    },
     {
      "edition": "fall2026",
      "date": "2026-11-05",
