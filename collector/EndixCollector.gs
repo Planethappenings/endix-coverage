@@ -1,5 +1,5 @@
 /**
- * Endix coverage collector v2.9 — Google Apps Script for the "Endix X-statistik" sheet.
+ * Endix coverage collector v2.10 — Google Apps Script for the "Endix X-statistik" sheet.
  * Adds its own tabs and never touches Grok's tabs.
  *
  * Sources: YouTube (YouTube API), press (Google News per edition + GDELT + Bing RSS), TikTok + Instagram (Apify),
@@ -653,6 +653,11 @@ function twitchPoll() {
   const ed = editions_().find(e => e.active && now >= e.eventStart.getTime() - 864e5 && now <= e.eventEnd.getTime() + 3 * 864e5);
   if (!ed) return;
   const p = PropertiesService.getScriptProperties();
+  // Around the event, also search for new press every 2 hours (not only at the daily run)
+  if (now - Number(p.getProperty('press_event_last') || 0) >= 2 * 3600e3 - 60e3) {
+    p.setProperty('press_event_last', String(now));
+    try { collectPress(); } catch (e) { log_('press', 'ERROR ' + e.message); }
+  }
   if (!p.getProperty('TWITCH_CLIENT_ID')) return;
   const gid = twitchGameId_();
   if (!gid) { log_('twitch', 'No Twitch category named "' + twitchGameName_() + '"'); return; }
