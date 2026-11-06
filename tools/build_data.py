@@ -234,7 +234,8 @@ for r in table('Press_Feed'):
     item = {'edition': ed, 'date': date, 'outlet': r.get('Outlet') or d, 'domain': d, 'headline': head, 'url': r.get('URL', ''),
             'country': country_of(r.get('URL', ''), '', d), 'kind': 'press release' if d in ('prtimes.jp', 'gamespress.com') else 'article',
             'x_views': 0, 'source': r.get('Feed', '')}
-    if re.search(r'trailer|tráiler|bande-annonce', head, re.I) and 'showcase' in head.lower():
+    if (re.search(r'trailer|tráiler|bande-annonce', head, re.I) and re.search(r'official|oficial|officiel', head, re.I)
+            and re.search(r'showcase|endix expo', head, re.I)):
         trailer_pages.append(item)
         continue
     add_press(item)
