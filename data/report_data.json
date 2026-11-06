@@ -8814,7 +8814,93 @@
    "to": "2026-12-31",
    "aftermovie": null,
    "downloads": null,
-   "twitch": null,
+   "twitch": {
+    "source": "Twitch, measured every 15 min",
+    "url": "https://www.twitch.tv/directory/category/endix",
+    "live": true,
+    "hours_watched": 376,
+    "hours_streamed": 15.2,
+    "streamers": 7,
+    "peak_viewers": 96,
+    "avg_viewers": 50,
+    "viewer_ratio": 24.7,
+    "updated": "Fri 06 Nov 07:30",
+    "timeline": {
+     "labels": [
+      "Fri 12AM",
+      "Fri 3AM",
+      "Fri 6AM"
+     ],
+     "peak": [
+      47,
+      57,
+      96
+     ],
+     "avg": [
+      34,
+      51,
+      75
+     ]
+    },
+    "languages": [
+     [
+      "English",
+      4
+     ],
+     [
+      "Portuguese",
+      2
+     ],
+     [
+      "Thai",
+      1
+     ]
+    ],
+    "top": [
+     {
+      "name": "Danelah",
+      "url": "https://www.twitch.tv/danelah",
+      "peak": 67,
+      "hours": 6.2
+     },
+     {
+      "name": "Fitzboyee",
+      "url": "https://www.twitch.tv/fitzboyee",
+      "peak": 36,
+      "hours": 0.8
+     },
+     {
+      "name": "FredKrugger",
+      "url": "https://www.twitch.tv/fredkrugger",
+      "peak": 29,
+      "hours": 1.5
+     },
+     {
+      "name": "Drowsybicycle",
+      "url": "https://www.twitch.tv/drowsybicycle",
+      "peak": 12,
+      "hours": 4.5
+     },
+     {
+      "name": "Dandanzinha0",
+      "url": "https://www.twitch.tv/dandanzinha0",
+      "peak": 10,
+      "hours": 1.0
+     },
+     {
+      "name": "Rahne",
+      "url": "https://www.twitch.tv/rahne",
+      "peak": 6,
+      "hours": 0.2
+     },
+     {
+      "name": "Kira_Lovey",
+      "url": "https://www.twitch.tv/kira_lovey",
+      "peak": 1,
+      "hours": 1.0
+     }
+    ]
+   },
    "steam": null,
    "partner": null,
    "featured": [],

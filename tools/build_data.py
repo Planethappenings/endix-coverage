@@ -372,6 +372,50 @@ def x_stats(tab):
     return {'mentions': num(find('Omnämnanden')), 'accounts': num(find('Unika konton')), 'views': num(find('Visningar')),
             'engagement': num(find('Engagemang')), 'viral': num(find('Virala inlägg')), 'top': top}
 
+# ---------------------------------------------------------------- twitch (live snapshots)
+# The collector polls the Endix Twitch category every 15 minutes around each event and appends one row per live stream
+# to Twitch_Snapshots. Times in the sheet are in the sheet's time zone (America/Los_Angeles); the report shows Stockholm time.
+LANG = {'en':'English','es':'Spanish','pt':'Portuguese','fr':'French','ru':'Russian','pl':'Polish','de':'German','it':'Italian','ja':'Japanese',
+        'ko':'Korean','zh':'Chinese','tr':'Turkish','th':'Thai','nl':'Dutch','sv':'Swedish','uk':'Ukrainian','id':'Indonesian','ar':'Arabic','cs':'Czech','vi':'Vietnamese'}
+def twitch_live(slug):
+    from zoneinfo import ZoneInfo
+    la, sto = ZoneInfo('America/Los_Angeles'), ZoneInfo('Europe/Stockholm')
+    polls, streams, langs = {}, {}, {}
+    for r in table('Twitch_Snapshots'):
+        if r.get('Edition') != slug: continue
+        try: t = dt.datetime.strptime(r['Time'][:16], '%Y-%m-%d %H:%M').replace(tzinfo=la).astimezone(sto)
+        except ValueError: continue
+        t = t.replace(second=0, microsecond=0, minute=t.minute - t.minute % 15)
+        v = int(num(r.get('Viewers')))
+        polls[t] = polls.get(t, 0) + v
+        lg = r.get('Login') or ''
+        st = streams.setdefault(lg, {'name': r.get('Streamer') or lg, 'login': lg, 'peak': 0, 'polls': 0, 'watched': 0.0})
+        st['peak'] = max(st['peak'], v); st['polls'] += 1; st['watched'] += v * 0.25
+        langs[lg] = LANG.get(r.get('Language'), (r.get('Language') or 'other').upper())
+    if not polls: return None
+    ts = sorted(polls)
+    hours_watched = round(sum(polls.values()) * 0.25)
+    hours_streamed = round(sum(s['polls'] for s in streams.values()) * 0.25, 1)
+    span_h = max(0.25, (ts[-1] - ts[0]).total_seconds() / 3600 + 0.25)
+    lc = {}
+    for l in langs.values(): lc[l] = lc.get(l, 0) + 1
+    # 3-hour buckets for the weekend chart
+    buckets = {}
+    for t in ts:
+        b = t.replace(hour=t.hour - t.hour % 3, minute=0)
+        buckets.setdefault(b, []).append(polls[t])
+    bk = sorted(buckets)
+    lab = lambda b: b.strftime('%a ') + (b.strftime('%I%p').lstrip('0') if b.hour else '12AM')
+    top = sorted(streams.values(), key=lambda s: (-s['peak'], -s['watched']))
+    return {'source': 'Twitch, measured every 15 min', 'url': 'https://www.twitch.tv/directory/category/endix', 'live': True,
+            'hours_watched': hours_watched, 'hours_streamed': hours_streamed, 'streamers': len(streams),
+            'peak_viewers': max(polls.values()), 'avg_viewers': round(sum(polls.values()) * 0.25 / span_h),
+            'viewer_ratio': round(hours_watched / hours_streamed, 1) if hours_streamed else 0,
+            'updated': ts[-1].strftime('%a %d %b %H:%M'),
+            'timeline': {'labels': [lab(b) for b in bk], 'peak': [max(buckets[b]) for b in bk], 'avg': [round(sum(buckets[b]) / len(buckets[b])) for b in bk]} if len(bk) > 1 else None,
+            'languages': sorted(lc.items(), key=lambda x: -x[1]),
+            'top': [{'name': s['name'], 'url': 'https://www.twitch.tv/' + s['login'], 'peak': s['peak'], 'hours': round(s['polls'] * 0.25, 1)} for s in top[:20]]}
+
 # ---------------------------------------------------------------- assemble
 out = {'generated': dt.datetime.now().strftime('%Y-%m-%d'), 'editions': []}
 for e in editions:
@@ -381,7 +425,7 @@ for e in editions:
         **e,
         'aftermovie': c.get('aftermovie'),
         'downloads': c.get('downloads'),
-        'twitch': c.get('twitch'),
+        'twitch': c.get('twitch') or twitch_live(e['slug']),
         'steam': c.get('steam'),
         'partner': c.get('partner'), 'featured': c.get('featured') or [], 'spotlight': c.get('spotlight'), 'characters': c.get('characters') or [],
         'sponsor': c.get('sponsor'),
