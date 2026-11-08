@@ -8830,13 +8830,13 @@
     "source": "Twitch, measured every 15 min",
     "url": "https://www.twitch.tv/directory/category/endix",
     "live": true,
-    "hours_watched": 29374,
-    "hours_streamed": 424.2,
-    "streamers": 144,
+    "hours_watched": 31277,
+    "hours_streamed": 451.2,
+    "streamers": 154,
     "peak_viewers": 15046,
-    "avg_viewers": 484,
-    "viewer_ratio": 69.2,
-    "updated": "Sun 08 Nov 12:45",
+    "avg_viewers": 469,
+    "viewer_ratio": 69.3,
+    "updated": "Sun 08 Nov 18:45",
     "timeline": {
      "labels": [
       "Fri 12AM",
@@ -8859,7 +8859,9 @@
       "Sun 3AM",
       "Sun 6AM",
       "Sun 9AM",
-      "Sun 12PM"
+      "Sun 12PM",
+      "Sun 3PM",
+      "Sun 6PM"
      ],
      "peak": [
       47,
@@ -8882,7 +8884,9 @@
       687,
       1490,
       69,
-      83
+      169,
+      1871,
+      191
      ],
      "avg": [
       34,
@@ -8905,29 +8909,31 @@
       486,
       723,
       39,
-      79
+      91,
+      624,
+      170
      ]
     },
     "languages": [
      [
       "English",
-      83
+      86
      ],
      [
       "Spanish",
-      19
+      21
      ],
      [
       "Portuguese",
-      17
+      18
      ],
      [
       "French",
-      9
+      10
      ],
      [
       "Russian",
-      7
+      9
      ],
      [
       "Italian",
@@ -8956,6 +8962,10 @@
      [
       "FI",
       1
+     ],
+     [
+      "RO",
+      1
      ]
     ],
     "top": [
@@ -8970,6 +8980,12 @@
       "url": "https://www.twitch.tv/xop0",
       "peak": 4097,
       "hours": 2.0
+     },
+     {
+      "name": "KingGothalion",
+      "url": "https://www.twitch.tv/kinggothalion",
+      "peak": 1713,
+      "hours": 1.2
      },
      {
       "name": "Dunc",
@@ -9032,10 +9048,22 @@
       "hours": 1.2
      },
      {
+      "name": "Cabravoladora",
+      "url": "https://www.twitch.tv/cabravoladora",
+      "peak": 126,
+      "hours": 1.2
+     },
+     {
       "name": "zula_buba",
       "url": "https://www.twitch.tv/zula_buba",
       "peak": 116,
       "hours": 5.5
+     },
+     {
+      "name": "Bourrinator",
+      "url": "https://www.twitch.tv/bourrinator",
+      "peak": 113,
+      "hours": 1.0
      },
      {
       "name": "Majorz1",
@@ -9060,24 +9088,6 @@
       "url": "https://www.twitch.tv/nithartv",
       "peak": 90,
       "hours": 1.5
-     },
-     {
-      "name": "TioChicoSEP",
-      "url": "https://www.twitch.tv/tiochicosep",
-      "peak": 88,
-      "hours": 2.2
-     },
-     {
-      "name": "Foythtv",
-      "url": "https://www.twitch.tv/foythtv",
-      "peak": 77,
-      "hours": 2.0
-     },
-     {
-      "name": "DIEH4RD",
-      "url": "https://www.twitch.tv/dieh4rd",
-      "peak": 75,
-      "hours": 2.8
      }
     ]
    },
@@ -12826,6 +12836,34 @@
    "press": [
     {
      "edition": "fall2026",
+     "date": "2026-11-08",
+     "outlet": "Kotaku en Español",
+     "domain": "es.kotaku.com",
+     "headline": "Decapitaciones masivas, horror cósmico y combate dual simultáneo: el juego Sole Salvation se presenta oficialmente con tráiler en la ENDIX Expo",
+     "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxQMm1fOXNSRkp6d3I1eFIxNHZ0NGwxaU92a1RpQVA0QzdRcG9SaVFKRVBUWDFJLXJ2YkhlR04wcGxLWl9QX1I5WFdyZVFvRUlTZWZ0NjJ4VXpXek1tdkRmMEtIVDU5Nm15Z0w1WElrOE0wNnptZldMSV9ib1pTdlJMVVduMi1hMGFPYmdpcEk3aE1paUlRUmw0QXA5V0haRXEzNXBMV2Y3VHZ3bW1fV3NBaTVyY1VFa0lQaG5EYk0tVWdpVG11V1ZMTXlRbWY1M2dSeml4MnVSM0JFckNIVnU3T182cWVmcG9sSHBsWi1kSHR4SG4xbVQxeGlIODNUMG1RU0x5QQ?oc=5",
+     "country": "International",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-ES",
+     "language": "English",
+     "uvm": 0
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-08",
+     "outlet": "Foro3D",
+     "domain": "foro3d.com",
+     "headline": "Cathedral: Crow's Curse llega a ENDIX Expo con demo jugable en Steam",
+     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQa2wtWXpQQ213cXhYczZ1d2FJcEpraHZEbm5EWlhBSC1SUC1ZOVpJeFNrenRNeWlmV1liMHN5R290Rk9hUU1ucGd4Uzh0eDJLNGQxOFdxbUFpTXNvSlR6MkVvS3dQTXNiSGdKQ1piUng0OXpNN0VEWnFMaFZENVhidWsyU0VJanZVU3N1eDJFcjBMcjlnWWFZeGN0TkZtNEhsLTFpNlllSmE?oc=5",
+     "country": "International",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-ES",
+     "language": "English",
+     "uvm": 0
+    },
+    {
+     "edition": "fall2026",
      "date": "2026-11-07",
      "outlet": "The Otaku's Study",
      "domain": "otakustudy.com",
@@ -14713,6 +14751,78 @@
      "kind": "article",
      "x_views": 0,
      "source": "google-news-SG"
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-07",
+     "outlet": "Yahoo Tech",
+     "domain": "tech.yahoo.com",
+     "headline": "Temtem: Pioneers - Official Extended Announcement Trailer | Endix Expo Fall 2026",
+     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPaU1wbF8teGt5a1FrckdLaHVENHlnR0hmdFRfQWYyUU5wemxLVHIyenJnd3lqS2hQam1yazhzSzVRUWlZbEQ1a3FtQ2ZNbXlFeFBZek50X0pSc1RmcXl4My1NOTRVem83UF9FMmJLV3FKRTR6T1NwRi12bHUzRzRRSWQ5SUlRMDFnMVlfSk9VTDZLLXQ5bFE?oc=5",
+     "country": "USA",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US"
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-07",
+     "outlet": "Yahoo Tech",
+     "domain": "tech.yahoo.com",
+     "headline": "Cathedral: Crow's Curse - Official Demo Trailer | Endix Expo Fall 2026",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOTWYxVVM5ZTVvaW93dklVWGxEZFZjclA4ZTBxWEZEdEVVam5yZEdJdE56Vnk4d090WlJyVmVrRS1CTFVjODJUYXJJWWNaUlRJYVVfNVlzclh3X0hoQ1o5UlpXbWZrQ2pobUtMXzdoNUlqUTJpOWdpZlNSd0M1MW1qUVRNMXp0TW8?oc=5",
+     "country": "USA",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-PH"
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-05",
+     "outlet": "IGN",
+     "domain": "ign.com",
+     "headline": "Steak Simulator: Medium Rare - Official Teaser Trailer | Endix Expo Fall 2026",
+     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPeE43SjRyVWJoUlQxeWpYa2o1V0hmbDZ1YjhnM1JxQUJwX2NlVGlIdlZZN1NSWG9zcngtaUlwQVpORnhSQW5QZV9lZHJXZE9TaWlIdk1qWWxMaEVLYllMeFlfbzI2ajV1eUZmZlNLSS1sTFZxdWJBdTM2dDUzc0hUVzFId0xDbG5qSEZIcTJTdzdXQ1k0d1pLUm53TzRZbnk5?oc=5",
+     "country": "USA",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US"
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-08",
+     "outlet": "IGN India",
+     "domain": "in.ign.com",
+     "headline": "Swordeye - Official Gameplay Trailer | Endix Expo Fall 2026",
+     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRlBqc2k3R0ZGVFpOOVBDeGZyanRMb2E4eldINlkwekpJYkdUZk03cVFSc0NiUWxtX1BEaUhOWWgwQ1BxUENxVlU2Zk1FREZaZUc3TXNjbE9Yd0VGcUdNMnNPWkx3M0dtcmRjN1lydWMwdjlNcUlHdUhnbzM3eEJsb01FSkdfYTRwOWl5NnNpQ0Y?oc=5",
+     "country": "India",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US"
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-08",
+     "outlet": "IGN India",
+     "domain": "in.ign.com",
+     "headline": "Hear My Cult - Official Gameplay Trailer | Endix Expo Fall 2026",
+     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQT1Y1RHlYWWRqV1NKN0xTd3FJd3VxaUpFWHBLRkJnUTE3eWQ5d091ckRrblVxZjg2Q0dESWdFTVJQVXZjWS10ZDVHRWxzblI1RTRiQV80YlVJdHlHYmthbHNSWmo1QU9fZEkzY0lWM0diVTh6NWhNdVRuOEpGcG9mdHZCbWp6eE1Ja3ZLbWIzUkpveVc5Ymc?oc=5",
+     "country": "India",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US"
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-05",
+     "outlet": "IGN Nordic",
+     "domain": "nordic.ign.com",
+     "headline": "Steak Simulator: Medium Rare - Official Teaser Trailer | Endix Expo Fall 2026",
+     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNQWszLUt1REVudDhtcWxvX0F2X0dMM1BqTWp1RWlKanFfc3JQUmozTTJPcVNxWDdDcHZIbFpvWnFjaUlDOXlnLUtsclFyWU1wQW1vdGEycFVfb283QzhYZHRETWhLN0FfX09WVlNrSmtnLW1aLXYzZzYzdUFpT0cwelJPbFFlX2pTU2YyYU9IaGRPSXdCbGNsc3R4RXBQMExUZ0RXZTVWaFhacFVjZC1WMg?oc=5",
+     "country": "Nordics",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-IN"
     }
    ]
   }
