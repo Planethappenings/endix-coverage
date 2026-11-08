@@ -8830,13 +8830,13 @@
     "source": "Twitch, measured every 15 min",
     "url": "https://www.twitch.tv/directory/category/endix",
     "live": true,
-    "hours_watched": 28537,
-    "hours_streamed": 414.5,
-    "streamers": 141,
+    "hours_watched": 29374,
+    "hours_streamed": 424.2,
+    "streamers": 144,
     "peak_viewers": 15046,
-    "avg_viewers": 514,
-    "viewer_ratio": 68.8,
-    "updated": "Sun 08 Nov 07:30",
+    "avg_viewers": 484,
+    "viewer_ratio": 69.2,
+    "updated": "Sun 08 Nov 12:45",
     "timeline": {
      "labels": [
       "Fri 12AM",
@@ -8857,7 +8857,9 @@
       "Sat 9PM",
       "Sun 12AM",
       "Sun 3AM",
-      "Sun 6AM"
+      "Sun 6AM",
+      "Sun 9AM",
+      "Sun 12PM"
      ],
      "peak": [
       47,
@@ -8878,7 +8880,9 @@
       598,
       283,
       687,
-      1490
+      1490,
+      69,
+      83
      ],
      "avg": [
       34,
@@ -8899,13 +8903,15 @@
       354,
       194,
       486,
-      751
+      723,
+      39,
+      79
      ]
     },
     "languages": [
      [
       "English",
-      82
+      83
      ],
      [
       "Spanish",
@@ -8913,7 +8919,7 @@
      ],
      [
       "Portuguese",
-      16
+      17
      ],
      [
       "French",
@@ -8921,7 +8927,7 @@
      ],
      [
       "Russian",
-      6
+      7
      ],
      [
       "Italian",
@@ -8966,14 +8972,14 @@
       "hours": 2.0
      },
      {
-      "name": "ReudigRuediger",
-      "url": "https://www.twitch.tv/reudigruediger",
-      "peak": 562,
-      "hours": 2.0
-     },
-     {
       "name": "Dunc",
       "url": "https://www.twitch.tv/dunc",
+      "peak": 617,
+      "hours": 2.5
+     },
+     {
+      "name": "ReudigRuediger",
+      "url": "https://www.twitch.tv/reudigruediger",
       "peak": 562,
       "hours": 2.0
      },
@@ -8998,8 +9004,8 @@
      {
       "name": "Arex",
       "url": "https://www.twitch.tv/arex",
-      "peak": 366,
-      "hours": 0.2
+      "peak": 378,
+      "hours": 1.2
      },
      {
       "name": "Raimakgames",
@@ -14695,6 +14701,18 @@
      "kind": "article",
      "x_views": 0,
      "source": "bing-en-GB"
+    },
+    {
+     "edition": "fall2026",
+     "date": "2026-11-05",
+     "outlet": "IGN",
+     "domain": "ign.com",
+     "headline": "Yo Ho Ho and a Rubber Duck - Official Reveal Trailer | Endix Expo Fall 2026",
+     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxObTJBQjB5WXBvR0owS2ZCcExxbEVTMGxrRXZKb2p1RjdtM0U0bTc0Qm1uVHozN000UHJVM19adVpSMWtIZkFLaVoxTnBOTFRONlR2T2NwN1A0N1kyS3gwR3hZMUJyZkZMX3VYTlFKVGF3ZW1qcmFNUE8zQjh3X3JPM0NnTTZYLTdNZXF0NE5ReFc0b25wZm9sejVra0JSWE0?oc=5",
+     "country": "USA",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-SG"
     }
    ]
   }
