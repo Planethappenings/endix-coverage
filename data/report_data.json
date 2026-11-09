@@ -8830,13 +8830,13 @@
     "source": "Twitch, measured every 15 min",
     "url": "https://www.twitch.tv/directory/category/endix",
     "live": true,
-    "hours_watched": 35763,
-    "hours_streamed": 544.0,
-    "streamers": 173,
+    "hours_watched": 35804,
+    "hours_streamed": 546.5,
+    "streamers": 174,
     "peak_viewers": 15046,
-    "avg_viewers": 453,
-    "viewer_ratio": 65.7,
-    "updated": "Mon 09 Nov 07:00",
+    "avg_viewers": 395,
+    "viewer_ratio": 65.5,
+    "updated": "Mon 09 Nov 18:45",
     "timeline": {
      "labels": [
       "Fri 12AM",
@@ -8865,7 +8865,9 @@
       "Sun 9PM",
       "Mon 12AM",
       "Mon 3AM",
-      "Mon 6AM"
+      "Mon 6AM",
+      "Mon 3PM",
+      "Mon 6PM"
      ],
      "peak": [
       47,
@@ -8894,7 +8896,9 @@
       2288,
       153,
       61,
-      20
+      20,
+      12,
+      32
      ],
      "avg": [
       34,
@@ -8923,7 +8927,9 @@
       1508,
       68,
       28,
-      17
+      17,
+      8,
+      30
      ]
     },
     "languages": [
@@ -8937,7 +8943,7 @@
      ],
      [
       "Portuguese",
-      19
+      20
      ],
      [
       "French",
@@ -13348,6 +13354,20 @@
     ]
    },
    "press": [
+    {
+     "edition": "fall2026",
+     "date": "2026-11-09",
+     "outlet": "KeenGamer",
+     "domain": "keengamer.com",
+     "headline": "Where Dolls Hang Shows Its Doll Horror at ENDIX Expo 2026",
+     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOa2RjbFlTdS1VbFVHNEY5blM2VDZtS2VEYUlBd195dnhUS2tWYU51LVZYZF9saTF3RjBBNW1wRXg3WTN5TUJXLU1MOG1nVG5NbWZGMlluNi03S1BXSUMzUDRTbmF0NFBFRmdSRVQtSXNSXzZ2aklWR0JqM1lvUWNlZjB2d1BFaGEwZElvNUJmNklXRHhhUG15T0hhWXUyRXc?oc=5",
+     "country": "International",
+     "kind": "article",
+     "x_views": 0,
+     "source": "google-news-US",
+     "language": "English",
+     "uvm": 0
+    },
     {
      "edition": "fall2026",
      "date": "2026-11-08",
