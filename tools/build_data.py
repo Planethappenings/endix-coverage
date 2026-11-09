@@ -306,6 +306,26 @@ def social(tab, platform):
 tiktok = social('TikTok', 'tiktok')
 instagram = social('Instagram', 'instagram')
 
+# Manual TikTok / Instagram / YouTube links with views typed in (e.g. from a campaign report) are used as a fallback
+# when the collector has no data for that post yet. Collector data always wins once it exists.
+def post_id(u):
+    m = re.search(r'/video/(\d+)', u) or re.search(r'(?:v=|shorts/|youtu\.be/)([\w-]{11})', u) or re.search(r'/(?:p|reels?)/([\w-]+)', u)
+    return m.group(1) if m else u
+for r in table('Links_Manual'):
+    url = (r.get('URL') or '').strip(); plat = (r.get('Platform') or '').lower(); ed = r.get('Edition (optional)') or ''
+    views = num(r.get('Views (only for Facebook/other)'))
+    if plat not in ('tiktok', 'instagram', 'youtube') or not ed or not views: continue
+    lst = {'tiktok': tiktok, 'instagram': instagram, 'youtube': youtube}[plat]
+    if any(post_id(i['url']) == post_id(url) for i in lst): continue
+    m = re.search(r'20\d\d-\d\d-\d\d', r.get('Note') or ''); date = m.group(0) if m else ''
+    who = r.get('Creator', '')
+    if plat == 'youtube':
+        youtube.append({'edition': ed, 'title': (r.get('Note') or '').split(' | ')[-1] if ' | ' in (r.get('Note') or '') else who + ' on YouTube',
+                        'channel': who, 'url': url, 'date': date, 'views': views, 'likes': 0, 'type': '', 'category': 'creator'})
+    else:
+        lst.append({'edition': ed, 'platform': plat, 'creator': who, 'name': who, 'url': url, 'date': date,
+                    'views': views, 'likes': 0, 'caption': '', 'followers': 0})
+
 # ---------------------------------------------------------------- X comments curated by Grok (Webb_Kommentarer, visa = TRUE)
 comments, press_quotes = [], []
 for r in table('Webb_Kommentarer_Publik'):

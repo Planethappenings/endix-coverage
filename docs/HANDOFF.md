@@ -253,6 +253,7 @@ The scheduled task is **"Endix coverage report – daily update"**. It runs at 0
 - **URL dedupe must keep YouTube's `v=` parameter.** Otherwise every YouTube link collapses into one.
 - **Apps Script has a 6-minute limit per run.** Never wait for Apify runs; start them and collect the results later.
 - **The sheet dump is too large to read inline.** The connector saves it to a tool-results file, which gets copied to `data/sheet_dump.json`.
+- **Manual social links with views:** a TikTok/Instagram/YouTube row in Links_Manual with a number in "Views" is shown with that number until the collector has its own data for the post (used for campaign reports, e.g. Jestr). A date (YYYY-MM-DD) in Note becomes the post date.
 - **Twitch:** `twitch_live()` in build_data.py builds the Twitch card from the Twitch_Snapshots tab (one row per live stream every 15 min, sheet time zone America/Los_Angeles, shown in Stockholm time). A static `twitch` block in CONFIG (like Spring's SullyGnome numbers) overrides it. Twitch_Snapshots must be in the daily dump ranges.
 - **Captions in the sheet are cut at 300 characters.** So a post can mention Endix after the cut. `social()` also trusts the collector's `Mentions Endix` column, which checked the full caption. Block noise accounts in `social_block_handles`.
 - **Grok writes title rows above its headers.** `table(..., header_hint=...)` finds the real header row.
