@@ -52,6 +52,11 @@ a { color: inherit; }
     radial-gradient(ellipse 60% 70% at 85% 30%, rgba(200,146,42,.16), transparent 70%),
     radial-gradient(ellipse 40% 50% at 70% 90%, rgba(143,29,33,.22), transparent 70%),
     var(--bg); }
+.hero-art { position: absolute; inset: 0; background: url('img/keyart.webp') 78% center / cover no-repeat; }
+.hero-art::after { content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, rgba(7,6,10,.97) 42%, rgba(7,6,10,.55) 66%, rgba(7,6,10,.12) 100%),
+              linear-gradient(to top, var(--bg) 0%, transparent 28%); }
+.hero-logo { width: min(300px, 70vw); height: auto; display: block; margin-bottom: 26px; filter: drop-shadow(0 4px 18px rgba(0,0,0,.6)); }
 .stars { position: absolute; inset: 0; pointer-events: none; opacity: .55;
   background-image:
     radial-gradient(1px 1px at 12% 22%, #fff, transparent), radial-gradient(1px 1px at 68% 14%, #fff, transparent),
@@ -75,6 +80,13 @@ section { padding-block: 72px; }
 .eyebrow { font-family: var(--font-d); font-size: 14px; letter-spacing: .3em; color: var(--gold); margin-bottom: 10px; }
 .section-title { font-family: var(--font-d); font-weight: 400; font-size: clamp(34px, 5vw, 54px); line-height: 1; margin-bottom: 18px; }
 .section-lead { color: var(--text-2); max-width: 640px; margin-bottom: 36px; }
+
+/* EXPANSION */
+.exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.exp-card { background: var(--bg-card); border: 1px solid var(--line); border-top: 2px solid var(--gold); padding: 22px 22px 20px; }
+.exp-k { font-family: var(--font-d); font-size: 13px; letter-spacing: .24em; color: var(--gold); margin-bottom: 6px; }
+.exp-h { font-family: var(--font-d); font-size: 30px; line-height: 1; margin-bottom: 8px; }
+.exp-t { font-size: 13.5px; color: var(--text-2); }
 
 /* COMPARE */
 .compare { background: var(--bg-surface); border-block: 1px solid var(--line); }
@@ -192,6 +204,11 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   .spark-inner { grid-template-columns: 1fr; gap: 28px; }
 }
 @media (max-width: 720px) {
+  .hero-art { position: relative; inset: auto; aspect-ratio: 596 / 335; background-size: cover; background-position: center; }
+  .hero-art::after { background: linear-gradient(to top, var(--bg) 0%, transparent 45%); }
+  .hero-content { padding-block: 12px 44px; }
+  .hero-logo { display: none; }
+  .exp-grid { grid-template-columns: 1fr; }
   section { padding-block: 56px; }
   .stat { min-width: calc(50% - 7px); flex: 1 1 calc(50% - 7px); }
   .why-grid, .method-grid, .timeline { grid-template-columns: 1fr; }
@@ -225,8 +242,10 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 </header>
 
 <div class="hero">
+  <div class="hero-art" aria-hidden="true"></div>
   <div class="stars" aria-hidden="true"></div>
   <div class="inner hero-content">
+    <img class="hero-logo" src="https://roguetrader.owlcat.games/assets/preorder/images/RTlogo.png" alt="Warhammer 40,000: Rogue Trader" onerror="this.remove()">
     <div class="hero-kicker">Launch Campaign, December 8</div>
     <div class="hero-game">Warhammer 40,000: Rogue Trader<br>Processional of the Damned</div>
     <h1>Same Budget.<br><span>More Views.</span></h1>
@@ -239,6 +258,19 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
     </div>
   </div>
 </div>
+
+<section id="expansion">
+  <div class="inner">
+    <div class="eyebrow">The Fourth Story Expansion</div>
+    <h2 class="section-title">Processional Of The Damned</h2>
+    <p class="section-lead">Beyond the Koronus Expanse, a spiral of dead vessels and barren worlds circles the collapsing Reaper's Eye. Lost expeditions, madness and the warp: the kind of story our creators know how to sell.</p>
+    <div class="exp-grid">
+      <div class="exp-card"><div class="exp-k">New Companion</div><div class="exp-h">Stella</div><p class="exp-t">A Miraculist of the Order of Saint Cognatius whose visions guide the journey. A character creators can build a story around.</p></div>
+      <div class="exp-card"><div class="exp-k">New Archetype</div><div class="exp-h">The Zealot</div><p class="exp-t">Available to Stella, mercenaries and the Rogue Trader. Build guides and first impressions write themselves.</p></div>
+      <div class="exp-card"><div class="exp-k">New Mystery</div><div class="exp-h">The Reaper's Eye</div><p class="exp-t">Lost ships, hallucinations and secrets to uncover. Made for Easter egg hunters and lore explainers.</p></div>
+    </div>
+  </div>
+</section>
 
 <section class="compare" id="compare">
   <div class="inner">
