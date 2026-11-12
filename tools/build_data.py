@@ -84,6 +84,8 @@ CONFIG = {
 
 # ---------------------------------------------------------------- load
 dump = json.load(open(DUMP))
+if 'sheets' not in dump and isinstance(dump.get('content'), dict):
+    dump = dump['content']  # connector wraps the response in {content: ...}
 S = {}
 for s in dump['sheets']:
     S[s['properties']['title']] = [[c.get('formattedValue', '') for c in (r.get('values') or [])]
