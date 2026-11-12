@@ -52,13 +52,9 @@ a { color: inherit; }
     radial-gradient(ellipse 60% 70% at 85% 30%, rgba(200,146,42,.16), transparent 70%),
     radial-gradient(ellipse 40% 50% at 70% 90%, rgba(143,29,33,.22), transparent 70%),
     var(--bg); }
-.hero-art { position: absolute; inset: 0;
-  /* Steam's high resolution key art (3840 px), with the smaller copy underneath in case it doesn't load */
-  background:
-    url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2186680/library_hero.jpg') 70% center / cover no-repeat,
-    url('img/keyart.webp') 78% center / cover no-repeat; }
+.hero-art { position: absolute; top: 0; bottom: 0; right: 0; left: 30%; background: url('img/keyart-hd.webp') 48% 30% / cover no-repeat; }
 .hero-art::after { content: ''; position: absolute; inset: 0;
-  background: linear-gradient(90deg, var(--bg) 0%, rgba(7,6,10,.97) 42%, rgba(7,6,10,.55) 66%, rgba(7,6,10,.12) 100%),
+  background: linear-gradient(90deg, var(--bg) 0%, rgba(7,6,10,.85) 22%, rgba(7,6,10,.25) 50%, rgba(7,6,10,.05) 100%),
               linear-gradient(to top, var(--bg) 0%, transparent 28%); }
 .hero-logo { width: min(300px, 70vw); height: auto; display: block; margin-bottom: 26px; filter: drop-shadow(0 4px 18px rgba(0,0,0,.6)); }
 .stars { position: absolute; inset: 0; pointer-events: none; opacity: .55;
@@ -208,10 +204,9 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   .spark-inner { grid-template-columns: 1fr; gap: 28px; }
 }
 @media (max-width: 720px) {
-  .hero-art { position: relative; inset: auto; aspect-ratio: 596 / 335; background-size: cover; background-position: center; }
+  .hero-art { position: relative; inset: auto; left: auto; aspect-ratio: 2000 / 1032; background-size: cover; background-position: 55% 30%; }
   .hero-art::after { background: linear-gradient(to top, var(--bg) 0%, transparent 45%); }
   .hero-content { padding-block: 12px 44px; }
-  .hero-logo { display: none; }
   .exp-grid { grid-template-columns: 1fr; }
   section { padding-block: 56px; }
   .stat { min-width: calc(50% - 7px); flex: 1 1 calc(50% - 7px); }
