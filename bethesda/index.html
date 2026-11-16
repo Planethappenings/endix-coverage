@@ -317,7 +317,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section id="lineup">
   <div class="inner">
     <h2 class="section-title">A Year Full Of Moments</h2>
-    <p class="section-lead">What is announced or expected across Bethesda's worlds next year, and the creator who fits each moment best. Every beat is a reason for players to come back, and a reason for creators to post.</p>
+    <p class="section-lead">What is announced or expected across Bethesda's worlds next year. Every beat is a reason for players to come back, and a reason for creators to post.</p>
     <div class="lineup" id="lineup-grid"></div>
     <p class="note">Based on Bethesda Game Studios' own studio update and public reporting as of November 2026. Dates marked "Date TBA" have not been confirmed by Bethesda and the plan moves with them.</p>
   </div>
@@ -325,7 +325,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 <section id="fans">
   <div class="inner">
-    <h2 class="section-title">15 Years Of Videos Nobody Paid For</h2>
+    <h2 class="section-title">15 Years Of Organic Coverage</h2>
     <p class="section-lead">Every video below is one our creators made on their own, because they love these games. Counted from each channel's full YouTube history: videos with one of your games in the title.</p>
     <div class="bars" id="bars"></div>
     <div class="fans" id="fan-cards"></div>
@@ -438,7 +438,7 @@ document.getElementById('hero-stats').innerHTML = HERO.map(function (s) { return
 
 document.getElementById('lineup-grid').innerHTML = LINEUP.map(function (l) {
   return '<div class="lu"><div class="lu-top"><span class="chip ' + l.cls + '">' + esc(l.when) + '</span></div>' +
-    '<div class="lu-h">' + esc(l.h) + '</div><p class="lu-t">' + esc(l.t) + '</p><div class="lu-who"><b>Best fit:</b> ' + esc(l.who) + '</div></div>';
+    '<div class="lu-h">' + esc(l.h) + '</div><p class="lu-t">' + esc(l.t) + '</p></div>';
 }).join('');
 
 var maxV = Math.max.apply(null, FANS.map(function (f) { return f.views; }));
