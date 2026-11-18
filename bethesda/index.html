@@ -237,6 +237,31 @@ section { padding-block: 72px; }
 .card-total b { font-family: var(--font-d); font-weight: 400; font-size: 26px; letter-spacing: .02em; color: var(--text); }
 .vid-meta em { font-style: normal; display: block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
 
+/* BUDGET */
+.pkg { width: 100%; border-collapse: collapse; border: 1px solid var(--line-strong); }
+.pkg th, .pkg td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.pkg th { font-family: var(--font-d); font-weight: 400; font-size: 14px; letter-spacing: .16em; color: var(--text-3); background: var(--bg-card); }
+.pkg td { font-size: 14px; }
+.pkg td.num, .pkg th.num { text-align: right; white-space: nowrap; }
+.pkg .who { font-family: var(--font-d); font-size: 21px; letter-spacing: .03em; line-height: 1.1; }
+.pkg .what { display: block; font-size: 12.5px; color: var(--text-2); margin-top: 3px; }
+.pkg .views { font-family: var(--font-d); font-size: 22px; color: var(--gold-hi); }
+.pkg tr.sub td { background: var(--bg-card); font-weight: 600; }
+.pkg tr.ads td { background: rgba(111,208,140,.07); }
+.pkg tr.total td { background: var(--gold-dim); border-top: 1px solid var(--gold-border); }
+.pkg tr.total .who, .pkg tr.total .views { color: var(--gold-hi); font-size: 26px; }
+.pkg-wrap { overflow-x: auto; }
+.fallback { display: grid; grid-template-columns: minmax(240px, 320px) 1fr; gap: 48px; align-items: start; margin-top: 44px; }
+.spark-stat { padding: 30px 28px; border: 1px solid var(--gold-border); background: radial-gradient(circle at 30% 20%, rgba(210,155,46,.16), transparent 70%), var(--bg-card); }
+.spark-num { font-family: var(--font-d); font-size: clamp(64px, 8vw, 92px); line-height: .9; color: var(--gold-hi); }
+.spark-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); margin-top: 12px; }
+.fallback-h { font-family: var(--font-d); font-weight: 400; font-size: 32px; letter-spacing: .03em; line-height: 1; margin-bottom: 10px; }
+.fallback-lead { color: var(--text-2); margin-bottom: 20px; max-width: 620px; }
+.steps { list-style: none; display: grid; gap: 12px; counter-reset: s; }
+.steps li { position: relative; padding-left: 44px; color: var(--text-2); font-size: 14.5px; }
+.steps li::before { counter-increment: s; content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: -2px; font-family: var(--font-d); font-size: 22px; color: var(--gold); }
+.steps strong { color: var(--text); font-weight: 600; }
+
 /* METHOD */
 .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .method h3 { font-family: var(--font-d); font-weight: 400; font-size: 24px; letter-spacing: .04em; margin-bottom: 10px; }
@@ -278,6 +303,9 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   .value-grid { grid-template-columns: 1fr; }
   .titles { grid-template-columns: repeat(2, 1fr); }
   .pg { grid-template-columns: 1fr 64px auto; gap: 12px; }
+  .fallback { grid-template-columns: 1fr; gap: 24px; }
+  .pkg th, .pkg td { padding: 12px 10px; }
+  .pkg .who { font-size: 18px; }
   .lineup, .opts, .method-grid, .timeline { grid-template-columns: 1fr; }
   section { padding-block: 56px; }
   .stat { min-width: calc(50% - 7px); flex: 1 1 calc(50% - 7px); }
@@ -390,7 +418,38 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   </div>
 </section>
 
-<section id="roster">
+<section id="budget">
+  <div class="inner">
+    <h2 class="section-title">Budgeting: How One Beat Could Look Like</h2>
+    <p class="section-lead">An example built on a USD 30,000 package, the same setup we recently proposed for a major expansion launch: long-form depth on YouTube, short-form reach on every major platform, and a paid layer on top. Every beat can be scaled up or down.</p>
+    <div class="pkg-wrap">
+      <table class="pkg">
+        <thead><tr><th>Creator and deliverable</th><th class="num">Price (USD)</th><th class="num">Estimated views</th></tr></thead>
+        <tbody id="pkg-body"></tbody>
+      </table>
+    </div>
+    <div class="fallback">
+      <div class="spark-stat">
+        <div class="spark-num">300-450K</div>
+        <div class="spark-label">Estimated targeted views from USD 4,500 in TikTok Spark Ads</div>
+      </div>
+      <div>
+        <h3 class="fallback-h">A Fallback Plan Built In</h3>
+        <p class="fallback-lead">Spark Ads promote the creator's own post, not a separate ad. They also work as a safety net in case view behavior is different than expected.</p>
+        <ol class="steps">
+          <li><strong>Post organically first.</strong> All placements go live as normal creator posts.</li>
+          <li><strong>Check after 48 hours.</strong> Every post is measured against its expected views.</li>
+          <li><strong>Fallback if views are lower than expected.</strong> The Spark Ads budget goes behind the posts that are below target to lift them up.</li>
+          <li><strong>Boost if views are higher than expected.</strong> The budget goes behind the winners to push them even further.</li>
+          <li><strong>Report on every view.</strong> Creators share Spark authorization codes, and results come straight from TikTok Ads Manager.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="note">All view figures are estimates based on each creator's plain 30-day averages and 2026 TikTok ad benchmarks of USD 10 to 15 per 1,000 impressions. Actual results will vary and are not guaranteed. David Jaffe and Ettnix can be added to any beat.</p>
+  </div>
+</section>
+
+<section class="alt" id="roster">
   <div class="inner">
     <h2 class="section-title">Eight Creators, Real Numbers</h2>
     <p class="section-lead one-line">Plain average views per video over the last 30 days, counting every video. Nothing removed at the top or the bottom.</p>
@@ -402,7 +461,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   </div>
 </section>
 
-<section class="method alt" id="method">
+<section class="method" id="method">
   <div class="inner">
     <h2 class="section-title">How We Measured</h2>
     <div class="method-grid">
@@ -503,6 +562,11 @@ var rosterHtml = '<div class="tl-avs">' + CREATORS.map(function (c) {
   return '<div class="avatar" title="' + esc(c.name) + '"><div class="avatar-fb">' + esc(c.initials) + '</div><img src="' + esc(c.avatar) + '" alt="" loading="lazy" onerror="this.remove()"></div>';
 }).join('') + '</div><span>All ' + CREATORS.length + ' creators</span>';
 document.querySelectorAll('.tl-roster').forEach(function (el) { el.innerHTML = rosterHtml; });
+document.getElementById('pkg-body').innerHTML = BUDGET.map(function (p) {
+  var cls = p.total ? 'total' : p.sub ? 'sub' : p.ads ? 'ads' : '';
+  return '<tr class="' + cls + '"><td><span class="who">' + esc(p.who) + '</span>' + (p.what ? '<span class="what">' + esc(p.what) + '</span>' : '') + '</td>' +
+    '<td class="num">' + n(p.price) + '</td><td class="num"><span class="views">' + esc(p.views) + '</span></td></tr>';
+}).join('');
 document.getElementById('method-list').innerHTML = METHOD.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('');
 </script>
 <script src="edit.js"></script>

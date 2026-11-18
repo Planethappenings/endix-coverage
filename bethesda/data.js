@@ -204,6 +204,19 @@ var CREATORS = [
   }
 ];
 
+// Example beat: the USD 30,000 package structure, with views from this page's plain 30-day averages
+var BUDGET = [
+  { who: 'RageGamingVideos', what: '2 dedicated long-form YouTube videos', price: 12000, views: '~140,000' },
+  { who: 'Captain Eggcellent', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 5500, views: '~229,000' },
+  { who: 'Retro For The First Time', what: 'Short on all 4 platforms', price: 2000, views: '~64,000' },
+  { who: 'Cloudual', what: 'Short on all 4 platforms', price: 2000, views: '~157,000' },
+  { who: 'Gem Gaming Network', what: 'Short on all 4 platforms', price: 2000, views: '~40,000' },
+  { who: 'Games Explorer', what: 'Short on all 4 platforms', price: 2000, views: '~31,000' },
+  { sub: true, who: 'Organic subtotal', price: 25500, views: '~661,000' },
+  { ads: true, who: 'TikTok Spark Ads', what: 'Gaming interest, men 18 to 35, US and UK. Also the fallback plan.', price: 4500, views: '~300,000 to 450,000' },
+  { total: true, who: 'Total', price: 30000, views: '~960,000 to 1.1M' }
+];
+
 var METHOD = [
   'Video history: each channel\'s full YouTube upload history, pulled on November 18, 2026. A video counts when one of your games is named in its title.',
   'Bethesda\'s creator program also lists Xbox Game Studios titles, so Grounded, Grounded 2 and The Outer Worlds 2 are counted too.',
