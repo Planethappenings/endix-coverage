@@ -1,26 +1,44 @@
-// Numbers: YouTube Data API, each channel's full upload history, pulled November 16, 2026.
+// Numbers: YouTube Data API, each channel's full upload history, pulled November 18, 2026.
 var HERO = [
-  ['71M', 'Views on videos covering your games'],
+  ['74M', 'Views on videos covering your games'],
   ['8', 'Creators'],
   ['200M+', 'Avg monthly impressions'],
   ['2011', 'Covering your games since']
 ];
 
 var VALUE = [
-  { num: '71M', h: 'Views Already Earned', t: '381 YouTube videos covering your games, made without a brief or a budget. 190 of them have one of your games in the title, the rest feature them next to other games.' },
+  { num: '74M', h: 'Views Already Earned', t: '448 YouTube videos covering your games, made without a brief or a budget. 253 of them have one of your games in the title, the rest feature them next to other games.' },
   { num: '~780K', h: 'Estimated Views Per Round', t: 'One long-form video each from Captain Eggcellent and RageGamingVideos, plus one video on every platform from the whole roster, at their current 30-day averages.' },
   { num: '50%', h: 'Of The Audience Is In The US', t: 'About half of all views come from the United States, followed by Canada, the United Kingdom and Western Europe. The markets where your games sell.' }
 ];
 
 var TITLES = [
-  { name: 'Fallout', img: 'fallout76.webp', pos: '74% 40%', videos: 30, views: 8075354 },
-  { name: 'Starfield', img: 'starfield.webp', pos: '50% 100%', size: 'auto 155%', videos: 58, views: 2133936 },
-  { name: 'The Elder Scrolls', img: 'skyrim.webp', pos: '50% 10%', size: 'auto 150%', videos: 32, views: 1739292 },
-  { name: 'DOOM', img: 'doom.webp', pos: '50% 8%', size: 'auto 190%', videos: 21, views: 1684134 },
-  { name: 'Dishonored, Prey, Wolfenstein, Indiana Jones And More', videos: 49, views: 6926368 }
+  { name: 'Fallout', img: 'fallout76.webp', pos: '74% 40%', videos: 29, views: 8073925 },
+  { name: 'Grounded', img: 'grounded2.webp', pos: '50% 100%', size: 'auto 175%', videos: 64, views: 3541989 },
+  { name: 'Starfield', img: 'starfield.webp', pos: '50% 100%', size: 'auto 155%', videos: 58, views: 2134057 },
+  { name: 'The Elder Scrolls', img: 'skyrim.webp', pos: '50% 10%', size: 'auto 150%', videos: 32, views: 1739356 },
+  { name: 'DOOM', img: 'doom.webp', pos: '50% 8%', size: 'auto 190%', videos: 21, views: 1684231 },
+  { name: 'Dishonored, Prey, Wolfenstein, Indiana Jones And More', videos: 49, views: 6926566 }
 ];
 
-var FEAT_NOTE = 'Videos with the game in the title: 190 YouTube videos and 17.7 million views, plus 2.9 million views on the same videos on TikTok and Instagram. On top of that come 191 compilation videos where your games feature next to others, with 50.5 million more views. Together: 71 million views.';
+// YouTube only, videos with the game in the title. A video that names several games counts for each of them.
+var PERGAME = [
+  ['Starfield', 59, 2491783],
+  ['Fallout 76', 11, 2278914],
+  ['Grounded', 22, 1916896],
+  ['Wolfenstein series', 3, 1745233],
+  ['Grounded 2', 42, 1625093],
+  ['Fallout: New Vegas', 6, 1518695],
+  ['Fallout 3', 6, 1466137],
+  ['Fallout 4', 8, 1099749],
+  ['The Elder Scrolls V: Skyrim', 21, 735224],
+  ['The Elder Scrolls Online', 3, 419704],
+  ['DOOM: The Dark Ages', 10, 411221],
+  ['DOOM Eternal', 2, 277319],
+  ['The Elder Scrolls VI', 1, 10437]
+];
+
+var FEAT_NOTE = 'Videos with the game in the title: 253 YouTube videos and 21.2 million views, plus 2.9 million views on the same videos on TikTok and Instagram. On top of that come 195 compilation videos where your games feature next to others, with 50.3 million more views. Together: 74.4 million views.';
 
 var LINEUP = [
   { when: '2027', cls: 'set', h: 'Fallout Turns 30', t: 'Three decades of the wasteland, with Fallout Day celebrated live in Washington, D.C. The biggest reason in years to look back at the whole series.', who: 'Captain Eggcellent, 28 Fallout videos and 8M views' },
@@ -28,7 +46,7 @@ var LINEUP = [
   { when: 'Date TBA', cls: 'tba', h: 'Fallout 3 And New Vegas Remastered', t: 'Both remasters are confirmed to be in development. No dates announced yet.', who: 'Captain Eggcellent and Cloudual, secrets and first-time playthroughs' },
   { when: '2027', cls: 'set', h: 'Starfield: Starborn', t: 'New Starborn content as Starfield enters Year 3, now with PlayStation 5 players on board.', who: 'RageGamingVideos and David Jaffe, 43 Starfield videos between them' },
   { when: 'Ongoing', cls: '', h: 'The Elder Scrolls', t: 'The Elder Scrolls Online continues in seasons, Oblivion Remastered keeps finding new players and The Elder Scrolls VI is the studio\'s main development focus.', who: 'RageGamingVideos and Retro For The First Time' },
-  { when: 'Ongoing', cls: '', h: 'DOOM, Indiana Jones And New Announcements', t: 'DOOM: The Dark Ages and its Revelations DLC, Indiana Jones and whatever gets announced next. Pre-release hype that turns into wishlists and pre-orders.', who: 'Games Explorer, Gem Gaming Network and Ettnix' }
+  { when: 'Ongoing', cls: '', h: 'DOOM, Grounded 2, The Outer Worlds 2 And More', t: 'DOOM: The Dark Ages and its Revelations DLC, Grounded 2 and The Outer Worlds 2 from Xbox Game Studios, Indiana Jones and whatever gets announced next. Pre-release hype that turns into wishlists and pre-orders.', who: 'Games Explorer, Gem Gaming Network and Ettnix' }
 ];
 
 var AV = {
@@ -45,9 +63,9 @@ var AV = {
 var FANS = [
   {
     name: 'Captain Eggcellent', initials: 'CE', avatar: AV.cap, meta: '982K subscribers / main and Shorts channel',
-    videos: 72, views: 18540966, viewsLabel: 'Views, all platforms', avg: 217862, since: '2015',
-    quote: 'The Easter egg king has been digging through your games since 2015: every Fallout, DOOM, Dishonored, Prey, Starfield and more. A further 112 of his compilation videos feature your games, with 49.9M more views.',
-    games: [['Fallout', 28], ['Dishonored, Prey, Deathloop', 13], ['DOOM', 8], ['Starfield', 6], ['The Elder Scrolls', 6], ['Wolfenstein', 3], ['Others', 8]],
+    videos: 74, views: 19904495, viewsLabel: 'Views, all platforms', avg: 230399, since: '2015',
+    quote: 'The Easter egg king has been digging through your games since 2015: every Fallout, DOOM, Dishonored, Prey, Starfield, Grounded and more. A further 113 of his compilation videos feature your games, with 49.7M more views.',
+    games: [['Fallout', 28], ['Dishonored, Prey, Deathloop', 13], ['DOOM', 8], ['Starfield', 6], ['The Elder Scrolls', 6], ['Wolfenstein', 3], ['Grounded', 2], ['Others', 8]],
     vids: [
       { id: 'OOdx44v11_E', t: 'You\'ll only understand this if you\'re really STUPID Fallout New Vegas Easter egg!', views: 1990953, d: 'Jan 2026', short: true, on: 'YouTube + TikTok + Instagram' },
       { id: 'Oh-MDYH_83c', t: 'I DIDN\'T know you could do this in Wolfenstein 2 Easter egg!', views: 1718284, d: 'Dec 2025', short: true, on: 'YouTube' },
@@ -59,23 +77,23 @@ var FANS = [
   },
   {
     name: 'RageGamingVideos', initials: 'RG', avatar: AV.rage, meta: '1.42M subscribers',
-    videos: 39, views: 1508174, avg: 38671, since: '2011',
-    quote: 'First video on November 11, 2011, the day Skyrim launched. Since then: guides and series for Starfield, Oblivion Remastered, DOOM: The Dark Ages and The Elder Scrolls Online.',
-    games: [['The Elder Scrolls', 20], ['Starfield', 10], ['DOOM', 6], ['Others', 3]],
+    videos: 100, views: 3686559, avg: 36866, since: '2011',
+    quote: 'First video on November 11, 2011, the day Skyrim launched. Since then: guides and series for Starfield, Oblivion Remastered, DOOM: The Dark Ages, The Elder Scrolls Online and 61 videos on Grounded and Grounded 2.',
+    games: [['Grounded', 61], ['The Elder Scrolls', 20], ['Starfield', 10], ['DOOM', 6], ['Others', 3]],
     vids: [
       { id: 'zqeiqRmueMc', t: 'Is Elder Scrolls Online Worth Playing in 2021? (Level 1 to Endgame)', views: 379309, d: 'Aug 2020', on: 'YouTube' },
       { id: 'PR5lGcwA8fg', t: 'Starfield - NEW 150K XP A MINUTE & INFINITE CREDITS & RESOURCES...', views: 162946, d: 'Sep 2023', on: 'YouTube' },
-      { id: 'TlVdmln8vCw', t: 'Starfield - How to Get 60K XP A MINUTE & LEVEL UP FAST...', views: 130488, d: 'Sep 2023', on: 'YouTube' },
+      { id: 'fXayr3s4Y64', t: 'Grounded 2 - Don\'t Miss THIS - Get OP Early Fast - Best Weapon...', views: 142842, d: 'Jul 2025', on: 'YouTube' },
       { id: 'lLbBTtXb8-Y', t: 'Starfield - 14 HUGE Mistakes to Avoid & IMPORTANT Things...', views: 105416, d: 'Sep 2023', on: 'YouTube' },
       { id: 'bZg9J6oyL_I', t: 'Oblivion Remastered - Don\'t Miss THIS - Get OP Early Fast...', views: 68936, d: 'Apr 2025', on: 'YouTube' },
-      { id: '2xf-YkAtzUk', t: 'RIP AND TEAR - Pro and Noob VS Doom the Dark Ages!', views: 23429, d: 'May 2025', on: 'YouTube' }
+      { id: '-87Ob5lElTA', t: 'WE INSTANTLY STARTED A WAR - Grounded VS Pro and Noob!', views: 50721, d: '', on: 'YouTube' }
     ]
   },
   {
     name: 'David Jaffe', initials: 'DJ', avatar: AV.jaffe, meta: '63.6K subscribers / creator of God of War',
-    videos: 58, views: 370169, avg: 6382, since: '2020',
+    videos: 58, views: 369277, avg: 6367, since: '2020',
     quote: 'The designer of God of War and co-creator of Twisted Metal talks about your games as a peer: 33 videos on Starfield alone, plus DOOM, Indiana Jones and a live show with John Romero.',
-    games: [['Starfield', 33], ['Indiana Jones', 7], ['DOOM', 5], ['Quake', 2], ['Others', 11]],
+    games: [['Starfield', 33], ['Indiana Jones', 7], ['DOOM', 5], ['Quake', 2], ['Grounded 2', 1], ['Others', 10]],
     vids: [
       { id: 'hIQviU4zprU', t: 'Doom, Quake, Wolf 3D (+ many more!) LEGEND John Romero LIVE!', views: 21389, d: 'Jun 2021', on: 'YouTube' },
       { id: 'VMXipzjSGD8', t: 'STARFIELD Review and Narrative Discussion', views: 17562, d: 'Sep 2023', on: 'YouTube' },
@@ -85,19 +103,19 @@ var FANS = [
   },
   {
     name: 'Retro For The First Time', initials: 'RF', avatar: AV.retro, meta: '68.2K subscribers, 160K on TikTok',
-    videos: 16, views: 117487, avg: 7343, since: '2018',
-    quote: 'Daily gaming news on camera. Starfield and The Elder Scrolls are regulars in his feed.',
+    videos: 16, views: 117503, avg: 7344, since: '2018',
+    quote: 'Daily gaming news on camera. Starfield and The Elder Scrolls are regulars in his feed, including the first reports on The Elder Scrolls VI.',
     games: [['Starfield', 8], ['The Elder Scrolls', 3], ['DOOM', 2], ['The Evil Within', 3]],
     vids: [
       { id: 'uRR1b3s9W9Y', t: 'Starfield on PS5 is confirmed .. and delayed', views: 23555, d: 'Aug 2025', short: true, on: 'YouTube' },
       { id: 'FJX5VZegPTQ', t: 'Starfield is an Xbox exclusive thanks to Sony', views: 14618, d: 'Jun 2023', short: true, on: 'YouTube' },
       { id: 'WK8EePYeKtM', t: 'I was a guest star in starfield', views: 6880, d: 'Sep 2023', short: true, on: 'YouTube' },
-      { id: '5obeLTJHR9I', t: 'Starfield coming to Nintendo Switch 2 with a huge update', views: 6851, d: 'Dec 2025', short: true, on: 'YouTube' }
+      { id: 'BcaJ7Fvt4Vk', t: 'Leaker says Elder Scrolls 6 is titled Sentinel', views: 10437, d: '', short: true, on: 'YouTube' }
     ]
   },
   {
     name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: '16.6K subscribers',
-    videos: 5, views: 22288, avg: 4458, since: '2024',
+    videos: 5, views: 22290, avg: 4458, since: '2024',
     quote: 'Played Skyrim for the very first time on camera. Shares co-op and PC games, strongest on Instagram and Facebook.',
     games: [['The Elder Scrolls', 3], ['Indiana Jones', 1], ['Starfield', 1]],
     vids: [
@@ -176,9 +194,10 @@ var CREATORS = [
 ];
 
 var METHOD = [
-  'Video history: each channel\'s full YouTube upload history, pulled on November 16, 2026. A video counts when one of your games is named in its title.',
+  'Video history: each channel\'s full YouTube upload history, pulled on November 18, 2026. A video counts when one of your games is named in its title.',
+  'Bethesda\'s creator program also lists Xbox Game Studios titles, so Grounded, Grounded 2 and The Outer Worlds 2 are counted too.',
   'Where the same video was also posted on TikTok and Instagram, those views are added and the video is marked with its platforms. So far this is matched for Captain Eggcellent\'s latest 250 posts per platform.',
-  'Compilation videos, where a game is only named in the video\'s tags, are counted separately.',
+  'Compilation videos, where a game is only named in the video\'s tags, are counted separately. Recommendation Shorts that only use your games as a reference for another game are not counted.',
   'Roster averages: plain average views per video over the last 30 days. Every video counts. Nothing is removed at the top or the bottom. "All platforms" adds up each platform\'s average for one video posted everywhere.',
   'Estimated views are estimates, not guarantees. Single videos can land above or below. Facebook reports rounded play counts.'
 ];
