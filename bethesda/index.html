@@ -162,7 +162,15 @@ section { padding-block: 72px; }
 
 /* PLAN */
 .timeline { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line-strong); }
-.tl { padding: 22px 20px; border-right: 1px solid var(--line); background: var(--bg-card); }
+.tl { padding: 22px 20px; border-right: 1px solid var(--line); background: var(--bg-card); display: flex; flex-direction: column; }
+.tl-roster { margin-top: auto; padding-top: 16px; display: flex; align-items: center; gap: 10px; }
+.tl ul + .tl-roster { margin-top: auto; }
+.tl ul { margin-bottom: 18px; }
+.tl-avs { display: flex; }
+.tl-avs .avatar { width: 28px; height: 28px; border-width: 1.5px; margin-left: -8px; }
+.tl-avs .avatar:first-child { margin-left: 0; }
+.tl-avs .avatar-fb { font-size: 11px; }
+.tl-roster span { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); line-height: 1.3; }
 .tl:last-child { border-right: 0; }
 .tl.peak { background: var(--gold-dim); }
 .tl-when { font-family: var(--font-d); font-size: 15px; letter-spacing: .18em; color: var(--gold); margin-bottom: 6px; }
@@ -357,27 +365,27 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section class="alt" id="plan">
   <div class="inner">
     <h2 class="section-title">The Strategy</h2>
-    <p class="section-lead">A proposed rollout that follows Bethesda's calendar. Each wave mixes long-form depth with short-form reach, and moves with the real release dates.</p>
+    <p class="section-lead">A proposed rollout that follows Bethesda's calendar. Every creator on the roster plays all of your games, so every beat activates all eight of them, each in their own format, across YouTube, TikTok, Instagram, Facebook and Twitch. The plan moves with the real release dates.</p>
     <div class="timeline">
       <div class="tl"><div class="tl-when">Q1 to Spring</div><div class="tl-head">Fallout 76 Updates</div><ul>
-        <li><b>RageGamingVideos:</b> A series of dedicated YouTube guides on what's new and how to get the most out of it.</li>
-        <li><b>Captain Eggcellent:</b> Easter Eggs and hidden details from Fallout 76 and the classic games. Both long-form and Shorts.</li>
-        <li><b>Retro For The First Time:</b> Covering every announcement as it lands.</li>
-      </ul></div>
+        <li><b>Guides:</b> A series of dedicated YouTube guides on what's new and how to get the most out of it.</li>
+        <li><b>Easter eggs:</b> Hidden details from Fallout 76 and the classic games, both long-form and Shorts.</li>
+        <li><b>News:</b> Covering every announcement as it lands.</li>
+      </ul><div class="tl-roster"></div></div>
       <div class="tl"><div class="tl-when">Summer</div><div class="tl-head">Raven Rock And The Showcase</div><ul>
-        <li><b>Fallout 76: Raven Rock.</b> Launch guides and "Pro and Noob" style long-form from RageGamingVideos. More ideas to explore: Top 10 Things To Know About Fallout 76, or unique approaches such as "I played Fallout 76 without guns".</li>
-        <li><b>Showcase season.</b> Fast reaction Shorts on news, trailers and dates from Retro, Cloudual, Games Explorer and Gem Gaming.</li>
-        <li><b>Starfield.</b> Year 3 updates, builds and Starborn build-up. Games Explorer brings awareness, builds hype and wishlists ahead of every release.</li>
-      </ul></div>
+        <li><b>Fallout 76: Raven Rock.</b> Launch guides and "Pro and Noob" style long-form. More ideas to explore: Top 10 Things To Know About Fallout 76, or unique approaches such as "I played Fallout 76 without guns".</li>
+        <li><b>Showcase season.</b> Fast reaction Shorts on news, trailers and dates.</li>
+        <li><b>Starfield.</b> Year 3 updates, builds and Starborn build-up, bringing awareness, hype and wishlists ahead of every release.</li>
+      </ul><div class="tl-roster"></div></div>
       <div class="tl"><div class="tl-when">Autumn</div><div class="tl-head">Starborn And Remasters</div><ul>
-        <li><b>Starfield: Starborn.</b> RageGamingVideos best-start, XP and beginner guides, the format that already pulled 100K+ per video at Starfield's launch.</li>
+        <li><b>Starfield: Starborn.</b> Best-start, XP and beginner guides, the format that already pulled 100K+ per video at Starfield's launch.</li>
         <li><b>Fallout 3 and New Vegas Remastered</b> when dated: first impressions, then and now comparisons, and first-time playthroughs.</li>
-      </ul></div>
+      </ul><div class="tl-roster"></div></div>
       <div class="tl peak"><div class="tl-when">Fallout 30</div><div class="tl-head">The Anniversary</div><ul>
-        <li><b>Captain Eggcellent tentpole:</b> 30 years of Fallout secrets, the format behind his biggest Bethesda videos.</li>
-        <li><b>Fallout Day and the anniversary event</b> covered across YouTube, TikTok, Instagram and Facebook by the whole roster.</li>
-        <li><b>The Elder Scrolls VI</b> news whenever it drops, with David Jaffe's designer view on the big moments.</li>
-      </ul></div>
+        <li><b>Tentpole video:</b> 30 years of Fallout secrets, the format behind the roster's biggest Bethesda videos.</li>
+        <li><b>Fallout Day and the anniversary event</b> covered across YouTube, TikTok, Instagram and Facebook.</li>
+        <li><b>The Elder Scrolls VI</b> news whenever it drops, with a game designer's view on the big moments.</li>
+      </ul><div class="tl-roster"></div></div>
     </div>
   </div>
 </section>
@@ -503,6 +511,10 @@ document.getElementById('grid').innerHTML = CREATORS.map(function (c) {
     }).join('') + '</div><a class="kit" href="' + esc(c.kit) + '" target="_blank" rel="noopener">Media Kit <svg class="icon"><use href="#i-arrow"/></svg></a></div></article>';
 }).join('');
 
+var rosterHtml = '<div class="tl-avs">' + CREATORS.map(function (c) {
+  return '<div class="avatar" title="' + esc(c.name) + '"><div class="avatar-fb">' + esc(c.initials) + '</div><img src="' + esc(c.avatar) + '" alt="" loading="lazy" onerror="this.remove()"></div>';
+}).join('') + '</div><span>All ' + CREATORS.length + ' creators</span>';
+document.querySelectorAll('.tl-roster').forEach(function (el) { el.innerHTML = rosterHtml; });
 document.getElementById('method-list').innerHTML = METHOD.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('');
 </script>
 <script src="edit.js"></script>
