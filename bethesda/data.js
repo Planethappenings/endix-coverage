@@ -8,7 +8,7 @@ var HERO = [
 
 var VALUE = [
   { num: '74M+', h: 'Views Already Earned', t: '451 YouTube videos covering your games, made without a brief or a budget. 256 of them are about one of your games, the rest feature them next to other games.' },
-  { num: '~780K', h: 'Estimated Views Per Beat', t: 'One beat consists of one long-form video from Captain Eggcellent and RageGamingVideos, plus one short across all platforms from the whole roster. Views based on their current 30-day averages.' },
+  { num: '~770K', h: 'Estimated Views Per Beat', t: 'One beat consists of one long-form video from Captain Eggcellent and RageGamingVideos, plus one short across all platforms from the whole roster. Views based on their current 30-day averages.' },
   { num: '50%', h: 'Of The Audience Is In The US', t: 'About half of all views come from the United States, followed by Canada, the United Kingdom and Western Europe. The markets where your games sell.' }
 ];
 
@@ -141,57 +141,57 @@ var FANS = [
 var CREATORS = [
   {
     country: 'uk', name: 'Captain Eggcellent', initials: 'CE', avatar: AV.cap, meta: 'United Kingdom / 982K subscribers',
-    hook: 'The Easter egg king. Long-form deep dives at 181K views per video, plus Shorts on four platforms.',
-    stats: [['45K', 'YT Shorts'], ['61K', 'TikTok'], ['95K', 'Instagram'], ['27K', 'Facebook']],
-    total: ['229K', 'Per short, all platforms'],
+    hook: 'The Easter egg king. Long-form deep dives at 194K views per video, plus Shorts on four platforms.',
+    stats: [['48K', 'YT Shorts'], ['56K', 'TikTok'], ['105K', 'Instagram'], ['28K', 'Facebook']],
+    total: ['237K', 'Per short, all platforms'],
     kit: 'https://july.bio/CaptainEggcellent',
     channels: [['YouTube', 'https://www.youtube.com/@CaptainEggcellent'], ['Shorts', 'https://www.youtube.com/@captaineggcellentbutshorter'], ['TikTok', 'https://www.tiktok.com/@captaineggcellent'], ['Instagram', 'https://www.instagram.com/captaineggcellent/'], ['Facebook', 'https://www.facebook.com/captaineggcellent']]
   },
   {
     country: 'uk', name: 'RageGamingVideos', initials: 'RG', avatar: AV.rage, meta: 'United Kingdom / 1.42M subscribers',
     hook: 'One of YouTube\'s go-to guide channels for big PC and console games. 89 videos in the last 30 days.',
-    stats: [['70K', 'YouTube']],
-    total: ['70K', 'Per long-form video'],
+    stats: [['73K', 'YouTube']],
+    total: ['73K', 'Per long-form video'],
     kit: 'https://july.bio/ragegamingvideos',
     channels: [['YouTube', 'https://www.youtube.com/@RageGamingVideos']]
   },
   {
     country: 'us', name: 'David Jaffe', initials: 'DJ', avatar: AV.jaffe, meta: 'San Diego, California / 63.6K subscribers',
     hook: 'Creator of God of War, co-creator of Twisted Metal. When he covers a game, it is a headline. An older, hardcore audience that listens.',
-    stats: [['8K', 'YouTube'], ['2K', 'Instagram'], ['1K', 'TikTok']],
-    total: ['11K', 'Per video, all platforms'],
+    stats: [['5K', 'YouTube'], ['2K', 'Instagram'], ['500', 'TikTok']],
+    total: ['8K', 'Per video, all platforms'],
     kit: 'https://july.bio/davidjaffe',
     channels: [['YouTube', 'https://www.youtube.com/@DavidJaffeGames'], ['Twitch', 'https://www.twitch.tv/jaffegamesontwitch'], ['TikTok', 'https://www.tiktok.com/@gabbinandgames'], ['Instagram', 'https://www.instagram.com/davidscottjaffe/']]
   },
   {
     country: 'us', name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: 'United States / 16.6K subscribers',
     hook: 'On camera in every video, sharing co-op and PC games with a highly engaged audience.',
-    stats: [['10K', 'YT Shorts'], ['53K', 'TikTok'], ['44K', 'Instagram'], ['49K', 'Facebook']],
-    total: ['157K', 'Per short, all platforms'],
+    stats: [['10K', 'YT Shorts'], ['8K', 'TikTok'], ['33K', 'Instagram'], ['54K', 'Facebook']],
+    total: ['104K', 'Per short, all platforms'],
     kit: 'https://july.bio/cloudual',
     channels: [['YouTube', 'https://www.youtube.com/@Cloudual'], ['TikTok', 'https://www.tiktok.com/@cloudual'], ['Instagram', 'https://www.instagram.com/cloudual'], ['Facebook', 'https://www.facebook.com/profile.php?id=61585994548093']]
   },
   {
     country: 'us', name: 'Gem Gaming Network', initials: 'GG', avatar: AV.gem, meta: 'United States / 62.8K on TikTok',
     hook: 'Game discovery across every genre for a young adult audience, posting daily on four platforms.',
-    stats: [['9K', 'YT Shorts'], ['12K', 'TikTok'], ['14K', 'Instagram'], ['5K', 'Facebook']],
-    total: ['40K', 'Per short, all platforms'],
+    stats: [['9K', 'YT Shorts'], ['13K', 'TikTok'], ['14K', 'Instagram'], ['5K', 'Facebook']],
+    total: ['41K', 'Per short, all platforms'],
     kit: 'https://july.bio/gemgamingnetwork',
     channels: [['YouTube', 'https://www.youtube.com/@gemgamingnetwork'], ['TikTok', 'https://www.tiktok.com/@gemgamingnetwork'], ['Instagram', 'https://www.instagram.com/gemgamingnetwork'], ['Facebook', 'https://www.facebook.com/profile.php?id=61587281364461']]
   },
   {
     country: 'ca', name: 'Retro For The First Time', initials: 'RF', avatar: AV.retro, meta: 'Canada / 68.2K subscribers, 160K on TikTok',
     hook: 'Daily gaming news, always on camera. Announcements fit straight into the format.',
-    stats: [['34K', 'YT Shorts'], ['16K', 'TikTok'], ['8K', 'Instagram'], ['5K', 'Facebook']],
-    total: ['64K', 'Per short, all platforms'],
+    stats: [['37K', 'YT Shorts'], ['16K', 'TikTok'], ['9K', 'Instagram'], ['5K', 'Facebook']],
+    total: ['67K', 'Per short, all platforms'],
     kit: 'https://july.bio/rftft',
     channels: [['YouTube', 'https://www.youtube.com/@RetroForTheFirstTime'], ['TikTok', 'https://www.tiktok.com/@retroforthefirsttime'], ['Instagram', 'https://www.instagram.com/retroftft'], ['Facebook', 'https://www.facebook.com/profile.php?id=61577469602007']]
   },
   {
     country: 'au', name: 'Games Explorer', initials: 'GE', avatar: AV.exp, meta: 'Australia / 102.7K on TikTok',
     hook: 'Made for the weeks before launch. His recommendation Shorts put upcoming games in front of players looking for their next one, building hype that turns into wishlists and pre-orders.',
-    stats: [['16K', 'YT Shorts'], ['7K', 'TikTok'], ['6K', 'Instagram'], ['2K', 'Facebook']],
-    total: ['31K', 'Per short, all platforms'],
+    stats: [['16K', 'YT Shorts'], ['9K', 'TikTok'], ['20K', 'Instagram'], ['1K', 'Facebook']],
+    total: ['45K', 'Per short, all platforms'],
     kit: 'https://july.bio/gamesexplorer',
     channels: [['YouTube', 'https://www.youtube.com/@explorerdotgames'], ['TikTok', 'https://www.tiktok.com/@explorerdotgames'], ['Instagram', 'https://www.instagram.com/explorer.games'], ['Facebook', 'https://www.facebook.com/profile.php?id=100089561127301']]
   },
@@ -207,18 +207,18 @@ var CREATORS = [
 // Example beat: long-form from Captain Eggcellent and RageGamingVideos, a short across all platforms from the roster,
 // live streams, and an example Spark Ads budget. Views from this page's plain 30-day averages.
 var BUDGET = [
-  { who: 'RageGamingVideos', what: '1 dedicated long-form YouTube video', price: 7000, views: '~70,000' },
-  { who: 'Captain Eggcellent', what: '1 dedicated long-form YouTube video', price: 12000, views: '~181,000' },
-  { who: 'Captain Eggcellent', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 6500, views: '~229,000' },
-  { who: 'Retro For The First Time', what: 'Short on all 4 platforms', price: 2600, views: '~64,000' },
-  { who: 'Cloudual', what: 'Short on all 4 platforms', price: 2600, views: '~157,000' },
-  { who: 'Gem Gaming Network', what: 'Short on all 4 platforms', price: 2600, views: '~40,000' },
-  { who: 'Games Explorer', what: 'Short on all 4 platforms', price: 2600, views: '~31,000' },
-  { who: 'David Jaffe', what: '1 hour live stream plus VOD', price: 2500, views: '~8,000 VOD views' },
+  { who: 'RageGamingVideos', what: '1 dedicated long-form YouTube video', price: 7000, views: '~73,000' },
+  { who: 'Captain Eggcellent', what: '1 dedicated long-form YouTube video', price: 12000, views: '~194,000' },
+  { who: 'Captain Eggcellent', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 6500, views: '~237,000' },
+  { who: 'Retro For The First Time', what: 'Short on all 4 platforms', price: 2600, views: '~67,000' },
+  { who: 'Cloudual', what: 'Short on all 4 platforms', price: 2600, views: '~104,000' },
+  { who: 'Gem Gaming Network', what: 'Short on all 4 platforms', price: 2600, views: '~41,000' },
+  { who: 'Games Explorer', what: 'Short on all 4 platforms', price: 2600, views: '~45,000' },
+  { who: 'David Jaffe', what: '1 hour live stream plus VOD', price: 2500, views: '~5,000 VOD views' },
   { who: 'Ettnix', what: 'Live stream on Twitch, USD 300 per hour (1 hour in this example)', price: 300, views: 'Live audience' },
-  { sub: true, who: 'Organic subtotal', price: 38700, views: '~780,000' },
+  { sub: true, who: 'Organic subtotal', price: 38700, views: '~766,000' },
   { ads: true, who: 'TikTok Spark Ads (example)', what: 'Gaming interest, men 18 to 35, US and UK. Also the fallback plan.', price: 10000, views: '~670,000 to 1,000,000' },
-  { total: true, who: 'Total', price: 48700, views: '~1.45M to 1.78M' }
+  { total: true, who: 'Total', price: 48700, views: '~1.44M to 1.77M' }
 ];
 
 var METHOD = [
@@ -226,6 +226,6 @@ var METHOD = [
   'Bethesda\'s creator program also lists Xbox Game Studios titles, so Grounded, Grounded 2 and The Outer Worlds 2 are counted too.',
   'Where the same video was also posted on TikTok, Instagram or Facebook, those views are added and the video is marked with its platforms. So far this is matched for Captain Eggcellent and Games Explorer.',
   'Compilation videos, where a game is only named in the video\'s tags, are counted separately. Recommendation Shorts that only use your games as a reference for another game are not counted.',
-  'Roster averages: plain average views per video over the last 30 days. Every video counts. Nothing is removed at the top or the bottom. "All platforms" adds up each platform\'s average for one video posted everywhere.',
+  'Roster averages: plain average views per video over the last 30 days, pulled on November 18, 2026. Every video counts. Nothing is removed at the top or the bottom. "All platforms" adds up each platform\'s average for one video posted everywhere.',
   'Estimated views are estimates, not guarantees. Single videos can land above or below. Facebook reports rounded play counts.'
 ];
