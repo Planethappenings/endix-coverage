@@ -55,6 +55,10 @@ a { color: inherit; }
 .hero-art div { flex: 1; margin-inline: -3.5%; background: center / cover no-repeat;
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 26%, #000 74%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 26%, #000 74%, transparent 100%); }
 .hero-fade { display: none; }
+.hero-art .hp-fo { background-image: url(img/hero-fallout76.webp); background-position: 78% 50%; }
+.hero-art .hp-doom { background-image: url(img/hero-doom.webp); background-position: 53% 30%; }
+.hero-art .hp-sf { background-image: url(img/hero-starfield.webp); background-position: 50% 45%; }
+.hero-art .hp-eso { background-image: url(img/hero-eso.webp); background-size: auto 135%; background-position: 88% 100%; }
 .hero-content { position: relative; z-index: 2; margin-top: clamp(-150px, -10vw, -70px); padding-block: 0 68px; }
 .hero h1, .hero-kicker { text-shadow: 0 2px 24px rgba(0,0,0,.7); }
 .hero-kicker { font-family: var(--font-d); font-size: 15px; letter-spacing: .28em; color: var(--gold); margin-bottom: 14px; }
@@ -257,8 +261,10 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 }
 @media (max-width: 720px) {
   .hero-art { flex-wrap: wrap; height: auto; margin-inline: 0; }
-  .hero-art div { flex: 1 1 33.333%; height: 150px; margin-inline: 0; background-size: cover !important; -webkit-mask-image: none; mask-image: none; }
+  .hero-art div { flex: 1 1 50%; height: 140px; margin-inline: 0; -webkit-mask-image: none; mask-image: none; }
   .hero-art::after { background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%); }
+  .hero-art .hp-fo { background-size: auto 200%; background-position: 72% 45%; }
+  .hero-art .hp-eso { background-size: auto 200%; background-position: 83% 55%; }
   .hero-content { margin-top: 0; padding-block: 26px 44px; }
   .value-grid { grid-template-columns: 1fr; }
   .titles { grid-template-columns: repeat(2, 1fr); }
@@ -298,11 +304,10 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 <div class="hero">
   <div class="hero-art" aria-hidden="true">
-    <div style="background-image:url(img/fallout76.webp);background-position:72% 30%"></div>
-    <div style="background-image:url(img/skyrim.webp);background-size:auto 165%;background-position:50% 14%"></div>
-    <div style="background-image:url(img/doom.webp);background-size:auto 185%;background-position:50% 10%"></div>
-    <div style="background-image:url(img/starfield.webp);background-size:auto 160%;background-position:50% 88%"></div>
-    <div style="background-image:url(img/eso.webp);background-position:88% 50%"></div>
+    <div class="hp-fo"></div>
+    <div class="hp-doom"></div>
+    <div class="hp-sf"></div>
+    <div class="hp-eso"></div>
   </div>
   <div class="hero-fade" aria-hidden="true"></div>
   <div class="inner hero-content">
