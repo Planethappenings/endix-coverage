@@ -8,7 +8,7 @@ var HERO = [
 
 var VALUE = [
   { num: '74M+', h: 'Views Already Earned', t: '451 YouTube videos covering your games, made without a brief or a budget. 256 of them are about one of your games, the rest feature them next to other games.' },
-  { num: '~780K', h: 'Estimated Views Per Round', t: 'One long-form video each from Captain Eggcellent and RageGamingVideos, plus one video on every platform from the whole roster, at their current 30-day averages.' },
+  { num: '~780K', h: 'Estimated Views Per Beat', t: 'One beat consists of one long-form video from Captain Eggcellent and RageGamingVideos, plus one short across all platforms from the whole roster. Views based on their current 30-day averages.' },
   { num: '50%', h: 'Of The Audience Is In The US', t: 'About half of all views come from the United States, followed by Canada, the United Kingdom and Western Europe. The markets where your games sell.' }
 ];
 
@@ -44,7 +44,7 @@ var LINEUP = [
   { when: '2027', cls: 'set', h: 'Fallout Turns 30', t: 'Three decades of the wasteland, with Fallout Day celebrated live in Washington, D.C. The biggest reason in years to look back at the whole series.', who: 'Captain Eggcellent, 28 Fallout videos and 8M views' },
   { when: '2027', cls: 'set', h: 'Fallout 76: Raven Rock', t: 'A major expansion and a prequel to Fallout 3, on top of nearly 70 free updates so far.', who: 'RageGamingVideos, launch guides and Pro and Noob series' },
   { when: 'Date TBA', cls: 'tba', h: 'Fallout 3 And New Vegas Remastered', t: 'Both remasters are confirmed to be in development. No dates announced yet.', who: 'Captain Eggcellent and Cloudual, secrets and first-time playthroughs' },
-  { when: '2027', cls: 'set', h: 'Starfield: Starborn', t: 'New Starborn content as Starfield enters Year 3, now with PlayStation 5 players on board.', who: 'RageGamingVideos and David Jaffe, 43 Starfield videos between them' },
+  { when: '2027', cls: 'set', h: 'Starfield: Starborn', t: 'Starfield enters Year 3, expanding the Settled Systems with new stories, targeted gameplay improvements and additional updates, while preparing for the launch of new Starborn content.', who: 'RageGamingVideos and David Jaffe, 43 Starfield videos between them' },
   { when: 'Ongoing', cls: '', h: 'The Elder Scrolls', t: 'The Elder Scrolls Online continues in seasons, Oblivion Remastered keeps finding new players and The Elder Scrolls VI is the studio\'s main development focus.', who: 'RageGamingVideos and Retro For The First Time' },
   { when: 'Ongoing', cls: '', h: 'DOOM, Grounded 2, The Outer Worlds 2 And More', t: 'DOOM: The Dark Ages and its Revelations DLC, Grounded 2 and The Outer Worlds 2 from Xbox Game Studios, Indiana Jones and whatever gets announced next. Pre-release hype that turns into wishlists and pre-orders.', who: 'Games Explorer, Gem Gaming Network and Ettnix' }
 ];

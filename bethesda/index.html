@@ -76,6 +76,7 @@ section { padding-block: 72px; }
 .eyebrow { font-family: var(--font-d); font-size: 14px; letter-spacing: .3em; color: var(--gold); margin-bottom: 10px; }
 .section-title { font-family: var(--font-d); font-weight: 400; font-size: clamp(34px, 5vw, 54px); line-height: 1; margin-bottom: 18px; }
 .section-lead { color: var(--text-2); max-width: 680px; margin-bottom: 36px; }
+.section-lead.one-line { max-width: none; }
 .note { margin-top: 22px; font-size: 13px; color: var(--text-3); max-width: 780px; }
 
 /* VALUE */
@@ -238,7 +239,7 @@ section { padding-block: 72px; }
 
 /* CTA */
 .cta { text-align: center; border-top: 1px solid var(--line); background: radial-gradient(ellipse at 50% 0%, rgba(210,155,46,.14), transparent 65%); }
-.cta h2 { font-family: var(--font-d); font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: .95; margin-bottom: 14px; }
+.cta h2 { font-family: var(--font-d); font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: .95; margin-bottom: 30px; }
 .cta h2 span { color: var(--gold-hi); }
 .cta p { color: var(--text-2); margin-bottom: 30px; }
 .cta-btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-d); font-size: 20px; letter-spacing: .1em; text-decoration: none; color: #08090a; background: var(--gold); padding: 14px 28px; transition: background .2s; }
@@ -312,7 +313,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   <div class="hero-fade" aria-hidden="true"></div>
   <div class="inner hero-content">
     <h1>Made By<br><span>Your Biggest Fans.</span></h1>
-    <p class="hero-sub">Fallout turns 30, Raven Rock opens, Starfield goes Starborn and two classics come back remastered. Our creators have been making videos about these worlds for 15 years, without being asked. In 2027 they can do it with you.</p>
+    <p class="hero-sub">Fallout turns 30, Raven Rock releases, Starfield launches Starborn, The Elder Scrolls continues its support and hype, and two remasters are on their way. Our creators have been making videos about these games for 15 years, organically. In 2027 they can do it with you.</p>
     <div class="hero-stats" id="hero-stats"></div>
   </div>
 </div>
@@ -326,7 +327,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section class="alt" id="titles">
   <div class="inner">
     <h2 class="section-title">One Roster, Every World</h2>
-    <p class="section-lead">Total views on the videos our creators have made about each of your games, on YouTube plus the same videos on TikTok and Instagram where we could match them. Wasteland, Tamriel, the Settled Systems, Hell or the backyard: they already play there.</p>
+    <p class="section-lead">Total views on the videos our creators have already made about each of your games.</p>
     <div class="titles" id="titles-grid"></div>
     <h3 class="pergame-h">Views Per Game</h3>
     <p class="pergame-sub">YouTube views on videos with the game in the title. A video that covers several games counts for each of them.</p>
@@ -337,8 +338,8 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 <section id="lineup">
   <div class="inner">
-    <h2 class="section-title">A Year Full Of Moments</h2>
-    <p class="section-lead">What is announced or expected across Bethesda's worlds next year. Every beat is a reason for players to come back, and a reason for creators to post.</p>
+    <h2 class="section-title">A Year Full Of Opportunities</h2>
+    <p class="section-lead">What is announced or expected across Bethesda's portfolio next year. Every beat is a reason for players to come back, and a reason for creators to post.</p>
     <div class="lineup" id="lineup-grid"></div>
     <p class="note">Based on Bethesda Game Studios' own studio update and public reporting as of November 2026. Dates marked "Date TBA" have not been confirmed by Bethesda and the plan moves with them.</p>
   </div>
@@ -355,22 +356,22 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 <section class="alt" id="plan">
   <div class="inner">
-    <h2 class="section-title">Four Quarters, Four Peaks</h2>
+    <h2 class="section-title">The Strategy</h2>
     <p class="section-lead">A proposed rollout that follows Bethesda's calendar. Each wave mixes long-form depth with short-form reach, and moves with the real release dates.</p>
     <div class="timeline">
-      <div class="tl"><div class="tl-when">Q1 to Spring</div><div class="tl-head">Back To The Wasteland</div><ul>
-        <li><b>Fallout 76 updates.</b> RageGamingVideos guide on what's new and how to get the most out of it.</li>
-        <li><b>Captain Eggcellent</b> hidden details Shorts from Fallout 76 and the classic games.</li>
-        <li><b>Retro For The First Time</b> covers every announcement as it lands.</li>
+      <div class="tl"><div class="tl-when">Q1 to Spring</div><div class="tl-head">Fallout 76 Updates</div><ul>
+        <li><b>RageGamingVideos:</b> A series of dedicated YouTube guides on what's new and how to get the most out of it.</li>
+        <li><b>Captain Eggcellent:</b> Easter Eggs and hidden details from Fallout 76 and the classic games. Both long-form and Shorts.</li>
+        <li><b>Retro For The First Time:</b> Covering every announcement as it lands.</li>
       </ul></div>
       <div class="tl"><div class="tl-when">Summer</div><div class="tl-head">Raven Rock And The Showcase</div><ul>
-        <li><b>Fallout 76: Raven Rock.</b> Launch guides and "Pro and Noob" style long-form from RageGamingVideos.</li>
-        <li><b>Showcase season.</b> Fast reaction Shorts on news, trailers and dates from Retro, Games Explorer and Gem.</li>
-        <li><b>Starfield.</b> Year 3 updates, builds and Starborn build-up. Games Explorer builds hype and wishlists ahead of every release.</li>
+        <li><b>Fallout 76: Raven Rock.</b> Launch guides and "Pro and Noob" style long-form from RageGamingVideos. More ideas to explore: Top 10 Things To Know About Fallout 76, or unique approaches such as "I played Fallout 76 without guns".</li>
+        <li><b>Showcase season.</b> Fast reaction Shorts on news, trailers and dates from Retro, Cloudual, Games Explorer and Gem Gaming.</li>
+        <li><b>Starfield.</b> Year 3 updates, builds and Starborn build-up. Games Explorer brings awareness, builds hype and wishlists ahead of every release.</li>
       </ul></div>
       <div class="tl"><div class="tl-when">Autumn</div><div class="tl-head">Starborn And Remasters</div><ul>
-        <li><b>Starfield: Starborn.</b> RageGamingVideos best-start, XP and credits guides, the format that already pulled 100K+ per video at Starfield's launch.</li>
-        <li><b>Fallout 3 and New Vegas Remastered</b> when dated: first impressions, then and now comparisons, first-time playthroughs from Cloudual.</li>
+        <li><b>Starfield: Starborn.</b> RageGamingVideos best-start, XP and beginner guides, the format that already pulled 100K+ per video at Starfield's launch.</li>
+        <li><b>Fallout 3 and New Vegas Remastered</b> when dated: first impressions, then and now comparisons, and first-time playthroughs.</li>
       </ul></div>
       <div class="tl peak"><div class="tl-when">Fallout 30</div><div class="tl-head">The Anniversary</div><ul>
         <li><b>Captain Eggcellent tentpole:</b> 30 years of Fallout secrets, the format behind his biggest Bethesda videos.</li>
@@ -396,7 +397,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section class="alt" id="roster">
   <div class="inner">
     <h2 class="section-title">Eight Creators, Real Numbers</h2>
-    <p class="section-lead">Plain average views per video over the last 30 days, counting every video. Nothing removed at the top or the bottom.</p>
+    <p class="section-lead one-line">Plain average views per video over the last 30 days, counting every video. Nothing removed at the top or the bottom.</p>
     <div class="aud">
       <div class="aud-main"><b>~50%</b><span>of all views come from the United States</span></div>
       <div class="aud-rest"><span><i>2</i>Canada</span><span><i>3</i>United Kingdom</span><span><i>4</i>Western Europe</span></div>
@@ -427,8 +428,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section class="cta">
   <div class="inner">
     <img class="cta-icon" src="img/hn-icon.png" alt="" aria-hidden="true">
-    <h2>Your Biggest Fans.<br><span>Your Biggest Year.</span></h2>
-    <p>Eight creators who already love your games. One conversation.</p>
+    <h2>Made By Your Biggest Fans.<br><span>For Your Biggest Fans.</span></h2>
     <a class="cta-btn" href="mailto:daniel@hellonord.se?subject=Bethesda%202027%20creator%20partnership">daniel@hellonord.se <svg class="icon"><use href="#i-arrow"/></svg></a>
   </div>
 </section>
