@@ -204,17 +204,21 @@ var CREATORS = [
   }
 ];
 
-// Example beat: the USD 30,000 package structure, with views from this page's plain 30-day averages
+// Example beat: long-form from Captain Eggcellent and RageGamingVideos, a short across all platforms from the roster,
+// live streams, and an example Spark Ads budget. Views from this page's plain 30-day averages.
 var BUDGET = [
-  { who: 'RageGamingVideos', what: '2 dedicated long-form YouTube videos', price: 12000, views: '~140,000' },
-  { who: 'Captain Eggcellent', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 5500, views: '~229,000' },
-  { who: 'Retro For The First Time', what: 'Short on all 4 platforms', price: 2000, views: '~64,000' },
-  { who: 'Cloudual', what: 'Short on all 4 platforms', price: 2000, views: '~157,000' },
-  { who: 'Gem Gaming Network', what: 'Short on all 4 platforms', price: 2000, views: '~40,000' },
-  { who: 'Games Explorer', what: 'Short on all 4 platforms', price: 2000, views: '~31,000' },
-  { sub: true, who: 'Organic subtotal', price: 25500, views: '~661,000' },
-  { ads: true, who: 'TikTok Spark Ads', what: 'Gaming interest, men 18 to 35, US and UK. Also the fallback plan.', price: 4500, views: '~300,000 to 450,000' },
-  { total: true, who: 'Total', price: 30000, views: '~960,000 to 1.1M' }
+  { who: 'RageGamingVideos', what: '1 dedicated long-form YouTube video', price: 7000, views: '~70,000' },
+  { who: 'Captain Eggcellent', what: '1 dedicated long-form YouTube video', price: 12000, views: '~181,000' },
+  { who: 'Captain Eggcellent', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 6500, views: '~229,000' },
+  { who: 'Retro For The First Time', what: 'Short on all 4 platforms', price: 2600, views: '~64,000' },
+  { who: 'Cloudual', what: 'Short on all 4 platforms', price: 2600, views: '~157,000' },
+  { who: 'Gem Gaming Network', what: 'Short on all 4 platforms', price: 2600, views: '~40,000' },
+  { who: 'Games Explorer', what: 'Short on all 4 platforms', price: 2600, views: '~31,000' },
+  { who: 'David Jaffe', what: '1 hour live stream plus VOD', price: 2500, views: '~8,000 VOD views' },
+  { who: 'Ettnix', what: 'Live stream on Twitch, USD 300 per hour (1 hour in this example)', price: 300, views: 'Live audience' },
+  { sub: true, who: 'Organic subtotal', price: 38700, views: '~780,000' },
+  { ads: true, who: 'TikTok Spark Ads (example)', what: 'Gaming interest, men 18 to 35, US and UK. Also the fallback plan.', price: 10000, views: '~670,000 to 1,000,000' },
+  { total: true, who: 'Total', price: 48700, views: '~1.45M to 1.78M' }
 ];
 
 var METHOD = [
