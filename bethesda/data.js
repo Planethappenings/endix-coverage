@@ -1,20 +1,20 @@
 // Numbers: YouTube Data API, each channel's full upload history, pulled November 18, 2026.
 var HERO = [
-  ['74M', 'Views on videos covering your games'],
+  ['74M+', 'Views on videos covering your games'],
   ['8', 'Creators'],
   ['200M+', 'Avg monthly impressions'],
   ['2011', 'Covering your games since']
 ];
 
 var VALUE = [
-  { num: '74M', h: 'Views Already Earned', t: '450 YouTube videos covering your games, made without a brief or a budget. 255 of them are about one of your games, the rest feature them next to other games.' },
+  { num: '74M+', h: 'Views Already Earned', t: '451 YouTube videos covering your games, made without a brief or a budget. 256 of them are about one of your games, the rest feature them next to other games.' },
   { num: '~780K', h: 'Estimated Views Per Round', t: 'One long-form video each from Captain Eggcellent and RageGamingVideos, plus one video on every platform from the whole roster, at their current 30-day averages.' },
   { num: '50%', h: 'Of The Audience Is In The US', t: 'About half of all views come from the United States, followed by Canada, the United Kingdom and Western Europe. The markets where your games sell.' }
 ];
 
 var TITLES = [
   { name: 'Fallout', img: 'fallout76.webp', pos: '74% 40%', videos: 30, views: 8092764 },
-  { name: 'Grounded', img: 'grounded2.webp', pos: '50% 100%', size: 'auto 175%', videos: 64, views: 3541989 },
+  { name: 'Grounded', img: 'grounded2.webp', pos: '50% 100%', size: 'auto 175%', videos: 65, views: 3722760 },
   { name: 'Starfield', img: 'starfield.webp', pos: '50% 100%', size: 'auto 155%', videos: 58, views: 2134057 },
   { name: 'The Elder Scrolls', img: 'skyrim.webp', pos: '50% 10%', size: 'auto 150%', videos: 33, views: 1782096 },
   { name: 'DOOM', img: 'doom.webp', pos: '50% 8%', size: 'auto 190%', videos: 21, views: 1684231 },
@@ -27,7 +27,7 @@ var PERGAME = [
   ['Fallout 76', 11, 2278914],
   ['Grounded', 22, 1916896],
   ['Wolfenstein series', 3, 1745233],
-  ['Grounded 2', 42, 1625093],
+  ['Grounded 2', 43, 1697164],
   ['Fallout: New Vegas', 6, 1518695],
   ['Fallout 3', 6, 1466137],
   ['Fallout 4', 8, 1099749],
@@ -38,7 +38,7 @@ var PERGAME = [
   ['The Elder Scrolls VI', 1, 10437]
 ];
 
-var FEAT_NOTE = 'Videos about your games: 255 YouTube videos and 21.3 million views, plus 2.9 million views on the same videos on TikTok, Instagram and Facebook. On top of that come 195 compilation videos where your games feature next to others, with 50.3 million more views. Together: 74.5 million views.';
+var FEAT_NOTE = 'Videos about your games: 256 YouTube videos and 21.4 million views, plus 3 million views on the same videos on TikTok, Instagram and Facebook. On top of that come 195 compilation videos where your games feature next to others, with 50.3 million more views. Together: 74.6 million views.';
 
 var LINEUP = [
   { when: '2027', cls: 'set', h: 'Fallout Turns 30', t: 'Three decades of the wasteland, with Fallout Day celebrated live in Washington, D.C. The biggest reason in years to look back at the whole series.', who: 'Captain Eggcellent, 28 Fallout videos and 8M views' },
@@ -115,10 +115,11 @@ var FANS = [
   },
   {
     name: 'Games Explorer', initials: 'GE', avatar: AV.exp, meta: '22.6K subscribers, 102.7K on TikTok',
-    videos: 2, views: 61579, viewsLabel: 'Views, all platforms', avg: 30790, since: '2025',
-    quote: 'Recommendation Shorts that put your games in front of players looking for their next one, from the day Oblivion Remastered shadow dropped to the classics worth coming back to.',
-    games: [['The Elder Scrolls', 1], ['Fallout', 1]],
+    videos: 3, views: 242350, viewsLabel: 'Views, all platforms', avg: 80783, since: '2025',
+    quote: 'Recommendation Shorts that put your games in front of players looking for their next one, from the Grounded 2 reveal and the day Oblivion Remastered shadow dropped to the classics worth coming back to.',
+    games: [['Grounded', 1], ['The Elder Scrolls', 1], ['Fallout', 1]],
     vids: [
+      { id: 'TKKDBzMXtbY', t: 'Grounded 2 Was Announced!', views: 180771, d: 'Jun 2025', short: true, on: 'YouTube + TikTok' },
       { id: '9BuCDltEW4c', t: 'Bethesda Just Shadow Dropped This Insane Remaster!', views: 42740, d: 'Apr 2025', short: true, on: 'YouTube + TikTok' },
       { id: 'SwNNwuBjfsc', t: '5 Amazing Games Worth Revisiting In 2026!', views: 18839, d: 'Jan 2026', short: true, on: 'YouTube + TikTok + Instagram + Facebook' }
     ]
