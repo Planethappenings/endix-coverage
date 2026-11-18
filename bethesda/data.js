@@ -62,21 +62,29 @@ var AV = {
 
 var FANS = [
   {
-    name: 'Captain Eggcellent', initials: 'CE', avatar: AV.cap, meta: '982K subscribers / main and Shorts channel',
+    name: 'Captain Eggcellent', initials: 'CE', avatar: AV.cap, meta: '1.6M followers across all platforms',
     videos: 74, views: 19904495, viewsLabel: 'Views, all platforms', avg: 230399, since: '2015',
     quote: 'The Easter egg king has been digging through your games since 2015: every Fallout, DOOM, Dishonored, Prey, Starfield, Grounded and more. A further 113 of his compilation videos feature your games, with 49.7M more views.',
     games: [['Fallout', 28], ['Dishonored, Prey, Deathloop', 13], ['DOOM', 8], ['Starfield', 6], ['The Elder Scrolls', 6], ['Wolfenstein', 3], ['Grounded', 2], ['Others', 8]],
     vids: [
       { id: 'OOdx44v11_E', t: 'You\'ll only understand this if you\'re really STUPID Fallout New Vegas Easter egg!', views: 1990953, d: 'Jan 2026', short: true, on: 'YouTube + TikTok + Instagram' },
       { id: 'Oh-MDYH_83c', t: 'I DIDN\'T know you could do this in Wolfenstein 2 Easter egg!', views: 1718284, d: 'Dec 2025', short: true, on: 'YouTube' },
+      { id: 'yhyZvHpagWI', t: 'Video Game Easter Eggs #83 (Grounded, Phasmophobia, Just Die Already...)', views: 782313, d: 'Oct 2022', on: 'YouTube' },
       { id: '5_moIsF39t8', t: 'You can help BUTCH and his MUM in an unexpected way Fallout 3 Easter egg!', views: 662468, d: 'Jan 2026', short: true, on: 'YouTube + TikTok + Instagram' },
+      { id: '-aaWOKwvN8M', t: 'Video Game Easter Eggs #21 (World War Z, Fallout 76, Call Of Duty...)', views: 473188, d: 'May 2020', on: 'YouTube' },
       { id: 'YKJayr53z0s', t: 'The SKELETONS in Fallout 3 are BRILLIANT Easter egg!', views: 462181, d: 'Jan 2026', short: true, on: 'YouTube + TikTok + Instagram' },
+      { id: 'v5k0lAZRqCg', t: 'Hidden Video Game Details #101 (Call Of Duty World At War, Doom 3...)', views: 460010, d: 'Sep 2022', on: 'YouTube' },
       { id: 'Dkd0uwXEi3I', t: '29 INSANE Hidden Details In Fallout 3, Fallout New Vegas, Fallout 4...', views: 358228, d: 'Apr 2024', on: 'YouTube' },
-      { id: 'lcdlZ1mjTx0', t: 'Mouse P.I. DOOM Easter Egg?!', views: 230595, d: 'Apr 2026', short: true, on: 'YouTube + TikTok + Instagram' }
+      { id: 'Fgv7sPTTm2Q', t: 'Hidden Video Game Details #140 (Starfield, Fortnite, Fallout 3 & More)', views: 357718, d: 'Sep 2023', on: 'YouTube' },
+      { id: 'hv6IAHIeucc', t: 'DOOM ETERNAL: 25 Easter Eggs, Secrets & References', views: 274652, d: 'Mar 2020', on: 'YouTube' },
+      { id: 'YTt6N5t6uUc', t: 'The Best Easter Eggs In Dishonored', views: 273339, d: 'May 2015', on: 'YouTube' },
+      { id: 'lcdlZ1mjTx0', t: 'Mouse P.I. DOOM Easter Egg?!', views: 230595, d: 'Apr 2026', short: true, on: 'YouTube + TikTok + Instagram' },
+      { id: '9grWeAmqiFs', t: 'STARFIELD: 25 Easter Eggs, Secrets, References & Hidden Details', views: 227482, d: 'Sep 2023', on: 'YouTube' },
+      { id: 'a4LEGl8VabI', t: 'ALL Rage 2 Easter Eggs, Secrets & References', views: 201643, d: 'May 2019', on: 'YouTube' }
     ]
   },
   {
-    name: 'RageGamingVideos', initials: 'RG', avatar: AV.rage, meta: '1.42M subscribers',
+    name: 'RageGamingVideos', initials: 'RG', avatar: AV.rage, meta: '1.42M followers on YouTube',
     videos: 100, views: 3686559, avg: 36866, since: '2011',
     quote: 'First video on November 11, 2011, the day Skyrim launched. Since then: guides and series for Starfield, Oblivion Remastered, DOOM: The Dark Ages, The Elder Scrolls Online and 61 videos on Grounded and Grounded 2.',
     games: [['Grounded', 61], ['The Elder Scrolls', 20], ['Starfield', 10], ['DOOM', 6], ['Others', 3]],
@@ -84,37 +92,54 @@ var FANS = [
       { id: 'zqeiqRmueMc', t: 'Is Elder Scrolls Online Worth Playing in 2021? (Level 1 to Endgame)', views: 379309, d: 'Aug 2020', on: 'YouTube' },
       { id: 'PR5lGcwA8fg', t: 'Starfield - NEW 150K XP A MINUTE & INFINITE CREDITS & RESOURCES...', views: 162946, d: 'Sep 2023', on: 'YouTube' },
       { id: 'fXayr3s4Y64', t: 'Grounded 2 - Don\'t Miss THIS - Get OP Early Fast - Best Weapon...', views: 142842, d: 'Jul 2025', on: 'YouTube' },
+      { id: 'TlVdmln8vCw', t: 'Starfield: How to Get 60K XP A MINUTE & LEVEL UP FAST', views: 130488, d: 'Sep 2023', on: 'YouTube' },
+      { id: 'v7j3fQB6bcE', t: 'Grounded 2: 5 Best 1 Shot Highest Damage Builds in Game', views: 129506, d: 'Aug 2025', on: 'YouTube' },
+      { id: 'cyAblqTr3KI', t: 'Grounded 2: ALL Secret Mutations & Best Most OP Mutation', views: 116280, d: 'Aug 2025', on: 'YouTube' },
       { id: 'lLbBTtXb8-Y', t: 'Starfield - 14 HUGE Mistakes to Avoid & IMPORTANT Things...', views: 105416, d: 'Sep 2023', on: 'YouTube' },
+      { id: 'Cfoe_6wCHwg', t: 'Grounded 2: Ultimate Preview & New Gameplay', views: 81792, d: 'Jul 2025', on: 'YouTube' },
       { id: 'bZg9J6oyL_I', t: 'Oblivion Remastered - Don\'t Miss THIS - Get OP Early Fast...', views: 68936, d: 'Apr 2025', on: 'YouTube' },
-      { id: '-87Ob5lElTA', t: 'WE INSTANTLY STARTED A WAR - Grounded VS Pro and Noob!', views: 50721, d: '', on: 'YouTube' }
+      { id: 'FbHmPcg3h1o', t: 'Starfield: NEW Way to Get a BILLION Credits FAST', views: 66676, d: 'Sep 2023', on: 'YouTube' },
+      { id: '-87Ob5lElTA', t: 'WE INSTANTLY STARTED A WAR - Grounded VS Pro and Noob!', views: 50721, d: '', on: 'YouTube' },
+      { id: 'gwQ0nZbtWkI', t: 'Oblivion Remastered: Best Weapon & IMPORTANT Unlock', views: 36171, d: 'Apr 2025', on: 'YouTube' },
+      { id: '2xf-YkAtzUk', t: 'RIP AND TEAR: Pro and Noob VS Doom the Dark Ages!', views: 23429, d: 'May 2025', on: 'YouTube' }
     ]
   },
   {
-    name: 'David Jaffe', initials: 'DJ', avatar: AV.jaffe, meta: '63.6K subscribers / creator of God of War',
+    name: 'David Jaffe', initials: 'DJ', avatar: AV.jaffe, meta: '66K followers / creator of God of War',
     videos: 58, views: 369277, avg: 6367, since: '2020',
     quote: 'The designer of God of War and co-creator of Twisted Metal talks about your games as a peer: 33 videos on Starfield alone, plus DOOM, Indiana Jones and a live show with John Romero.',
     games: [['Starfield', 33], ['Indiana Jones', 7], ['DOOM', 5], ['Quake', 2], ['Grounded 2', 1], ['Others', 10]],
     vids: [
+      { id: 'qvHz9LBIqg4', t: 'PS5 WINS if STARFIELD stays on XBOX! Here\'s why...', views: 23480, d: 'Nov 2020', on: 'YouTube' },
       { id: 'hIQviU4zprU', t: 'Doom, Quake, Wolf 3D (+ many more!) LEGEND John Romero LIVE!', views: 21389, d: 'Jun 2021', on: 'YouTube' },
       { id: 'VMXipzjSGD8', t: 'STARFIELD Review and Narrative Discussion', views: 17562, d: 'Sep 2023', on: 'YouTube' },
+      { id: 'FqPfZBfjt4k', t: 'G+G: XBOX CANCELLES XMAS! Starfield DELAYED! Redfall DELAYED!', views: 14368, d: 'May 2022', on: 'YouTube' },
+      { id: 'CEkjQ8bFN9I', t: 'Super Excited BUT Also Very Concerned About Indiana Jones And The Great Circle', views: 6627, d: 'Aug 2024', on: 'YouTube' },
       { id: 'tsVbzJG7ANM', t: 'Should YOU PLAY Indiana Jones And The Great Circle?', views: 6349, d: 'Dec 2024', on: 'YouTube' },
-      { id: '8IkC1RbGoVw', t: 'XBOX SHOWCASE LIVE! DOOM! SOUTH OF MIDNIGHT!', views: 5597, d: 'Jan 2025', on: 'YouTube' }
+      { id: '8IkC1RbGoVw', t: 'XBOX SHOWCASE LIVE! DOOM! SOUTH OF MIDNIGHT!', views: 5597, d: 'Jan 2025', on: 'YouTube' },
+      { id: 'gxBIVmW3QHI', t: '1 min review: PREY!', views: 4804, d: 'Aug 2022', on: 'YouTube' },
+      { id: '8YM5iV7qF0c', t: 'QUAKE MULTIPLAYER', views: 3133, d: 'Aug 2021', on: 'YouTube' }
     ]
   },
   {
-    name: 'Retro For The First Time', initials: 'RF', avatar: AV.retro, meta: '68.2K subscribers, 160K on TikTok',
+    name: 'Retro For The First Time', initials: 'RF', avatar: AV.retro, meta: '244K followers across all platforms',
     videos: 16, views: 117503, avg: 7344, since: '2018',
     quote: 'Daily gaming news on camera. Starfield and The Elder Scrolls are regulars in his feed, including the first reports on The Elder Scrolls VI.',
     games: [['Starfield', 8], ['The Elder Scrolls', 3], ['DOOM', 2], ['The Evil Within', 3]],
     vids: [
       { id: 'uRR1b3s9W9Y', t: 'Starfield on PS5 is confirmed .. and delayed', views: 23555, d: 'Aug 2025', short: true, on: 'YouTube' },
       { id: 'FJX5VZegPTQ', t: 'Starfield is an Xbox exclusive thanks to Sony', views: 14618, d: 'Jun 2023', short: true, on: 'YouTube' },
+      { id: 'BcaJ7Fvt4Vk', t: 'Leaker says Elder Scrolls 6 is titled Sentinel', views: 10437, d: 'Oct 2026', short: true, on: 'YouTube' },
+      { id: '6kSVctTiEH4', t: 'Doom AI is wild!', views: 8698, d: 'Sep 2024', short: true, on: 'YouTube' },
       { id: 'WK8EePYeKtM', t: 'I was a guest star in starfield', views: 6880, d: 'Sep 2023', short: true, on: 'YouTube' },
-      { id: 'BcaJ7Fvt4Vk', t: 'Leaker says Elder Scrolls 6 is titled Sentinel', views: 10437, d: '', short: true, on: 'YouTube' }
+      { id: '5obeLTJHR9I', t: 'Starfield coming to Nintendo Switch 2 with a huge update', views: 6851, d: 'Dec 2025', short: true, on: 'YouTube' },
+      { id: 'jjU9f2cOXMI', t: 'Why Starfield NPCs look weird', views: 4940, d: 'Sep 2023', short: true, on: 'YouTube' },
+      { id: 'UjXB3pYkE1A', t: 'Elder Scrolls leaks were TRUE!', views: 3972, d: 'Nov 2026', short: true, on: 'YouTube' },
+      { id: 'zjRQlRnBNjE', t: 'Minecraft in Skyrim?!', views: 2112, d: 'Feb 2025', short: true, on: 'YouTube' }
     ]
   },
   {
-    name: 'Games Explorer', initials: 'GE', avatar: AV.exp, meta: '22.6K subscribers, 102.7K on TikTok',
+    name: 'Games Explorer', initials: 'GE', avatar: AV.exp, meta: '194K followers across all platforms',
     videos: 3, views: 242350, viewsLabel: 'Views, all platforms', avg: 80783, since: '2025',
     quote: 'Recommendation Shorts that put your games in front of players looking for their next one, from the Grounded 2 reveal and the day Oblivion Remastered shadow dropped to the classics worth coming back to.',
     games: [['Grounded', 1], ['The Elder Scrolls', 1], ['Fallout', 1]],
@@ -125,7 +150,7 @@ var FANS = [
     ]
   },
   {
-    name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: '16.6K subscribers',
+    name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: '109K followers across all platforms',
     videos: 5, views: 22290, avg: 4458, since: '2024',
     quote: 'Played Skyrim for the very first time on camera. Shares co-op and PC games, strongest on Instagram and Facebook.',
     games: [['The Elder Scrolls', 3], ['Indiana Jones', 1], ['Starfield', 1]],
@@ -133,14 +158,15 @@ var FANS = [
       { id: 'AoRpbSdCy20', t: 'CO-OP Indiana Jones... but the loot is trying to end you', views: 14735, d: 'Apr 2026', short: true, on: 'YouTube' },
       { id: 'jsnhL-5XLyU', t: 'New Star Wars Mod for Starfield is Breaking the Internet', views: 3525, d: 'Feb 2026', short: true, on: 'YouTube' },
       { id: 'eJsVLj7GIfk', t: 'Can a COMPLETE BEGINNER Really Beat Skyrim\'s First Boss?', views: 2337, d: 'Oct 2024', on: 'YouTube' },
-      { id: 'JsZNRwGbfao', t: 'Complete Noob Tries Skyrim for the First Time', views: 1253, d: 'Oct 2024', on: 'YouTube' }
+      { id: 'JsZNRwGbfao', t: 'Complete Noob Tries Skyrim for the First Time', views: 1253, d: 'Oct 2024', on: 'YouTube' },
+      { id: 'TnefZtBRD7U', t: 'Can a BEGINNER Beat Skyrim\'s First Dragon?', views: 438, d: 'Oct 2024', on: 'YouTube' }
     ]
   }
 ];
 
 var CREATORS = [
   {
-    country: 'uk', name: 'Captain Eggcellent', initials: 'CE', avatar: AV.cap, meta: 'United Kingdom / 982K subscribers',
+    country: 'uk', name: 'Captain Eggcellent', initials: 'CE', avatar: AV.cap, meta: 'United Kingdom / 1.6M followers',
     hook: 'The Easter egg king. Long-form deep dives at 194K views per video, plus Shorts on four platforms.',
     stats: [['48K', 'YT Shorts'], ['56K', 'TikTok'], ['105K', 'Instagram'], ['28K', 'Facebook']],
     total: ['237K', 'Per short, all platforms'],
@@ -148,7 +174,7 @@ var CREATORS = [
     channels: [['YouTube', 'https://www.youtube.com/@CaptainEggcellent'], ['Shorts', 'https://www.youtube.com/@captaineggcellentbutshorter'], ['TikTok', 'https://www.tiktok.com/@captaineggcellent'], ['Instagram', 'https://www.instagram.com/captaineggcellent/'], ['Facebook', 'https://www.facebook.com/captaineggcellent']]
   },
   {
-    country: 'uk', name: 'RageGamingVideos', initials: 'RG', avatar: AV.rage, meta: 'United Kingdom / 1.42M subscribers',
+    country: 'uk', name: 'RageGamingVideos', initials: 'RG', avatar: AV.rage, meta: 'United Kingdom / 1.42M followers',
     hook: 'One of YouTube\'s go-to guide channels for big PC and console games. 89 videos in the last 30 days.',
     stats: [['73K', 'YouTube']],
     total: ['73K', 'Per long-form video'],
@@ -156,7 +182,7 @@ var CREATORS = [
     channels: [['YouTube', 'https://www.youtube.com/@RageGamingVideos']]
   },
   {
-    country: 'us', name: 'David Jaffe', initials: 'DJ', avatar: AV.jaffe, meta: 'San Diego, California / 63.6K subscribers',
+    country: 'us', name: 'David Jaffe', initials: 'DJ', avatar: AV.jaffe, meta: 'San Diego, California / 66K followers',
     hook: 'Creator of God of War, co-creator of Twisted Metal. When he covers a game, it is a headline. An older, hardcore audience that listens.',
     stats: [['5K', 'YouTube'], ['2K', 'Instagram'], ['500', 'TikTok']],
     total: ['8K', 'Per video, all platforms'],
@@ -164,7 +190,7 @@ var CREATORS = [
     channels: [['YouTube', 'https://www.youtube.com/@DavidJaffeGames'], ['Twitch', 'https://www.twitch.tv/jaffegamesontwitch'], ['TikTok', 'https://www.tiktok.com/@gabbinandgames'], ['Instagram', 'https://www.instagram.com/davidscottjaffe/']]
   },
   {
-    country: 'us', name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: 'United States / 16.6K subscribers',
+    country: 'us', name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: 'United States / 109K followers',
     hook: 'On camera in every video, sharing co-op and PC games with a highly engaged audience.',
     stats: [['10K', 'YT Shorts'], ['8K', 'TikTok'], ['33K', 'Instagram'], ['54K', 'Facebook']],
     total: ['104K', 'Per short, all platforms'],
@@ -172,7 +198,7 @@ var CREATORS = [
     channels: [['YouTube', 'https://www.youtube.com/@Cloudual'], ['TikTok', 'https://www.tiktok.com/@cloudual'], ['Instagram', 'https://www.instagram.com/cloudual'], ['Facebook', 'https://www.facebook.com/profile.php?id=61585994548093']]
   },
   {
-    country: 'us', name: 'Gem Gaming Network', initials: 'GG', avatar: AV.gem, meta: 'United States / 62.8K on TikTok',
+    country: 'us', name: 'Gem Gaming Network', initials: 'GG', avatar: AV.gem, meta: 'United States / 137K followers',
     hook: 'Game discovery across every genre for a young adult audience, posting daily on four platforms.',
     stats: [['9K', 'YT Shorts'], ['13K', 'TikTok'], ['14K', 'Instagram'], ['5K', 'Facebook']],
     total: ['41K', 'Per short, all platforms'],
@@ -180,7 +206,7 @@ var CREATORS = [
     channels: [['YouTube', 'https://www.youtube.com/@gemgamingnetwork'], ['TikTok', 'https://www.tiktok.com/@gemgamingnetwork'], ['Instagram', 'https://www.instagram.com/gemgamingnetwork'], ['Facebook', 'https://www.facebook.com/profile.php?id=61587281364461']]
   },
   {
-    country: 'ca', name: 'Retro For The First Time', initials: 'RF', avatar: AV.retro, meta: 'Canada / 68.2K subscribers, 160K on TikTok',
+    country: 'ca', name: 'Retro For The First Time', initials: 'RF', avatar: AV.retro, meta: 'Canada / 244K followers',
     hook: 'Daily gaming news, always on camera. Announcements fit straight into the format.',
     stats: [['37K', 'YT Shorts'], ['16K', 'TikTok'], ['9K', 'Instagram'], ['5K', 'Facebook']],
     total: ['67K', 'Per short, all platforms'],
@@ -188,7 +214,7 @@ var CREATORS = [
     channels: [['YouTube', 'https://www.youtube.com/@RetroForTheFirstTime'], ['TikTok', 'https://www.tiktok.com/@retroforthefirsttime'], ['Instagram', 'https://www.instagram.com/retroftft'], ['Facebook', 'https://www.facebook.com/profile.php?id=61577469602007']]
   },
   {
-    country: 'au', name: 'Games Explorer', initials: 'GE', avatar: AV.exp, meta: 'Australia / 102.7K on TikTok',
+    country: 'au', name: 'Games Explorer', initials: 'GE', avatar: AV.exp, meta: 'Australia / 194K followers',
     hook: 'Made for the weeks before launch. His recommendation Shorts put upcoming games in front of players looking for their next one, building hype that turns into wishlists and pre-orders.',
     stats: [['16K', 'YT Shorts'], ['9K', 'TikTok'], ['20K', 'Instagram'], ['1K', 'Facebook']],
     total: ['45K', 'Per short, all platforms'],
@@ -196,7 +222,7 @@ var CREATORS = [
     channels: [['YouTube', 'https://www.youtube.com/@explorerdotgames'], ['TikTok', 'https://www.tiktok.com/@explorerdotgames'], ['Instagram', 'https://www.instagram.com/explorer.games'], ['Facebook', 'https://www.facebook.com/profile.php?id=100089561127301']]
   },
   {
-    country: 'se', name: 'Ettnix', initials: 'ET', avatar: AV.ett, meta: 'Sweden / 152K followers on Twitch',
+    country: 'se', name: 'Ettnix', initials: 'ET', avatar: AV.ett, meta: 'Sweden / 167K followers',
     hook: 'Veteran FPS and RPG streamer with nearly 14 years live. Ranked #1 in Fortnite, TFT, Apex and The Finals. The competitive voice for DOOM and launch-day streams.',
     stats: [['152K', 'Twitch followers'], ['347K', 'Watch hours'], ['12K', 'YouTube subs']],
     kit: 'https://july.bio/ettnix',

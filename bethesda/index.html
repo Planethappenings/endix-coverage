@@ -208,7 +208,8 @@ section { padding-block: 72px; }
 .card-head > div:last-child { min-width: 0; }
 .card-meta { font-size: 12px; color: var(--text-3); }
 .card-hook { padding: 0 20px 16px; font-size: 14px; color: var(--text-2); line-height: 1.5; }
-.pf { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: auto; }
+.pf { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pf-cell { display: flex; flex-direction: column; justify-content: center; }
 .pf-cell { padding: 13px 6px; text-align: center; }
 .pf-cell + .pf-cell { border-left: 1px solid var(--line); }
 .pf-val { font-family: var(--font-d); font-size: 21px; line-height: 1; color: var(--gold-hi); }
@@ -232,8 +233,13 @@ section { padding-block: 72px; }
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%), linear-gradient(to right, #000 30%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 0%, transparent 100%), linear-gradient(to right, #000 30%, transparent 100%); mask-composite: intersect; }
 .card-flag svg { width: 100%; height: auto; display: block; }
 .card > *:not(.card-flag) { position: relative; }
-.card-total { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 20px 0; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); }
+.card-total { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 52px; padding: 12px 20px 0; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); }
 .card-total b { font-family: var(--font-d); font-weight: 400; font-size: 26px; letter-spacing: .02em; color: var(--text); }
+/* Each card's parts sit on shared rows, so stats, totals and buttons line up across cards */
+@supports (grid-template-rows: subgrid) {
+  .grid { row-gap: 0; }
+  .card { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; margin-bottom: 16px; }
+}
 .vid-meta em { font-style: normal; display: block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
 
 /* BUDGET */
@@ -551,6 +557,24 @@ document.getElementById('fan-cards').innerHTML = FANS.map(function (f) {
     }).join('') + '</div></article>';
 }).join('');
 document.getElementById('feat-note').textContent = FEAT_NOTE;
+// Show as many example videos as fit next to each creator's stats (6 on tablets, 4 on phones)
+function fitVids() {
+  document.querySelectorAll('.fan').forEach(function (fan) {
+    var vids = fan.querySelectorAll('.vid'), side = fan.querySelector('.fan-side'), wrap = fan.querySelector('.fan-vids');
+    vids.forEach(function (v) { v.style.display = ''; });
+    if (window.innerWidth <= 980) { vids.forEach(function (v, i) { if (i >= 6) v.style.display = 'none'; }); return; }
+    wrap.style.display = 'none';
+    var limit = side.getBoundingClientRect().height - 10;
+    wrap.style.display = '';
+    var top = fan.getBoundingClientRect().top;
+    var cut = Array.prototype.filter.call(vids, function (v) { return v.getBoundingClientRect().bottom - top > limit; });
+    cut.forEach(function (v) { v.style.display = 'none'; });
+    if (wrap) wrap.style.minHeight = '';
+  });
+}
+fitVids();
+window.addEventListener('resize', fitVids);
+window.addEventListener('load', fitVids);
 
 document.getElementById('grid').innerHTML = CREATORS.map(function (c) {
   return '<article class="card"><div class="card-flag" aria-hidden="true">' + COUNTRIES[c.country].svgFlag + '</div>' +
@@ -560,7 +584,7 @@ document.getElementById('grid').innerHTML = CREATORS.map(function (c) {
     '<div class="pf" style="grid-template-columns:repeat(' + c.stats.length + ',1fr)">' + c.stats.map(function (s) {
       return '<div class="pf-cell"><div class="pf-val">' + esc(s[0]) + '</div><div class="pf-key">' + esc(s[1]) + '</div></div>';
     }).join('') + '</div>' +
-    (c.total ? '<div class="card-total">' + esc(c.total[1]) + ' <b>' + esc(c.total[0]) + '</b></div>' : '') +
+    '<div class="card-total">' + (c.total ? '<span>' + esc(c.total[1]) + '</span><b>' + esc(c.total[0]) + '</b>' : '') + '</div>' +
     '<div class="card-foot"><div class="pills">' + c.channels.map(function (ch) {
       return '<a class="pill" href="' + esc(ch[1]) + '" target="_blank" rel="noopener">' + esc(ch[0]) + '</a>';
     }).join('') + '</div><a class="kit" href="' + esc(c.kit) + '" target="_blank" rel="noopener">Media Kit <svg class="icon"><use href="#i-arrow"/></svg></a></div></article>';
