@@ -330,6 +330,13 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 }
 
 /* HUNGER */
+.grid.three { grid-template-columns: repeat(3, 1fr); }
+.grid.two { grid-template-columns: repeat(2, 1fr); }
+.timeline.tl3 { grid-template-columns: repeat(3, 1fr); }
+.sumcard { grid-row: span 6; margin-bottom: 16px; padding: 28px 26px; border: 1px solid var(--gold-border); background: radial-gradient(circle at 30% 0%, rgba(210,58,47,.22), transparent 70%), var(--bg-card); display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.sumcard h3 { font-family: var(--font-d); font-weight: 400; font-size: 30px; letter-spacing: .03em; line-height: 1; }
+.sumcard b { display: block; font-family: var(--font-d); font-weight: 400; font-size: 52px; line-height: .9; color: var(--gold-hi); }
+.sumcard span { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-2); margin-top: 6px; }
 .topbar-cta, .cta-btn { color: #fff; }
 .hero { min-height: clamp(520px, 62vw, 720px); display: flex; align-items: center; }
 .hero-key { position: absolute; inset: 0 0 0 26%; background: url(img/hunger-key.webp) 62% 18% / cover no-repeat;
@@ -376,11 +383,15 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 .card-idea { margin: 0 20px 16px; padding: 10px 12px; border-left: 2px solid var(--gold); background: var(--gold-dim); font-size: 13px; color: var(--text); }
 .card-idea b { color: var(--gold-hi); font-weight: 600; }
 @media (max-width: 980px) {
+  .grid.three, .grid.two { grid-template-columns: repeat(2, 1fr); }
+  .timeline.tl3 { grid-template-columns: 1fr; }
+  .timeline.tl3 .tl { border-right: 0; border-bottom: 1px solid var(--line); }
   .spot { grid-template-columns: 1fr; }
   .spot-side { border-right: 0; border-bottom: 1px solid var(--line); }
   .whys { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
+  .grid.three, .grid.two { grid-template-columns: 1fr; }
   .hero { min-height: 0; display: block; }
   .hero-key::after { background: linear-gradient(to top, var(--bg) 0%, transparent 40%); }
   .hero-key { position: relative; inset: auto; height: 260px; -webkit-mask-image: none; mask-image: none; background-position: 60% 20%; }
@@ -409,7 +420,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   <div class="inner hero-content">
     <div class="badge-ea"><i></i>Early Access December 3</div>
     <h1>Ready On<br><span>Day One.</span></h1>
-    <p class="hero-sub">HUNGER enters Early Access on December 3. Our creators can start today: one of the best FPS and extraction shooter players around, who already streams your game, and four short-form creators built for fast, clear visibility on every platform.</p>
+    <p class="hero-sub">HUNGER enters Early Access on December 3, and our whole roster is ready for launch day: one of the best FPS and extraction shooter players around, who already streams your game, YouTube's go-to guide channel, the creator of God of War, and five short-form creators built for fast, clear visibility on every platform.</p>
     <div class="hero-stats" id="hero-stats"></div>
   </div>
 </div>
@@ -451,47 +462,53 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section id="shorts">
   <div class="inner">
     <h2 class="section-title">Fast, Clear Visibility</h2>
-    <p class="section-lead">Four short-form creators who post every day on YouTube, TikTok, Instagram and Facebook. One short puts HUNGER in front of their whole audience within days, which is exactly what the two weeks before Early Access need.</p>
+    <p class="section-lead">Five short-form creators who post on YouTube, TikTok, Instagram and Facebook. One short puts HUNGER in front of their whole audience within days, which is exactly what a launch needs.</p>
     <div class="whys">
-      <div class="why"><b>Fast</b><span>Available now. A short can be live within days of a brief, in time for the Open Beta and launch day.</span></div>
+      <div class="why"><b>Fast</b><span>Ready for launch day. A short can be live within days of a brief.</span></div>
       <div class="why"><b>Clear</b><span>One game, one hook, under a minute. Players know what HUNGER is and where to get it before they scroll on.</span></div>
-      <div class="why"><b>Everywhere</b><span>Every short goes out on four platforms, so a single placement reaches about 684K followers combined.</span></div>
+      <div class="why"><b>Everywhere</b><span>Every short goes out on four platforms, so one round reaches about 2.3M followers combined.</span></div>
     </div>
-    <div class="grid" id="grid"></div>
+    <div class="grid three" id="grid-short"></div>
   </div>
 </section>
 
-<section class="alt" id="plan">
+<section class="alt" id="long">
   <div class="inner">
-    <h2 class="section-title">Two Weeks To Launch</h2>
-    <p class="section-lead">A rollout built around HUNGER's own dates. The whole roster is available from today, so nothing waits for the new year.</p>
-    <div class="timeline">
-      <div class="tl"><div class="tl-when">This Week</div><div class="tl-head">Wishlist Push</div><ul>
-        <li><b>Recommendation Shorts:</b> HUNGER as the next game to wishlist, building hype before the Open Beta.</li>
-        <li><b>News:</b> Open Beta dates and how to sign up, covered as it lands.</li>
-      </ul></div>
-      <div class="tl"><div class="tl-when">November 27 to 29</div><div class="tl-head">Open Beta</div><ul>
-        <li><b>Ettnix:</b> Open Beta stream on Twitch.</li>
-        <li><b>First impressions:</b> on-camera Shorts from the beta, plus the best stream moments cut into clips.</li>
-      </ul></div>
-      <div class="tl peak"><div class="tl-when">December 3</div><div class="tl-head">Early Access Launch</div><ul>
+    <h2 class="section-title">Depth And Credibility</h2>
+    <p class="section-lead">Long-form and live content that keeps working after launch day: the guides players search for when they start out, and a game designer's take on HUNGER.</p>
+    <div class="grid two" id="grid-long"></div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="inner">
+    <h2 class="section-title">Built Around Launch</h2>
+    <p class="section-lead">The whole campaign lands on Early Access and the weeks right after, when players decide what to play. Everything is ready to go on December 3.</p>
+    <div class="timeline tl3">
+      <div class="tl peak"><div class="tl-when">December 3</div><div class="tl-head">Launch Day</div><ul>
         <li><b>Ettnix:</b> Launch day stream from 10:00 GMT.</li>
-        <li><b>All four short-form creators</b> post on launch day across YouTube, TikTok, Instagram and Facebook.</li>
+        <li><b>Short-form:</b> Retro, Cloudual, Gem Gaming and Games Explorer post on launch day across YouTube, TikTok, Instagram and Facebook.</li>
         <li><b>Spark Ads</b> behind the best performing posts.</li>
       </ul></div>
-      <div class="tl"><div class="tl-when">Launch Weeks</div><div class="tl-head">Keep The Momentum</div><ul>
-        <li><b>Ettnix:</b> Follow-up streams as players settle in.</li>
+      <div class="tl"><div class="tl-when">Launch Week</div><div class="tl-head">Depth</div><ul>
+        <li><b>RageGamingVideos:</b> A dedicated guide on the best start, builds and mistakes to avoid.</li>
+        <li><b>David Jaffe:</b> A live session with a game designer's take, kept as a VOD.</li>
+        <li><b>Captain Eggcellent:</b> Hidden details and secrets, on four platforms.</li>
+        <li><b>Ettnix:</b> Follow-up stream as players settle in.</li>
+      </ul></div>
+      <div class="tl"><div class="tl-when">Weeks Two And Three</div><div class="tl-head">Keep The Momentum</div><ul>
         <li><b>Optional second round</b> of Shorts: tips, builds and highlights.</li>
+        <li><b>More streams</b> from Ettnix, priced per hour.</li>
         <li><b>One report</b> covering every post and stream.</li>
       </ul></div>
     </div>
   </div>
 </section>
 
-<section id="budget">
+<section class="alt" id="budget">
   <div class="inner">
     <h2 class="section-title">Budgeting: How The Launch Could Look Like</h2>
-    <p class="section-lead">An example covering the Open Beta, launch day and the first week, with an example TikTok Spark Ads budget on top. Every part can be scaled up or down.</p>
+    <p class="section-lead">An example covering launch day and the first week with the whole roster, plus an example TikTok Spark Ads budget on top. Every part can be scaled up or down.</p>
     <div class="pkg-wrap">
       <table class="pkg">
         <thead><tr><th>Creator and deliverable</th><th class="num">Price (USD)</th><th class="num">Estimated reach</th></tr></thead>
@@ -523,7 +540,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   </div>
 </section>
 
-<section class="alt" id="audience">
+<section id="audience">
   <div class="inner">
     <h2 class="section-title">Where The Views Come From</h2>
     <div class="aud">
@@ -533,7 +550,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   </div>
 </section>
 
-<section class="method" id="method">
+<section class="method alt" id="method">
   <div class="inner">
     <h2 class="section-title">How We Measured</h2>
     <div class="method-grid">
@@ -545,7 +562,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
         <h3>HUNGER</h3>
         <ul>
           <li>Early Access on Steam from December 3, 2026 at 10:00 GMT, with three maps and more than 40 weapons: <a href="https://store.steampowered.com/app/1752080/HUNGER/" target="_blank" rel="noopener">Steam store page</a>.</li>
-          <li>Free Open Beta from November 27 to 29, 2026, and more than 700,000 wishlists: <a href="https://www.gamespress.com/HUNGER-Announces-Open-Beta-for-27-November-Ahead-of-Early-Access-Launc" target="_blank" rel="noopener">GOOD FUN CORP press release</a>.</li>
+          <li>More than 700,000 wishlists: <a href="https://www.gamespress.com/HUNGER-Announces-Open-Beta-for-27-November-Ahead-of-Early-Access-Launc" target="_blank" rel="noopener">GOOD FUN CORP press release</a>.</li>
           <li>Ettnix's Twitch statistics: <a href="https://sullygnome.com/channel/ettnix/90" target="_blank" rel="noopener">SullyGnome</a>.</li>
         </ul>
       </div>
@@ -556,7 +573,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section class="cta">
   <div class="inner">
     <img class="cta-icon" src="img/hn-icon.png" alt="" aria-hidden="true">
-    <h2>Ready On Day One.<br><span>Ready Today.</span></h2>
+    <h2>Ready On Day One.<br><span>All Eight Of Us.</span></h2>
     <a class="cta-btn" href="mailto:daniel@hellonord.se?subject=HUNGER%20Early%20Access%20creator%20campaign">daniel@hellonord.se <svg class="icon"><use href="#i-arrow"/></svg></a>
   </div>
 </section>
@@ -586,7 +603,7 @@ var gMax = Math.max.apply(null, ETTNIX.genre.map(function (g) { return g[1]; }))
 document.getElementById('ett-genre').innerHTML = ETTNIX.genre.map(function (g) {
   return '<div class="genre-row' + (g[0] === 'HUNGER' ? ' me' : '') + '"><span>' + esc(g[0]) + '</span><div class="genre-track"><div class="genre-fill" style="width:' + (g[1] / gMax * 100) + '%"></div></div><span>' + g[1] + '</span></div>';
 }).join('');
-document.getElementById('grid').innerHTML = CREATORS.map(function (c) {
+function card(c) {
   return '<article class="card"><div class="card-flag" aria-hidden="true">' + COUNTRIES[c.country].svgFlag + '</div>' +
     '<div class="card-head"><div class="avatar"><div class="avatar-fb">' + esc(c.initials) + '</div><img src="' + esc(c.avatar) + '" alt="" loading="lazy" onerror="this.remove()"></div>' +
     '<div><h3 class="card-name">' + esc(c.name) + '</h3><div class="card-meta">' + esc(c.meta) + '</div></div></div>' +
@@ -599,7 +616,10 @@ document.getElementById('grid').innerHTML = CREATORS.map(function (c) {
     '<div class="card-foot"><div class="pills">' + c.channels.map(function (ch) {
       return '<a class="pill" href="' + esc(ch[1]) + '" target="_blank" rel="noopener">' + esc(ch[0]) + '</a>';
     }).join('') + '</div><a class="kit" href="' + esc(c.kit) + '" target="_blank" rel="noopener">Media Kit <svg class="icon"><use href="#i-arrow"/></svg></a></div></article>';
-}).join('');
+}
+document.getElementById('grid-short').innerHTML = CREATORS.filter(function (c) { return c.group === 'short'; }).map(card).join('') +
+  '<div class="sumcard"><h3>All Five Combined</h3>' + SHORT_SUM.map(function (x) { return '<div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div>';
+document.getElementById('grid-long').innerHTML = CREATORS.filter(function (c) { return c.group === 'long'; }).map(card).join('');
 document.getElementById('pkg-body').innerHTML = BUDGET.map(function (p) {
   var cls = p.total ? 'total' : p.sub ? 'sub' : p.ads ? 'ads' : '';
   return '<tr class="' + cls + '"><td><span class="who">' + esc(p.who) + '</span>' + (p.what ? '<span class="what">' + esc(p.what) + '</span>' : '') + '</td>' +
