@@ -331,6 +331,9 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 /* HUNGER */
 .grid.three { grid-template-columns: repeat(3, 1fr); }
+.aud-block { margin-top: 36px; }
+.aud-h { font-family: var(--font-d); font-weight: 400; font-size: clamp(28px, 3.6vw, 40px); line-height: 1; margin-bottom: 14px; }
+.aud-block .aud { margin-bottom: 0; }
 .opt-tag { display: inline-block; font-family: var(--font-d); font-size: 13px; letter-spacing: .14em; color: #fff; background: var(--gold); padding: 2px 8px; margin-right: 10px; vertical-align: 3px; }
 .pkg tr.optrow td { background: rgba(210,58,47,.05); }
 .pkg tr.optrow + tr.optrow td { border-top: 1px dashed var(--gold-border); }
@@ -431,6 +434,13 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section class="value" id="value">
   <div class="inner">
     <div class="value-grid" id="value-grid"></div>
+    <div class="aud-block">
+    <h2 class="aud-h">Where The Views Come From</h2>
+    <div class="aud">
+      <div class="aud-main"><b>~50%</b><span>of all views come from the United States</span></div>
+      <div class="aud-rest"><span><i>2</i>Canada</span><span><i>3</i>United Kingdom</span><span><i>4</i>Western Europe</span></div>
+    </div>
+    </div>
   </div>
 </section>
 
@@ -543,17 +553,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
   </div>
 </section>
 
-<section id="audience">
-  <div class="inner">
-    <h2 class="section-title">Where The Views Come From</h2>
-    <div class="aud">
-      <div class="aud-main"><b>~50%</b><span>of all views come from the United States</span></div>
-      <div class="aud-rest"><span><i>2</i>Canada</span><span><i>3</i>United Kingdom</span><span><i>4</i>Western Europe</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="method alt" id="method">
+<section class="method" id="method">
   <div class="inner">
     <h2 class="section-title">How We Measured</h2>
     <div class="method-grid">
