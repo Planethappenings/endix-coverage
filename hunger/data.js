@@ -99,19 +99,20 @@ var CREATORS = [
 var SHORT_SUM = [['~494K', 'Estimated views per round'], ['2.3M', 'Followers combined'], ['20', 'Posts per round, 5 creators on 4 platforms']];
 
 // Example launch budget. Stream hours priced at USD 300; hours watched use Ettnix's 173 average viewers on HUNGER.
+// Ettnix: Option A = 2 streams x 4 hours, Option B = 7 days x 4 hours retainer.
 var BUDGET = [
-  { who: 'Ettnix', what: 'Early Access launch day stream on Twitch, 4 hours (December 3)', price: 1200, views: '~700 hours watched' },
-  { who: 'Ettnix', what: 'Launch week stream on Twitch, 4 hours', price: 1200, views: '~700 hours watched' },
+  { tag: 'Option A', who: 'Ettnix', what: 'Two streams on Twitch, 4 hours each: launch day (December 3) and one more in launch week. 8 hours in total.', price: 2400, views: '~1,400 hours watched' },
+  { tag: 'Option B', who: 'Ettnix', what: 'Launch week retainer: live on Twitch 4 hours every day for 7 days from December 3, 28 hours in total. We are also open to other retainers over time, for example weekly streams through Early Access.', price: 8400, views: '~4,800 hours watched' },
   { who: 'RageGamingVideos', what: '1 dedicated long-form YouTube guide', price: 7000, views: '~73,000' },
   { who: 'David Jaffe', what: '1 hour live stream plus VOD', price: 2500, views: '~5,000 VOD views' },
   { who: 'Captain Eggcellent', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 6500, views: '~237,000' },
-  { who: 'Retro For The First Time', what: 'Short on all 4 platforms', price: 2600, views: '~67,000' },
-  { who: 'Cloudual', what: 'Short on all 4 platforms', price: 2600, views: '~104,000' },
-  { who: 'Gem Gaming Network', what: 'Short on all 4 platforms', price: 2600, views: '~41,000' },
-  { who: 'Games Explorer', what: 'Short on all 4 platforms', price: 2600, views: '~45,000' },
-  { sub: true, who: 'Organic subtotal', price: 28800, views: '~572,000 views + ~1,400 hours watched' },
+  { who: 'Retro For The First Time', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 2600, views: '~67,000' },
+  { who: 'Cloudual', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 2600, views: '~104,000' },
+  { who: 'Gem Gaming Network', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 2600, views: '~41,000' },
+  { who: 'Games Explorer', what: 'Short on YouTube, TikTok, Instagram and Facebook', price: 2600, views: '~45,000' },
+  { sub: true, who: 'Organic subtotal', what: 'Option A / Option B', price: '28,800 / 34,800', views: '~572,000 views + ~1,400 / ~4,800 hours watched' },
   { ads: true, who: 'TikTok Spark Ads (example)', what: 'Gaming interest, men 18 to 35, US and UK. Also the fallback plan.', price: 5000, views: '~330,000 to 500,000' },
-  { total: true, who: 'Total', price: 33800, views: '~900K to 1.07M views' }
+  { total: true, who: 'Total', what: 'Option A / Option B', price: '33,800 / 39,800', views: '~900K to 1.07M views' }
 ];
 
 var METHOD = [

@@ -331,6 +331,9 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 /* HUNGER */
 .grid.three { grid-template-columns: repeat(3, 1fr); }
+.opt-tag { display: inline-block; font-family: var(--font-d); font-size: 13px; letter-spacing: .14em; color: #fff; background: var(--gold); padding: 2px 8px; margin-right: 10px; vertical-align: 3px; }
+.pkg tr.optrow td { background: rgba(210,58,47,.05); }
+.pkg tr.optrow + tr.optrow td { border-top: 1px dashed var(--gold-border); }
 .grid.two { grid-template-columns: repeat(2, 1fr); }
 .timeline.tl3 { grid-template-columns: repeat(3, 1fr); }
 .sumcard { grid-row: span 6; margin-bottom: 16px; padding: 28px 26px; border: 1px solid var(--gold-border); background: radial-gradient(circle at 30% 0%, rgba(210,58,47,.22), transparent 70%), var(--bg-card); display: flex; flex-direction: column; justify-content: center; gap: 22px; }
@@ -494,11 +497,11 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
         <li><b>RageGamingVideos:</b> A dedicated guide on the best start, builds and mistakes to avoid.</li>
         <li><b>David Jaffe:</b> A live session with a game designer's take, kept as a VOD.</li>
         <li><b>Captain Eggcellent:</b> Hidden details and secrets, on four platforms.</li>
-        <li><b>Ettnix:</b> Follow-up stream as players settle in.</li>
+        <li><b>Ettnix:</b> A follow-up stream (Option A), or live every day of launch week (Option B).</li>
       </ul></div>
       <div class="tl"><div class="tl-when">Weeks Two And Three</div><div class="tl-head">Keep The Momentum</div><ul>
         <li><b>Optional second round</b> of Shorts: tips, builds and highlights.</li>
-        <li><b>More streams</b> from Ettnix, priced per hour.</li>
+        <li><b>Ettnix retainers</b> over time, for example weekly streams through Early Access.</li>
         <li><b>One report</b> covering every post and stream.</li>
       </ul></div>
     </div>
@@ -508,7 +511,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section class="alt" id="budget">
   <div class="inner">
     <h2 class="section-title">Budgeting: How The Launch Could Look Like</h2>
-    <p class="section-lead">An example covering launch day and the first week with the whole roster, plus an example TikTok Spark Ads budget on top. Every part can be scaled up or down.</p>
+    <p class="section-lead">An example covering launch day and the first week with the whole roster, plus an example TikTok Spark Ads budget on top. For Ettnix there are two options: two launch streams, or a launch week retainer. Every part can be scaled up or down.</p>
     <div class="pkg-wrap">
       <table class="pkg">
         <thead><tr><th>Creator and deliverable</th><th class="num">Price (USD)</th><th class="num">Estimated reach</th></tr></thead>
@@ -622,8 +625,8 @@ document.getElementById('grid-short').innerHTML = CREATORS.filter(function (c) {
 document.getElementById('grid-long').innerHTML = CREATORS.filter(function (c) { return c.group === 'long'; }).map(card).join('');
 document.getElementById('pkg-body').innerHTML = BUDGET.map(function (p) {
   var cls = p.total ? 'total' : p.sub ? 'sub' : p.ads ? 'ads' : '';
-  return '<tr class="' + cls + '"><td><span class="who">' + esc(p.who) + '</span>' + (p.what ? '<span class="what">' + esc(p.what) + '</span>' : '') + '</td>' +
-    '<td class="num">' + n(p.price) + '</td><td class="num"><span class="views">' + esc(p.views) + '</span></td></tr>';
+  return '<tr class="' + cls + (p.tag ? ' optrow' : '') + '"><td>' + (p.tag ? '<span class="opt-tag">' + esc(p.tag) + '</span>' : '') + '<span class="who">' + esc(p.who) + '</span>' + (p.what ? '<span class="what">' + esc(p.what) + '</span>' : '') + '</td>' +
+    '<td class="num">' + (typeof p.price === 'number' ? n(p.price) : esc(p.price)) + '</td><td class="num"><span class="views">' + esc(p.views) + '</span></td></tr>';
 }).join('');
 document.getElementById('method-list').innerHTML = METHOD.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('');
 </script>
