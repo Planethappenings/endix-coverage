@@ -189,19 +189,23 @@ press = {}
 def add_press(item):
     nh = norm(item['headline'])[:25]
     for v in press.values():  # same outlet + same headline start = same article (dates are often missing)
-        if v['domain'] == item['domain'] and (norm(v['headline'])[:25] == nh or canon(v['url']) == canon(item['url'])):
+        if v['domain'] == item['domain'] and (canon(v['url']) == canon(item['url']) or (v['edition'] == item['edition'] and norm(v['headline'])[:25] == nh)):
             for f in ('date', 'country', 'uvm'):
                 if not v.get(f) and item.get(f): v[f] = item[f]
             v['x_views'] = max(v.get('x_views', 0), item.get('x_views', 0))
             return
-    press[item['domain'] + '|' + nh] = item
+    press[item['domain'] + '|' + item['edition'] + '|' + nh] = item
 
 def canon(u):
     return re.sub(r'^https?://(www\.)?', '', str(u or '')).split('#')[0].rstrip('/\\').lower()
 
 REGION = {'MENA': 'Middle East', 'Arabic': 'Middle East', 'LATAM': 'Latin America'}
 uvm_by_domain = {}
-for r in table('Press_Manual'):
+trailer_pages = []
+# Press_Manual rows, plus bulk imports kept in the repo (data/press_import_*.json, same columns), e.g. a PR agency's coverage log
+import glob as _glob
+_press_imports = [r for f in sorted(_glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'press_import_*.json'))) for r in json.load(open(f, encoding='utf-8'))]
+for r in table('Press_Manual') + _press_imports:
     url = r.get('URL', '').strip()
     if not url.startswith('http'): continue
     d = host(url); date = day(r.get('Published'))
@@ -210,10 +214,13 @@ for r in table('Press_Manual'):
     uvm = num(r.get('Monthly visitors'))
     if uvm: uvm_by_domain[d] = max(uvm_by_domain.get(d, 0), uvm)
     head = r.get('Headline', '').strip()
-    kind = 'press release' if re.search(r'pressrelease|prtimes|press-release|release/|pr_topics|company_news|releases/', url) else 'article'
-    add_press({'edition': ed, 'date': date, 'outlet': r.get('Outlet') or d, 'domain': d, 'headline': head, 'url': url,
-               'country': REGION.get(r.get('Country'), r.get('Country')) or country_of(url, '', d), 'kind': kind,
-               'uvm': uvm, 'x_views': 0, 'source': 'manual'})
+    note = (r.get('Note') or '').lower()
+    kind = ('trailer' if 'trailer page' in note else 'press release' if ('press release' in note or re.search(r'pressrelease|prtimes|press-release|release/|pr_topics|company_news|releases/', url)) else 'article')
+    item = {'edition': ed, 'date': date, 'outlet': r.get('Outlet') or d, 'domain': d, 'headline': head, 'url': url,
+            'country': REGION.get(r.get('Country'), r.get('Country')) or country_of(url, '', d), 'kind': kind,
+            'uvm': uvm, 'x_views': 0, 'source': 'manual'}
+    if kind == 'trailer': trailer_pages.append(item)  # exhibitor trailer pages (IGN network etc.) are counted apart from articles
+    else: add_press(item)
 
 for r in table('Press', header_hint='Artikellänk'):
     url = r.get('Artikellänk', '')
@@ -228,7 +235,6 @@ for r in table('Press', header_hint='Artikellänk'):
     add_press({'edition': edition_for(date), 'date': date, 'outlet': clean_outlet(outlet_raw), 'domain': d, 'headline': head, 'url': url,
                'country': country_of(url, outlet_raw, d), 'kind': kind, 'x_views': num(r.get('X-visningar (summa)')), 'source': 'grok'})
 
-trailer_pages = []
 for r in table('Press_Feed'):
     date = day(r.get('Published')); ed = r.get('Edition') or edition_for(date)
     head = r.get('Headline', ''); d = (r.get('Outlet domain') or host(r.get('URL', ''))).lower()
