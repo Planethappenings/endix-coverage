@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26",
+ "generated": "2026-11-27",
  "editions": [
   {
    "slug": "spring2026",
@@ -541,8 +541,8 @@
     }
    ],
    "review_stats": {
-    "total": 132,
-    "positive": 96
+    "total": 133,
+    "positive": 97
    },
    "reviews": [
     {
@@ -9371,8 +9371,8 @@
     }
    ],
    "review_stats": {
-    "total": 68,
-    "positive": 60
+    "total": 70,
+    "positive": 62
    },
    "reviews": [
     {
@@ -9884,8 +9884,8 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=PvhY3m1CRFo",
      "date": "2026-11-07",
-     "views": 158824.0,
-     "likes": 1888.0,
+     "views": 158861.0,
+     "likes": 1887.0,
      "type": "short",
      "category": "media"
     },
@@ -9895,8 +9895,8 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=VnvmTjv9T8s",
      "date": "2026-11-05",
-     "views": 76834.0,
-     "likes": 425.0,
+     "views": 76854.0,
+     "likes": 426.0,
      "type": "short",
      "category": "media"
     },
@@ -9906,7 +9906,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=0atfhufyFsI",
      "date": "2026-11-10",
-     "views": 71691.0,
+     "views": 71723.0,
      "likes": 372.0,
      "type": "short",
      "category": "media"
@@ -9917,8 +9917,8 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=GsOpR0h0qUo",
      "date": "2026-11-07",
-     "views": 63748.0,
-     "likes": 820.0,
+     "views": 64008.0,
+     "likes": 821.0,
      "type": "short",
      "category": "media"
     },
@@ -9928,7 +9928,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=aCW-yiBAylE",
      "date": "2026-11-05",
-     "views": 54871.0,
+     "views": 54891.0,
      "likes": 191.0,
      "type": "short",
      "category": "media"
@@ -9939,7 +9939,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=BJHFFk9DFYc",
      "date": "2026-11-05",
-     "views": 50577.0,
+     "views": 50592.0,
      "likes": 247.0,
      "type": "short",
      "category": "media"
@@ -9950,7 +9950,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=c5GADDHEEro",
      "date": "2026-11-05",
-     "views": 46162.0,
+     "views": 46204.0,
      "likes": 260.0,
      "type": "short",
      "category": "media"
@@ -9961,7 +9961,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=joytmyqOXdQ",
      "date": "2026-11-05",
-     "views": 44879.0,
+     "views": 44892.0,
      "likes": 153.0,
      "type": "short",
      "category": "media"
@@ -9972,7 +9972,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=mnXKvoAqHco",
      "date": "2026-11-05",
-     "views": 40783.0,
+     "views": 40787.0,
      "likes": 145.0,
      "type": "short",
      "category": "media"
@@ -9983,8 +9983,8 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=ih3SotSus6I",
      "date": "2026-11-05",
-     "views": 38037.0,
-     "likes": 155.0,
+     "views": 38049.0,
+     "likes": 156.0,
      "type": "short",
      "category": "media"
     },
@@ -9994,8 +9994,8 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=ihqj5Yliyyg",
      "date": "2026-11-05",
-     "views": 36835.0,
-     "likes": 120.0,
+     "views": 36847.0,
+     "likes": 121.0,
      "type": "short",
      "category": "media"
     },
@@ -10005,7 +10005,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=oElX65KmbVo",
      "date": "2026-11-05",
-     "views": 34008.0,
+     "views": 34017.0,
      "likes": 117.0,
      "type": "short",
      "category": "media"
@@ -10016,8 +10016,8 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=xjKqVUshUaI",
      "date": "2026-11-05",
-     "views": 32450.0,
-     "likes": 131.0,
+     "views": 32459.0,
+     "likes": 132.0,
      "type": "short",
      "category": "media"
     },
@@ -10027,8 +10027,8 @@
      "channel": "CohhCarnage",
      "url": "https://www.youtube.com/watch?v=yCjDVjxOAnM",
      "date": "2026-11-07",
-     "views": 32417.0,
-     "likes": 197.0,
+     "views": 32420.0,
+     "likes": 198.0,
      "type": "live",
      "category": "creator"
     },
@@ -10038,7 +10038,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=QUOEmfZfPu8",
      "date": "2026-11-05",
-     "views": 31425.0,
+     "views": 31430.0,
      "likes": 88.0,
      "type": "short",
      "category": "media"
@@ -10049,7 +10049,7 @@
      "channel": "IGN",
      "url": "https://www.youtube.com/watch?v=JJLZLg_I08A",
      "date": "2026-11-05",
-     "views": 30928.0,
+     "views": 30943.0,
      "likes": 78.0,
      "type": "short",
      "category": "media"
@@ -10060,7 +10060,7 @@
      "channel": "CohhCarnage",
      "url": "https://www.youtube.com/watch?v=UG_m1ZLifGM",
      "date": "2026-11-07",
-     "views": 16400.0,
+     "views": 16403.0,
      "likes": 84.0,
      "type": "video",
      "category": "creator"
@@ -10082,8 +10082,8 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=k1L_iW0pusQ",
      "date": "2026-11-07",
-     "views": 14211.0,
-     "likes": 183.0,
+     "views": 14257.0,
+     "likes": 184.0,
      "type": "short",
      "category": "media"
     },
@@ -10093,7 +10093,7 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=N0ktLG98RI0",
      "date": "2026-11-05",
-     "views": 13722.0,
+     "views": 13723.0,
      "likes": 125.0,
      "type": "short",
      "category": "media"
@@ -10104,7 +10104,7 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=OpmGspIbZO0",
      "date": "2026-11-08",
-     "views": 12897.0,
+     "views": 12902.0,
      "likes": 113.0,
      "type": "short",
      "category": "media"
@@ -10115,7 +10115,7 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=reL84kUlvIo",
      "date": "2026-11-08",
-     "views": 10953.0,
+     "views": 10964.0,
      "likes": 96.0,
      "type": "short",
      "category": "media"
@@ -10126,8 +10126,8 @@
      "channel": "Rocky Tamil Gaming",
      "url": "https://www.youtube.com/watch?v=VI2ObrzmxjU",
      "date": "2026-11-08",
-     "views": 10756.0,
-     "likes": 481.0,
+     "views": 10767.0,
+     "likes": 482.0,
      "type": "live",
      "category": "creator"
     },
@@ -10137,7 +10137,7 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=jmKXIneVIGQ",
      "date": "2026-11-05",
-     "views": 10707.0,
+     "views": 10708.0,
      "likes": 82.0,
      "type": "short",
      "category": "media"
@@ -10170,7 +10170,7 @@
      "channel": "iTownGamePlay *Terror&Diversión*",
      "url": "https://www.youtube.com/watch?v=Lml7gpzThiQ",
      "date": "2026-11-06",
-     "views": 8501.0,
+     "views": 8545.0,
      "likes": 282.0,
      "type": "live",
      "category": "creator"
@@ -10181,7 +10181,7 @@
      "channel": "Don Indie Secundario",
      "url": "https://www.youtube.com/watch?v=JLbTO3PZrBI",
      "date": "2026-10-26",
-     "views": 8344.0,
+     "views": 8346.0,
      "likes": 1056.0,
      "type": "short",
      "category": "creator"
@@ -10192,7 +10192,7 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=M_HEW8YUGPI",
      "date": "2026-11-05",
-     "views": 7979.0,
+     "views": 7981.0,
      "likes": 78.0,
      "type": "short",
      "category": "media"
@@ -10214,7 +10214,7 @@
      "channel": "Gamer Lisa",
      "url": "https://www.youtube.com/watch?v=_IJAmiF5n2Y",
      "date": "2026-10-26",
-     "views": 7794.0,
+     "views": 7800.0,
      "likes": 267.0,
      "type": "short",
      "category": "creator"
@@ -10225,7 +10225,7 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=-nzigqTy3Ak",
      "date": "2026-11-05",
-     "views": 7484.0,
+     "views": 7485.0,
      "likes": 41.0,
      "type": "short",
      "category": "media"
@@ -10236,7 +10236,7 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=bw9TGIS0Qq8",
      "date": "2026-11-05",
-     "views": 7357.0,
+     "views": 7358.0,
      "likes": 46.0,
      "type": "short",
      "category": "media"
@@ -10247,7 +10247,7 @@
      "channel": "Captain Eggcellent But Shorter",
      "url": "https://www.youtube.com/watch?v=kIjxepEc638",
      "date": "2026-11-06",
-     "views": 7329.0,
+     "views": 7350.0,
      "likes": 440.0,
      "type": "short",
      "category": "creator"
@@ -10269,7 +10269,7 @@
      "channel": "GameTrailers",
      "url": "https://www.youtube.com/watch?v=dD-MUOMlI7A",
      "date": "2026-11-05",
-     "views": 6742.0,
+     "views": 6744.0,
      "likes": 49.0,
      "type": "short",
      "category": "media"
@@ -10302,7 +10302,7 @@
      "channel": "Plano Plays Games | Epic Videos & Live Streams",
      "url": "https://www.youtube.com/watch?v=lCL6NL0sQCA",
      "date": "2026-11-08",
-     "views": 5739.0,
+     "views": 5740.0,
      "likes": 18.0,
      "type": "video",
      "category": "creator"
@@ -10335,7 +10335,7 @@
      "channel": "Dunkz",
      "url": "https://www.youtube.com/watch?v=NzcbcwtqRcQ",
      "date": "2026-10-23",
-     "views": 3649.0,
+     "views": 3650.0,
      "likes": 77.0,
      "type": "short",
      "category": "creator"
@@ -10357,7 +10357,7 @@
      "channel": "8urn0ut",
      "url": "https://www.youtube.com/watch?v=AIpxCRnX-Wc",
      "date": "2026-10-30",
-     "views": 3061.0,
+     "views": 3063.0,
      "likes": 84.0,
      "type": "short",
      "category": "creator"
@@ -10368,8 +10368,8 @@
      "channel": "Nyanners VODs",
      "url": "https://www.youtube.com/watch?v=KD96CjQLfTM",
      "date": "2026-11-10",
-     "views": 2813.0,
-     "likes": 44.0,
+     "views": 2822.0,
+     "likes": 45.0,
      "type": "video",
      "category": "creator"
     },
@@ -10390,7 +10390,7 @@
      "channel": "Tzafelix",
      "url": "https://www.youtube.com/watch?v=8DaXFIH46PQ",
      "date": "2026-11-10",
-     "views": 2530.0,
+     "views": 2531.0,
      "likes": 40.0,
      "type": "live",
      "category": "creator"
@@ -10423,7 +10423,7 @@
      "channel": "David Jaffe",
      "url": "https://www.youtube.com/watch?v=F9Lgpo4Zfdw",
      "date": "2026-11-07",
-     "views": 2462.0,
+     "views": 2465.0,
      "likes": 39.0,
      "type": "live",
      "category": "creator"
@@ -10456,7 +10456,7 @@
      "channel": "Ginichi",
      "url": "https://www.youtube.com/watch?v=5QZe9Qvz5d0",
      "date": "2026-11-09",
-     "views": 1677.0,
+     "views": 1680.0,
      "likes": 68.0,
      "type": "live",
      "category": "creator"
@@ -10500,7 +10500,7 @@
      "channel": "ange",
      "url": "https://www.youtube.com/watch?v=M-i57enAxhI",
      "date": "2026-11-05",
-     "views": 1325.0,
+     "views": 1326.0,
      "likes": 35.0,
      "type": "short",
      "category": "creator"
@@ -10522,7 +10522,7 @@
      "channel": "VIDEOJUEGUISTA",
      "url": "https://www.youtube.com/watch?v=n243HlQgaZU",
      "date": "2026-11-11",
-     "views": 1238.0,
+     "views": 1240.0,
      "likes": 58.0,
      "type": "live",
      "category": "creator"
@@ -10555,7 +10555,7 @@
      "channel": "Openlobbygames",
      "url": "https://www.youtube.com/watch?v=s1DcZ-QWvr4",
      "date": "2026-10-23",
-     "views": 1207.0,
+     "views": 1211.0,
      "likes": 24.0,
      "type": "short",
      "category": "creator"
@@ -10599,7 +10599,7 @@
      "channel": "Hydrarch",
      "url": "https://www.youtube.com/watch?v=GL6Xs9wTcPU",
      "date": "2026-10-21",
-     "views": 1060.0,
+     "views": 1062.0,
      "likes": 15.0,
      "type": "short",
      "category": "creator"
@@ -10639,6 +10639,17 @@
     },
     {
      "edition": "fall2026",
+     "title": "ENDIX EXPO IS HERE! #gaming #indiegaming",
+     "channel": "Kipper",
+     "url": "https://www.youtube.com/watch?v=BvHvvOEyQT0",
+     "date": "2026-11-07",
+     "views": 1006.0,
+     "likes": 1.0,
+     "type": "short",
+     "category": "creator"
+    },
+    {
+     "edition": "fall2026",
      "title": "Endix Fest - Minekeeper",
      "channel": "Final Hour Interactive",
      "url": "https://www.youtube.com/watch?v=Ivtd6uVQxCQ",
@@ -10647,17 +10658,6 @@
      "likes": 8.0,
      "type": "short",
      "category": "media"
-    },
-    {
-     "edition": "fall2026",
-     "title": "ENDIX EXPO IS HERE! #gaming #indiegaming",
-     "channel": "Kipper",
-     "url": "https://www.youtube.com/watch?v=BvHvvOEyQT0",
-     "date": "2026-11-07",
-     "views": 1005.0,
-     "likes": 1.0,
-     "type": "short",
-     "category": "creator"
     },
     {
      "edition": "fall2026",
@@ -10742,7 +10742,7 @@
      "channel": "Wayong Inc.",
      "url": "https://www.youtube.com/watch?v=Rog39TgpqDo",
      "date": "2026-11-07",
-     "views": 730.0,
+     "views": 731.0,
      "likes": 14.0,
      "type": "live",
      "category": "creator"
@@ -10764,7 +10764,7 @@
      "channel": "Mutch Games",
      "url": "https://www.youtube.com/watch?v=iZFrhH1W38M",
      "date": "2026-11-09",
-     "views": 692.0,
+     "views": 700.0,
      "likes": 17.0,
      "type": "video",
      "category": "creator"
@@ -10841,7 +10841,7 @@
      "channel": "Cupessie",
      "url": "https://www.youtube.com/watch?v=8JW1JZqO2lw",
      "date": "2026-11-07",
-     "views": 345.0,
+     "views": 350.0,
      "likes": 5.0,
      "type": "live",
      "category": "creator"
@@ -10852,7 +10852,7 @@
      "channel": "ItsMarusagi",
      "url": "https://www.youtube.com/watch?v=eXGoQpJmPvg",
      "date": "2026-10-29",
-     "views": 336.0,
+     "views": 337.0,
      "likes": 17.0,
      "type": "short",
      "category": "creator"
@@ -11017,7 +11017,7 @@
      "channel": "FrikiUp – Gaming Reviews",
      "url": "https://www.youtube.com/watch?v=AE4Lst_C7LY",
      "date": "2026-11-03",
-     "views": 137.0,
+     "views": 138.0,
      "likes": 3.0,
      "type": "video",
      "category": "media"
@@ -11270,7 +11270,7 @@
      "channel": "More Galixcey",
      "url": "https://www.youtube.com/watch?v=BacCZSroVR4",
      "date": "2026-11-06",
-     "views": 57.0,
+     "views": 58.0,
      "likes": 0.0,
      "type": "short",
      "category": "creator"
@@ -11358,27 +11358,27 @@
      "channel": "Demon Game Miner",
      "url": "https://www.youtube.com/watch?v=3EzA9IaLnbA",
      "date": "2026-11-06",
-     "views": 44.0,
+     "views": 45.0,
      "likes": 0.0,
      "type": "short",
      "category": "media"
     },
     {
      "edition": "fall2026",
-     "title": "Indie Mania! Only at @endixexpo #gaming #indiegame",
-     "channel": "Kipper",
-     "url": "https://www.youtube.com/watch?v=WXAl4AQPaNg",
+     "title": "ENDIX: The Gaming Expo Where You Never Leave the Game! 🎮.#shorts #trending #gaming #news",
+     "channel": "Fortify Gamer",
+     "url": "https://www.youtube.com/watch?v=-hnMKcG-ceQ",
      "date": "2026-11-08",
-     "views": 44.0,
+     "views": 45.0,
      "likes": 0.0,
      "type": "short",
      "category": "creator"
     },
     {
      "edition": "fall2026",
-     "title": "ENDIX: The Gaming Expo Where You Never Leave the Game! 🎮.#shorts #trending #gaming #news",
-     "channel": "Fortify Gamer",
-     "url": "https://www.youtube.com/watch?v=-hnMKcG-ceQ",
+     "title": "Indie Mania! Only at @endixexpo #gaming #indiegame",
+     "channel": "Kipper",
+     "url": "https://www.youtube.com/watch?v=WXAl4AQPaNg",
      "date": "2026-11-08",
      "views": 44.0,
      "likes": 0.0,
@@ -11435,7 +11435,7 @@
      "channel": "Kou Amashita",
      "url": "https://www.youtube.com/watch?v=nuprfN9B5mE",
      "date": "2026-11-16",
-     "views": 38.0,
+     "views": 39.0,
      "likes": 3.0,
      "type": "short",
      "category": "creator"
@@ -11464,6 +11464,17 @@
     },
     {
      "edition": "fall2026",
+     "title": "Project ReMind - Official Demo Launch Trailer  Endix Expo Fall 2026 #demongameminer #gaming",
+     "channel": "Demon Game Miner",
+     "url": "https://www.youtube.com/watch?v=GIRwbUSRxmo",
+     "date": "2026-11-06",
+     "views": 32.0,
+     "likes": 0.0,
+     "type": "short",
+     "category": "media"
+    },
+    {
+     "edition": "fall2026",
      "title": "Πάμε να κάνουμε επίσκεψη στην Endix!",
      "channel": "Kinigouliss",
      "url": "https://www.youtube.com/watch?v=zM4HY8HtGjs",
@@ -11475,14 +11486,14 @@
     },
     {
      "edition": "fall2026",
-     "title": "Project ReMind - Official Demo Launch Trailer  Endix Expo Fall 2026 #demongameminer #gaming",
-     "channel": "Demon Game Miner",
-     "url": "https://www.youtube.com/watch?v=GIRwbUSRxmo",
-     "date": "2026-11-06",
-     "views": 31.0,
-     "likes": 0.0,
+     "title": "Um dos jogos promissores da @Endix_Expo #Endix | #scorpinhoo em #Twitch",
+     "channel": "ScorpiNhoO Trophy Lab",
+     "url": "https://www.youtube.com/watch?v=8oFP5FXWqcI",
+     "date": "2026-11-09",
+     "views": 32.0,
+     "likes": 3.0,
      "type": "short",
-     "category": "media"
+     "category": "creator"
     },
     {
      "edition": "fall2026",
@@ -11494,17 +11505,6 @@
      "likes": 0.0,
      "type": "short",
      "category": "media"
-    },
-    {
-     "edition": "fall2026",
-     "title": "Um dos jogos promissores da @Endix_Expo #Endix | #scorpinhoo em #Twitch",
-     "channel": "ScorpiNhoO Trophy Lab",
-     "url": "https://www.youtube.com/watch?v=8oFP5FXWqcI",
-     "date": "2026-11-09",
-     "views": 30.0,
-     "likes": 3.0,
-     "type": "short",
-     "category": "creator"
     },
     {
      "edition": "fall2026",
@@ -11534,10 +11534,21 @@
      "channel": "Demon Game Miner",
      "url": "https://www.youtube.com/watch?v=LuCijb8puCY",
      "date": "2026-11-06",
-     "views": 27.0,
+     "views": 28.0,
      "likes": 0.0,
      "type": "short",
      "category": "media"
+    },
+    {
+     "edition": "fall2026",
+     "title": "Exploring a game expo I can ACTUALLY play, YOU CAN TOO  !endix to join me @endixexpo",
+     "channel": "Cupessie",
+     "url": "https://www.youtube.com/watch?v=24igKTXncvI",
+     "date": "2026-11-02",
+     "views": 25.0,
+     "likes": 0.0,
+     "type": "live",
+     "category": "creator"
     },
     {
      "edition": "fall2026",
@@ -11552,11 +11563,11 @@
     },
     {
      "edition": "fall2026",
-     "title": "Exploring a game expo I can ACTUALLY play, YOU CAN TOO  !endix to join me @endixexpo",
-     "channel": "Cupessie",
-     "url": "https://www.youtube.com/watch?v=24igKTXncvI",
-     "date": "2026-11-02",
-     "views": 24.0,
+     "title": "We Got VIP Access to the Virtual Gaming Expo #EndixExpo",
+     "channel": "Goldfish Gang",
+     "url": "https://www.youtube.com/watch?v=nrtSg8LyjXk",
+     "date": "2026-11-03",
+     "views": 22.0,
      "likes": 0.0,
      "type": "live",
      "category": "creator"
@@ -11569,17 +11580,6 @@
      "date": "2026-11-08",
      "views": 22.0,
      "likes": 1.0,
-     "type": "live",
-     "category": "creator"
-    },
-    {
-     "edition": "fall2026",
-     "title": "We Got VIP Access to the Virtual Gaming Expo #EndixExpo",
-     "channel": "Goldfish Gang",
-     "url": "https://www.youtube.com/watch?v=nrtSg8LyjXk",
-     "date": "2026-11-03",
-     "views": 21.0,
-     "likes": 0.0,
      "type": "live",
      "category": "creator"
     },
@@ -11706,6 +11706,28 @@
     },
     {
      "edition": "fall2026",
+     "title": "Chatting with the Devs of SoulStream Saga #endix #indiegame #endix2026 #vtuber #shorts",
+     "channel": "Kou Amashita",
+     "url": "https://www.youtube.com/watch?v=4lMjlcmrNmo",
+     "date": "2026-11-18",
+     "views": 14.0,
+     "likes": 1.0,
+     "type": "short",
+     "category": "creator"
+    },
+    {
+     "edition": "fall2026",
+     "title": "Endix Expo  una exposición virtual de videojuegos",
+     "channel": "Rise Freegamer",
+     "url": "https://www.youtube.com/watch?v=JU1ZDi37NVc",
+     "date": "2026-11-25",
+     "views": 14.0,
+     "likes": 0.0,
+     "type": "short",
+     "category": "creator"
+    },
+    {
+     "edition": "fall2026",
      "title": "(DAY 2)OFFICIAL ENDIX EXPO CREATOR! COME CHECK IT OUT!",
      "channel": "Kipper",
      "url": "https://www.youtube.com/watch?v=2e9cRVK2Qm4",
@@ -11724,17 +11746,6 @@
      "views": 13.0,
      "likes": 0.0,
      "type": "video",
-     "category": "creator"
-    },
-    {
-     "edition": "fall2026",
-     "title": "Chatting with the Devs of SoulStream Saga #endix #indiegame #endix2026 #vtuber #shorts",
-     "channel": "Kou Amashita",
-     "url": "https://www.youtube.com/watch?v=4lMjlcmrNmo",
-     "date": "2026-11-18",
-     "views": 13.0,
-     "likes": 1.0,
-     "type": "short",
      "category": "creator"
     },
     {
@@ -11882,17 +11893,6 @@
     },
     {
      "edition": "fall2026",
-     "title": "Endix Expo  una exposición virtual de videojuegos",
-     "channel": "Rise Freegamer",
-     "url": "https://www.youtube.com/watch?v=JU1ZDi37NVc",
-     "date": "2026-11-25",
-     "views": 7.0,
-     "likes": 0.0,
-     "type": "short",
-     "category": "creator"
-    },
-    {
-     "edition": "fall2026",
      "title": "🔴 Endix Indie Expo! - Games and Demos!",
      "channel": "SirSlender",
      "url": "https://www.youtube.com/watch?v=xBqbAX64BZ0",
@@ -11981,10 +11981,32 @@
     },
     {
      "edition": "fall2026",
+     "title": "Kitman - Official Gameplay Trailer | Endix Expo Fall 2026",
+     "channel": "Game-Movie Trailer",
+     "url": "https://www.youtube.com/watch?v=3IUsucYVeHI",
+     "date": "2026-11-12",
+     "views": 5.0,
+     "likes": 0.0,
+     "type": "short",
+     "category": "media"
+    },
+    {
+     "edition": "fall2026",
      "title": "Temtem: Pioneers - Official Extended Announcement Trailer | Endix Expo Fall 2026",
      "channel": "GamesParade",
      "url": "https://www.youtube.com/watch?v=P9U6JlYoH9k",
      "date": "2026-11-18",
+     "views": 5.0,
+     "likes": 0.0,
+     "type": "short",
+     "category": "media"
+    },
+    {
+     "edition": "fall2026",
+     "title": "SoulStream Saga: Chapter 1 - Official Localization Update Trailer | Endix Expo Fall 2026",
+     "channel": "GamesParade",
+     "url": "https://www.youtube.com/watch?v=dsS02SX9i-Q",
+     "date": "2026-11-19",
      "views": 5.0,
      "likes": 0.0,
      "type": "short",
@@ -12003,32 +12025,10 @@
     },
     {
      "edition": "fall2026",
-     "title": "Kitman - Official Gameplay Trailer | Endix Expo Fall 2026",
-     "channel": "Game-Movie Trailer",
-     "url": "https://www.youtube.com/watch?v=3IUsucYVeHI",
-     "date": "2026-11-12",
-     "views": 4.0,
-     "likes": 0.0,
-     "type": "short",
-     "category": "media"
-    },
-    {
-     "edition": "fall2026",
      "title": "Hear My Cult - Official Gameplay Trailer | Endix Expo Fall 2026",
      "channel": "GamesParade",
      "url": "https://www.youtube.com/watch?v=8E03z9lYqGg",
      "date": "2026-11-18",
-     "views": 4.0,
-     "likes": 0.0,
-     "type": "short",
-     "category": "media"
-    },
-    {
-     "edition": "fall2026",
-     "title": "SoulStream Saga: Chapter 1 - Official Localization Update Trailer | Endix Expo Fall 2026",
-     "channel": "GamesParade",
-     "url": "https://www.youtube.com/watch?v=dsS02SX9i-Q",
-     "date": "2026-11-19",
      "views": 4.0,
      "likes": 0.0,
      "type": "short",
@@ -12278,6 +12278,17 @@
     },
     {
      "edition": "fall2026",
+     "title": "Swordeye   Official Gameplay Trailer   Endix Expo Fall 2026",
+     "channel": "Devil of PC game",
+     "url": "https://www.youtube.com/watch?v=IHv-1LMDg2c",
+     "date": "2026-11-09",
+     "views": 1.0,
+     "likes": 0.0,
+     "type": "short",
+     "category": "media"
+    },
+    {
+     "edition": "fall2026",
      "title": "Steak Simulator: Medium Rare - Official Teaser Trailer | Endix Expo Fall 2026",
      "channel": "GAMERTIMES",
      "url": "https://www.youtube.com/watch?v=9lwd3lHcf9c",
@@ -12352,6 +12363,17 @@
      "likes": 0.0,
      "type": "short",
      "category": "media"
+    },
+    {
+     "edition": "fall2026",
+     "title": "[React] ENDIX 2026",
+     "channel": "yadcraby",
+     "url": "https://www.youtube.com/watch?v=e7nYPCw-XNo",
+     "date": "2026-11-26",
+     "views": 1.0,
+     "likes": 0.0,
+     "type": "video",
+     "category": "creator"
     },
     {
      "edition": "fall2026",
@@ -12440,17 +12462,6 @@
      "likes": 4.0,
      "type": "short",
      "category": "creator"
-    },
-    {
-     "edition": "fall2026",
-     "title": "Swordeye   Official Gameplay Trailer   Endix Expo Fall 2026",
-     "channel": "Devil of PC game",
-     "url": "https://www.youtube.com/watch?v=IHv-1LMDg2c",
-     "date": "2026-11-09",
-     "views": 0.0,
-     "likes": 0.0,
-     "type": "short",
-     "category": "media"
     },
     {
      "edition": "fall2026",
