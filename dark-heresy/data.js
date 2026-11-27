@@ -1,7 +1,7 @@
 // Warhammer 40,000: Dark Heresy pitch data.
 // RPG and Warhammer history: each channel's full YouTube upload history, pulled November 27, 2026 (title matches only).
 // Views shown are YouTube views on that date. Ettnix: Twitch, SullyGnome, last 365 days.
-// Creator averages: plain 30-day averages pulled November 18, 2026.
+// Creator averages and followers: plain 30-day averages pulled November 27, 2026.
 var AV = {
   rage: 'https://yt3.googleusercontent.com/3TlufKydntExNT_c7TULN3BosQs2ClqYTDrLSl_xCF-jhriazbq8XzD9C377agd_PLSjqHdp=s176-c-k-c0x00ffffff-no-rj',
   cap: 'https://yt3.googleusercontent.com/ytc/AIdro_lF06n7yXV4O7GDR0xRe2En7-n6X2Mio6ymHT1o8vVdZ-g=s176-c-k-c0x00ffffff-no-rj',
@@ -23,7 +23,7 @@ var HERO = [
 var VALUE = [
   { num: '333M', h: 'RPGs Are His Home Turf', t: 'RageGamingVideos has posted more than 2,580 RPG videos since 2011, with 333M views: Elden Ring, Diablo, Baldur\'s Gate 3, Path of Exile 2, Dragon\'s Dogma 2 and Expedition 33.' },
   { num: '1.44M', h: 'Guides Get Searched For Years', t: 'His Baldur\'s Gate 3 "do this early" guide from August 2023 has 1.44M views. Players search for the best class and the best build long after launch week, so every guide keeps working for the game.' },
-  { num: '12', h: 'Already At Home In Warhammer', t: 'Space Marine 2 and Vermintide 2 on RageGamingVideos, Boltgun\'s Easter eggs from Captain Eggcellent, and a paid Warhammer 40,000: Speed Freeks short from Cloudual.' }
+  { num: '11', h: 'Already At Home In Warhammer', t: 'Space Marine 2 and Vermintide 2 on RageGamingVideos, Boltgun\'s Easter eggs from Captain Eggcellent, and a paid Warhammer 40,000: Speed Freeks short from Cloudual.' }
 ];
 
 // The proposed guide series on RageGamingVideos. Each episode is backed by one of his own videos in the same format.
@@ -46,14 +46,17 @@ var EPISODES = [
     proof: { id: 'i2w-1eJIN-s', t: 'Elden Ring: Sorcery is OVERPOWERED, How to One Shot ANY Boss', views: 2412340 } }
 ];
 
-// Every Warhammer video on the roster's channels (YouTube)
+// The most viewed Warhammer and Gothic 1 Remake videos on the roster's channels (YouTube)
 var WH = [
-  { id: 'rPDXru_K_ug', who: 'Captain Eggcellent', t: 'Video Game Easter Eggs #133 (Warhammer 40,000: Boltgun, Trail Out & More)', views: 126946, d: 'May 2024' },
-  { id: 'bd5avb22Egs', who: 'RageGamingVideos', t: 'HERESY & HUNTING: Warhammer 40,000 Space Marine 2 VS Pro and Noob!', views: 29651, d: 'Sep 2024' },
-  { id: 'Ul_ZLHVPd_A', who: 'RageGamingVideos', t: 'DAMN THE EMPEROR: Warhammer 40,000 Space Marine 2 VS Pro and Noob!', views: 18248, d: 'Sep 2024' },
-  { id: '_TXvJEGl6Pg', who: 'RageGamingVideos', t: 'NEW KIND OF MONSTER HUNTING: Vermintide 2!', views: 19322, d: 'Mar 2018' },
-  { id: 'etv0hSR8fqQ', who: 'Retro For The First Time', t: '40K for Switch 2?! (30 sec quick dip)', views: 13834, d: 'Feb 2025', short: true },
-  { id: 'gBQ1WSLP534', who: 'Cloudual', t: '[Ad] Warhammer 40K Just Got Multiplayer Crossplay (Speed Freeks)', views: 4911, d: 'May 2026', short: true, ad: true }
+  { id: 'i7XHKll7GHU', who: 'Captain Eggcellent', t: 'Video Game Easter Eggs & Hidden Details #19 (Spider-Man, Gothic Remake & More)', views: 139295, d: 'Aug 2026', tag: 'Gothic 1 Remake' },
+  { id: 'rPDXru_K_ug', who: 'Captain Eggcellent', t: 'Video Game Easter Eggs #133 (Warhammer 40,000: Boltgun, Trail Out & More)', views: 126946, d: 'May 2024', tag: 'Warhammer' },
+  { id: 'bd5avb22Egs', who: 'RageGamingVideos', t: 'HERESY & HUNTING: Warhammer 40,000 Space Marine 2 VS Pro and Noob!', views: 29651, d: 'Sep 2024', tag: 'Warhammer' },
+  { id: 'TJPjftc0qqg', who: 'RageGamingVideos', t: 'Gothic 1 Remake: Get OP Fast, Best Weapon Early', views: 28110, d: 'Jun 2026', tag: 'Gothic 1 Remake' },
+  { id: '_TXvJEGl6Pg', who: 'RageGamingVideos', t: 'NEW KIND OF MONSTER HUNTING: Vermintide 2!', views: 19322, d: 'Mar 2018', tag: 'Warhammer' },
+  { id: 'Ul_ZLHVPd_A', who: 'RageGamingVideos', t: 'DAMN THE EMPEROR: Warhammer 40,000 Space Marine 2 VS Pro and Noob!', views: 18248, d: 'Sep 2024', tag: 'Warhammer' },
+  { id: 'mCghN4u0kts', who: 'Captain Eggcellent', t: 'Why Are UMBRELLA In Gothic 1 Remake? Easter Egg', views: 16779, d: 'Jun 2026', short: true, tag: 'Gothic 1 Remake' },
+  { id: '_R-hBu9M26A', who: 'Retro For The First Time', t: 'Gothic Is Getting a Remake, Get It June 5th', views: 7063, d: 'May 2026', short: true, tag: 'Gothic 1 Remake' },
+  { id: 'gBQ1WSLP534', who: 'Cloudual', t: '[Ad] Warhammer 40K Just Got Multiplayer Crossplay (Speed Freeks)', views: 4911, d: 'May 2026', short: true, ad: true, tag: 'Warhammer' }
 ];
 
 var FANS = [
@@ -74,7 +77,7 @@ var FANS = [
       { id: 'r4LeBA576VI', t: 'Path of Exile 2: How to Make Ascendancy Trials EASY', views: 385750, d: 'Dec 2024' },
       { id: 'zqeiqRmueMc', t: 'Is Elder Scrolls Online Worth Playing in 2021? (Level 1 to Endgame)', views: 379309, d: 'Aug 2020' },
       { id: '9MjAD0U3mL8', t: 'Clair Obscur Expedition 33: New Best MOST OP Build Guide', views: 377249, d: 'May 2025' },
-      { id: 'TJPjftc0qqg', t: 'Gothic 1 Remake: Get OP Fast, Best Weapon Early', views: 28110, d: 'Jun 2026', keep: true }
+      { id: 'TJPjftc0qqg', t: 'Gothic 1 Remake: Get OP Fast, Best Weapon Early', views: 28110, d: 'Jun 2026', tag: 'Gothic 1 Remake' }
     ]
   },
   {
@@ -90,31 +93,38 @@ var FANS = [
       { id: 'Dkd0uwXEi3I', t: '29 INSANE Hidden Details In Fallout 3, New Vegas, Fallout 4 & Fallout 76', views: 358829, d: 'Apr 2024' },
       { id: 'YKJayr53z0s', t: 'The SKELETONS in Fallout 3 are BRILLIANT', views: 282523, d: 'Jan 2026', short: true },
       { id: 'ATyityrpbGQ', t: 'Cyberpunk 2077 Rewards Players Who Pay Attention!', views: 153002, d: 'Nov 2026', short: true },
-      { id: 'i7XHKll7GHU', t: 'Video Game Easter Eggs & Hidden Details #19 (Spider-Man, Gothic Remake & More)', views: 139295, d: 'Aug 2026' },
+      { id: 'i7XHKll7GHU', t: 'Video Game Easter Eggs & Hidden Details #19 (Spider-Man, Gothic Remake & More)', views: 139295, d: 'Aug 2026', tag: 'Gothic 1 Remake' },
       { id: 'rPDXru_K_ug', t: 'Video Game Easter Eggs #133 (Warhammer 40,000: Boltgun, Trail Out & More)', views: 126946, d: 'May 2024', wh: true },
       { id: 'VdZZ4U1E5-0', t: 'INSANE Hidden Video Game Details #181 (Doom: The Dark Ages, Expedition 33 & More)', views: 119155, d: 'May 2025' },
-      { id: 'US3h7_i_l4g', t: 'Dune: Awakening Has Changed Completely', views: 59311, d: 'Sep 2026' }
+      { id: 'US3h7_i_l4g', t: 'Dune: Awakening Has Changed Completely', views: 59311, d: 'Sep 2026' },
+      { id: 'mCghN4u0kts', t: 'Why Are UMBRELLA In Gothic 1 Remake? Easter Egg', views: 16779, d: 'Jun 2026', short: true, tag: 'Gothic 1 Remake' },
+      { id: 'bJ0VH81aEB0', t: 'Most Players MISS This Breaking Bad Reference in Gothic 1 Remake', views: 7881, d: 'Jun 2026', short: true, tag: 'Gothic 1 Remake' }
     ]
   },
   {
     name: 'Retro For The First Time', initials: 'RF', avatar: AV.retro, meta: 'Canada / 244K followers',
-    nums: [['99', 'RPG news shorts'], ['554K', 'YouTube views on them'], ['42.9K', 'Expedition 33 GOTY news'], ['53', 'Shorts in the last 30 days']],
-    quote: 'Daily gaming news, always on camera. When an RPG makes news, Retro has it the same day: Expedition 33\'s Game of the Year drama, Mass Effect, Avowed, The Witcher 3 and Elden Ring on Switch 2. He covered Warhammer 40K for Switch 2 too.',
-    games: [['Elden Ring', 35], ['Dark Souls', 25], ['Starfield', 8], ['Mass Effect', 5], ['The Witcher', 5], ['Expedition 33', 3], ['Diablo', 3], ['Warhammer 40K', 1]],
+    nums: [['99', 'RPG news shorts'], ['554K', 'YouTube views on them'], ['682K', 'Best game story: Silksong'], ['70K', 'Avg views per short, all platforms']],
+    quote: 'Daily gaming news, always on camera, and his game stories travel: Silksong\'s review bombing reached 682K views on YouTube, Mario Kart World 622K and Subnautica 2 510K. RPG news too, from Expedition 33\'s Game of the Year drama to Mass Effect, Avowed, The Witcher 3 and the Gothic 1 Remake.',
+    games: [['Mass Effect', 5], ['The Witcher', 5], ['The Elder Scrolls', 5], ['Expedition 33', 3], ['Diablo', 3], ['Avowed', 1], ['Gothic', 1]],
     vids: [
-      { id: 'FPzje0Y9B3c', t: 'Expedition 33 Gets Game Of The Year Award Taken Away', views: 42907, d: 'Dec 2025', short: true },
+      { id: 'Us0NvGUKOs0', t: 'Silksong Getting Review Bombed', views: 681563, d: 'Sep 2025', short: true },
+      { id: 'Ud8cpyqiGKg', t: 'Nintendo Just RUINED Mario Kart World', views: 621759, d: 'Jun 2025', short: true },
+      { id: '--TefOIDs68', t: 'Subnautica 2 Drama Gets WORSE', views: 509651, d: 'Aug 2025', short: true },
+      { id: 'dFCiiZCFjJM', t: 'IGN Gives Battlefield 6 Another Disingenuous Review', views: 339151, d: 'Oct 2025', short: true },
+      { id: 'zPikIEELrpY', t: 'Black Ops 7 Called Out by the US Government', views: 258108, d: 'Nov 2025', short: true },
+      { id: '0Fg2yM-YpwQ', t: 'Nintendo Takes an L in Its Palworld Lawsuit', views: 256089, d: 'Apr 2026', short: true },
+      { id: 'jnWgOz_eSm8', t: 'Metroid Prime 4 is the WORST Game Ever! Or Not', views: 186503, d: 'Dec 2025', short: true },
+      { id: 'K1kb_Zhrcu0', t: 'NieR: Automata Has a 300GB Update', views: 178080, d: 'Nov 2026', short: true },
+      { id: 'FPzje0Y9B3c', t: 'Expedition 33 Gets Game Of The Year Award Taken Away', views: 42907, d: 'Dec 2025', short: true, keep: true },
       { id: '6R2g4FRblio', t: 'You Can Get Witcher 3 for Free?!', views: 36847, d: 'Sep 2026', short: true },
       { id: 'fgqUbs8_2Xw', t: 'EA Cancelled Mass Effect to Make a Star Wars Game', views: 34901, d: 'Oct 2026', short: true },
-      { id: 'SVT-LGJmenw', t: 'Switch 2 Playing 35 Minutes of Cyberpunk 2077', views: 34321, d: 'May 2025', short: true },
-      { id: 'V5YK2jg308s', t: 'Elden Ring on Switch 2 Situation', views: 31662, d: 'Oct 2025', short: true },
       { id: 'IyOdhBuql5c', t: 'Obsidian Continues to Work on Cancelled Avowed 2', views: 31287, d: 'Jul 2026', short: true },
-      { id: 'UaOy6lbIHlM', t: 'Expedition 33 Art Book CONFISCATED by the Government', views: 22707, d: 'Feb 2026', short: true },
-      { id: 'etv0hSR8fqQ', t: '40K for Switch 2?! (30 sec quick dip)', views: 13834, d: 'Feb 2025', short: true, wh: true }
+      { id: '_R-hBu9M26A', t: 'Gothic Is Getting a Remake, Get It June 5th', views: 7063, d: 'May 2026', short: true, tag: 'Gothic 1 Remake' }
     ]
   },
   {
-    name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: 'United States / 109K followers',
-    nums: [['29', 'RPG shorts'], ['236K', 'YouTube views on them'], ['5', 'Paid RPG and 40K shorts in 2026'], ['54K', 'Avg Facebook views per short']],
+    name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: 'United States / 110K followers',
+    nums: [['29', 'RPG shorts'], ['236K', 'YouTube views on them'], ['5', 'Paid RPG and 40K shorts in 2026'], ['59K', 'Avg views per short, all platforms']],
     quote: 'Co-op first: the RPGs you can play with friends, from Baldur\'s Gate 3 and Expedition 33 co-op mods to indie co-op RPGs before they blow up. Warhammer already trusted him with a paid short for Warhammer 40,000: Speed Freeks in May 2026.',
     games: [['Baldur\'s Gate 3', 3], ['Expedition 33', 2], ['Cyberpunk 2077', 2], ['Elden Ring', 2], ['Diablo', 2], ['Dune: Awakening', 1], ['Warhammer 40K', 1]],
     vids: [
@@ -128,7 +138,7 @@ var FANS = [
   },
   {
     name: 'Games Explorer', initials: 'GE', avatar: AV.exp, meta: 'Australia / 194K followers',
-    nums: [['29', 'RPG recommendation shorts'], ['349K', 'YouTube views on them'], ['80.5K', 'Best: a new pirate RPG'], ['20K', 'Avg Instagram views per short']],
+    nums: [['29', 'RPG recommendation shorts'], ['349K', 'YouTube views on them'], ['80.5K', 'Best: a new pirate RPG'], ['59K', 'Avg views per short, all platforms']],
     quote: 'Recommendation shorts that tell RPG fans what to play next: "Disco Elysium meets Groundhog Day", "Minecraft meets Skyrim", the game that inspired The Witcher. Built for the weeks before launch, when players decide what to wishlist.',
     games: [['Indie RPGs', 14], ['The Elder Scrolls', 3], ['Expedition 33', 2], ['Gothic', 2], ['Kingdom Come', 2], ['Disco Elysium', 1], ['The Witcher', 1], ['Dune: Awakening', 1]],
     vids: [
@@ -170,9 +180,9 @@ var FANS = [
     ]
   },
   {
-    name: 'Ettnix', initials: 'ET', avatar: AV.ett, meta: 'Sweden / 167K followers', twitch: true,
+    name: 'Ettnix', initials: 'ET', avatar: AV.ett, meta: 'Sweden / 168K followers', twitch: true,
     nums: [['1,430', 'Hours of RPG streams'], ['404K', 'Hours watched on them'], ['3,556', 'Peak viewers, Mistfall Hunter'], ['47%', 'Of his stream time']],
-    quote: 'Known for FPS, but nearly half of his last twelve months live went to RPGs: Mistfall Hunter, AION 2, Torchlight: Infinite, Last Epoch, Diablo IV and Titan Quest II. Dark Heresy\'s online co-op is made for a launch stream.',
+    quote: 'Known for FPS, but nearly half of his last twelve months live went to RPGs: Mistfall Hunter, AION 2, Torchlight: Infinite, Last Epoch, Diablo IV and Titan Quest II. His average viewers are up 50% over the last 30 days, and Dark Heresy\'s online co-op is made for a launch stream.',
     games: [],
     rows: [
       ['Mistfall Hunter', 421, 290075, 3556],
@@ -192,73 +202,73 @@ var FANS = [
 var CREATORS = [
   {
     country: 'uk', name: 'RageGamingVideos', initials: 'RG', avatar: AV.rage, meta: 'United Kingdom / 1.43M subscribers',
-    hook: 'One of YouTube\'s go-to guide channels for big RPGs. 88 videos in the last 30 days.',
+    hook: 'One of YouTube\'s go-to guide channels for big RPGs. 90 videos in the last 30 days.',
     idea: 'A full guide playlist, from the beta to the endgame build.',
-    stats: [['73K', 'Avg views'], ['88', 'Videos, 30 days'], ['1.43M', 'Subscribers']],
-    total: ['73K', 'Per long-form video'],
+    stats: [['105K', 'Avg views'], ['90', 'Videos, 30 days'], ['1.43M', 'Subscribers']],
+    total: ['105K', 'Per long-form video'],
     kit: 'https://july.bio/ragegamingvideos',
     channels: [['YouTube', 'https://www.youtube.com/@RageGamingVideos']]
   },
   {
     country: 'uk', name: 'Captain Eggcellent', initials: 'CE', avatar: AV.cap, meta: 'United Kingdom / 1.6M followers',
-    hook: 'The Easter egg king. Shorts that reach 237K views on average across four platforms, with single videos up to 2M.',
+    hook: 'The Easter egg king. Shorts that reach 573K views on average across four platforms, with single posts above 1M.',
     idea: 'Hidden details and lore in the Calixis Sector, once the game is out.',
-    stats: [['48K', 'YT Shorts'], ['56K', 'TikTok'], ['105K', 'Instagram'], ['28K', 'Facebook']],
-    total: ['237K', 'Per short, all platforms'],
+    stats: [['74K', 'YT Shorts'], ['142K', 'TikTok'], ['223K', 'Instagram'], ['134K', 'Facebook']],
+    total: ['573K', 'Per short, all platforms'],
     kit: 'https://july.bio/CaptainEggcellent',
     channels: [['YouTube', 'https://www.youtube.com/@captaineggcellentbutshorter'], ['TikTok', 'https://www.tiktok.com/@captaineggcellent'], ['Instagram', 'https://www.instagram.com/captaineggcellent/'], ['Facebook', 'https://www.facebook.com/captaineggcellent']]
   },
   {
     country: 'ca', name: 'Retro For The First Time', initials: 'RF', avatar: AV.retro, meta: 'Canada / 244K followers',
-    hook: 'Daily gaming news, always on camera. 53 Shorts in the last 30 days.',
+    hook: 'Daily gaming news, always on camera. 52 Shorts in the last 30 days.',
     idea: 'Beta, pre-order and launch news, the moment it lands.',
-    stats: [['37K', 'YT Shorts'], ['16K', 'TikTok'], ['9K', 'Instagram'], ['5K', 'Facebook']],
-    total: ['67K', 'Per short, all platforms'],
+    stats: [['39K', 'YT Shorts'], ['18K', 'TikTok'], ['8K', 'Instagram'], ['5K', 'Facebook']],
+    total: ['70K', 'Per short, all platforms'],
     kit: 'https://july.bio/rftft',
-    channels: [['YouTube', 'https://www.youtube.com/@RetroForTheFirstTime'], ['TikTok', 'https://www.tiktok.com/@retroforthefirsttime'], ['Instagram', 'https://www.instagram.com/retroftft'], ['Facebook', 'https://www.facebook.com/retroforthefirsttime']]
+    channels: [['YouTube', 'https://www.youtube.com/@RetroForTheFirstTime'], ['TikTok', 'https://www.tiktok.com/@retroforthefirsttime'], ['Instagram', 'https://www.instagram.com/retroftft'], ['Facebook', 'https://www.facebook.com/profile.php?id=61577469602007']]
   },
   {
-    country: 'us', name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: 'United States / 109K followers',
+    country: 'us', name: 'Cloudual', initials: 'CL', avatar: AV.cloud, meta: 'United States / 110K followers',
     hook: 'On camera in every video, with co-op and RPG news for a highly engaged audience. Reels up to 17M views.',
     idea: 'Two acolytes, one investigation: Dark Heresy\'s online co-op.',
-    stats: [['10K', 'YT Shorts'], ['8K', 'TikTok'], ['33K', 'Instagram'], ['54K', 'Facebook']],
-    total: ['104K', 'Per short, all platforms'],
+    stats: [['11K', 'YT Shorts'], ['4K', 'TikTok'], ['32K', 'Instagram'], ['13K', 'Facebook']],
+    total: ['59K', 'Per short, all platforms'],
     kit: 'https://july.bio/cloudual',
-    channels: [['YouTube', 'https://www.youtube.com/@Cloudual'], ['TikTok', 'https://www.tiktok.com/@cloudual'], ['Instagram', 'https://www.instagram.com/cloudual'], ['Facebook', 'https://www.facebook.com/profile.php?id=61560614766005']]
+    channels: [['YouTube', 'https://www.youtube.com/@Cloudual'], ['TikTok', 'https://www.tiktok.com/@cloudual'], ['Instagram', 'https://www.instagram.com/cloudual'], ['Facebook', 'https://www.facebook.com/profile.php?id=61585994548093']]
   },
   {
     country: 'us', name: 'Gem Gaming Network', initials: 'GG', avatar: AV.gem, meta: 'United States / 137K followers',
     hook: 'Daily game discovery for a young adult audience, posting on four platforms.',
     idea: '"Play as an Inquisitor who decides who is a heretic", in Gem\'s quick-hook format.',
-    stats: [['9K', 'YT Shorts'], ['13K', 'TikTok'], ['14K', 'Instagram'], ['5K', 'Facebook']],
-    total: ['41K', 'Per short, all platforms'],
+    stats: [['8K', 'YT Shorts'], ['7K', 'TikTok'], ['14K', 'Instagram'], ['6K', 'Facebook']],
+    total: ['35K', 'Per short, all platforms'],
     kit: 'https://july.bio/gemgamingnetwork',
-    channels: [['YouTube', 'https://www.youtube.com/@gemgamingnetwork'], ['TikTok', 'https://www.tiktok.com/@gemgamingnetwork'], ['Instagram', 'https://www.instagram.com/gemgamingnetwork'], ['Facebook', 'https://www.facebook.com/gemgamingnetwork']]
+    channels: [['YouTube', 'https://www.youtube.com/@gemgamingnetwork'], ['TikTok', 'https://www.tiktok.com/@gemgamingnetwork'], ['Instagram', 'https://www.instagram.com/gemgamingnetwork'], ['Facebook', 'https://www.facebook.com/profile.php?id=61587281364461']]
   },
   {
     country: 'au', name: 'Games Explorer', initials: 'GE', avatar: AV.exp, meta: 'Australia / 194K followers',
     hook: 'Recommendation Shorts that help players find their next game, built for the weeks before launch.',
     idea: '"Baldur\'s Gate 3 fans, this is your next RPG": hype that turns into wishlists.',
-    stats: [['16K', 'YT Shorts'], ['9K', 'TikTok'], ['20K', 'Instagram'], ['1K', 'Facebook']],
-    total: ['45K', 'Per short, all platforms'],
+    stats: [['14K', 'YT Shorts'], ['20K', 'TikTok'], ['21K', 'Instagram'], ['4K', 'Facebook']],
+    total: ['59K', 'Per short, all platforms'],
     kit: 'https://july.bio/gamesexplorer',
-    channels: [['YouTube', 'https://www.youtube.com/@explorerdotgames'], ['TikTok', 'https://www.tiktok.com/@explorerdotgames'], ['Instagram', 'https://www.instagram.com/explorer.games'], ['Facebook', 'https://www.facebook.com/explorerdotgames']]
+    channels: [['YouTube', 'https://www.youtube.com/@explorerdotgames'], ['TikTok', 'https://www.tiktok.com/@explorerdotgames'], ['Instagram', 'https://www.instagram.com/explorer.games'], ['Facebook', 'https://www.facebook.com/profile.php?id=100089561127301']]
   },
   {
     country: 'us', name: 'David Jaffe', initials: 'DJ', avatar: AV.jaffe, meta: 'San Diego, California / 66K followers',
     hook: 'Creator of God of War, co-creator of Twisted Metal. When he covers a game, it is a headline. An older, hardcore audience that listens.',
     idea: 'A game designer\'s take on Owlcat\'s investigation system, live with VOD.',
-    stats: [['5K', 'YouTube'], ['2K', 'Instagram'], ['500', 'TikTok']],
-    total: ['8K', 'Per video, all platforms'],
+    stats: [['5K', 'YouTube'], ['2K', 'Instagram'], ['200', 'TikTok']],
+    total: ['7.5K', 'Per video, all platforms'],
     kit: 'https://july.bio/davidjaffe',
     channels: [['YouTube', 'https://www.youtube.com/@DavidJaffeGames'], ['Twitch', 'https://www.twitch.tv/jaffegamesontwitch'], ['TikTok', 'https://www.tiktok.com/@gabbinandgames'], ['Instagram', 'https://www.instagram.com/davidscottjaffe/']]
   },
   {
-    country: 'se', name: 'Ettnix', initials: 'ET', avatar: AV.ett, meta: 'Sweden / 167K followers',
-    hook: 'Veteran FPS and RPG streamer with nearly 14 years live. 1,430 hours of RPG streams in the last twelve months.',
+    country: 'se', name: 'Ettnix', initials: 'ET', avatar: AV.ett, meta: 'Sweden / 168K followers',
+    hook: 'Veteran FPS and RPG streamer with nearly 14 years live. Average viewers up 50% in the last 30 days, and 1,430 hours of RPG streams in the last twelve months.',
     idea: 'A launch-day stream for his RPG audience, in online co-op.',
-    stats: [['152K', 'Twitch followers'], ['347K', 'Watch hours'], ['12K', 'YouTube subs']],
-    total: ['174', 'Average viewers per stream'],
+    stats: [['153K', 'Twitch followers'], ['63K', 'Hours watched, 30 days'], ['1,350', 'Peak viewers, 30 days']],
+    total: ['241', 'Average viewers, 30 days'],
     kit: 'https://july.bio/ettnix',
     channels: [['Twitch', 'https://www.twitch.tv/ettnix'], ['YouTube', 'https://www.youtube.com/@Ettnix'], ['Instagram', 'https://www.instagram.com/ettnix']]
   }
@@ -267,25 +277,25 @@ var CREATORS = [
 // Example budget. Option A: guide series part 1 (episodes 1 to 4). Option B: the full series (episodes 1 to 8).
 // The launch round and streams are the same in both. Views from the plain 30-day averages above.
 var BUDGET = [
-  { tag: 'Option A', who: 'RageGamingVideos', what: 'Guide series part 1: 4 dedicated YouTube videos (episodes 1 to 4), before launch to launch week', price: 28000, views: '~292,000' },
-  { tag: 'Option B', who: 'RageGamingVideos', what: 'The full guide series: 8 dedicated YouTube videos (episodes 1 to 8), before launch to week four', price: 56000, views: '~584,000' },
-  { who: 'Captain Eggcellent', what: 'Short on YouTube, TikTok, Instagram and Facebook: hidden details and lore, launch week', price: 6500, views: '~237,000' },
-  { who: 'Cloudual', what: 'Short on YouTube, TikTok, Instagram and Facebook: online co-op on launch day', price: 2600, views: '~104,000' },
-  { who: 'Retro For The First Time', what: 'Short on YouTube, TikTok, Instagram and Facebook: launch news', price: 2600, views: '~67,000' },
-  { who: 'Games Explorer', what: 'Short on YouTube, TikTok, Instagram and Facebook: "your next RPG" recommendation', price: 2600, views: '~45,000' },
-  { who: 'Gem Gaming Network', what: 'Short on YouTube, TikTok, Instagram and Facebook: launch day first look', price: 2600, views: '~41,000' },
-  { who: 'David Jaffe', what: '1 hour live stream + VOD on launch day: a game designer\'s take', price: 2500, views: '~8,000' },
-  { who: 'Ettnix', what: '4 hour launch stream on Twitch, USD 300 per hour', price: 1200, views: '~174 avg viewers' },
-  { sub: true, who: 'Organic subtotal', what: 'Option A / Option B', price: '48,600 / 76,600', views: '~794K / ~1.09M' },
+  { tag: 'Option A', who: 'RageGamingVideos', what: 'Guide series part 1: 4 dedicated YouTube videos (episodes 1 to 4), before launch to launch week', price: 28000, views: '~420,000' },
+  { tag: 'Option B', who: 'RageGamingVideos', what: 'The full guide series: 8 dedicated YouTube videos (episodes 1 to 8), before launch to week four', price: 56000, views: '~841,000' },
+  { who: 'Captain Eggcellent', what: 'Short on YouTube, TikTok, Instagram and Facebook: hidden details and lore, launch week', price: 6500, views: '~573,000' },
+  { who: 'Cloudual', what: 'Short on YouTube, TikTok, Instagram and Facebook: online co-op on launch day', price: 2600, views: '~59,000' },
+  { who: 'Retro For The First Time', what: 'Short on YouTube, TikTok, Instagram and Facebook: launch news', price: 2600, views: '~70,000' },
+  { who: 'Games Explorer', what: 'Short on YouTube, TikTok, Instagram and Facebook: "your next RPG" recommendation', price: 2600, views: '~59,000' },
+  { who: 'Gem Gaming Network', what: 'Short on YouTube, TikTok, Instagram and Facebook: launch day first look', price: 2600, views: '~35,000' },
+  { who: 'David Jaffe', what: '1 hour live stream + VOD on launch day: a game designer\'s take', price: 2500, views: '~7,500' },
+  { who: 'Ettnix', what: '4 hour launch stream on Twitch, USD 300 per hour', price: 1200, views: '~241 avg viewers' },
+  { sub: true, who: 'Organic subtotal', what: 'Option A / Option B', price: '48,600 / 76,600', views: '~1.22M / ~1.64M' },
   { ads: true, who: 'TikTok Spark Ads (example)', what: 'RPG and strategy interest, 18 to 44, US, Canada and UK. Also the fallback plan.', price: 5000, views: '~330,000 to 500,000' },
-  { total: true, who: 'Total', what: 'Option A / Option B', price: '53,600 / 81,600', views: '~1.12M to 1.29M / ~1.42M to 1.59M' }
+  { total: true, who: 'Total', what: 'Option A / Option B', price: '53,600 / 81,600', views: '~1.55M to 1.72M / ~1.97M to 2.14M' }
 ];
 
 var METHOD = [
   'RPG and Warhammer history: each channel\'s full YouTube upload history, pulled on November 27, 2026. A video counts when its title names a Warhammer game or an RPG (Baldur\'s Gate 3, Diablo, Path of Exile, Elden Ring, Divinity, The Elder Scrolls, Gothic, Expedition 33 and others), or uses the word RPG. Videos that only name a game in their tags are left out, and so are a few title matches that were not about RPGs.',
-  'Views on this page are YouTube views on November 27, 2026. Most short-form creators also post the same shorts on TikTok, Instagram and Facebook, so their real totals are higher.',
-  'Ettnix: Twitch statistics from SullyGnome for the last 365 days, pulled on November 27, 2026. RPG means role-playing, action RPG and MMORPG games.',
-  'Creator averages: plain average views per video over the last 30 days, pulled on November 18, 2026. Every video counts. Nothing is removed at the top or the bottom. "All platforms" adds up each platform\'s average for one short posted everywhere.',
-  'Followers: total across YouTube, TikTok, Instagram and Facebook, pulled on November 18, 2026. RageGamingVideos subscribers on November 27, 2026.',
-  'Estimated views are estimates, not guarantees. Single videos can land above or below. RageGamingVideos\' Baldur\'s Gate 3 guides averaged 159K views each, so the 73K average used here is a careful baseline. Spark Ads ranges use 2026 TikTok benchmarks of USD 10 to 15 per 1,000 impressions.'
+  'Views on the example videos are YouTube views on November 27, 2026. Most short-form creators also post the same shorts on TikTok, Instagram and Facebook, so their real totals are higher.',
+  'Ettnix: Twitch statistics from SullyGnome, pulled on November 27, 2026: the last 30 days for followers, viewers and hours watched, the last 365 days for RPG streams. RPG means role-playing, action RPG and MMORPG games.',
+  'Creator averages: plain average views per video over the last 30 days, pulled on November 27, 2026. Every video counts. Nothing is removed at the top or the bottom. "All platforms" adds up each platform\'s average for one short posted everywhere.',
+  'Followers: total across YouTube, TikTok, Instagram, Facebook and Twitch, pulled on November 27, 2026.',
+  'Estimated views are estimates, not guarantees. Single videos can land above or below. RageGamingVideos\' Baldur\'s Gate 3 guides averaged 159K views each, so his current 105K average is a fair baseline. Spark Ads ranges use 2026 TikTok benchmarks of USD 10 to 15 per 1,000 impressions.'
 ];

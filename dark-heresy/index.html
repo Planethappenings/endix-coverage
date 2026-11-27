@@ -115,6 +115,8 @@ section { padding-block: 76px; }
 .vid { display: grid; grid-template-columns: 136px 1fr; gap: 12px; text-decoration: none; padding: 8px; border: 1px solid transparent; border-radius: 4px; transition: border-color .2s, background .2s; }
 .vid:hover { border-color: var(--gold-border); background: rgba(255,255,255,.02); }
 .vid.wh { border-color: var(--red-border); background: var(--red-dim); }
+.vid.tagged { border-color: var(--gold-border); background: var(--gold-dim); }
+.vid.tagged .vid-meta em, .whtile em.g { color: var(--gold-hi); }
 .vid-thumb { aspect-ratio: 16 / 9; background: var(--bg-surface) center / cover no-repeat; position: relative; border-radius: 3px; overflow: hidden; }
 .vid-thumb i { position: absolute; left: 5px; bottom: 5px; font-style: normal; font-size: 9px; font-weight: 700; letter-spacing: .08em; background: rgba(0,0,0,.78); padding: 2px 5px; border-radius: 2px; }
 .vid-title { font-size: 13px; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -370,7 +372,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
     <div class="ep-sum">
       <div><b class="n">8</b><span>Episodes in the full series</span></div>
       <div><b class="n">8.9M</b><span>Views on the 8 videos behind these formats</span></div>
-      <div><b class="n">~73K</b><span>Estimated views per episode</span></div>
+      <div><b class="n">~105K</b><span>Estimated views per episode</span></div>
     </div>
     <p class="note">Option A: episodes 1 to 4, from the beta to launch week. Option B: all eight, from the beta to week four. Episode topics follow what Owlcat shows of the game and can change with it.</p>
   </div>
@@ -378,8 +380,8 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 
 <section class="alt" id="warhammer">
   <div class="inner">
-    <h2 class="section-title">Already At Home In Warhammer</h2>
-    <p class="section-lead">Twelve Warhammer videos across the roster, including a paid partnership for Warhammer 40,000: Speed Freeks. The most viewed:</p>
+    <h2 class="section-title">Already At Home In Warhammer And Gothic</h2>
+    <p class="section-lead">Eleven Warhammer videos across the roster, including a paid partnership for Warhammer 40,000: Speed Freeks, and launch coverage of the Gothic 1 Remake from three of our creators. The most viewed:</p>
     <div class="wh-grid" id="wh-grid"></div>
   </div>
 </section>
@@ -387,7 +389,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe
 <section id="proof">
   <div class="inner">
     <h2 class="section-title">The Whole Roster Knows RPGs</h2>
-    <p class="section-lead">Their most viewed RPG videos and shorts. Views are YouTube views only: the shorts also go out on TikTok, Instagram and Facebook.</p>
+    <p class="section-lead">Their most viewed RPG videos and shorts, plus Retro's biggest game stories. Views are YouTube views only: the shorts also go out on TikTok, Instagram and Facebook.</p>
     <div class="fans" id="fan-cards"></div>
   </div>
 </section>
@@ -526,8 +528,9 @@ function fan(f) {
       '</tbody></table><p>Source: SullyGnome, last 365 days.</p></div>';
   } else {
     right = '<div class="fan-vids">' + f.vids.map(function (v) {
-      return '<a class="vid' + (v.wh ? ' wh' : '') + (v.keep ? ' keep' : '') + '" href="' + yt(v.id, v.short) + '" target="_blank" rel="noopener"><div class="vid-thumb" style="background-image:url(' + thumb(v.id) + ')">' + (v.short ? '<i>SHORT</i>' : '') + '</div>' +
-        '<div><div class="vid-title">' + esc(v.t) + '</div><div class="vid-meta"><b class="n">' + n(v.views) + '</b>views / ' + esc(v.d) + (v.wh ? '<em>Warhammer</em>' : '') + '</div></div></a>';
+      var label = v.wh ? 'Warhammer' : v.tag || '';
+      return '<a class="vid' + (v.wh ? ' wh' : v.tag ? ' tagged' : '') + (v.keep ? ' keep' : '') + '" href="' + yt(v.id, v.short) + '" target="_blank" rel="noopener"><div class="vid-thumb" style="background-image:url(' + thumb(v.id) + ')">' + (v.short ? '<i>SHORT</i>' : '') + '</div>' +
+        '<div><div class="vid-title">' + esc(v.t) + '</div><div class="vid-meta"><b class="n">' + n(v.views) + '</b>views / ' + esc(v.d) + (label ? '<em>' + esc(label) + '</em>' : '') + '</div></div></a>';
     }).join('') + '</div>';
   }
   return '<article class="fan' + (f.big ? ' big' : '') + '">' + side + right + '</article>';
@@ -536,7 +539,7 @@ document.getElementById('fan-rage').innerHTML = fan(FANS[0]);
 document.getElementById('fan-cards').innerHTML = FANS.slice(1).map(fan).join('');
 
 // Show as many example videos as fit next to each creator's stats (6 on tablets, 4 on phones)
-function keep(v) { return v.classList.contains('wh') || v.classList.contains('keep'); }
+function keep(v) { return v.classList.contains('wh') || v.classList.contains('keep') || v.classList.contains('tagged'); }
 function fitVids() {
   document.querySelectorAll('.fan').forEach(function (fan) {
     var vids = fan.querySelectorAll('.vid'), side = fan.querySelector('.fan-side'), wrap = fan.querySelector('.fan-vids');
@@ -579,7 +582,7 @@ document.getElementById('eps').innerHTML = EPISODES.map(function (e) {
 
 document.getElementById('wh-grid').innerHTML = WH.map(function (v) {
   return '<a class="whtile" href="' + yt(v.id, v.short) + '" target="_blank" rel="noopener"><div class="vid-thumb" style="background-image:url(' + thumb(v.id) + ')">' + (v.short ? '<i>SHORT</i>' : '') + '</div>' +
-    '<div><div class="wh-who">' + esc(v.who) + '</div><div class="vid-title">' + esc(v.t) + '</div><div class="vid-meta"><b class="n">' + n(v.views) + '</b>views / ' + esc(v.d) + (v.ad ? '<em>Paid partnership</em>' : '') + '</div></div></a>';
+    '<div><div class="wh-who">' + esc(v.who) + '</div><div class="vid-title">' + esc(v.t) + '</div><div class="vid-meta"><b class="n">' + n(v.views) + '</b>views / ' + esc(v.d) + '<em' + (v.tag === 'Warhammer' ? '' : ' class="g"') + '>' + esc(v.tag) + (v.ad ? ', paid partnership' : '') + '</em></div></div></a>';
 }).join('');
 
 document.getElementById('grid').innerHTML = CREATORS.map(function (c) {
