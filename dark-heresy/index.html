@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hello Nord × Warhammer 40,000: Dark Heresy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="img/hn-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #0a0706;
+  --bg-card: #151010;
+  --bg-surface: #100b0a;
+  --red: #b5251a;
+  --red-hi: #e2492d;
+  --red-dim: rgba(200,44,30,.12);
+  --red-border: rgba(214,64,44,.45);
+  --gold: #d6b067;
+  --gold-hi: #ecd08f;
+  --gold-dim: rgba(214,176,103,.09);
+  --gold-border: rgba(214,176,103,.34);
+  --text: #efe6d6;
+  --text-2: #b9ac98;
+  --text-3: #85796a;
+  --line: rgba(214,176,103,.11);
+  --line-strong: rgba(214,176,103,.2);
+  --topbar-h: 56px;
+  --font-d: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --font-b: 'Inter', system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200,44,30,.16), transparent 60%), var(--bg); color: var(--text); font-family: var(--font-b); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+.inner { max-width: 1180px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)); }
+.icon { width: 1em; height: 1em; display: inline-block; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.n { font-family: var(--font-d); font-weight: 700; font-variant-numeric: lining-nums; }
+
+/* TOPBAR */
+.topbar { position: sticky; top: 0; z-index: 100; background: rgba(10,7,6,.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.topbar-inner { height: var(--topbar-h); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.topbar-brand { display: flex; align-items: center; font-family: var(--font-d); font-weight: 700; font-size: 16px; letter-spacing: .1em; color: var(--text-2); white-space: nowrap; }
+.hn-mark { height: 20px; width: auto; display: block; }
+.topbar-brand .x { color: var(--red-hi); margin: 0 12px; font-family: var(--font-b); font-size: 16px; line-height: 1; position: relative; top: -1px; }
+.topbar-cta, .cta-btn { font-family: var(--font-b); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text); background: var(--red); text-decoration: none; border-radius: 3px; white-space: nowrap; transition: background .2s; box-shadow: inset 0 0 0 1px rgba(255,200,160,.18); }
+.topbar-cta { font-size: 11.5px; padding: 9px 16px; }
+.topbar-cta:hover, .cta-btn:hover { background: var(--red-hi); }
+
+/* HERO */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); min-height: clamp(580px, 64vw, 760px); display: flex; align-items: center; }
+.hero-shot { position: absolute; inset: 0; background: url(img/dh-kroot.webp) 62% 40% / cover no-repeat; }
+.hero-shot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,7,6,.97) 0%, rgba(10,7,6,.88) 36%, rgba(10,7,6,.4) 66%, rgba(10,7,6,.2) 100%), linear-gradient(to top, var(--bg) 0%, transparent 32%); }
+.hero-content { position: relative; z-index: 2; padding-block: 90px 70px; display: grid; grid-template-columns: 1fr auto; gap: 44px; align-items: center; width: 100%; }
+.badge { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-hi); background: var(--red-dim); border: 1px solid var(--red-border); padding: 7px 14px; border-radius: 3px; margin-bottom: 20px; }
+.badge i { font-style: normal; color: var(--red-hi); letter-spacing: .05em; }
+.hero h1 { font-family: var(--font-d); font-weight: 800; font-size: clamp(44px, 6.6vw, 88px); line-height: 1; letter-spacing: .01em; margin-bottom: 22px; text-shadow: 0 2px 24px rgba(0,0,0,.7); }
+.hero h1 span { color: var(--red-hi); }
+.hero-sub { font-size: clamp(15px, 1.6vw, 17px); color: #ddd2bf; margin-bottom: 40px; text-shadow: 0 1px 12px rgba(0,0,0,.8); }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 12px; }
+.stat { min-width: 140px; padding: 14px 18px; background: rgba(21,16,16,.86); border: 1px solid var(--line-strong); border-left: 2px solid var(--red-hi); border-radius: 3px; backdrop-filter: blur(6px); }
+.stat-num { font-size: 34px; line-height: 1; color: var(--gold-hi); }
+.stat-label { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-2); margin-top: 7px; max-width: 170px; }
+.hero-art { width: min(460px, 36vw); aspect-ratio: 1200 / 630; border-radius: 4px; background: url(img/dh-keyart.webp) center / cover no-repeat; box-shadow: 0 30px 70px rgba(0,0,0,.6), 0 0 0 2px var(--gold-border), 0 0 60px rgba(214,64,44,.25); transform: rotate(2.5deg); }
+
+/* SECTIONS */
+section { padding-block: 76px; }
+.alt { background: var(--bg-surface); border-block: 1px solid var(--line); }
+.section-title { font-family: var(--font-d); font-weight: 700; font-size: clamp(30px, 4.4vw, 50px); line-height: 1.05; letter-spacing: .01em; margin-bottom: 16px; }
+.section-title::after { content: ''; display: block; width: 64px; height: 2px; margin-top: 14px; background: linear-gradient(90deg, var(--red-hi), transparent); }
+.section-lead { color: var(--text-2); margin-bottom: 36px; }
+.note { margin-top: 22px; font-size: 13px; color: var(--text-3); }
+.card-box { background: var(--bg-card); border: 1px solid var(--line); border-radius: 4px; }
+
+/* VALUE */
+.value { padding-block: 52px 76px; }
+.value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.val { padding: 28px 26px; border: 1px solid var(--gold-border); border-radius: 4px; background: radial-gradient(circle at 20% 0%, rgba(214,64,44,.16), transparent 70%), var(--bg-card); }
+.val-num { font-size: clamp(46px, 5.4vw, 66px); line-height: 1; color: var(--gold-hi); margin-bottom: 12px; }
+.val-h { font-family: var(--font-d); font-weight: 700; font-size: 21px; line-height: 1.15; margin-bottom: 8px; }
+.val p { font-size: 13.5px; color: var(--text-2); }
+.aud-block { margin-top: 36px; }
+.aud-h { font-family: var(--font-d); font-weight: 700; font-size: clamp(24px, 3vw, 32px); line-height: 1.1; margin-bottom: 14px; }
+.aud { display: flex; flex-wrap: wrap; align-items: stretch; border: 1px solid var(--gold-border); border-radius: 4px; overflow: hidden; background: var(--bg-card); }
+.aud-main { display: flex; align-items: center; gap: 16px; padding: 18px 24px; background: var(--red-dim); border-right: 1px solid var(--gold-border); }
+.aud-main b { font-size: 42px; line-height: 1; color: var(--gold-hi); }
+.aud-main span { font-size: 14px; max-width: 190px; line-height: 1.35; }
+.aud-rest { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; padding: 16px 24px; }
+.aud-rest span { font-family: var(--font-d); font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+.aud-rest i { font-style: normal; font-size: 12px; font-family: var(--font-b); color: var(--gold); border: 1px solid var(--gold-border); width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; }
+
+/* FANS */
+.fans { display: grid; gap: 22px; }
+.fan { background: var(--bg-card); border: 1px solid var(--line); border-radius: 4px; display: grid; grid-template-columns: 310px 1fr; overflow: hidden; }
+.fan.big { border-color: var(--gold-border); grid-template-columns: 340px 1fr; }
+.fan-side { padding: 24px 22px; border-right: 1px solid var(--line); background: linear-gradient(180deg, var(--red-dim), transparent 60%); }
+.fan-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.avatar { width: 54px; height: 54px; border-radius: 50%; position: relative; overflow: hidden; flex-shrink: 0; border: 2px solid var(--gold); background: var(--bg-surface); }
+.avatar-fb { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-d); font-weight: 700; font-size: 17px; color: var(--gold); }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fan-name { font-family: var(--font-d); font-weight: 700; font-size: 22px; line-height: 1.1; }
+.fan-meta { font-size: 12px; color: var(--text-3); margin-top: 3px; }
+.fan-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 16px; }
+.fan-nums div { background: var(--bg-card); padding: 11px 12px; }
+.fan-nums b { display: block; font-size: 24px; line-height: 1; color: var(--gold-hi); }
+.fan-nums span { display: block; font-size: 9.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--text-3); margin-top: 6px; }
+.fan-quote { font-size: 13.5px; color: var(--text-2); }
+.games { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.games span { font-size: 11px; border: 1px solid var(--line-strong); border-radius: 3px; padding: 3px 8px; color: var(--text-2); }
+.games b { color: var(--gold-hi); font-weight: 600; margin-left: 4px; }
+.fan-vids { padding: 18px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 12px; align-content: start; }
+.vid { display: grid; grid-template-columns: 136px 1fr; gap: 12px; text-decoration: none; padding: 8px; border: 1px solid transparent; border-radius: 4px; transition: border-color .2s, background .2s; }
+.vid:hover { border-color: var(--gold-border); background: rgba(255,255,255,.02); }
+.vid.wh { border-color: var(--red-border); background: var(--red-dim); }
+.vid-thumb { aspect-ratio: 16 / 9; background: var(--bg-surface) center / cover no-repeat; position: relative; border-radius: 3px; overflow: hidden; }
+.vid-thumb i { position: absolute; left: 5px; bottom: 5px; font-style: normal; font-size: 9px; font-weight: 700; letter-spacing: .08em; background: rgba(0,0,0,.78); padding: 2px 5px; border-radius: 2px; }
+.vid-title { font-size: 13px; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.vid-meta { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+.vid-meta b { font-size: 16px; color: var(--gold-hi); margin-right: 6px; }
+.vid-meta em { font-style: normal; display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red-hi); margin-top: 2px; }
+.streams { padding: 18px 22px; align-self: start; }
+.streams table { width: 100%; border-collapse: collapse; }
+.streams th, .streams td { padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.streams th { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); font-weight: 700; }
+.streams th:first-child, .streams td:first-child { text-align: left; }
+.streams td:first-child { font-weight: 600; }
+.streams td.hw { font-family: var(--font-d); font-weight: 700; color: var(--gold-hi); font-size: 15px; }
+.streams p { font-size: 12px; color: var(--text-3); margin-top: 10px; }
+
+/* PLAYLIST */
+.eps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.ep { position: relative; display: flex; flex-direction: column; padding: 20px 18px 16px; background: var(--bg-card); border: 1px solid var(--line-strong); border-top: 2px solid var(--red-hi); border-radius: 4px; }
+.ep.b { border-top-color: var(--gold); }
+.ep-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+.ep-no { font-size: 30px; line-height: 1; color: var(--gold-hi); }
+.ep-no small { font-family: var(--font-b); font-size: 10px; font-weight: 700; letter-spacing: .14em; color: var(--text-3); margin-right: 6px; vertical-align: 6px; }
+.chip { font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--line-strong); border-radius: 3px; color: var(--text-2); white-space: nowrap; }
+.chip.red { color: var(--gold-hi); border-color: var(--red-border); background: var(--red-dim); }
+.ep h3 { font-family: var(--font-d); font-weight: 700; font-size: 18px; line-height: 1.2; margin-bottom: 8px; }
+.ep p { font-size: 13px; color: var(--text-2); margin-bottom: 14px; }
+.ep-opt { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+.ep-opt b { color: var(--red-hi); font-weight: 700; }
+.ep-proof { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line-strong); text-decoration: none; display: block; }
+.ep-proof-k { font-size: 9.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
+.ep-proof .vid-thumb { margin-bottom: 8px; }
+.ep-proof .t { font-size: 12px; font-weight: 600; line-height: 1.3; color: var(--text-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ep-proof .v { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+.ep-proof .v b { font-size: 17px; color: var(--gold-hi); margin-right: 5px; }
+.ep-proof:hover .t { color: var(--text); }
+.ep-sum { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+.ep-sum div { padding: 18px 22px; border: 1px solid var(--gold-border); border-radius: 4px; background: radial-gradient(circle at 20% 0%, rgba(214,64,44,.14), transparent 70%), var(--bg-card); }
+.ep-sum b { display: block; font-size: 36px; line-height: 1; color: var(--gold-hi); }
+.ep-sum span { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); margin-top: 8px; }
+
+/* WARHAMMER */
+.wh-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.whtile { display: grid; grid-template-columns: 150px 1fr; gap: 14px; padding: 12px; text-decoration: none; background: var(--bg-card); border: 1px solid var(--line); border-radius: 4px; transition: border-color .2s; }
+.whtile:hover { border-color: var(--red-border); }
+.wh-who { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--red-hi); margin-bottom: 4px; }
+.whtile .vid-title { font-size: 13px; -webkit-line-clamp: 3; }
+
+/* ROSTER */
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.card { position: relative; background: var(--bg-card); border: 1px solid var(--line); border-radius: 4px; display: flex; flex-direction: column; overflow: hidden; transition: border-color .25s; }
+.card:hover { border-color: var(--gold-border); }
+.card-flag { position: absolute; top: 0; left: 0; right: 0; opacity: .14; pointer-events: none; overflow: hidden; max-height: 210px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%), linear-gradient(to right, #000 30%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to bottom, #000 0%, transparent 100%), linear-gradient(to right, #000 30%, transparent 100%); mask-composite: intersect; }
+.card-flag svg { width: 100%; height: auto; display: block; }
+.card > *:not(.card-flag) { position: relative; }
+.card-head { display: flex; align-items: center; gap: 14px; padding: 20px 20px 14px; }
+.card-head > div:last-child { min-width: 0; }
+.card-name { font-family: var(--font-d); font-weight: 700; font-size: 19px; line-height: 1.15; margin-bottom: 4px; overflow-wrap: anywhere; }
+.card-meta { font-size: 12px; color: var(--text-3); }
+.card-hook { padding: 0 20px 14px; font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+.card-idea { margin: 0 20px 16px; padding: 10px 12px; border-left: 2px solid var(--red-hi); background: var(--red-dim); font-size: 13px; }
+.card-idea b { color: var(--gold-hi); font-weight: 600; }
+.pf { display: grid; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pf-cell { display: flex; flex-direction: column; justify-content: center; padding: 13px 4px; text-align: center; }
+.pf-cell + .pf-cell { border-left: 1px solid var(--line); }
+.pf-val { font-size: 17px; line-height: 1; color: var(--gold-hi); }
+.pf-key { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); margin-top: 6px; }
+.card-total { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 52px; padding: 12px 20px 0; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); }
+.card-total b { font-size: 24px; color: var(--text); }
+.card-foot { padding: 12px 20px 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: var(--text-2); border: 1px solid var(--line); border-radius: 3px; padding: 4px 8px; transition: color .15s, border-color .15s; }
+.pill:hover { color: var(--gold); border-color: var(--gold-border); }
+.kit { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--gold-hi); border: 1px solid var(--gold-border); border-radius: 3px; padding: 7px 12px; transition: background .2s; }
+.kit:hover { background: var(--gold-dim); }
+@supports (grid-template-rows: subgrid) {
+  .grid { row-gap: 0; }
+  .card { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 0; margin-bottom: 16px; }
+}
+
+/* PLAN */
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line-strong); border-radius: 4px; overflow: hidden; }
+.tl { padding: 22px 20px; border-right: 1px solid var(--line); background: var(--bg-card); display: flex; flex-direction: column; }
+.tl:last-child { border-right: 0; }
+.tl.peak { background: linear-gradient(180deg, rgba(214,64,44,.16), var(--bg-card) 70%); }
+.tl-when { font-weight: 700; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--red-hi); margin-bottom: 6px; }
+.tl-head { font-family: var(--font-d); font-weight: 700; font-size: 21px; line-height: 1.15; margin-bottom: 12px; }
+.tl ul { list-style: none; display: grid; gap: 8px; margin-bottom: 18px; }
+.tl li { font-size: 13px; color: var(--text-2); padding-left: 14px; position: relative; }
+.tl li::before { content: ''; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; background: var(--red-hi); transform: rotate(45deg); }
+.tl li b { color: var(--text); font-weight: 600; }
+.tl-roster { margin-top: auto; display: flex; align-items: center; gap: 10px; }
+.tl-avs { display: flex; }
+.tl-avs .avatar { width: 28px; height: 28px; border-width: 1.5px; margin-left: -8px; }
+.tl-avs .avatar:first-child { margin-left: 0; }
+.tl-avs .avatar-fb { font-size: 10px; }
+
+/* BUDGET */
+.pkg-wrap { overflow-x: auto; }
+.pkg { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--line-strong); border-radius: 4px; overflow: hidden; }
+.pkg th, .pkg td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.pkg tr:last-child td { border-bottom: 0; }
+.pkg th { font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); background: var(--bg-card); }
+.pkg td { font-size: 14px; }
+.pkg td.num, .pkg th.num { text-align: right; white-space: nowrap; }
+.pkg .who { font-family: var(--font-d); font-weight: 700; font-size: 17px; line-height: 1.2; }
+.pkg .what { display: block; font-size: 12.5px; color: var(--text-2); margin-top: 3px; }
+.pkg .views { font-family: var(--font-d); font-weight: 700; font-size: 17px; color: var(--gold-hi); }
+.pkg tr.optrow td { background: rgba(214,64,44,.06); }
+.pkg tr.optrow + tr.optrow td { border-top: 1px dashed var(--red-border); }
+.opt-tag { display: inline-block; font-weight: 700; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--text); background: var(--red); padding: 2px 8px; border-radius: 2px; margin-right: 10px; vertical-align: 2px; }
+.pkg tr.sub td { background: var(--bg-card); font-weight: 600; }
+.pkg tr.ads td { background: rgba(214,176,103,.05); }
+.pkg tr.total td { background: var(--red-dim); border-top: 1px solid var(--red-border); }
+.pkg tr.total .who, .pkg tr.total .views { color: var(--gold-hi); font-size: 21px; }
+.price-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.price-notes div { padding: 14px 18px; border: 1px solid var(--gold-border); border-radius: 4px; background: var(--gold-dim); font-size: 13.5px; color: var(--text-2); }
+.price-notes b { color: var(--gold-hi); font-weight: 600; margin-right: 4px; }
+.fallback { display: grid; grid-template-columns: minmax(240px, 330px) 1fr; gap: 48px; align-items: start; margin-top: 44px; }
+.spark-stat { padding: 30px 28px; border: 1px solid var(--gold-border); border-radius: 4px; background: radial-gradient(circle at 30% 20%, rgba(214,64,44,.18), transparent 70%), var(--bg-card); }
+.spark-num { font-size: clamp(42px, 4.8vw, 62px); line-height: 1; color: var(--gold-hi); white-space: nowrap; }
+.spark-label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-2); margin-top: 12px; }
+.fallback-h { font-family: var(--font-d); font-weight: 700; font-size: 26px; line-height: 1.1; margin-bottom: 10px; }
+.fallback-lead { color: var(--text-2); margin-bottom: 20px; }
+.steps { list-style: none; display: grid; gap: 12px; counter-reset: s; }
+.steps li { position: relative; padding-left: 44px; color: var(--text-2); font-size: 14.5px; }
+.steps li::before { counter-increment: s; content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: -1px; font-family: var(--font-d); font-weight: 700; font-size: 19px; color: var(--red-hi); }
+.steps strong { color: var(--text); font-weight: 600; }
+
+/* METHOD */
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.method h3 { font-family: var(--font-d); font-weight: 700; font-size: 21px; margin-bottom: 12px; }
+.method ul { list-style: none; display: grid; gap: 8px; }
+.method li { position: relative; padding-left: 18px; font-size: 13.5px; color: var(--text-2); }
+.method li::before { content: ''; position: absolute; left: 1px; top: .55em; width: 6px; height: 6px; background: var(--red-hi); transform: rotate(45deg); }
+.method a { color: var(--text-2); }
+
+/* CTA */
+.cta { position: relative; text-align: center; border-top: 1px solid var(--line); overflow: hidden; }
+.cta::before { content: ''; position: absolute; inset: 0; background: url(img/dh-combat.webp) center 40% / cover no-repeat; opacity: .22; }
+.cta::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(10,7,6,.2), var(--bg) 78%); }
+.cta .inner { position: relative; z-index: 1; }
+.cta h2 { font-family: var(--font-d); font-weight: 800; font-size: clamp(34px, 5.4vw, 64px); line-height: 1.05; margin-bottom: 32px; }
+.cta h2 span { color: var(--red-hi); }
+.cta-btn { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; letter-spacing: .04em; text-transform: none; padding: 15px 28px; }
+.cta-icon { display: block; width: 44px; height: auto; margin: 0 auto 28px; }
+footer { border-top: 1px solid var(--line); padding: 28px 0 calc(28px + env(safe-area-inset-bottom, 0px)); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); }
+.footer-inner .hn-mark { height: 18px; opacity: .8; }
+
+@media (max-width: 1080px) {
+  .eps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 980px) {
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-art { width: min(440px, 80vw); transform: rotate(1.5deg); }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .wh-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline { grid-template-columns: repeat(2, 1fr); }
+  .tl:nth-child(2) { border-right: 0; }
+  .tl:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .fan, .fan.big { grid-template-columns: 1fr; }
+  .fan-side { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 720px) {
+  section { padding-block: 56px; }
+  .hero { min-height: 0; display: block; }
+  .hero-shot { position: relative; inset: auto; height: 220px; }
+  .hero-shot::after { background: linear-gradient(to top, var(--bg) 0%, transparent 45%); }
+  .hero-content { padding-block: 0 44px; margin-top: -80px; gap: 26px; }
+  .hero-art { width: 82vw; order: -1; }
+  .stat { min-width: calc(50% - 6px); flex: 1 1 calc(50% - 6px); }
+  .value-grid, .eps, .ep-sum, .wh-grid, .grid, .timeline, .method-grid, .price-notes { grid-template-columns: 1fr; }
+  .tl { border-right: 0; border-bottom: 1px solid var(--line); }
+  .fan-vids { grid-template-columns: 1fr; padding: 12px; }
+  .vid { grid-template-columns: 120px 1fr; }
+  .whtile { grid-template-columns: 128px 1fr; }
+  .fallback { grid-template-columns: 1fr; gap: 24px; }
+  .pkg th, .pkg td { padding: 12px 10px; }
+  .pkg .who { font-size: 15px; }
+  .aud-main { border-right: 0; border-bottom: 1px solid var(--gold-border); width: 100%; }
+  .topbar-brand .full, .topbar-brand .x { display: none; }
+  .streams { padding: 12px 10px; }
+  .streams th, .streams td { padding: 8px 6px; font-size: 12.5px; }
+  .badge { font-size: 10px; letter-spacing: .12em; gap: 7px; padding: 6px 10px; }
+  .ep-proof { display: grid; grid-template-columns: 118px 1fr; grid-template-areas: 'k k' 'th t' 'th v'; column-gap: 12px; align-items: start; }
+  .ep-proof-k { grid-area: k; }
+  .ep-proof .vid-thumb { grid-area: th; margin-bottom: 0; }
+  .ep-proof .t { grid-area: t; }
+  .ep-proof .v { grid-area: v; }
+  .pkg thead { display: none; }
+  .pkg tr { display: grid; grid-template-columns: auto 1fr; }
+  .pkg td { border-bottom: 0; }
+  .pkg td:first-child { grid-column: 1 / -1; padding-bottom: 6px; }
+  .pkg td.num { padding-top: 0; border-bottom: 1px solid var(--line); white-space: normal; }
+  .pkg td.num:nth-child(2)::before { content: 'USD '; font-size: 11px; color: var(--text-3); }
+  .pkg tr:last-child td.num { border-bottom: 0; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="inner topbar-inner">
+    <div class="topbar-brand"><img class="hn-mark" src="img/hn-wordmark.png" alt="Hello Nord"><span class="x">&times;</span><span class="full">Dark Heresy</span></div>
+    <a class="topbar-cta" href="mailto:daniel@hellonord.se?subject=Dark%20Heresy%20creator%20campaign">Get In Touch</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-shot" aria-hidden="true"></div>
+  <div class="inner hero-content">
+    <div>
+      <div class="badge"><i>+++</i>Creator Partnership Proposal<i>+++</i></div>
+      <h1>Every Acolyte<br><span>Needs A Guide.</span></h1>
+      <p class="hero-sub">Dark Heresy launches January 28 with five archetypes, ten companions and a deep investigation system. That is exactly the kind of game players search YouTube for help with, and RageGamingVideos has made those guides for 15 years: more than 2,580 RPG videos with 333M views.</p>
+      <div class="hero-stats" id="hero-stats"></div>
+    </div>
+    <div class="hero-art" role="img" aria-label="Warhammer 40,000: Dark Heresy key art"></div>
+  </div>
+</div>
+
+<section class="value" id="value">
+  <div class="inner">
+    <div class="value-grid" id="value-grid"></div>
+    <div class="aud-block">
+      <h2 class="aud-h">Where The Views Come From</h2>
+      <div class="aud">
+        <div class="aud-main"><b class="n">~50%</b><span>of all views come from the United States</span></div>
+        <div class="aud-rest"><span><i>2</i>Canada</span><span><i>3</i>United Kingdom</span><span><i>4</i>Western Europe</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="rage">
+  <div class="inner">
+    <h2 class="section-title">The Guide Channel For Big RPGs</h2>
+    <p class="section-lead">RageGamingVideos is where RPG players go when they want to know what to do next. His most viewed RPG guides, from Elden Ring and Diablo IV to Baldur's Gate 3 and the Gothic 1 Remake.</p>
+    <div class="fans" id="fan-rage"></div>
+  </div>
+</section>
+
+<section id="playlist">
+  <div class="inner">
+    <h2 class="section-title">One Playlist. Every Question Answered.</h2>
+    <p class="section-lead">Five archetypes, four origins, three homeworlds, ten companions and a deep investigation system: every new acolyte will have questions, and they search YouTube for the answers. The plan is a guide series on RageGamingVideos that answers them in order, from the beta to the endgame build. Each episode follows a format that has already worked on his channel.</p>
+    <div class="eps" id="eps"></div>
+    <div class="ep-sum">
+      <div><b class="n">8</b><span>Episodes in the full series</span></div>
+      <div><b class="n">8.9M</b><span>Views on the 8 videos behind these formats</span></div>
+      <div><b class="n">~73K</b><span>Estimated views per episode</span></div>
+    </div>
+    <p class="note">Option A: episodes 1 to 4, from the beta to launch week. Option B: all eight, from the beta to week four. Episode topics follow what Owlcat shows of the game and can change with it.</p>
+  </div>
+</section>
+
+<section class="alt" id="warhammer">
+  <div class="inner">
+    <h2 class="section-title">Already At Home In Warhammer</h2>
+    <p class="section-lead">Twelve Warhammer videos across the roster, including a paid partnership for Warhammer 40,000: Speed Freeks. The most viewed:</p>
+    <div class="wh-grid" id="wh-grid"></div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="inner">
+    <h2 class="section-title">The Whole Roster Knows RPGs</h2>
+    <p class="section-lead">Their most viewed RPG videos and shorts. Views are YouTube views only: the shorts also go out on TikTok, Instagram and Facebook.</p>
+    <div class="fans" id="fan-cards"></div>
+  </div>
+</section>
+
+<section class="alt" id="roster">
+  <div class="inner">
+    <h2 class="section-title">Every Creator, Ready For Launch</h2>
+    <p class="section-lead">Eight creators who are all available for January 28. A guide series for depth, shorts on four platforms for fast reach, and live streams for the players who want to watch before they buy.</p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="inner">
+    <h2 class="section-title">The Strategy</h2>
+    <p class="section-lead">A guide series lives on search, so the plan starts before launch and keeps going for a month after it, while the shorts and streams make launch day loud.</p>
+    <div class="timeline">
+      <div class="tl"><div class="tl-when">Now to January 7</div><div class="tl-head">Beta And Wishlists</div><ul>
+        <li><b>RageGamingVideos, episode 1:</b> is Dark Heresy for you? Everything from the beta, before it closes on January 7.</li>
+        <li><b>Games Explorer:</b> "Baldur's Gate 3 fans, this is your next RPG."</li>
+        <li><b>Goal:</b> wishlists, pre-orders and the Steam wishlist goal.</li>
+      </ul><div class="tl-roster" data-avs="rage exp"></div></div>
+      <div class="tl peak"><div class="tl-when">January 28</div><div class="tl-head">Launch Day</div><ul>
+        <li><b>RageGamingVideos, episodes 2 and 3:</b> 10 things to do early, and all 5 archetypes ranked.</li>
+        <li><b>Shorts</b> from Cloudual, Gem and Retro on YouTube, TikTok, Instagram and Facebook.</li>
+        <li><b>Live:</b> David Jaffe and Ettnix stream the launch.</li>
+        <li><b>Spark Ads</b> behind the best performing posts.</li>
+      </ul><div class="tl-roster" data-avs="rage cloud gem retro jaffe ett"></div></div>
+      <div class="tl"><div class="tl-when">Launch Week</div><div class="tl-head">Loadouts And Levels</div><ul>
+        <li><b>RageGamingVideos, episode 4:</b> the best loadout early.</li>
+        <li><b>Episode 5 (Option B):</b> level up fast and get OP early.</li>
+        <li><b>Captain Eggcellent:</b> hidden details and lore in the Calixis Sector.</li>
+      </ul><div class="tl-roster" data-avs="rage cap"></div></div>
+      <div class="tl"><div class="tl-when">Weeks 2 to 4</div><div class="tl-head">Warband And Endgame</div><ul>
+        <li><b>RageGamingVideos, episodes 6 to 8 (Option B):</b> companions ranked, missables and the most OP psyker build.</li>
+        <li><b>One report</b> covering every video and post.</li>
+      </ul><div class="tl-roster" data-avs="rage"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="budget">
+  <div class="inner">
+    <h2 class="section-title">Budgeting: How It Could Look Like</h2>
+    <p class="section-lead">An example with two options for the RageGamingVideos guide series, a launch round with the rest of the roster, and an example TikTok Spark Ads budget on top. Every part can be scaled up or down.</p>
+    <div class="pkg-wrap">
+      <table class="pkg">
+        <thead><tr><th>Creator and deliverable</th><th class="num">Price (USD)</th><th class="num">Estimated views</th></tr></thead>
+        <tbody id="pkg-body"></tbody>
+      </table>
+    </div>
+    <div class="price-notes">
+      <div><b>Flexible pricing.</b> Prices follow each creator's average views and average concurrent viewers over the last 30 days.</div>
+      <div><b>Usage rights.</b> If you want to use the content in your own channels or ads, the prices change accordingly.</div>
+    </div>
+    <div class="fallback">
+      <div class="spark-stat">
+        <div class="spark-num n">330-500K</div>
+        <div class="spark-label">Estimated targeted views from an example USD 5,000 in TikTok Spark Ads</div>
+      </div>
+      <div>
+        <h3 class="fallback-h">A Fallback Plan Built In</h3>
+        <p class="fallback-lead">Spark Ads promote the creator's own post, not a separate ad. They also work as a safety net in case view behavior is different than expected.</p>
+        <ol class="steps">
+          <li><strong>Post organically first.</strong> All placements go live as normal creator posts.</li>
+          <li><strong>Check after 48 hours.</strong> Every post is measured against its expected views.</li>
+          <li><strong>Fallback if views are lower than expected.</strong> The Spark Ads budget goes behind the posts that are below target to lift them up.</li>
+          <li><strong>Boost if views are higher than expected.</strong> The budget goes behind the winners to push them even further.</li>
+          <li><strong>Report on every view.</strong> Creators share Spark authorization codes, and results come straight from TikTok Ads Manager.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="note">All figures are estimates based on each creator's plain 30-day averages and 2026 TikTok ad benchmarks. Actual results will vary and are not guaranteed. The Spark Ads budget is an example and can be set to any amount.</p>
+  </div>
+</section>
+
+<section class="method" id="method">
+  <div class="inner">
+    <h2 class="section-title">How We Measured</h2>
+    <div class="method-grid">
+      <div>
+        <h3>The numbers</h3>
+        <ul id="method-list"></ul>
+      </div>
+      <div>
+        <h3>Warhammer 40,000: Dark Heresy</h3>
+        <ul>
+          <li>A party-based, story-driven cRPG from Owlcat Games: you play an acolyte of the Inquisition in the Calixis Sector, with investigations, interrogations, turn-based combat with individual morale, and online co-op: <a href="https://store.steampowered.com/app/3710600/Warhammer_40000_Dark_Heresy/" target="_blank" rel="noopener">Steam store page</a> and <a href="https://darkheresy.owlcat.games/" target="_blank" rel="noopener">official site</a>.</li>
+          <li>Launches January 28, 2027 on PC (Steam, GOG and Epic Games Store), PlayStation 5 and Xbox Series X|S, with Switch 2 later: <a href="https://gematsu.com/2026/11/warhammer-40000-dark-heresy-launches-january-28-2027-for-ps5-xbox-series-and-pc-later-for-switch-2" target="_blank" rel="noopener">Gematsu</a>.</li>
+          <li>Five Tier-1 archetypes (Warrior, Officer, Operative, Soldier and the new Mystic), four origins and three home worlds: <a href="https://www.uberstrategist.com/press-releases/warhammer-40-000-dark-heresy----a-detailed-look-at-the-closed-beta" target="_blank" rel="noopener">Owlcat's closed beta press release</a>. The beta closes on January 7, 2027: <a href="https://rpgcodex.net/article.php?id=12995" target="_blank" rel="noopener">RPG Codex</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <img class="cta-icon" src="img/hn-icon.png" alt="" aria-hidden="true">
+    <h2>The Emperor Protects.<br><span>We Bring The Players.</span></h2>
+    <a class="cta-btn" href="mailto:daniel@hellonord.se?subject=Dark%20Heresy%20creator%20campaign">daniel@hellonord.se <svg class="icon"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <div class="inner footer-inner">
+    <img class="hn-mark" src="img/hn-wordmark.png" alt="Hello Nord">
+    <span>Gaming Creator Agency / hellonord.se</span>
+  </div>
+</footer>
+
+<script src="flags.js"></script>
+<script src="data.js"></script>
+<script>
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function n(x) { return Number(x).toLocaleString('en-US'); }
+function thumb(id) { return 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; }
+function yt(id, short) { return short ? 'https://www.youtube.com/shorts/' + id : 'https://www.youtube.com/watch?v=' + id; }
+function avatar(name, initials, src) { return '<div class="avatar" title="' + esc(name) + '"><div class="avatar-fb">' + esc(initials) + '</div><img src="' + esc(src) + '" alt="" loading="lazy" onerror="this.remove()"></div>'; }
+
+document.getElementById('hero-stats').innerHTML = HERO.map(function (s) { return '<div class="stat"><div class="stat-num n">' + esc(s[0]) + '</div><div class="stat-label">' + esc(s[1]) + '</div></div>'; }).join('');
+document.getElementById('value-grid').innerHTML = VALUE.map(function (v) {
+  return '<div class="val"><div class="val-num n">' + esc(v.num) + '</div><div class="val-h">' + esc(v.h) + '</div><p>' + esc(v.t) + '</p></div>';
+}).join('');
+
+function fan(f) {
+  var side = '<div class="fan-side"><div class="fan-head">' + avatar(f.name, f.initials, f.avatar) +
+    '<div><h3 class="fan-name">' + esc(f.name) + '</h3><div class="fan-meta">' + esc(f.meta) + '</div></div></div>' +
+    '<div class="fan-nums">' + f.nums.map(function (x) { return '<div><b class="n">' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div>' +
+    '<p class="fan-quote">' + esc(f.quote) + '</p>' +
+    (f.games.length ? '<div class="games">' + f.games.map(function (g) { return '<span>' + esc(g[0]) + '<b>' + esc(g[1]) + '</b></span>'; }).join('') + '</div>' : '') + '</div>';
+  var right;
+  if (f.rows) {
+    right = '<div class="streams"><table><thead><tr><th>RPG on Twitch, 12 months</th><th>Hours</th><th>Hours watched</th><th>Peak</th></tr></thead><tbody>' +
+      f.rows.map(function (r) { return '<tr><td>' + esc(r[0]) + '</td><td>' + n(r[1]) + '</td><td class="hw">' + n(r[2]) + '</td><td>' + n(r[3]) + '</td></tr>'; }).join('') +
+      '</tbody></table><p>Source: SullyGnome, last 365 days.</p></div>';
+  } else {
+    right = '<div class="fan-vids">' + f.vids.map(function (v) {
+      return '<a class="vid' + (v.wh ? ' wh' : '') + (v.keep ? ' keep' : '') + '" href="' + yt(v.id, v.short) + '" target="_blank" rel="noopener"><div class="vid-thumb" style="background-image:url(' + thumb(v.id) + ')">' + (v.short ? '<i>SHORT</i>' : '') + '</div>' +
+        '<div><div class="vid-title">' + esc(v.t) + '</div><div class="vid-meta"><b class="n">' + n(v.views) + '</b>views / ' + esc(v.d) + (v.wh ? '<em>Warhammer</em>' : '') + '</div></div></a>';
+    }).join('') + '</div>';
+  }
+  return '<article class="fan' + (f.big ? ' big' : '') + '">' + side + right + '</article>';
+}
+document.getElementById('fan-rage').innerHTML = fan(FANS[0]);
+document.getElementById('fan-cards').innerHTML = FANS.slice(1).map(fan).join('');
+
+// Show as many example videos as fit next to each creator's stats (6 on tablets, 4 on phones)
+function keep(v) { return v.classList.contains('wh') || v.classList.contains('keep'); }
+function fitVids() {
+  document.querySelectorAll('.fan').forEach(function (fan) {
+    var vids = fan.querySelectorAll('.vid'), side = fan.querySelector('.fan-side'), wrap = fan.querySelector('.fan-vids');
+    if (!wrap) return;
+    vids.forEach(function (v) { v.style.display = ''; });
+    if (window.innerWidth <= 720) { vids.forEach(function (v, i) { if (i >= 4 && !keep(v)) v.style.display = 'none'; }); return; }
+    if (window.innerWidth <= 980) { vids.forEach(function (v, i) { if (i >= 6 && !keep(v)) v.style.display = 'none'; }); return; }
+    wrap.style.display = 'none';
+    var limit = side.getBoundingClientRect().height - 10;
+    wrap.style.display = '';
+    var top = fan.getBoundingClientRect().top;
+    function overflow(v) { return v.style.display !== 'none' && v.getBoundingClientRect().bottom - top > limit; }
+    Array.prototype.forEach.call(vids, function (v) { if (!keep(v) && overflow(v)) v.style.display = 'none'; });
+    // Keep the Warhammer videos (and other marked ones) in view: drop the lowest ordinary ones in their place
+    for (var guard = 0; guard < vids.length && Array.prototype.some.call(vids, function (v) { return keep(v) && overflow(v); }); guard++) {
+      var shown = Array.prototype.filter.call(vids, function (x) { return x.style.display !== 'none' && !keep(x); });
+      if (!shown.length) break;
+      shown[shown.length - 1].style.display = 'none';
+    }
+    // Then fill any space left with the next videos in order
+    Array.prototype.forEach.call(vids, function (v) {
+      if (v.style.display !== 'none') return;
+      v.style.display = '';
+      if (Array.prototype.some.call(vids, overflow)) v.style.display = 'none';
+    });
+  });
+}
+fitVids();
+window.addEventListener('resize', fitVids);
+window.addEventListener('load', fitVids);
+
+document.getElementById('eps').innerHTML = EPISODES.map(function (e) {
+  var p = e.proof;
+  return '<article class="ep' + (e.opt === 'B' ? ' b' : '') + '"><div class="ep-top"><div class="ep-no n"><small>EP</small>' + (e.ep < 10 ? '0' : '') + e.ep + '</div><span class="chip' + (e.ep <= 3 ? ' red' : '') + '">' + esc(e.when) + '</span></div>' +
+    '<div class="ep-opt">' + (e.opt === 'B' ? 'Option <b>B</b>' : 'Option <b>A</b> and <b>B</b>') + '</div>' +
+    '<h3>' + esc(e.h) + '</h3><p>' + esc(e.t) + '</p>' +
+    '<a class="ep-proof" href="' + yt(p.id) + '" target="_blank" rel="noopener"><div class="ep-proof-k">Proven format on his channel</div><div class="vid-thumb" style="background-image:url(' + thumb(p.id) + ')"></div>' +
+    '<div class="t">' + esc(p.t) + '</div><div class="v"><b class="n">' + n(p.views) + '</b>views</div></a></article>';
+}).join('');
+
+document.getElementById('wh-grid').innerHTML = WH.map(function (v) {
+  return '<a class="whtile" href="' + yt(v.id, v.short) + '" target="_blank" rel="noopener"><div class="vid-thumb" style="background-image:url(' + thumb(v.id) + ')">' + (v.short ? '<i>SHORT</i>' : '') + '</div>' +
+    '<div><div class="wh-who">' + esc(v.who) + '</div><div class="vid-title">' + esc(v.t) + '</div><div class="vid-meta"><b class="n">' + n(v.views) + '</b>views / ' + esc(v.d) + (v.ad ? '<em>Paid partnership</em>' : '') + '</div></div></a>';
+}).join('');
+
+document.getElementById('grid').innerHTML = CREATORS.map(function (c) {
+  return '<article class="card"><div class="card-flag" aria-hidden="true">' + COUNTRIES[c.country].svgFlag + '</div>' +
+    '<div class="card-head">' + avatar(c.name, c.initials, c.avatar) +
+    '<div><h3 class="card-name">' + esc(c.name) + '</h3><div class="card-meta">' + esc(c.meta) + '</div></div></div>' +
+    '<p class="card-hook">' + esc(c.hook) + '</p>' +
+    '<div class="card-idea"><b>For Dark Heresy:</b> ' + esc(c.idea) + '</div>' +
+    '<div class="pf" style="grid-template-columns:repeat(' + c.stats.length + ',1fr)">' + c.stats.map(function (s) {
+      return '<div class="pf-cell"><div class="pf-val n">' + esc(s[0]) + '</div><div class="pf-key">' + esc(s[1]) + '</div></div>';
+    }).join('') + '</div>' +
+    '<div class="card-total"><span>' + esc(c.total[1]) + '</span><b class="n">' + esc(c.total[0]) + '</b></div>' +
+    '<div class="card-foot"><div class="pills">' + c.channels.map(function (ch) {
+      return '<a class="pill" href="' + esc(ch[1]) + '" target="_blank" rel="noopener">' + esc(ch[0]) + '</a>';
+    }).join('') + '</div><a class="kit" href="' + esc(c.kit) + '" target="_blank" rel="noopener">Media Kit <svg class="icon"><use href="#i-arrow"/></svg></a></div></article>';
+}).join('');
+
+var byKey = { rage: FANS[0], cap: FANS[1], retro: FANS[2], cloud: FANS[3], exp: FANS[4], gem: FANS[5], jaffe: FANS[6], ett: FANS[7] };
+document.querySelectorAll('.tl-roster').forEach(function (el) {
+  el.innerHTML = '<div class="tl-avs">' + el.dataset.avs.split(' ').map(function (k) { var f = byKey[k]; return avatar(f.name, f.initials, f.avatar); }).join('') + '</div>';
+});
+
+document.getElementById('pkg-body').innerHTML = BUDGET.map(function (p) {
+  var cls = p.total ? 'total' : p.sub ? 'sub' : p.ads ? 'ads' : '';
+  return '<tr class="' + cls + (p.tag ? ' optrow' : '') + '"><td>' + (p.tag ? '<span class="opt-tag">' + esc(p.tag) + '</span>' : '') + '<span class="who">' + esc(p.who) + '</span>' + (p.what ? '<span class="what">' + esc(p.what) + '</span>' : '') + '</td>' +
+    '<td class="num">' + (typeof p.price === 'number' ? n(p.price) : esc(p.price)) + '</td><td class="num"><span class="views">' + esc(p.views) + '</span></td></tr>';
+}).join('');
+document.getElementById('method-list').innerHTML = METHOD.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('');
+</script>
+</body>
+</html>
